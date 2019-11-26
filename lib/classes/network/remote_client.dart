@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:http_auth/http_auth.dart';
+import 'package:philips_remote/classes/store/keystore.dart';
 
 class RemoteClient {
   static HttpClient _httpClient = _createHttpClient();
@@ -9,8 +10,8 @@ class RemoteClient {
 
   // Public
 
-  static addCredentials(Uri uri, String username, String password) {
-    print("add credentials URI $uri username $username password $password");
+  static addCredentials(String username, String password) {
+    print("add credentials username $username password $password");
 
     client = DigestAuthClient(username, password, inner: client);
   }
@@ -34,6 +35,13 @@ class RemoteClient {
   }
 
   static BaseClient _createClient() {
-    return IOClient(_httpClient);
+    BaseClient client1 = IOClient(_httpClient);
+
+    if (Keystore.instance.user != null && Keystore.instance.pass != null) {
+      client1 = DigestAuthClient(Keystore.instance.user, Keystore.instance.pass,
+          inner: client1);
+    }
+
+    return client1;
   }
 }
