@@ -1,3 +1,4 @@
+import 'package:philips_remote/classes/models/channel.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
 import 'package:philips_remote/classes/api/auth.dart';
 import 'dart:convert' as convert;
@@ -6,24 +7,8 @@ import 'api.dart';
 
 class Commands {
   static void getVolume() {
-    print("#0");
-
     final url = API.baseUrl + "audio/volume";
-    print("CONFIRM PAIR REQUEST: $url");
-
-    print("#1, uri ${Uri.parse(url)}");
-
-    print("#3");
-
     final response = RemoteClient.client.get(url);
-
-    print("#4");
-
-    response.then((response) {
-      print("response ${response.body}");
-    }).catchError((error) {
-      print(error);
-    });
   }
 
   static void postKeyStandby() {
@@ -34,7 +19,20 @@ class Commands {
     };
 
     final body = convert.json.encode(json);
+    final response = RemoteClient.client.post(url, body: body);
+  }
 
+  // switch to channel
+  // POST /6/activities/tv {"channelList":{"id":"allter"},"channel":{"ccid":338}}'
+  static void changeToChannel(Channel channel) {
+    final url = API.baseUrl + "activities/tv";
+
+    Map<String, dynamic> json = {
+      "channelList": {"id": "all"},
+      "channel": {"ccid": channel.ccid},
+    };
+
+    final body = convert.json.encode(json);
     final response = RemoteClient.client.post(url, body: body);
   }
 }
