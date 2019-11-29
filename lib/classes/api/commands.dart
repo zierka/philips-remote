@@ -1,29 +1,56 @@
-import 'package:philips_remote/classes/api/remote_client.dart';
-import 'package:philips_remote/classes/store/keystore.dart';
+import 'package:philips_remote/classes/models/application.dart';
+import 'package:philips_remote/classes/models/channel.dart';
+import 'package:philips_remote/classes/network/remote_client.dart';
 import 'package:philips_remote/classes/api/auth.dart';
+import 'dart:convert' as convert;
+
+import 'api.dart';
 
 class Commands {
-  static void getVolume() {
-    print("#0");
+  // change volume
+  // POST audio/volume
+  static void changeVolume(int value, {bool mute = false}) {
+    final url = API.baseUrl + "audio/volume";
 
-    final url = URLComponents().url + "/audio/volume";
-    print("CONFIRM PAIR REQUEST: $url");
+    Map<String, dynamic> json = {"current": value, "muted": mute};
 
-    print("#1, uri ${Uri.parse(url)}");
+    final body = convert.json.encode(json);
+    RemoteClient.client.post(url, body: body);
+  }
 
-    // RemoteClient.addCredentials(
-    // Uri.parse(url), Keystore.instance.user, Keystore.instance.user);
+  static void postKeyStandby() {
+    final url = API.baseUrl + "input/key";
 
-    print("#3");
+    Map<String, String> json = {
+      "key": "Standby",
+    };
 
-    final response = RemoteClient.client.get(url);
+    final body = convert.json.encode(json);
+    RemoteClient.client.post(url, body: body);
+  }
 
-    print("#4");
+  // switch to channel
+  // POST /6/activities/tv {"channelList":{"id":"allter"},"channel":{"ccid":338}}'
+  static void changeToChannel(Channel channel) {
+    final url = API.baseUrl + "activities/tv";
 
-    response.then((response) {
-      print("response ${response.body}");
-    }).catchError((error) {
-      print(error);
-    });
+    Map<String, dynamic> json = {
+      "channelList": {"id": "all"},
+      "channel": {"ccid": channel.ccid},
+    };
+
+    final body = convert.json.encode(json);
+    RemoteClient.client.post(url, body: body);
+  }
+
+  // open application
+  // POST /6/activities/launch {"channelList":{"id":"allter"},"channel":{"ccid":338}}'
+  static void openApplication(Application application) {
+    final url = API.baseUrl + "activities/launch";
+
+    Map<String, dynamic> json = application.toJson();
+
+    final body = convert.json.encode(json);
+    RemoteClient.client.post(url, body: body);
   }
 }

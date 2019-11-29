@@ -1,8 +1,10 @@
-import 'package:philips_remote/classes/api/remote_client.dart';
+import 'package:philips_remote/classes/network/remote_client.dart';
 import 'package:philips_remote/classes/store/keystore.dart';
 import 'package:philips_remote/classes/utils.dart';
 import 'dart:convert' as convert;
 import 'package:crypto/crypto.dart';
+
+import 'api.dart';
 
 Keystore _keystore = Keystore.instance;
 
@@ -47,7 +49,7 @@ class AuthService {
   // POST `https://192.168.1.4:1926/6/pair/request`
 
   static Future<PairResponse> pairRequest(PairRequest request) async {
-    final url = URLComponents().url + "/pair/request";
+    final url = API.baseUrl + "pair/request";
 
     print("PAIR REQUEST: $url");
 
@@ -65,12 +67,7 @@ class AuthService {
 
       Keystore.instance.pass = response.authKey;
 
-      final c = URLComponents();
-
-      final urlx = c.protocol + c.ip + ":" + c.port;
-
-      RemoteClient.addCredentials(
-          Uri.parse(urlx), _keystore.user, _keystore.pass);
+      RemoteClient.addCredentials(_keystore.user, _keystore.pass);
 
       return response;
     } else {
@@ -83,7 +80,7 @@ class AuthService {
   // POST `https://192.168.1.4:1926/6/pair/grant`
 
   static Future<void> confirmPair(ConfirmPairRequest request) async {
-    final url = URLComponents().url + "/pair/grant";
+    final url = API.baseUrl + "pair/grant";
     print("CONFIRM PAIR REQUEST: $url");
 
     final response = await RemoteClient.client
@@ -158,13 +155,4 @@ class ConfirmPairRequest {
 
     return signature;
   }
-}
-
-class URLComponents {
-  String protocol = "https://";
-  String port = "1926";
-  String apiVersion = "6";
-  String ip = Keystore.instance.ip;
-
-  get url => protocol + ip + ":" + port + "/" + apiVersion;
 }
