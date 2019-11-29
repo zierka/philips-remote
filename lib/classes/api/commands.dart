@@ -1,3 +1,4 @@
+import 'package:philips_remote/classes/models/application.dart';
 import 'package:philips_remote/classes/models/channel.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
 import 'package:philips_remote/classes/api/auth.dart';
@@ -6,9 +7,15 @@ import 'dart:convert' as convert;
 import 'api.dart';
 
 class Commands {
-  static void getVolume() {
+  // change volume
+  // POST audio/volume
+  static void changeVolume(int value, {bool mute = false}) {
     final url = API.baseUrl + "audio/volume";
-    final response = RemoteClient.client.get(url);
+
+    Map<String, dynamic> json = {"current": value, "muted": mute};
+
+    final body = convert.json.encode(json);
+    RemoteClient.client.post(url, body: body);
   }
 
   static void postKeyStandby() {
@@ -19,7 +26,7 @@ class Commands {
     };
 
     final body = convert.json.encode(json);
-    final response = RemoteClient.client.post(url, body: body);
+    RemoteClient.client.post(url, body: body);
   }
 
   // switch to channel
@@ -33,6 +40,17 @@ class Commands {
     };
 
     final body = convert.json.encode(json);
-    final response = RemoteClient.client.post(url, body: body);
+    RemoteClient.client.post(url, body: body);
+  }
+
+  // open application
+  // POST /6/activities/launch {"channelList":{"id":"allter"},"channel":{"ccid":338}}'
+  static void openApplication(Application application) {
+    final url = API.baseUrl + "activities/launch";
+
+    Map<String, dynamic> json = application.toJson();
+
+    final body = convert.json.encode(json);
+    RemoteClient.client.post(url, body: body);
   }
 }

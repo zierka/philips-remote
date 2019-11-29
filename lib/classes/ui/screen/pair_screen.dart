@@ -107,7 +107,8 @@ class _MyHomePageState extends State<PairScreen> {
                 child: Text("do example GET"),
                 onPressed: () {
                   // Commands.getVolume();
-                  Commands.postKeyStandby();
+                  // Commands.postKeyStandby();
+                  Commands.changeVolume(10);
                 },
               ),
             ],

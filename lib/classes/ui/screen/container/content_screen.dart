@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/classes/ui/screen/channels_screen.dart';
-import 'package:philips_remote/classes/ui/screen/favorites_screen.dart';
+import 'package:philips_remote/classes/ui/screen/app_list.dart';
+import 'package:philips_remote/classes/ui/screen/channel_list.dart';
+import 'package:philips_remote/classes/ui/screen/favorite_list.dart';
 import 'package:philips_remote/classes/ui/screen/pair_screen.dart';
+import 'package:philips_remote/classes/ui/screen/remote_ui.dart';
 import 'package:philips_remote/classes/ui/screen/settings_screen.dart';
 
 class ContentScreen extends StatelessWidget {
@@ -18,6 +20,14 @@ class ContentScreen extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.star_border),
             title: Text("Favorites"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star_border),
+            title: Text("Apps"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            title: Text("Remote"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
@@ -36,8 +46,12 @@ class ContentScreen extends StatelessWidget {
           case 1:
             return FavoritesScreen();
           case 2:
-            return SettingsScreen();
+            return AppsScreen();
           case 3:
+            return RemoteUI();
+          case 4:
+            return SettingsScreen();
+          case 5:
             return PairScreen();
           default:
             return Placeholder();
