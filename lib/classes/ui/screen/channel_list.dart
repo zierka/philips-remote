@@ -93,12 +93,16 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
               return Text('Awaiting result...');
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+              _channelList = snapshot.data;
+              _fullChannelList = _channelList;
               return ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, index) {
-                    final item = snapshot.data[index];
-                    return ChannelItem(channel: item);
-                  });
+                itemCount: _channelList.length,
+                itemBuilder: (context, index) {
+                  final item = _channelList[index];
+                  return ChannelItem(channel: item);
+                },
+                controller: _scrollController,
+              );
           }
           return null; // unreachable
         }),

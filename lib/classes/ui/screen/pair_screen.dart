@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:philips_remote/classes/api/auth.dart';
 import 'package:philips_remote/classes/api/commands.dart';
+import 'package:philips_remote/classes/api/get.dart';
+import 'package:philips_remote/classes/api/key_input.dart';
 import 'package:philips_remote/classes/store/keystore.dart';
 
 class PairScreen extends StatefulWidget {
@@ -108,7 +110,8 @@ class _MyHomePageState extends State<PairScreen> {
                 onPressed: () {
                   // Commands.getVolume();
                   // Commands.postKeyStandby();
-                  Commands.changeVolume(10);
+                  // Commands.changeVolume(10);
+                  Get.volume();
                 },
               ),
             ],

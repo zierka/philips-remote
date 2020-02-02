@@ -1,7 +1,7 @@
 import 'package:philips_remote/classes/models/application.dart';
 import 'package:philips_remote/classes/models/channel.dart';
+import 'package:philips_remote/classes/models/volume.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
-import 'package:philips_remote/classes/api/auth.dart';
 import 'dart:convert' as convert;
 
 import 'api.dart';
@@ -9,24 +9,17 @@ import 'api.dart';
 class Commands {
   // change volume
   // POST audio/volume
-  static void changeVolume(int value, {bool mute = false}) {
+  static void changeVolume(int value, {bool mute = false}) async {
     final url = API.baseUrl + "audio/volume";
 
     Map<String, dynamic> json = {"current": value, "muted": mute};
 
     final body = convert.json.encode(json);
-    RemoteClient.client.post(url, body: body);
-  }
+    await RemoteClient.client.post(url, body: body);
+    // final jsonResponse = convert.json.decode(response.body);
+    // final volume = Volume.fromJson(jsonResponse);
 
-  static void postKeyStandby() {
-    final url = API.baseUrl + "input/key";
-
-    Map<String, String> json = {
-      "key": "Standby",
-    };
-
-    final body = convert.json.encode(json);
-    RemoteClient.client.post(url, body: body);
+    // return volume;
   }
 
   // switch to channel
@@ -52,5 +45,18 @@ class Commands {
 
     final body = convert.json.encode(json);
     RemoteClient.client.post(url, body: body);
+  }
+
+  static void powerOn() {
+    final url = API.baseUrl + "apps/ChromeCast";
+
+    // Map<String, dynamic> json = application.toJson();
+
+    // Map<String, dynamic> json = {
+    //   apps/ChromeCast"
+    // };
+
+    // final body = convert.json.encode(json);
+    RemoteClient.client.post(url);
   }
 }

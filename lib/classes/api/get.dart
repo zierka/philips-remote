@@ -48,7 +48,9 @@ class Get {
         return c.ccid == fav.ccid;
       });
 
-      channels2.add(chan);
+      if (chan != null) {
+        channels2.add(chan);
+      }
     });
 
     return channels2;
