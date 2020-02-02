@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:philips_remote/classes/ui/screen/app_list.dart';
 import 'package:philips_remote/classes/ui/screen/channel_list.dart';
 import 'package:philips_remote/classes/ui/screen/favorite_list.dart';
-import 'package:philips_remote/classes/ui/screen/pair_screen.dart';
 import 'package:philips_remote/classes/ui/screen/remote_ui.dart';
 import 'package:philips_remote/classes/ui/screen/settings_screen.dart';
 
@@ -22,20 +21,16 @@ class ContentScreen extends StatelessWidget {
             title: Text("Favorites"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.star_border),
+            icon: Icon(Icons.dialpad),
+            title: Text("Controls"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.apps),
             title: Text("Apps"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            title: Text("Remote"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
             title: Text("Settings"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.device_hub),
-            title: Text("Pair"),
           ),
         ],
       ),
@@ -46,13 +41,11 @@ class ContentScreen extends StatelessWidget {
           case 1:
             return FavoritesScreen();
           case 2:
-            return AppsScreen();
-          case 3:
             return RemoteUI();
+          case 3:
+            return AppsScreen();
           case 4:
             return SettingsScreen();
-          case 5:
-            return PairScreen();
           default:
             return Placeholder();
         }
