@@ -30,6 +30,7 @@ dependencies:
   json_annotation: ^2.0.0
   
   ping_discover_network: ^0.2.0+1
+  material_search: ^0.2.8
 dev_dependencies:
   build_runner: ^1.0.0
   json_serializable: ^2.0.0
