@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:philips_remote/classes/api/commands.dart';
 import 'package:philips_remote/classes/api/get.dart';
+import 'package:philips_remote/classes/api/key_input.dart';
 import 'package:philips_remote/classes/store/cache.dart';
-import 'package:philips_remote/classes/ui/components/channel_item.dart';
+import 'package:philips_remote/classes/ui/components/gesture_pad.dart';
+import 'package:philips_remote/classes/ui/components/volume_control.dart';
 
 class RemoteUI extends StatefulWidget {
   @override
@@ -13,11 +16,6 @@ class _RemoteUIState extends State<RemoteUI> {
   final _channelList = Get.favoriteChannelList();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -25,16 +23,20 @@ class _RemoteUIState extends State<RemoteUI> {
       ),
       body: Column(
         children: <Widget>[
-          Slider(
-            value: Cache.volume.current.toDouble(),
-            min: Cache.volume.min.toDouble(),
-            max: Cache.volume.max.toDouble(),
-            onChanged: (value) {
-              Commands.changeVolume(value.toInt());
+          // VolumeControl(),
+          CupertinoButton(
+            child: Text("Standby (on/off)"),
+            onPressed: () {
+              KeyInput.postKey(InputKey.Standby);
             },
-            // label: "Volume",
-            // divisions: Cache.volume.max - Cache.volume.min,
           ),
+          CupertinoButton(
+            child: Text("Super turn ON"),
+            onPressed: () {
+              Commands.powerOn();
+            },
+          ),
+          GesturePad(),
         ],
       ),
     );

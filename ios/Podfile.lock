@@ -2,20 +2,26 @@ PODS:
   - Flutter (1.0.0)
   - shared_preferences (0.0.1):
     - Flutter
+  - vibrate (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+  - vibrate (from `.symlinks/plugins/vibrate/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
+  vibrate:
+    :path: ".symlinks/plugins/vibrate/ios"
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
+  vibrate: 967ba16b8bd87d2fa3646472bb10429f1927c32f
 
 PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
 
