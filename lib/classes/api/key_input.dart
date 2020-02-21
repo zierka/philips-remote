@@ -52,12 +52,6 @@ enum InputKey {
   Rewind,
   Record,
   Online,
-  // A,
-  // KeyA,
-  // ButtonA,
-  // LetterA,
-  // InputA,
-  // ASDF,
 }
 
 class KeyInput {
@@ -72,7 +66,7 @@ class KeyInput {
       "key": keyName,
     };
 
-    final body = convert.json.encode(json);
-    RemoteClient.client.post(url, body: body);
+    // final body = convert.json.encode(json);
+    RemoteClient.post(url, json);
   }
 }

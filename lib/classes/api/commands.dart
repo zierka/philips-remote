@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:philips_remote/classes/models/application.dart';
 import 'package:philips_remote/classes/models/channel.dart';
 import 'package:philips_remote/classes/models/volume.dart';
@@ -48,7 +50,7 @@ class Commands {
   }
 
   static void powerOn() {
-    final url = API.baseUrl + "apps/ChromeCast";
+    final url = API.baseUrl + "/ChromeCast";
 
     // Map<String, dynamic> json = application.toJson();
 
@@ -58,5 +60,15 @@ class Commands {
 
     // final body = convert.json.encode(json);
     RemoteClient.client.post(url);
+  }
+
+  static void sendText(String text) {
+    final url = API.baseUrl + "input/textentry";
+
+    Map<String, dynamic> json = {
+      "currentstring": text,
+    };
+
+    RemoteClient.post(url, json);
   }
 }

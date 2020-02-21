@@ -1,0 +1,93 @@
+{
+	"channelLists": [{
+		"id": "all",
+		"version": 43,
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"active": true,
+		"virtual": true,
+		"modifiable": false
+	}],
+	"favoriteLists": [{
+		"id": "allcab",
+		"version": "43",
+		"listType": "TV",
+		"medium": "cable",
+		"active": false,
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": false
+	}, {
+		"id": "1",
+		"version": "437",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 1",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}, {
+		"id": "2",
+		"version": "1053",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 2",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}, {
+		"id": "3",
+		"version": "1053",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 3",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}, {
+		"id": "4",
+		"version": "1053",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 4",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}, {
+		"id": "5",
+		"version": "1053",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 5",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}, {
+		"id": "6",
+		"version": "1053",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 6",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}, {
+		"id": "7",
+		"version": "1053",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 7",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}, {
+		"id": "8",
+		"version": "1053",
+		"listType": "MixedSources",
+		"medium": "mixed",
+		"name": "Favourites 8",
+		"parentId": "all",
+		"virtual": false,
+		"modifiable": true
+	}]
+}

@@ -1,0 +1,525 @@
+{
+    "version": 2,
+    "applications": [
+        {
+            "label": "Tudnivalók",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.eum",
+                    "className": "org.droidtv.eum.onehelp.HowToTutorials.HowToVideosActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.eum.onehelp.HowToTutorials.HowToVideosActivity-org.droidtv.eum",
+            "type": "app"
+        },
+        {
+            "label": "Play Áruház",
+            "intent": {
+                "component": {
+                    "packageName": "com.android.vending",
+                    "className": "com.google.android.finsky.tvmainactivity.TvMainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.google.android.finsky.tvmainactivity.TvMainActivity-com.android.vending",
+            "type": "app"
+        },
+        {
+            "label": "YouTube",
+            "intent": {
+                "component": {
+                    "packageName": "com.google.android.youtube.tv",
+                    "className": "com.google.android.apps.youtube.tv.activity.ShellActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.google.android.apps.youtube.tv.activity.ShellActivity-com.google.android.youtube.tv",
+            "type": "app"
+        },
+        {
+            "label": "Aerial Dream",
+            "intent": {
+                "component": {
+                    "packageName": "com.codingbuffalo.aerialdream",
+                    "className": "com.codingbuffalo.aerialdream.SettingsActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.codingbuffalo.aerialdream.SettingsActivity-com.codingbuffalo.aerialdream",
+            "type": "app"
+        },
+        {
+            "label": "Prime Video",
+            "intent": {
+                "component": {
+                    "packageName": "com.amazon.amazonvideo.livingroom",
+                    "className": "com.amazon.ignition.IgnitionActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "com.amazon.ignition.IgnitionActivity-com.amazon.amazonvideo.livingroom",
+            "type": "app"
+        },
+        {
+            "label": "Play Zene",
+            "intent": {
+                "component": {
+                    "packageName": "com.google.android.music",
+                    "className": "com.google.android.music.tv.HomeActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "com.google.android.music.tv.HomeActivity-com.google.android.music",
+            "type": "app"
+        },
+        {
+            "label": "Play Játékok",
+            "intent": {
+                "component": {
+                    "packageName": "com.google.android.play.games",
+                    "className": "com.google.android.apps.play.games.app.atv.features.home.HomeActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "com.google.android.apps.play.games.app.atv.features.home.HomeActivity-com.google.android.play.games",
+            "type": "app"
+        },
+        {
+            "label": "Netflix",
+            "intent": {
+                "component": {
+                    "packageName": "com.netflix.ninja",
+                    "className": "com.netflix.ninja.MainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.netflix.ninja.MainActivity-com.netflix.ninja",
+            "type": "app"
+        },
+        {
+            "label": "Internet Browser",
+            "intent": {
+                "component": {
+                    "packageName": "com.opera.sdk.example",
+                    "className": "com.opera.sdk.example.OperaBrowserUiActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.opera.sdk.example.OperaBrowserUiActivity-com.opera.sdk.example",
+            "type": "app"
+        },
+        {
+            "label": "Amazon Alexa",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.amazonalexa",
+                    "className": "org.droidtv.amazonalexa.wizard.AlexaWizardActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.amazonalexa.wizard.AlexaWizardActivity-org.droidtv.amazonalexa",
+            "type": "app"
+        },
+        {
+            "label": "Tv-műsorfüzet",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.channels",
+                    "className": "org.droidtv.channels.ChannelsActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.channels.ChannelsActivity-org.droidtv.channels",
+            "type": "app"
+        },
+        {
+            "label": "Média",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.contentexplorer",
+                    "className": "org.droidtv.contentexplorer.MainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.contentexplorer.MainActivity-org.droidtv.contentexplorer",
+            "type": "app"
+        },
+        {
+            "label": "Mutasd be",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.demome",
+                    "className": "org.droidtv.demome.DemoMeOptionsActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "org.droidtv.demome.DemoMeOptionsActivity-org.droidtv.demome",
+            "type": "app"
+        },
+        {
+            "label": "Philips TV alkalmazástár",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.nettv.market",
+                    "className": "org.droidtv.nettv.market.MarketMainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.nettv.market.MarketMainActivity-org.droidtv.nettv.market",
+            "type": "app"
+        },
+        {
+            "label": "Ajánlottak",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.nettvrecommender",
+                    "className": "org.droidtv.nettvrecommender.NetTvRecommenderMainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.nettvrecommender.NetTvRecommenderMainActivity-org.droidtv.nettvrecommender",
+            "type": "app"
+        },
+        {
+            "label": "TV",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.playtv",
+                    "className": "org.droidtv.playtv.PlayTvActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.playtv.PlayTvActivity-org.droidtv.playtv",
+            "type": "app"
+        },
+        {
+            "label": "SPIEGEL.TV",
+            "intent": {
+                "component": {
+                    "packageName": "air.tv.spiegel.sptv",
+                    "className": "air.tv.spiegel.sptv.TVActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "air.tv.spiegel.sptv.TVActivity-air.tv.spiegel.sptv",
+            "type": "app"
+        },
+        {
+            "label": "myTuner Free",
+            "intent": {
+                "component": {
+                    "packageName": "com.appgeneration.itunerfree",
+                    "className": "com.appgeneration.ituner.application.activities.SplashActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.appgeneration.ituner.application.activities.SplashActivity-com.appgeneration.itunerfree",
+            "type": "app"
+        },
+        {
+            "label": "ES File Explorer",
+            "intent": {
+                "component": {
+                    "packageName": "com.estrongs.android.pop",
+                    "className": "com.estrongs.android.pop.app.openscreenad.NewSplashActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.estrongs.android.pop.app.openscreenad.NewSplashActivity-com.estrongs.android.pop",
+            "type": "app"
+        },
+        {
+            "label": "3sat",
+            "intent": {
+                "component": {
+                    "packageName": "com.mediathek_3sat.android",
+                    "className": "de._3sat.mediathek.ui.splash.SplashActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "de._3sat.mediathek.ui.splash.SplashActivity-com.mediathek_3sat.android",
+            "type": "app"
+        },
+        {
+            "label": "ORF TVthek",
+            "intent": {
+                "component": {
+                    "packageName": "com.nousguide.android.orftvthek",
+                    "className": "com.nousguide.android.tvthek.fire.MainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.nousguide.android.tvthek.fire.MainActivity-com.nousguide.android.orftvthek",
+            "type": "app"
+        },
+        {
+            "label": "Spotify",
+            "intent": {
+                "component": {
+                    "packageName": "com.spotify.tv.android",
+                    "className": "com.spotify.tv.android.SpotifyTVActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.spotify.tv.android.SpotifyTVActivity-com.spotify.tv.android",
+            "type": "app"
+        },
+        {
+            "label": "ZDFmediathek",
+            "intent": {
+                "component": {
+                    "packageName": "com.zdf.android.mediathek",
+                    "className": "com.zdf.android.mediathek.ui.splash.SplashActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "com.zdf.android.mediathek.ui.splash.SplashActivity-com.zdf.android.mediathek",
+            "type": "app"
+        },
+        {
+            "label": "Das Erste Mediathek",
+            "intent": {
+                "component": {
+                    "packageName": "de.daserste.apps.androidtv",
+                    "className": "de.daserste.bigscreen.activities.MainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "de.daserste.bigscreen.activities.MainActivity-de.daserste.apps.androidtv",
+            "type": "app"
+        },
+        {
+            "label": "ZDFheute",
+            "intent": {
+                "component": {
+                    "packageName": "de.heute.mobile",
+                    "className": "com.zdf.android.mediathek.ui.splash.SplashActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "com.zdf.android.mediathek.ui.splash.SplashActivity-de.heute.mobile",
+            "type": "app"
+        },
+        {
+            "label": "ARD Mediathek",
+            "intent": {
+                "component": {
+                    "packageName": "de.swr.avp.ard.tv",
+                    "className": "de.swr.avp.ard.tv.ui.main.TvActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "de.swr.avp.ard.tv.ui.main.TvActivity-de.swr.avp.ard.tv",
+            "type": "app"
+        },
+        {
+            "label": "HBO GO",
+            "intent": {
+                "component": {
+                    "packageName": "eu.hbogo.androidtv.production",
+                    "className": "eu.hbogo.androidtv.MainActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "eu.hbogo.androidtv.MainActivity-eu.hbogo.androidtv.production",
+            "type": "app"
+        },
+        {
+            "label": "HALauncher",
+            "intent": {
+                "component": {
+                    "packageName": "net.i.akihiro.halauncher",
+                    "className": "net.i.akihiro.halauncher.activity.MainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "net.i.akihiro.halauncher.activity.MainActivity-net.i.akihiro.halauncher",
+            "type": "app"
+        },
+        {
+            "label": "ARTE",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.nettvapp1814",
+                    "className": "com.zeasn.app.linux.MainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.zeasn.app.linux.MainActivity-org.droidtv.nettvapp1814",
+            "type": "app"
+        },
+        {
+            "label": "Fishing TV",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.nettvapp5512",
+                    "className": "com.zeasn.app.linux.MainActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "com.zeasn.app.linux.MainActivity-org.droidtv.nettvapp5512",
+            "type": "app"
+        },
+        {
+            "label": "VLC",
+            "intent": {
+                "component": {
+                    "packageName": "org.videolan.vlc",
+                    "className": "org.videolan.vlc.StartActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.videolan.vlc.StartActivity-org.videolan.vlc",
+            "type": "app"
+        },
+        {
+            "label": "SVT Play",
+            "intent": {
+                "component": {
+                    "packageName": "se.svt.android.svtplay",
+                    "className": "se.svt.svtplay.tv.ui.StartupActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "se.svt.svtplay.tv.ui.StartupActivity-se.svt.android.svtplay",
+            "type": "app"
+        },
+        {
+            "label": "TV4 Play",
+            "intent": {
+                "component": {
+                    "packageName": "se.tv4.tv4playtab",
+                    "className": "se.tv4.tv4play.startup.SplashActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "se.tv4.tv4play.startup.SplashActivity-se.tv4.tv4playtab",
+            "type": "app"
+        },
+        {
+            "label": "Beállítások",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.settings",
+                    "className": "org.droidtv.settings.setupmenu.SetupMenuActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.settings.setupmenu.SetupMenuActivity-org.droidtv.settings",
+            "type": "app"
+        },
+        {
+            "label": "Csatornák beállítása",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.settings",
+                    "className": "org.droidtv.settings.setupmenu.ChannelSettingActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.settings.setupmenu.ChannelSettingActivity-org.droidtv.settings",
+            "type": "app"
+        },
+        {
+            "label": "Tudnivalók",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.eum",
+                    "className": "org.droidtv.eum.onehelp.menu.HowToLauncherActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.eum.onehelp.menu.HowToLauncherActivity-org.droidtv.eum",
+            "type": "app"
+        },
+        {
+            "label": "Vezeték nélküli és hálózat",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.settings",
+                    "className": "org.droidtv.settings.setupmenu.WirelessAndNetworkSettingsActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.settings.setupmenu.WirelessAndNetworkSettingsActivity-org.droidtv.settings",
+            "type": "app"
+        },
+        {
+            "label": "Alkalmazások kezelése",
+            "intent": {
+                "component": {
+                    "packageName": "com.android.tv.settings",
+                    "className": "com.android.tv.settings.device.apps.AppsActivity"
+                },
+                "action": "empty"
+            },
+            "order": 0,
+            "id": "com.android.tv.settings.device.apps.AppsActivity-com.android.tv.settings",
+            "type": "app"
+        },
+        {
+            "label": "Súgó",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.eum",
+                    "className": "org.droidtv.eum.onehelp.menu.OneHelpActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.eum.onehelp.menu.OneHelpActivity-org.droidtv.eum",
+            "type": "app"
+        },
+        {
+            "label": "Szoftver frissítése",
+            "intent": {
+                "component": {
+                    "packageName": "org.droidtv.settings",
+                    "className": "org.droidtv.settings.setupmenu.UpdateSWSettingsActivity"
+                },
+                "action": "android.intent.action.MAIN"
+            },
+            "order": 0,
+            "id": "org.droidtv.settings.setupmenu.UpdateSWSettingsActivity-org.droidtv.settings",
+            "type": "app"
+        }
+    ]
+}

@@ -3,6 +3,7 @@ import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:http_auth/http_auth.dart';
 import 'package:philips_remote/classes/store/keystore.dart';
+import 'dart:convert' as convert;
 
 class RemoteClient {
   static HttpClient _httpClient = _createHttpClient();
@@ -29,7 +30,12 @@ class RemoteClient {
     };
 
     httpClient.badCertificateCallback =
-        (X509Certificate cert, String host, int port) => true;
+        (X509Certificate cert, String host, int port) {
+      print(">> badCertificateCallback $cert $host $port");
+      return true;
+    };
+
+    httpClient.maxConnectionsPerHost = 1;
 
     return httpClient;
   }
@@ -43,5 +49,18 @@ class RemoteClient {
     }
 
     return client1;
+  }
+
+  static post(String url, Map<String, dynamic> json) {
+    final body = convert.json.encode(json);
+
+    final Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: "application/json",
+      HttpHeaders.connectionHeader: "keep-alive",
+      HttpHeaders.acceptEncodingHeader: "gzip, deflate",
+      HttpHeaders.acceptHeader: "*/*",
+    };
+
+    client.post(url, body: body, headers: headers);
   }
 }

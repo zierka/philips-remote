@@ -37,6 +37,11 @@ class _RemoteUIState extends State<RemoteUI> {
             },
           ),
           GesturePad(),
+          TextField(
+            onChanged: (text) {
+              Commands.sendText(text);
+            },
+          )
         ],
       ),
     );

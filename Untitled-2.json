@@ -1,0 +1,167 @@
+{
+    "notification": {
+        "context": {
+            "level3": "NA",
+            "data": "NA",
+            "level1": "WatchTv",
+            "level2": "Playstate"
+        },
+        "network/devices": [
+            {
+                "id": "wifi0",
+                "wake-on-lan": "Enabled",
+                "mac": "3C:95:09:81:B6:FD",
+                "type": "Wifi",
+                "ip": "192.168.1.4"
+            },
+            {
+                "id": "eth0",
+                "wake-on-lan": "Disabled",
+                "mac": "70:AF:24:0F:08:1F",
+                "type": "Ethernet"
+            }
+        ],
+        "input/textentry": {
+            "textentry": "not requested",
+            "initialstring": ""
+        },
+        "input\/pointer": {
+            "status": "enabled"
+        },
+        "channeldb/tv": {
+            "channelLists": [
+                {
+                    "id": "all",
+                    "version": "43"
+                }
+            ],
+            "favoriteLists": [
+                {
+                    "name": "TV Channels",
+                    "id": "allcab",
+                    "medium": "cable",
+                    "parentid": "all",
+                    "version": "43",
+                    "listType": "TV"
+                },
+                {
+                    "name": "Favourites 3",
+                    "id": "3",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "1053",
+                    "listType": "MixedSources"
+                },
+                {
+                    "name": "Favourites 7",
+                    "id": "7",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "1053",
+                    "listType": "MixedSources"
+                },
+                {
+                    "name": "Favourites 8",
+                    "id": "8",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "1053",
+                    "listType": "MixedSources"
+                },
+                {
+                    "name": "Favourites 4",
+                    "id": "4",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "1053",
+                    "listType": "MixedSources"
+                },
+                {
+                    "name": "Favourites 5",
+                    "id": "5",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "1053",
+                    "listType": "MixedSources"
+                },
+                {
+                    "name": "Favourites 1",
+                    "id": "1",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "437",
+                    "listType": "MixedSources"
+                },
+                {
+                    "name": "Favourites 2",
+                    "id": "2",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "1053",
+                    "listType": "MixedSources"
+                },
+                {
+                    "name": "Favourites 6",
+                    "id": "6",
+                    "medium": "mixed",
+                    "parentid": "all",
+                    "version": "1053",
+                    "listType": "MixedSources"
+                }
+            ]
+        },
+        "activities/tv": {
+            "channel": {
+                "ccid": 1176,
+                "preset": 138,
+                "name": "RTL Klub"
+            },
+            "channelList": {
+                "id": "1",
+                "version": "437"
+            }
+        },
+        "applications/version": "2",
+        "system/epgsource": {
+            "epgsource": "one"
+        },
+        "powerstate": {
+            "powerstate": "On"
+        },
+        "system/nettvversion": "8.0.2",
+        "system/storage/status": "Removed",
+        "recordings/list": {
+            "version": "0.3"
+        },
+        "activities/current": {
+            "component": {
+                "className": "NA",
+                "packageName": "org.droidtv.settings"
+            }
+        },
+        "companionlauncher": {
+            "device_id": "6E95E394-6B2E-4A2D-9BCA-9034AC732C49",
+            "msg_id": ""
+        },
+        "menuitems/settings/version": {
+            "version": "0",
+            "nodes": [
+                2131230762,
+                2131230769,
+                2131230770,
+                2131230771,
+                2131230772,
+                2131230779,
+                2131230763,
+                2131230764,
+                2131230765,
+                2131230766,
+                2131230768,
+                2131230774,
+                2131230776,
+                2131230777,
+                2131230780
+            ]
+        }
+    }
+}
