@@ -53,20 +53,18 @@ class AuthService {
 
     print("PAIR REQUEST: $url");
 
-    final response = await RemoteClient.client
-        .post(url, body: convert.json.encode(request.data));
+    final responseJson = await RemoteClient.post(url, request.data);
 
-    print("PAIR RESPONSE: ${response.body}");
+    // print("PAIR RESPONSE: ${response.body}");
 
-    final json = convert.json.decode(response.body);
+    // final json = convert.json.decode(response.body);
 
-    if (json["error_id"] == "SUCCESS") {
+    if (responseJson["error_id"] == "SUCCESS") {
       print("success");
 
-      final response = PairResponse.fromJson(json);
+      final response = PairResponse.fromJson(responseJson);
 
       Keystore.instance.pass = response.authKey;
-
       RemoteClient.addCredentials(_keystore.user, _keystore.pass);
 
       return response;
@@ -83,10 +81,9 @@ class AuthService {
     final url = API.baseUrl + "pair/grant";
     print("CONFIRM PAIR REQUEST: $url");
 
-    final response = await RemoteClient.client
-        .post(url, body: convert.json.encode(request.data));
+    final responseJson = await RemoteClient.post(url, request.data);
 
-    print("confirm pair response $response");
+    print("confirm pair response $responseJson");
   }
 }
 

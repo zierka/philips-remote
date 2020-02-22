@@ -4,7 +4,6 @@ import 'package:philips_remote/classes/models/application.dart';
 import 'package:philips_remote/classes/models/channel.dart';
 import 'package:philips_remote/classes/models/volume.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
-import 'dart:convert' as convert;
 
 import 'api.dart';
 
@@ -16,8 +15,7 @@ class Commands {
 
     Map<String, dynamic> json = {"current": value, "muted": mute};
 
-    final body = convert.json.encode(json);
-    await RemoteClient.client.post(url, body: body);
+    await RemoteClient.post(url, json);
     // final jsonResponse = convert.json.decode(response.body);
     // final volume = Volume.fromJson(jsonResponse);
 
@@ -26,7 +24,7 @@ class Commands {
 
   // switch to channel
   // POST /6/activities/tv {"channelList":{"id":"allter"},"channel":{"ccid":338}}'
-  static void changeToChannel(Channel channel) {
+  static void changeToChannel(Channel channel) async {
     final url = API.baseUrl + "activities/tv";
 
     Map<String, dynamic> json = {
@@ -34,41 +32,32 @@ class Commands {
       "channel": {"ccid": channel.ccid},
     };
 
-    final body = convert.json.encode(json);
-    RemoteClient.client.post(url, body: body);
+    await RemoteClient.post(url, json);
   }
 
   // open application
   // POST /6/activities/launch {"channelList":{"id":"allter"},"channel":{"ccid":338}}'
-  static void openApplication(Application application) {
+  static void openApplication(Application application) async {
     final url = API.baseUrl + "activities/launch";
 
     Map<String, dynamic> json = application.toJson();
 
-    final body = convert.json.encode(json);
-    RemoteClient.client.post(url, body: body);
+    await RemoteClient.post(url, json);
   }
 
-  static void powerOn() {
+  static void powerOn() async {
     final url = API.baseUrl + "/ChromeCast";
 
-    // Map<String, dynamic> json = application.toJson();
-
-    // Map<String, dynamic> json = {
-    //   apps/ChromeCast"
-    // };
-
-    // final body = convert.json.encode(json);
-    RemoteClient.client.post(url);
+    await RemoteClient.post(url);
   }
 
-  static void sendText(String text) {
+  static void sendText(String text) async {
     final url = API.baseUrl + "input/textentry";
 
     Map<String, dynamic> json = {
       "currentstring": text,
     };
 
-    RemoteClient.post(url, json);
+    await RemoteClient.post(url, json);
   }
 }

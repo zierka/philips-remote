@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:philips_remote/classes/network/remote_client.dart';
 import 'package:philips_remote/classes/store/keystore.dart';
 import 'package:philips_remote/classes/ui/screen/container/content_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // RemoteClient.setup();
 
   await Keystore.initialize();
 

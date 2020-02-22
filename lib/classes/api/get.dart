@@ -11,8 +11,7 @@ class Get {
   // "audio/volume"
   static Future<Volume> volume() async {
     final url = API.baseUrl + "audio/volume";
-    final response = await RemoteClient.client.get(url);
-    final json = convert.json.decode(response.body);
+    final json = await RemoteClient.get(url);
     final volume = Volume.fromJson(json);
 
     Cache.volume = volume;
@@ -23,8 +22,7 @@ class Get {
   // "channeldb/tv/channelLists/all"
   static Future<List<Channel>> channelList() async {
     final url = API.baseUrl + "channeldb/tv/channelLists/all";
-    final response = await RemoteClient.client.get(url);
-    final json = convert.json.decode(response.body);
+    final json = await RemoteClient.get(url);
     final channels = ChannelList.fromJson(json).channels;
 
     Cache.allChannels = channels;
@@ -35,8 +33,7 @@ class Get {
   // "channeldb/tv/channelLists/all"
   static Future<List<Channel>> favoriteChannelList() async {
     final url = API.baseUrl + "channeldb/tv/favoriteLists/1";
-    final response = await RemoteClient.client.get(url);
-    final json = convert.json.decode(response.body);
+    final json = await RemoteClient.get(url);
     final channels = FavoriteChannelList.fromJson(json).channels;
 
     // as the results are partial channel classes, get the full channel classes from the cache
@@ -58,8 +55,7 @@ class Get {
 
   static Future<List<Application>> applicationList() async {
     final url = API.baseUrl + "applications";
-    final response = await RemoteClient.client.get(url);
-    final json = convert.json.decode(response.body);
+    final json = await RemoteClient.get(url);
     final applications = ApplicationResponse.fromJson(json).applications;
     return applications;
   }
