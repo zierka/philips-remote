@@ -51,13 +51,7 @@ class AuthService {
   static Future<PairResponse> pairRequest(PairRequest request) async {
     final url = API.baseUrl + "pair/request";
 
-    print("PAIR REQUEST: $url");
-
     final responseJson = await RemoteClient.post(url, request.data);
-
-    // print("PAIR RESPONSE: ${response.body}");
-
-    // final json = convert.json.decode(response.body);
 
     if (responseJson["error_id"] == "SUCCESS") {
       print("success");
@@ -65,7 +59,7 @@ class AuthService {
       final response = PairResponse.fromJson(responseJson);
 
       Keystore.instance.pass = response.authKey;
-      RemoteClient.addCredentials(_keystore.user, _keystore.pass);
+      // RemoteClient.addCredentials(_keystore.user, _keystore.pass);
 
       return response;
     } else {
