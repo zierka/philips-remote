@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:philips_remote/classes/api/commands.dart';
 import 'package:philips_remote/classes/api/get.dart';
+import 'package:philips_remote/classes/logic/image_handling.dart';
 import 'package:philips_remote/classes/models/application.dart';
 
 class AppsScreen extends StatefulWidget {
@@ -39,6 +41,10 @@ class _AppsScreenState extends State<AppsScreen> {
                     final item = snapshot.data[index];
                     return ListTile(
                       title: Text(item.label),
+                      trailing: CachedNetworkImage(
+                        imageUrl: item.logoUrl,
+                        cacheManager: CustomCacheManager(),
+                      ),
                       onTap: () {
                         Commands.openApplication(item);
                       },

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:philips_remote/classes/api/commands.dart';
 import 'package:philips_remote/classes/api/get.dart';
 import 'package:philips_remote/classes/api/key_input.dart';
-import 'package:philips_remote/classes/store/cache.dart';
 import 'package:philips_remote/classes/ui/components/gesture_pad.dart';
 import 'package:philips_remote/classes/ui/components/volume_control.dart';
 
@@ -23,7 +22,7 @@ class _RemoteUIState extends State<RemoteUI> {
       ),
       body: Column(
         children: <Widget>[
-          // VolumeControl(),
+          VolumeControl(),
           CupertinoButton(
             child: Text("Standby (on/off)"),
             onPressed: () {
@@ -41,7 +40,7 @@ class _RemoteUIState extends State<RemoteUI> {
             onChanged: (text) {
               Commands.sendText(text);
             },
-          )
+          ),
         ],
       ),
     );

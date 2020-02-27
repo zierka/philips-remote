@@ -1,6 +1,7 @@
-// import 'dart:io';
+import 'dart:io';
+
 import 'package:flutter/services.dart';
-// import 'package:http/http.dart';
+import 'package:http/http.dart';
 // import 'package:http/io_client.dart';
 // import 'package:http_auth/http_auth.dart';
 // import 'package:philips_remote/classes/store/keystore.dart';
@@ -47,11 +48,31 @@ class RemoteClient {
     });
   }
 
-  // native networking functions
+  static Future<Response> getImage(String url) async {
+    final Map<String, String> payload = {
+      "url": url,
+    };
+
+    final result = _networkMethodChannel.invokeMethod<Map>("get", payload);
+
+    return result.then((value) {
+      if (value["status"] == "failure") throw (value["error"]);
+
+      final responseBody = value["result"];
+
+      Response response = Response(responseBody, 200);
+
+      return Future.value(response);
+    });
+  }
+
+// native networking functions
 
 /*
   static HttpClient _httpClient = _createHttpClient();
   static BaseClient _client = _createClient();
+
+  static get client => _client;
 
   static Future<Map<String, dynamic>> get(String url) async {
     final response = await _client.get(url);
@@ -73,7 +94,7 @@ class RemoteClient {
   static addCredentials(String username, String password) {
     print("add credentials username $username password $password");
 
-    client = DigestAuthClient(username, password, inner: client);
+    _client = DigestAuthClient(username, password, inner: _client);
   }
 
   static HttpClient _createHttpClient() {

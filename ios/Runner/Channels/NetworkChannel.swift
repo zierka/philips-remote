@@ -82,9 +82,9 @@ class API {
     static let protocol1 = "https://";
     static let port = 1926;
     static let apiVersion = "6";
-    static var ip: String { UserDefaults.standard.string(forKey: "flutter.ip") ?? "" }
+    static var ip: String { return UserDefaults.standard.string(forKey: "flutter.ip") ?? "" }
     
-    static var baseUrl: String { protocol1 + ip + ":" + String(port) + "/" + apiVersion + "/" }
+    static var baseUrl: String { return protocol1 + ip + ":" + String(port) + "/" + apiVersion + "/" }
 }
 
 final class CustomServerTrustManager: ServerTrustManager {
