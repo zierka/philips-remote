@@ -1,7 +1,11 @@
+import 'package:philips_remote/classes/api/api.dart';
+
 class Channel {
   final int ccid;
   final String preset; // channel position
   final String name;
+
+  get logoUrl => API.baseUrl + "channeldb/tv/channelLists/all/$ccid/logo";
 
   Channel.fromJson(Map<String, dynamic> json)
       : ccid = json['ccid'],

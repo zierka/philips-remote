@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:philips_remote/classes/api/api.dart';
 
 part 'application.g.dart';
 
@@ -24,6 +25,8 @@ class Application {
   final int order;
   final String id;
   final String type;
+
+  get logoUrl => API.baseUrl + "applications/$id/icon";
 
   factory Application.fromJson(Map<String, dynamic> json) =>
       _$ApplicationFromJson(json);

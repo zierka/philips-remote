@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Philips TV remote controller',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

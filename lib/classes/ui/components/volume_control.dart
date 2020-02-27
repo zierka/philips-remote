@@ -48,13 +48,14 @@ class _VolumeControlState extends State<VolumeControl> {
           min: Cache.volume.min.toDouble(),
           max: Cache.volume.max.toDouble(),
           onChanged: (value) {
+            Commands.changeVolume(value.toInt());
             setState(() {
               _currentValue = value;
             });
           },
           onChangeEnd: (value) {
             print(value);
-            Commands.changeVolume(value.toInt());
+            // Commands.changeVolume(value.toInt());
             setState(() {
               _currentValue = value;
             });
