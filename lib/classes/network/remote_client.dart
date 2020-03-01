@@ -53,14 +53,13 @@ class RemoteClient {
       "url": url,
     };
 
-    final result = _networkMethodChannel.invokeMethod<Map>("get", payload);
+    final result = _networkMethodChannel.invokeMethod<Map>("getImage", payload);
 
     return result.then((value) {
       if (value["status"] == "failure") throw (value["error"]);
 
       final responseBody = value["result"];
-
-      Response response = Response(responseBody, 200);
+      Response response = Response.bytes(responseBody, 200);
 
       return Future.value(response);
     });

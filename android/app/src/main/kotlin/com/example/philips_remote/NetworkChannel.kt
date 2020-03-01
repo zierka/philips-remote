@@ -37,7 +37,9 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
 
         MethodChannel(binaryMessenger, CHANNEL_NAME).setMethodCallHandler { call, result ->
 
-            if (call.method == "get" || call.method == "post") {
+            val callMethod = call.method
+
+            if (call.method == "get" || call.method == "post" || call.method == "getImage") {
                 val method = call.method
 
                 val payload = call.arguments as Map<String, Any>
@@ -85,8 +87,15 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
                                 println("$name: $value")
                             }
 
-                            val responseString = response.body!!.string()
-                            val payload = mapOf<String, Any>("status" to "success", "result" to responseString)
+                            var payloadResult: Any? = null
+
+                            payloadResult = if (callMethod == "getImage") {
+                                response.body!!.bytes()
+                            } else {
+                                response.body!!.string()
+                            }
+
+                            val payload = mapOf<String, Any>("status" to "success", "result" to payloadResult!!)
 
                             Handler(Looper.getMainLooper()).post {
                                 result.success(payload)

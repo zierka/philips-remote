@@ -31,7 +31,7 @@ class NetworkChannel {
             
             print(">> host >> \(call.method) \(call.arguments)")
             
-            if call.method == "get" || call.method == "post" {
+            if call.method == "get" || call.method == "post" || call.method == "getImage" {
                 let method = HTTPMethod(rawValue: call.method.uppercased())
             
                 let payload = call.arguments as! [String:Any]
@@ -60,16 +60,28 @@ class NetworkChannel {
                     dataRequest = dataRequest.authenticate(username: user, password: pass)
                 }
                 
-                dataRequest.responseString { response in
-                    print(">> Response: \(response)")
-                    
-                    switch response.result {
-                    case .success(let data):
-                        let payload = ["status": "success", "result": data]
-                        result(payload)
-                    case .failure(let error):
-                        let payload = ["status": "failure", "error": error.errorDescription]
-                        result(payload)
+                if call.method == "getImage" {
+                    dataRequest.responseData { response in
+                        switch response.result {
+                        case .success(let data):
+                            let payloadData = FlutterStandardTypedData(bytes: data)
+                            let payload: [String: Any] = ["status": "success", "result": payloadData]
+                            result(payload)
+                        case .failure(let error):
+                            let payload = ["status": "failure", "error": error.errorDescription]
+                            result(payload)
+                        }
+                    }
+                } else {
+                    dataRequest.responseString { response in
+                        switch response.result {
+                        case .success(let data):
+                            let payload = ["status": "success", "result": data]
+                            result(payload)
+                        case .failure(let error):
+                            let payload = ["status": "failure", "error": error.errorDescription]
+                            result(payload)
+                        }
                     }
                 }
             } else {
