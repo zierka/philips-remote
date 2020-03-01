@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+private let channelName = "izerik.dev/network"
+
 class NetworkChannel {
     private let session: Session
     private let methodChannel: FlutterMethodChannel
@@ -18,7 +20,7 @@ class NetworkChannel {
         
         session = Session(configuration: URLSessionConfiguration.af.default, delegate: SessionDelegate(), rootQueue: DispatchQueue(label: "org.alamofire.session.rootQueue"), serverTrustManager: manager)
         
-        methodChannel = FlutterMethodChannel(name: "izerik.dev/network", binaryMessenger: binaryMessenger)
+        methodChannel = FlutterMethodChannel(name: channelName, binaryMessenger: binaryMessenger)
         
         setupChannel()
     }
@@ -72,19 +74,9 @@ class NetworkChannel {
                 }
             } else {
                 result(FlutterMethodNotImplemented)
-                return
             }
         }
     }
-}
-
-class API {
-    static let protocol1 = "https://";
-    static let port = 1926;
-    static let apiVersion = "6";
-    static var ip: String { return UserDefaults.standard.string(forKey: "flutter.ip") ?? "" }
-    
-    static var baseUrl: String { return protocol1 + ip + ":" + String(port) + "/" + apiVersion + "/" }
 }
 
 final class CustomServerTrustManager: ServerTrustManager {
