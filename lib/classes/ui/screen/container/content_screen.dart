@@ -11,6 +11,7 @@ class ContentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
+        backgroundColor: Colors.black,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),

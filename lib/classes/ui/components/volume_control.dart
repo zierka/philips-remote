@@ -61,7 +61,9 @@ class _VolumeControlState extends State<VolumeControl> {
             });
           },
           label: _currentValue.toInt().toString(),
-          divisions: _divisions(),
+          // divisions: _divisions(),
+          activeColor: Theme.of(context).accentColor,
+          inactiveColor: Theme.of(context).disabledColor,
         ),
       ),
     );

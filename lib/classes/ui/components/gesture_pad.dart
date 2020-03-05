@@ -35,7 +35,10 @@ class _GesturePadState extends State<GesturePad> {
     return Container(
       height: 300,
       width: 300,
-      decoration: BoxDecoration(color: Colors.black87),
+      decoration: BoxDecoration(
+        color: Colors.grey[900],
+        borderRadius: BorderRadius.circular(10.0),
+      ),
       child: GestureDetector(
         onTap: () {
           gestureHandler.handleRawGesture(GestureAction.Tap);
