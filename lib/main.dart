@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(
               bodyColor: Colors.white,
             ),
+        highlightColor: Color.fromRGBO(255, 111, 97, 1),
       ),
       home: MyHomePage(),
     );

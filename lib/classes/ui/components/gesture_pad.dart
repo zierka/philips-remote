@@ -32,70 +32,72 @@ class _GesturePadState extends State<GesturePad> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      width: 300,
-      decoration: BoxDecoration(
-        color: Colors.grey[900],
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          gestureHandler.handleRawGesture(GestureAction.Tap);
-          gestureHandler.handleRawGesture(GestureAction.End);
-        },
-        // onVerticalDragStart: (details) {
-        //   print("onVerticalDragStart");
-        // },
-        onVerticalDragUpdate: (details) {
-          // print("onVerticalDragUpdate ${details.delta.direction}");
-          if (details.delta.dy > 0) {
-            gestureHandler.handleRawGesture(GestureAction.Down);
-          } else {
-            gestureHandler.handleRawGesture(GestureAction.Up);
-          }
-        },
-        onVerticalDragEnd: (details) {
-          gestureHandler.handleRawGesture(GestureAction.End);
-        },
-        // onVerticalDragCancel: () {
-        //   print("onVerticalDragCancel");
-        // },
-        // onHorizontalDragStart: (details) {
-        //   print("onHorizontalDragStart");
-        // },
-        onHorizontalDragUpdate: (details) {
-          if (details.delta.dx > 0) {
-            gestureHandler.handleRawGesture(GestureAction.Right);
-          } else {
-            gestureHandler.handleRawGesture(GestureAction.Left);
-          }
-        },
-        onHorizontalDragEnd: (details) {
-          gestureHandler.handleRawGesture(GestureAction.End);
-        },
-        // onHorizontalDragCancel: () {
-        //   print("onHorizontalDragCancel");
-        // },
-        // onPanStart: (details) {
-        //   print(">> onPanStart");
-        // },
-        // onPanUpdate: (details) {
-        //   print(">> onPanUpdate ${details.delta}");
+    return Padding(
+      padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+      child: Container(
+        height: 250,
+        decoration: BoxDecoration(
+          color: Colors.grey[900],
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: GestureDetector(
+          onTap: () {
+            gestureHandler.handleRawGesture(GestureAction.Tap);
+            gestureHandler.handleRawGesture(GestureAction.End);
+          },
+          // onVerticalDragStart: (details) {
+          //   print("onVerticalDragStart");
+          // },
+          onVerticalDragUpdate: (details) {
+            // print("onVerticalDragUpdate ${details.delta.direction}");
+            if (details.delta.dy > 0) {
+              gestureHandler.handleRawGesture(GestureAction.Down);
+            } else {
+              gestureHandler.handleRawGesture(GestureAction.Up);
+            }
+          },
+          onVerticalDragEnd: (details) {
+            gestureHandler.handleRawGesture(GestureAction.End);
+          },
+          // onVerticalDragCancel: () {
+          //   print("onVerticalDragCancel");
+          // },
+          // onHorizontalDragStart: (details) {
+          //   print("onHorizontalDragStart");
+          // },
+          onHorizontalDragUpdate: (details) {
+            if (details.delta.dx > 0) {
+              gestureHandler.handleRawGesture(GestureAction.Right);
+            } else {
+              gestureHandler.handleRawGesture(GestureAction.Left);
+            }
+          },
+          onHorizontalDragEnd: (details) {
+            gestureHandler.handleRawGesture(GestureAction.End);
+          },
+          // onHorizontalDragCancel: () {
+          //   print("onHorizontalDragCancel");
+          // },
+          // onPanStart: (details) {
+          //   print(">> onPanStart");
+          // },
+          // onPanUpdate: (details) {
+          //   print(">> onPanUpdate ${details.delta}");
 
-        //   if (details.delta.dx > 0)
-        //     gestureHandler.handleGesture(GestureAction.Right);
-        //   else
-        //     gestureHandler.handleGesture(GestureAction.Left);
+          //   if (details.delta.dx > 0)
+          //     gestureHandler.handleGesture(GestureAction.Right);
+          //   else
+          //     gestureHandler.handleGesture(GestureAction.Left);
 
-        //   if (details.delta.dy > 0)
-        //     gestureHandler.handleGesture(GestureAction.Down);
-        //   else
-        //     gestureHandler.handleGesture(GestureAction.Up);
-        // },
-        // onPanEnd: (details) {
-        //   print(">> onPanEnd");
-        // },
+          //   if (details.delta.dy > 0)
+          //     gestureHandler.handleGesture(GestureAction.Down);
+          //   else
+          //     gestureHandler.handleGesture(GestureAction.Up);
+          // },
+          // onPanEnd: (details) {
+          //   print(">> onPanEnd");
+          // },
+        ),
       ),
     );
   }
