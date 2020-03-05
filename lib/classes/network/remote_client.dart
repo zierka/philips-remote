@@ -41,7 +41,12 @@ class RemoteClient {
     return result.then((value) {
       if (value["status"] == "failure") throw (value["error"]);
 
-      final responseBody = value["result"];
+      final responseBody = value["result"] as String;
+
+      if (responseBody.isEmpty) {
+        return {};
+      }
+
       final json = convert.json.decode(responseBody);
 
       return Future.value(json);

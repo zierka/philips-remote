@@ -10,16 +10,15 @@ import 'api.dart';
 class Commands {
   // change volume
   // POST audio/volume
-  static void changeVolume(int value, {bool mute = false}) async {
+  static Future<Volume> changeVolume(int value, {bool mute = false}) async {
     final url = API.baseUrl + "audio/volume";
 
     Map<String, dynamic> json = {"current": value, "muted": mute};
 
-    await RemoteClient.post(url, json);
-    // final jsonResponse = convert.json.decode(response.body);
-    // final volume = Volume.fromJson(jsonResponse);
+    final responseJson = await RemoteClient.post(url, json);
+    final volume = Volume.fromJson(responseJson);
 
-    // return volume;
+    return volume;
   }
 
   // switch to channel

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/classes/network/remote_client.dart';
 import 'package:philips_remote/classes/store/keystore.dart';
 import 'package:philips_remote/classes/ui/screen/container/content_screen.dart';
 
@@ -20,7 +19,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Philips TV remote controller',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        accentColor: Colors.white,
+        primaryColor: Colors.black,
+        backgroundColor: Colors.grey,
+        scaffoldBackgroundColor: Colors.black,
+        disabledColor: Colors.grey[800],
+        splashColor: Colors.transparent,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white,
+            ),
+        highlightColor: Color.fromRGBO(255, 111, 97, 1),
       ),
       home: MyHomePage(),
     );

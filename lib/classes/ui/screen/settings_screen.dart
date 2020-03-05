@@ -24,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Favorite channels"),
+        title: Text("Settings"),
       ),
       body: ListView.builder(
         itemCount: options.length,

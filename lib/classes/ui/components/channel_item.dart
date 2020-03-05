@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:philips_remote/classes/api/commands.dart';
 import 'package:philips_remote/classes/logic/image_handling.dart';
 import 'package:philips_remote/classes/models/channel.dart';
-import 'package:philips_remote/classes/network/remote_client.dart';
 
 class ChannelItem extends StatelessWidget {
   final Channel channel;
@@ -20,6 +19,18 @@ class ChannelItem extends StatelessWidget {
       trailing: CachedNetworkImage(
         imageUrl: channel.logoUrl,
         cacheManager: CustomCacheManager(),
+        imageBuilder: (context, imageProvider) => Container(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.0),
+            child: Padding(
+              padding: EdgeInsets.all(4),
+              child: Image(
+                image: imageProvider,
+              ),
+            ),
+          ),
+        ),
+        fit: BoxFit.fill,
       ),
       onTap: () {
         Commands.changeToChannel(channel);

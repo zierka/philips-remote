@@ -3,14 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:philips_remote/classes/ui/screen/app_list.dart';
 import 'package:philips_remote/classes/ui/screen/channel_list.dart';
 import 'package:philips_remote/classes/ui/screen/favorite_list.dart';
-import 'package:philips_remote/classes/ui/screen/remote_ui.dart';
+import 'package:philips_remote/classes/ui/screen/control_screen.dart';
 import 'package:philips_remote/classes/ui/screen/settings_screen.dart';
 
-class ContentScreen extends StatelessWidget {
+class ContentScreen extends StatefulWidget {
+  @override
+  _ContentScreenState createState() => _ContentScreenState();
+}
+
+class _ContentScreenState extends State<ContentScreen> {
+  final CupertinoTabController _controller = CupertinoTabController();
+
+  @override
+  void initState() {
+    _controller.index = 2;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
+      controller: _controller,
+      resizeToAvoidBottomInset: true,
       tabBar: CupertinoTabBar(
+        backgroundColor: Colors.black,
+        activeColor: Theme.of(context).highlightColor,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
