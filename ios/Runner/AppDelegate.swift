@@ -8,7 +8,9 @@ import Flutter
     
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let messenger = (window!.rootViewController as! FlutterViewController).binaryMessenger
+        let flutterVC = window!.rootViewController as! FlutterViewController
+        let messenger = flutterVC.engine!.binaryMessenger
+        
         networkChannel = NetworkChannel(binaryMessenger: messenger)
         
         GeneratedPluginRegistrant.register(with: self)

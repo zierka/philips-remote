@@ -15,6 +15,7 @@ class VolumeControl extends StatefulWidget {
 
 class _VolumeControlState extends State<VolumeControl> {
   double _currentValue = 0;
+  Volume volume = Volume(muted: false, min: 0, max: 40);
 
   @override
   void initState() {
@@ -24,8 +25,10 @@ class _VolumeControlState extends State<VolumeControl> {
 
     Get.volume().then((volume) {
       print(volume.toJson());
-      _currentValue = volume.current.toDouble();
-      setState(() {});
+
+      setState(() {
+        _currentValue = volume.current.toDouble();
+      });
     });
   }
 
@@ -49,8 +52,8 @@ class _VolumeControlState extends State<VolumeControl> {
             Expanded(
               child: Slider(
                 value: _currentValue.toDouble(),
-                min: Cache.volume.min.toDouble(),
-                max: Cache.volume.max.toDouble(),
+                min: volume.min.toDouble(),
+                max: volume.max.toDouble(),
                 onChanged: (value) {
                   Commands.changeVolume(value.toInt());
                   setState(() {

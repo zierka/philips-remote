@@ -31,7 +31,7 @@ class NetworkChannel {
             
             print(">> host >> \(call.method) \(call.arguments)")
             
-            if call.method == "get" || call.method == "post" || call.method == "getImage" {
+            if call.method == "get" || call.method == "post" {
                 let method = HTTPMethod(rawValue: call.method.uppercased())
             
                 let payload = call.arguments as! [String:Any]
@@ -50,8 +50,11 @@ class NetworkChannel {
                     break
                 }
                 
-                // status [failure], error, result
-                
+                /*
+                 status: success/failure
+                 reault: response body/error code
+                 */
+                 
                 var dataRequest = self.session.request(request)
                 
                 if let user = UserDefaults.standard.string(forKey: "flutter.user"),
@@ -60,26 +63,20 @@ class NetworkChannel {
                     dataRequest = dataRequest.authenticate(username: user, password: pass)
                 }
                 
-                if call.method == "getImage" {
-                    dataRequest.responseData { response in
-                        switch response.result {
-                        case .success(let data):
-                            let payloadData = FlutterStandardTypedData(bytes: data)
+                dataRequest.validate(statusCode: 200..<300).responseData { response in
+                    switch response.result {
+                    case .success(let data):
+                        let payloadData = FlutterStandardTypedData(bytes: data)
+                        let payload: [String: Any] = ["status": "success", "result": payloadData]
+                        result(payload)
+                    case .failure(let error):
+                        if case .responseSerializationFailed(let reason) = error, case .inputDataNilOrZeroLength = reason {
+                            let payloadData = FlutterStandardTypedData(bytes: Data())
                             let payload: [String: Any] = ["status": "success", "result": payloadData]
                             result(payload)
-                        case .failure(let error):
-                            let payload = ["status": "failure", "error": error.errorDescription]
-                            result(payload)
-                        }
-                    }
-                } else {
-                    dataRequest.responseString { response in
-                        switch response.result {
-                        case .success(let data):
-                            let payload = ["status": "success", "result": data]
-                            result(payload)
-                        case .failure(let error):
-                            let payload = ["status": "failure", "error": error.errorDescription]
+                        } else {
+                            let code = response.response?.statusCode ?? -1
+                            let payload: [String : Any] = ["status": "failure", "error": code]
                             result(payload)
                         }
                     }

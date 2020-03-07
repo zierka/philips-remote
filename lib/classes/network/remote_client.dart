@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 // import 'package:http/io_client.dart';
@@ -13,7 +11,7 @@ class RemoteClient {
 
   // networking functions through platform channels
 
-  static Future<Map<String, dynamic>> get(String url) async {
+  static Future<Response> get(String url) async {
     final Map<String, String> payload = {
       "url": url,
     };
@@ -23,8 +21,7 @@ class RemoteClient {
     return _handleResult(result);
   }
 
-  static Future<Map<String, dynamic>> post(String url,
-      [Map<String, dynamic> json]) async {
+  static Future<Response> post(String url, [Map<String, dynamic> json]) async {
     final body = convert.json.encode(json);
 
     final Map<String, String> payload = {
@@ -37,29 +34,7 @@ class RemoteClient {
     return _handleResult(result);
   }
 
-  static Future<Map<String, dynamic>> _handleResult(Future<dynamic> result) {
-    return result.then((value) {
-      if (value["status"] == "failure") throw (value["error"]);
-
-      final responseBody = value["result"] as String;
-
-      if (responseBody.isEmpty) {
-        return {};
-      }
-
-      final json = convert.json.decode(responseBody);
-
-      return Future.value(json);
-    });
-  }
-
-  static Future<Response> getImage(String url) async {
-    final Map<String, String> payload = {
-      "url": url,
-    };
-
-    final result = _networkMethodChannel.invokeMethod<Map>("getImage", payload);
-
+  static Future<Response> _handleResult(Future<dynamic> result) {
     return result.then((value) {
       if (value["status"] == "failure") throw (value["error"]);
 

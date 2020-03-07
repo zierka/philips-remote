@@ -39,7 +39,7 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
 
             val callMethod = call.method
 
-            if (call.method == "get" || call.method == "post" || call.method == "getImage") {
+            if (call.method == "get" || call.method == "post") {
                 val method = call.method
 
                 val payload = call.arguments as Map<String, Any>
@@ -72,7 +72,7 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
 
                 client.newCall(request).enqueue(object : Callback {
                     override fun onFailure(call: Call, e: IOException) {
-                        val payload = mapOf<String, Any>("status" to "failure", "error" to e.localizedMessage)
+                        val payload = mapOf<String, Any>("status" to "failure", "error" to -1)
 
                         Handler(Looper.getMainLooper()).post {
                             result.success(payload)
@@ -81,24 +81,19 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
 
                     override fun onResponse(call: Call, response: Response) {
                         response.use {
-                            if (!response.isSuccessful) throw IOException("Unexpected code $response")
+                            if (response.isSuccessful) {
+                                val payloadResult = response.body!!.bytes()
+                                val payload = mapOf<String, Any>("status" to "success", "result" to payloadResult!!)
 
-                            for ((name, value) in response.headers) {
-                                println("$name: $value")
-                            }
-
-                            var payloadResult: Any? = null
-
-                            payloadResult = if (callMethod == "getImage") {
-                                response.body!!.bytes()
+                                Handler(Looper.getMainLooper()).post {
+                                    result.success(payload)
+                                }
                             } else {
-                                response.body!!.string()
-                            }
+                                val payload = mapOf<String, Any>("status" to "failure", "error" to response.code)
 
-                            val payload = mapOf<String, Any>("status" to "success", "result" to payloadResult!!)
-
-                            Handler(Looper.getMainLooper()).post {
-                                result.success(payload)
+                                Handler(Looper.getMainLooper()).post {
+                                    result.success(payload)
+                                }
                             }
                         }
                     }

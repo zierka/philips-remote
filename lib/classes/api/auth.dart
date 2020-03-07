@@ -3,8 +3,8 @@ import 'package:philips_remote/classes/store/keystore.dart';
 import 'package:philips_remote/classes/utils.dart';
 import 'dart:convert' as convert;
 import 'package:crypto/crypto.dart';
-
-import 'api.dart';
+import 'package:philips_remote/classes/logic/convenience.dart';
+import 'package:philips_remote/classes/api/api.dart';
 
 Keystore _keystore = Keystore.instance;
 
@@ -51,7 +51,8 @@ class AuthService {
   static Future<PairResponse> pairRequest(PairRequest request) async {
     final url = API.baseUrl + "pair/request";
 
-    final responseJson = await RemoteClient.post(url, request.data);
+    final response = await RemoteClient.post(url, request.data);
+    final responseJson = response.toJson();
 
     if (responseJson["error_id"] == "SUCCESS") {
       print("success");
@@ -73,11 +74,8 @@ class AuthService {
 
   static Future<void> confirmPair(ConfirmPairRequest request) async {
     final url = API.baseUrl + "pair/grant";
-    print("CONFIRM PAIR REQUEST: $url");
 
-    final responseJson = await RemoteClient.post(url, request.data);
-
-    print("confirm pair response $responseJson");
+    await RemoteClient.post(url, request.data);
   }
 }
 

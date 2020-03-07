@@ -1,24 +1,19 @@
-import 'dart:io';
-
 import 'package:philips_remote/classes/models/application.dart';
 import 'package:philips_remote/classes/models/channel.dart';
-import 'package:philips_remote/classes/models/volume.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
-
-import 'api.dart';
+import 'package:philips_remote/classes/api/api.dart';
 
 class Commands {
   // change volume
   // POST audio/volume
-  static Future<Volume> changeVolume(int value, {bool mute = false}) async {
+  static Future<void> changeVolume(int value, {bool mute = false}) async {
     final url = API.baseUrl + "audio/volume";
 
     Map<String, dynamic> json = {"current": value, "muted": mute};
 
-    final responseJson = await RemoteClient.post(url, json);
-    final volume = Volume.fromJson(responseJson);
+    await RemoteClient.post(url, json);
 
-    return volume;
+    return Future.value(null);
   }
 
   // switch to channel
