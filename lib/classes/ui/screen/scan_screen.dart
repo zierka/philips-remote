@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/classes/api/get.dart';
-import 'package:philips_remote/classes/logic/scanner.dart';
+
+import 'package:philips_remote/classes/logic/device_discovery.dart';
+import 'package:philips_remote/classes/models/tv.dart';
 
 class ScanScreen extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class ScanScreen extends StatefulWidget {
 }
 
 class _ScanScreenState extends State<ScanScreen> {
-  List<String> tvIPs = [];
+  List<TV> tvs = [];
 
   @override
   void initState() {
@@ -33,20 +34,19 @@ class _ScanScreenState extends State<ScanScreen> {
                 child: Text("Scan"),
                 onPressed: () {
                   setState(() {
-                    tvIPs = null;
+                    tvs = null;
                   });
 
-                  Scanner.scan().then((devices) {
-                    print("devices $devices");
+                  DeviceDiscovery().getTVs().then((tvs) {
                     setState(() {
-                      tvIPs = devices;
+                      this.tvs = tvs;
                     });
                   });
                 },
               ),
             ),
             Text("TVs found:"),
-            if (tvIPs == null)
+            if (tvs == null)
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text("Scanning..."),
@@ -54,10 +54,17 @@ class _ScanScreenState extends State<ScanScreen> {
             else
               Expanded(
                 child: ListView.builder(
-                  itemCount: tvIPs.length,
+                  itemCount: tvs.length,
                   itemBuilder: (context, index) {
-                    final item = tvIPs[index];
-                    return ListTile(title: Text(item));
+                    final tv = tvs[index];
+                    return ListTile(
+                      title: Text(tv.friendlyName),
+                      subtitle: Text(
+                        tv.name,
+                        style: DefaultTextStyle.of(context).style,
+                      ),
+                      trailing: Text("${tv.ip}:${tv.port}"),
+                    );
                   },
                 ),
               ),
