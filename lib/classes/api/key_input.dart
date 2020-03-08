@@ -1,5 +1,3 @@
-import 'dart:convert' as convert;
-
 import 'package:philips_remote/classes/api/api.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
 
@@ -66,7 +64,6 @@ class KeyInput {
       "key": keyName,
     };
 
-    // final body = convert.json.encode(json);
     RemoteClient.post(url, json);
   }
 }

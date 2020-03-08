@@ -1,14 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:path/path.dart' as p;
+import 'package:path/path.dart' as path;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
 
 import 'dart:async';
-import 'dart:typed_data';
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 
 class CustomCacheManager extends BaseCacheManager {
   static const key = "libCachedImageData";
@@ -29,11 +24,11 @@ class CustomCacheManager extends BaseCacheManager {
 
   Future<String> getFilePath() async {
     var directory = await getTemporaryDirectory();
-    return p.join(directory.path, key);
+    return path.join(directory.path, key);
   }
 
   static Future<FileFetcherResponse> _customHttpGetter(String url,
       {Map<String, String> headers}) async {
-    return HttpFileFetcherResponse(await RemoteClient.getImage(url));
+    return HttpFileFetcherResponse(await RemoteClient.get(url));
   }
 }
