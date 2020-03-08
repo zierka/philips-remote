@@ -1,6 +1,6 @@
 import 'package:philips_remote/classes/models/application.dart';
 import 'package:philips_remote/classes/models/channel.dart';
-import 'package:philips_remote/classes/network/remote_client.dart';
+import 'package:philips_remote/classes/network/network_client.dart';
 import 'package:philips_remote/classes/api/api.dart';
 
 class Commands {
@@ -11,7 +11,7 @@ class Commands {
 
     Map<String, dynamic> json = {"current": value, "muted": mute};
 
-    await RemoteClient.post(url, json);
+    await NetworkClient.post(url, json);
 
     return Future.value(null);
   }
@@ -26,7 +26,7 @@ class Commands {
       "channel": {"ccid": channel.ccid},
     };
 
-    await RemoteClient.post(url, json);
+    await NetworkClient.post(url, json);
   }
 
   // open application
@@ -36,13 +36,13 @@ class Commands {
 
     Map<String, dynamic> json = application.toJson();
 
-    await RemoteClient.post(url, json);
+    await NetworkClient.post(url, json);
   }
 
   static void powerOn() async {
     final url = API.baseUrl + "/ChromeCast";
 
-    await RemoteClient.post(url);
+    await NetworkClient.post(url);
   }
 
   static void sendText(String text) async {
@@ -52,6 +52,6 @@ class Commands {
       "currentstring": text,
     };
 
-    await RemoteClient.post(url, json);
+    await NetworkClient.post(url, json);
   }
 }

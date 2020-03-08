@@ -1,53 +1,13 @@
-import 'package:flutter/services.dart';
+import 'dart:io';
+
 import 'package:http/http.dart';
-// import 'package:http/io_client.dart';
-// import 'package:http_auth/http_auth.dart';
-// import 'package:philips_remote/classes/store/keystore.dart';
+import 'package:http/io_client.dart';
+import 'package:http_auth/http_auth.dart';
+import 'package:philips_remote/classes/store/keystore.dart';
 import 'dart:convert' as convert;
 
-class RemoteClient {
-  static const _networkMethodChannel =
-      const MethodChannel('izerik.dev/network');
-
-  // networking functions through platform channels
-
-  static Future<Response> get(String url) async {
-    final Map<String, String> payload = {
-      "url": url,
-    };
-
-    final result = _networkMethodChannel.invokeMethod<Map>("get", payload);
-
-    return _handleResult(result);
-  }
-
-  static Future<Response> post(String url, [Map<String, dynamic> json]) async {
-    final body = convert.json.encode(json);
-
-    final Map<String, String> payload = {
-      "url": url,
-      "body": body,
-    };
-
-    final result = _networkMethodChannel.invokeMethod("post", payload);
-
-    return _handleResult(result);
-  }
-
-  static Future<Response> _handleResult(Future<dynamic> result) {
-    return result.then((value) {
-      if (value["status"] == "failure") throw (value["error"]);
-
-      final responseBody = value["result"];
-      Response response = Response.bytes(responseBody, 200);
-
-      return Future.value(response);
-    });
-  }
-
 // native networking functions
-
-/*
+class NetworkClientDart {
   static HttpClient _httpClient = _createHttpClient();
   static BaseClient _client = _createClient();
 
@@ -109,5 +69,4 @@ class RemoteClient {
 
     return client1;
   }
-  */
 }

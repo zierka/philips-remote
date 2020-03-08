@@ -1,4 +1,4 @@
-import 'package:philips_remote/classes/network/remote_client.dart';
+import 'package:philips_remote/classes/network/network_client.dart';
 import 'package:philips_remote/classes/store/keystore.dart';
 import 'package:philips_remote/classes/utils.dart';
 import 'dart:convert' as convert;
@@ -51,7 +51,7 @@ class AuthService {
   static Future<PairResponse> pairRequest(PairRequest request) async {
     final url = API.baseUrl + "pair/request";
 
-    final response = await RemoteClient.post(url, request.data);
+    final response = await NetworkClient.post(url, request.data);
     final responseJson = response.toJson();
 
     if (responseJson["error_id"] == "SUCCESS") {
@@ -75,7 +75,7 @@ class AuthService {
   static Future<void> confirmPair(ConfirmPairRequest request) async {
     final url = API.baseUrl + "pair/grant";
 
-    await RemoteClient.post(url, request.data);
+    await NetworkClient.post(url, request.data);
   }
 }
 

@@ -1,5 +1,5 @@
 import 'package:philips_remote/classes/api/api.dart';
-import 'package:philips_remote/classes/network/remote_client.dart';
+import 'package:philips_remote/classes/network/network_client.dart';
 
 enum InputKey {
   Standby,
@@ -64,6 +64,6 @@ class KeyInput {
       "key": keyName,
     };
 
-    RemoteClient.post(url, json);
+    NetworkClient.post(url, json);
   }
 }

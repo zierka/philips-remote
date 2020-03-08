@@ -2,7 +2,7 @@ import 'package:philips_remote/classes/models/system.dart';
 import 'package:philips_remote/classes/models/tv.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart';
-import 'package:philips_remote/classes/network/remote_client.dart';
+import 'package:philips_remote/classes/network/network_client.dart';
 
 import 'package:upnp/upnp.dart' as upnp;
 
@@ -80,7 +80,7 @@ class DeviceDiscovery {
       Response response;
 
       try {
-        response = await RemoteClient.get(url);
+        response = await NetworkClient.get(url);
       } catch (e) {
         continue;
       }
@@ -191,7 +191,7 @@ class LegacyDeviceDiscovery {
       Response response;
 
       try {
-        response = await RemoteClient.get(url);
+        response = await NetworkClient.get(url);
       } catch (e) {
         continue;
       }

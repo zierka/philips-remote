@@ -1,7 +1,7 @@
 import 'package:path/path.dart' as path;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:philips_remote/classes/network/remote_client.dart';
+import 'package:philips_remote/classes/network/network_client.dart';
 
 import 'dart:async';
 
@@ -29,6 +29,6 @@ class CustomCacheManager extends BaseCacheManager {
 
   static Future<FileFetcherResponse> _customHttpGetter(String url,
       {Map<String, String> headers}) async {
-    return HttpFileFetcherResponse(await RemoteClient.get(url));
+    return HttpFileFetcherResponse(await NetworkClient.get(url));
   }
 }
