@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/classes/store/keystore.dart';
-import 'package:philips_remote/classes/ui/screen/container/content_screen.dart';
+import 'package:philips_remote/screens/content/content_screen.dart';
+import 'package:philips_remote/services/persistence/keystore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
