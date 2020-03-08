@@ -1,115 +1,91 @@
-// import 'package:json_annotation/json_annotation.dart';
+import 'dart:convert';
 
-// part 'system.g.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-// @JsonSerializable()
-// class System {
-//   final String notifyChange;
-//   final String menulanguage;
-//   final String name;
-//   final String country;
-//   final String serialnumberEncrypted;
-//   final String softwareversionEncrypted;
-//   final String modelEncrypted;
-//   final String deviceidEncrypted;
-//   final String nettvversion;
-//   final String epgsource;
-//   final ApiVersion apiVersion;
-//   final Featuring featuring;
-//   final String osType;
+part 'system.g.dart';
 
-//   System({
-//     this.notifyChange,
-//     this.menulanguage,
-//     this.name,
-//     this.country,
-//     this.serialnumberEncrypted,
-//     this.softwareversionEncrypted,
-//     this.modelEncrypted,
-//     this.deviceidEncrypted,
-//     this.nettvversion,
-//     this.epgsource,
-//     this.apiVersion,
-//     this.featuring,
-//     this.osType,
-//   });
+@JsonSerializable()
+class System {
+  final String notifyChange;
+  @JsonKey(name: "menulanguage")
+  final String menuLanguage;
+  final String name;
+  @JsonKey(name: "serialnumber_encrypted")
+  final String serialNumberEncrypted;
+  @JsonKey(name: "model_encrypted")
+  final String modelEncrypted;
+  @JsonKey(name: "deviceid_encrypted")
+  final String deviceIdEncrypted;
+  @JsonKey(name: "api_version")
+  final ApiVersion apiVersion;
+  final Featuring featuring;
 
-//   factory System.fromJson(Map<String, dynamic> json) => _$SystemFromJson(json);
-//   Map<String, dynamic> toJson() => _$SystemToJson(this);
-// }
+  factory System.fromJson(Map<String, dynamic> json) => _$SystemFromJson(json);
+  Map<String, dynamic> toJson() => _$SystemToJson(this);
 
-// @JsonSerializable()
-// class ApiVersion {
-//   final int major;
-//   final int minor;
-//   final int patch;
+  System(
+    this.notifyChange,
+    this.menuLanguage,
+    this.name,
+    this.serialNumberEncrypted,
+    this.modelEncrypted,
+    this.deviceIdEncrypted,
+    this.apiVersion,
+    this.featuring,
+  );
+}
 
-//   ApiVersion({
-//     this.major,
-//     this.minor,
-//     this.patch,
-//   });
+@JsonSerializable()
+class ApiVersion {
+  @JsonKey(name: "Major")
+  final int major;
+  @JsonKey(name: "Minor")
+  final int minor;
+  @JsonKey(name: "Patch")
+  final int patch;
 
-//   factory ApiVersion.fromJson(Map<String, dynamic> json) =>
-//       _$ApiVersionFromJson(json);
-//   Map<String, dynamic> toJson() => _$ApiVersionToJson(this);
-// }
+  factory ApiVersion.fromJson(Map<String, dynamic> json) =>
+      _$ApiVersionFromJson(json);
+  Map<String, dynamic> toJson() => _$ApiVersionToJson(this);
 
-// @JsonSerializable()
-// class Featuring {
-//   final Jsonfeatures jsonfeatures;
-//   final Systemfeatures systemfeatures;
+  ApiVersion(this.major, this.minor, this.patch);
+}
 
-//   Featuring({
-//     this.jsonfeatures,
-//     this.systemfeatures,
-//   });
-// }
+@JsonSerializable()
+class Featuring {
+  @JsonKey(name: "jsonfeatures")
+  final JsonFeatures jsonFeatures;
+  @JsonKey(name: "systemfeatures")
+  final SystemFeatures systemFeatures;
 
-// @JsonSerializable()
-// class Jsonfeatures {
-//   final List<String> editfavorites;
-//   final List<String> recordings;
-//   final List<String> ambilight;
-//   final List<String> menuitems;
-//   final List<String> textentry;
-//   final List<String> applications;
-//   final List<String> pointer;
-//   final List<String> inputkey;
-//   final List<String> activities;
-//   final List<String> channels;
-//   final List<String> mappings;
+  factory Featuring.fromJson(Map<String, dynamic> json) =>
+      _$FeaturingFromJson(json);
+  Map<String, dynamic> toJson() => _$FeaturingToJson(this);
 
-//   Jsonfeatures({
-//     this.editfavorites,
-//     this.recordings,
-//     this.ambilight,
-//     this.menuitems,
-//     this.textentry,
-//     this.applications,
-//     this.pointer,
-//     this.inputkey,
-//     this.activities,
-//     this.channels,
-//     this.mappings,
-//   });
-// }
+  Featuring(this.jsonFeatures, this.systemFeatures);
+}
 
-// @JsonSerializable()
-// class Systemfeatures {
-//   final String tvtype;
-//   final List<String> content;
-//   final String tvsearch;
-//   final String pairingType;
-//   final String securedTransport;
-//   final String companionScreen;
+@JsonSerializable()
+class JsonFeatures {
+  final List<String> ambilight;
+  @JsonKey(name: "textentry")
+  final List<String> textEntry;
 
-//   Systemfeatures({
-//     this.tvtype,
-//     this.content,
-//     this.tvsearch,
-//     this.pairingType,
-//     this.securedTransport,
-//     this.companionScreen,
-//   });
-// }
+  factory JsonFeatures.fromJson(Map<String, dynamic> json) =>
+      _$JsonFeaturesFromJson(json);
+  Map<String, dynamic> toJson() => _$JsonFeaturesToJson(this);
+
+  JsonFeatures(this.ambilight, this.textEntry);
+}
+
+@JsonSerializable()
+class SystemFeatures {
+  @JsonKey(name: "pairing_type")
+  final String pairingType;
+
+  factory SystemFeatures.fromJson(Map<String, dynamic> json) =>
+      _$SystemFeaturesFromJson(json);
+  Map<String, dynamic> toJson() => _$SystemFeaturesToJson(this);
+
+  SystemFeatures(this.pairingType);
+}

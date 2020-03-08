@@ -1,7 +1,8 @@
+import 'package:philips_remote/classes/models/system.dart';
 import 'package:philips_remote/classes/models/tv.dart';
+import 'dart:convert' as convert;
 import 'package:http/http.dart';
 import 'package:philips_remote/classes/network/remote_client.dart';
-import 'dart:convert' as convert;
 
 import 'package:upnp/upnp.dart' as upnp;
 
@@ -12,6 +13,16 @@ import 'dart:io';
 import 'package:ping_discover_network/ping_discover_network.dart';
 
 const _apiVersions = [6, 5, 2];
+
+class _Configuration {
+  final String scheme;
+  final int port;
+
+  const _Configuration({this.scheme, this.port});
+}
+
+const nonAndroidConfiguration = _Configuration(scheme: "http", port: 1925);
+const androidConfiguration = _Configuration(scheme: "https", port: 1926);
 
 /// Discovers TV's on the local network.
 /// - searches for upnp devices
@@ -60,8 +71,8 @@ class DeviceDiscovery {
     for (int apiVersion in _apiVersions) {
       final tv = TV(
           candidate: candidate,
-          protocol: "http",
-          port: 1925,
+          protocol: nonAndroidConfiguration.scheme,
+          port: nonAndroidConfiguration.port,
           apiVersion: apiVersion);
 
       final url = tv.baseUrl + "system";
@@ -75,22 +86,23 @@ class DeviceDiscovery {
       }
 
       final responseJson = convert.json.decode(response.body);
+      final system = System.fromJson(responseJson);
 
-      final apiVersion1 = responseJson["api_version"]["Major"];
+      final apiVersion1 = system.apiVersion.major;
 
-      if (responseJson["featuring"]["systemfeatures"]["pairing_type"] ==
+      if (system.featuring.systemFeatures.pairingType ==
           "digest_auth_pairing") {
         return TV(
           candidate: candidate,
-          protocol: "https",
-          port: 1926,
+          protocol: androidConfiguration.scheme,
+          port: androidConfiguration.port,
           apiVersion: apiVersion1,
         );
       } else {
         return TV(
           candidate: candidate,
-          protocol: "http",
-          port: 1925,
+          protocol: nonAndroidConfiguration.scheme,
+          port: nonAndroidConfiguration.port,
           apiVersion: apiVersion1,
         );
       }
@@ -103,8 +115,6 @@ class DeviceDiscovery {
 // OLD DISCOVERY
 
 class LegacyDeviceDiscovery {
-  static const _ports = [1925, 1926];
-
   Future<List<TV>> getTVs() async {
     final candidates = await _getCandidates();
 
@@ -153,9 +163,8 @@ class LegacyDeviceDiscovery {
   Future<List<TVCandidate2>> _getCandidates() async {
     List<TVCandidate2> candidates = [];
 
-    final int port = 1925;
+    final int port = nonAndroidConfiguration.port;
 
-    // for (int port in _ports) {
     final ips = await _ips(port);
     await Future.delayed(Duration(milliseconds: 1000));
 
@@ -173,8 +182,8 @@ class LegacyDeviceDiscovery {
 
       final tv = TV(
           candidate: _candidate,
-          protocol: "http",
-          port: 1925,
+          protocol: nonAndroidConfiguration.scheme,
+          port: nonAndroidConfiguration.port,
           apiVersion: apiVersion);
 
       final url = tv.baseUrl + "system";
@@ -188,26 +197,27 @@ class LegacyDeviceDiscovery {
       }
 
       final responseJson = convert.json.decode(response.body);
+      final system = System.fromJson(responseJson);
 
-      final apiVersion1 = responseJson["api_version"]["Major"];
+      final apiVersion1 = system.apiVersion.major;
       final name = responseJson["name"];
 
       _candidate.friendlyName = name;
       _candidate.name = "";
 
-      if (responseJson["featuring"]["systemfeatures"]["pairing_type"] ==
+      if (system.featuring.systemFeatures.pairingType ==
           "digest_auth_pairing") {
         return TV(
           candidate: _candidate,
-          protocol: "https",
-          port: 1926,
+          protocol: androidConfiguration.scheme,
+          port: androidConfiguration.port,
           apiVersion: apiVersion1,
         );
       } else {
         return TV(
           candidate: _candidate,
-          protocol: "http",
-          port: 1925,
+          protocol: nonAndroidConfiguration.scheme,
+          port: nonAndroidConfiguration.port,
           apiVersion: apiVersion1,
         );
       }
