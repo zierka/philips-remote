@@ -23,16 +23,6 @@ class TV extends TVCandidate {
           name: candidate.name,
           friendlyName: candidate.friendlyName,
         );
-
-  // TV.fromCandidate2({
-  //   TVCandidate2 candidate2,
-  //   this.protocol,
-  //   this.apiVersion,
-  // }) : super(
-  //         ip: candidate.ip,
-  //         name: candidate.name,
-  //         friendlyName: candidate.friendlyName,
-  //       );
 }
 
 class TVCandidate {
