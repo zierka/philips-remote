@@ -1,18 +1,22 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/services/api/key_input.dart';
 import 'package:vibrate/vibrate.dart';
 
 class GesturePad extends StatefulWidget {
+  final ValueChanged<GestureAction> onGestureAction;
+
+  GesturePad({this.onGestureAction});
+
   @override
   _GesturePadState createState() => _GesturePadState();
 }
 
 class _GesturePadState extends State<GesturePad> {
-  final gestureHandler = _GestureHandler();
+  _GestureHandler gestureHandler;
 
   @override
   void initState() {
+    gestureHandler = _GestureHandler(widget.onGestureAction);
     _init();
     super.initState();
   }
@@ -104,10 +108,11 @@ class _GesturePadState extends State<GesturePad> {
 enum GestureAction { Up, Down, Left, Right, Tap, End }
 
 class _GestureHandler {
+  ValueChanged<GestureAction> onGestureAction;
   final stream = StreamController<GestureAction>();
   bool vibrate = false;
 
-  _GestureHandler() {
+  _GestureHandler(this.onGestureAction) {
     print("yolo");
 
     stream.stream.distinct().where((a) {
@@ -122,30 +127,12 @@ class _GestureHandler {
   }
 
   _executeCommand(GestureAction action) {
-    switch (action) {
-      case GestureAction.Up:
-        KeyInput.postKey(InputKey.CursorUp);
-        break;
-      case GestureAction.Down:
-        KeyInput.postKey(InputKey.CursorDown);
-        break;
-      case GestureAction.Left:
-        KeyInput.postKey(InputKey.CursorLeft);
-        break;
-      case GestureAction.Right:
-        KeyInput.postKey(InputKey.CursorRight);
-        break;
-      case GestureAction.Tap:
-        KeyInput.postKey(InputKey.Confirm);
-        break;
-      case GestureAction.End:
-        break;
+    if (action != GestureAction.End) {
+      onGestureAction(action);
     }
   }
 
   handleRawGesture(GestureAction action) {
     stream.add(action);
-    // print(">> 1 handle gesture $action");
-    // print("> ${GestureAction.End == GestureAction.End}");
   }
 }

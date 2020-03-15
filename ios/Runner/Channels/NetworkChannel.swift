@@ -57,9 +57,10 @@ class NetworkChannel {
                  
                 var dataRequest = self.session.request(request)
                 
-                if let user = UserDefaults.standard.string(forKey: "flutter.user"),
-                    let pass = UserDefaults.standard.string(forKey: "flutter.pass") {
-                
+                if let credential = payload["credential"] as? [String: String],
+                    let user = credential["username"],
+                    let pass = credential["password"] {
+                    
                     dataRequest = dataRequest.authenticate(username: user, password: pass)
                 }
                 

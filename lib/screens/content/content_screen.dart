@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:philips_remote/screens/content/app_list.dart';
-import 'package:philips_remote/screens/content/channel_list.dart';
+import 'package:philips_remote/screens/content/channel_list_screen.dart';
 import 'package:philips_remote/screens/content/control_screen.dart';
-import 'package:philips_remote/screens/content/favorite_list.dart';
+import 'package:philips_remote/screens/content/favorite_list_screen.dart';
 import 'package:philips_remote/screens/settings/settings_screen.dart';
 
 class ContentScreen extends StatefulWidget {
@@ -55,11 +55,11 @@ class _ContentScreenState extends State<ContentScreen> {
       tabBuilder: (BuildContext context, int index) {
         switch (index) {
           case 0:
-            return ChannelsScreen();
+            return ChannelListScreen();
           case 1:
-            return FavoritesScreen();
+            return FavoriteChannelListScreen();
           case 2:
-            return RemoteUI();
+            return ControlScreen();
           case 3:
             return AppsScreen();
           case 4:

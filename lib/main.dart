@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/screens/content/content_screen.dart';
-import 'package:philips_remote/services/persistence/keystore.dart';
+import 'package:philips_remote/main_model.dart';
+import 'package:philips_remote/screens/root/root_widget.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // RemoteClient.setup();
-
-  await Keystore.initialize();
-
   runApp(MyApp());
 }
 
@@ -38,6 +33,10 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ContentScreen();
+    return FutureProvider(
+      create: (context) => MainModel.load(),
+      initialData: MainModel.isLoading(),
+      child: RootWidget(),
+    );
   }
 }

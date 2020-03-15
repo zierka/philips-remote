@@ -2,16 +2,19 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/services/api/key_input.dart';
+import 'package:philips_remote/data/models/input_key.dart';
+import 'package:philips_remote/screens/content/control_screen_model.dart';
 import 'package:philips_remote/widgets/gesture_pad.dart';
 import 'package:philips_remote/widgets/volume_control.dart';
 
-class RemoteUI extends StatefulWidget {
+class ControlScreen extends StatefulWidget {
   @override
-  _RemoteUIState createState() => _RemoteUIState();
+  _ControlScreenState createState() => _ControlScreenState();
 }
 
-class _RemoteUIState extends State<RemoteUI> {
+class _ControlScreenState extends State<ControlScreen> {
+  final model = ControlScreenModel();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +26,19 @@ class _RemoteUIState extends State<RemoteUI> {
               icon: Icon(Icons.power_settings_new),
               color: Theme.of(context).accentColor,
               onPressed: () {
-                KeyInput.postKey(InputKey.Standby);
-                // Commands.powerOn();
+                model.postKey(InputKey.Standby);
               },
             ),
-            GesturePad(),
-            VolumeControl(),
+            GesturePad(
+              onGestureAction: (action) {
+                model.handleGesture(action);
+              },
+            ),
+            VolumeControl(
+              onVolumeDownPressed: () => model.postKey(InputKey.VolumeDown),
+              onVolumeUpPressed: () => model.postKey(InputKey.VolumeUp),
+              onChanged: (value) => model.changeVolume(value.toInt()),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -36,7 +46,7 @@ class _RemoteUIState extends State<RemoteUI> {
                   icon: Icon(Icons.arrow_back),
                   color: Theme.of(context).accentColor,
                   onPressed: () {
-                    KeyInput.postKey(InputKey.Back);
+                    model.postKey(InputKey.Back);
                   },
                 ),
                 // SelectableButton(
@@ -51,14 +61,14 @@ class _RemoteUIState extends State<RemoteUI> {
                   icon: Icon(Icons.home),
                   color: Theme.of(context).accentColor,
                   onPressed: () {
-                    KeyInput.postKey(InputKey.Home);
+                    model.postKey(InputKey.Home);
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.tv),
                   color: Theme.of(context).accentColor,
                   onPressed: () {
-                    KeyInput.postKey(InputKey.WatchTV);
+                    model.postKey(InputKey.WatchTV);
                   },
                 ),
               ],
@@ -70,14 +80,14 @@ class _RemoteUIState extends State<RemoteUI> {
                   icon: Icon(Icons.play_arrow),
                   color: Theme.of(context).accentColor,
                   onPressed: () {
-                    KeyInput.postKey(InputKey.Play);
+                    model.postKey(InputKey.Play);
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.pause),
                   color: Theme.of(context).accentColor,
                   onPressed: () {
-                    KeyInput.postKey(InputKey.Pause);
+                    model.postKey(InputKey.Pause);
                   },
                 ),
               ],

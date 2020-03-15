@@ -1,9 +1,9 @@
+/*
 import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:http_auth/http_auth.dart';
-import 'package:philips_remote/services/persistence/keystore.dart';
 import 'dart:convert' as convert;
 
 // native networking functions
@@ -70,3 +70,4 @@ class NetworkClientDart {
     return client1;
   }
 }
+*/

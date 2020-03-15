@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:philips_remote/services/api/get.dart';
+import 'package:philips_remote/screens/content/favorite_list_screen_model.dart';
 import 'package:philips_remote/widgets/channel_item.dart';
 
-class FavoritesScreen extends StatefulWidget {
+class FavoriteChannelListScreen extends StatefulWidget {
   @override
-  _FavoritesScreenState createState() => _FavoritesScreenState();
+  _FavoriteChannelListScreenState createState() =>
+      _FavoriteChannelListScreenState();
 }
 
-class _FavoritesScreenState extends State<FavoritesScreen> {
-  final _channelList = Get.favoriteChannelList();
-
-  @override
-  void initState() {
-    super.initState();
-  }
+class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
+  final _model = FavoriteListScreenModel();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +18,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         title: Text("Favorite channels"),
       ),
       body: FutureBuilder(
-        future: _channelList,
+        future: _model.favoriteChannelList(),
         builder: ((context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -36,7 +32,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
                     final item = snapshot.data[index];
-                    return ChannelItem(channel: item);
+                    return ChannelItem(
+                      channel: item,
+                      onTap: () => _model.changeToChannel(item),
+                      imageCacheManager: _model.imageCacheManager,
+                    );
                   });
           }
           return null; // unreachable

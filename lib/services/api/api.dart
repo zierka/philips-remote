@@ -1,11 +1,11 @@
-import 'package:philips_remote/services/persistence/keystore.dart';
+// import 'package:philips_remote/services/persistence/keystore.dart';
 
-class API {
-  static final protocol = "https://";
-  static final port = 1926;
-  static final apiVersion = "6";
-  static get ip => Keystore.instance.ip;
+// class API {
+//   static final protocol = "https://";
+//   static final port = 1926;
+//   static final apiVersion = "6";
+//   static get ip => Keystore.instance.ip;
 
-  static get baseUrl =>
-      protocol + ip + ":" + port.toString() + "/" + apiVersion + "/";
-}
+//   static get baseUrl =>
+//       protocol + ip + ":" + port.toString() + "/" + apiVersion + "/";
+// }

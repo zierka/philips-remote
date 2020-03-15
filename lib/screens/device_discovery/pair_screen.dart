@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/services/api/auth.dart';
-import 'package:philips_remote/services/persistence/keystore.dart';
+import 'package:philips_remote/data/models/auth/confirm_pair_response.dart';
+import 'package:philips_remote/data/models/auth/pair_response.dart';
+import 'package:philips_remote/services/persistence/preference_store.dart';
 
 class PairScreen extends StatefulWidget {
   @override
@@ -14,13 +15,13 @@ class _MyHomePageState extends State<PairScreen> {
   PairResponse response;
 
   void _pair() {
-    AuthService.pair().then((response) {
-      print("$response");
+    // AuthService.pair().then((response) {
+    //   print("$response");
 
-      this.response = response;
-    }).catchError((error) {
-      print("error: $error");
-    });
+    //   this.response = response;
+    // }).catchError((error) {
+    //   print("error: $error");
+    // });
   }
 
   void _pairConfirm() {
@@ -41,9 +42,9 @@ class _MyHomePageState extends State<PairScreen> {
 
             final confirmPair = ConfirmPairRequest(response, pin);
 
-            AuthService.confirmPair(confirmPair).then((_) {
-              print("confirm pair done");
-            });
+            // AuthService.confirmPair(confirmPair).then((_) {
+            //   print("confirm pair done");
+            // });
           },
         )
       ],
@@ -68,23 +69,22 @@ class _MyHomePageState extends State<PairScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Text("user\n${Keystore.instance.user}\n"),
-              Text("pass\n${Keystore.instance.pass}\n"),
-              Text("ip\n${Keystore.instance.ip}\n"),
+              // Text("user\n${Keystore.instance.user}\n"),
+              // Text("pass\n${Keystore.instance.pass}\n"),
+              // Text("ip\n${Keystore.instance.ip}\n"),
               TextField(
                 controller: _ipTextController,
                 decoration: InputDecoration(hintText: "IP ADDRESS"),
                 onSubmitted: ((text) {
-                  Keystore.instance.ip = text;
+                  // Keystore.instance.ip = text;
                   setState(() {});
                 }),
               ),
               CupertinoButton(
                 child: Text("RESET"),
                 onPressed: () {
-                  Keystore.instance.user = null;
-                  Keystore.instance.pass = null;
-                  Keystore.instance.ip = null;
+                  final store = PreferenceStore();
+                  store.session = null;
                   setState(() {});
                 },
               ),
