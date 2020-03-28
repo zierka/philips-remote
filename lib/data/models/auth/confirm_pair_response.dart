@@ -1,4 +1,3 @@
-import 'package:philips_remote/data/models/auth/pair_request.dart';
 import 'package:philips_remote/data/models/auth/pair_response.dart';
 import 'dart:convert' as convert;
 import 'package:crypto/crypto.dart';
@@ -19,7 +18,7 @@ class ConfirmPairRequest {
 
     final Map<String, dynamic> grantRequest = {
       "auth": auth,
-      "device": PairRequest.deviceSpec(),
+      "device": pairResponse.request.deviceSpec,
     };
 
     this.pairResponse = pairResponse;

@@ -15,6 +15,8 @@ class DeviceDiscoveryDirectSearch {
   DeviceDiscoveryDirectSearch(this._client);
 
   Future<List<TV>> getTVs() async {
+    print(">> searching for tvs with direct search...");
+
     final candidates = await _getCandidates();
 
     List<TV> tvs = [];
@@ -102,10 +104,10 @@ class DeviceDiscoveryDirectSearch {
       final system = System.fromJson(responseJson);
 
       final apiVersion1 = system.apiVersion.major;
-      final name = responseJson["name"];
+      final name = system.name;
 
-      _candidate.friendlyName = name;
-      _candidate.name = "";
+      tv.friendlyName = name;
+      tv.name = "";
 
       if (system.featuring.systemFeatures.pairingType ==
           "digest_auth_pairing") {

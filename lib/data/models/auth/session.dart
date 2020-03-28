@@ -9,7 +9,7 @@ class Session {
   final TV tv;
   final Credential credential;
 
-  Session(this.tv, this.credential);
+  Session({this.tv, this.credential});
 
   factory Session.fromJson(Map<String, dynamic> json) =>
       _$SessionFromJson(json);

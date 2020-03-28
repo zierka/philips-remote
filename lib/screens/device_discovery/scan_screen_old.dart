@@ -4,18 +4,13 @@ import 'package:philips_remote/data/models/tv.dart';
 import 'package:philips_remote/services/device_discovery/device_discovery_upnp.dart';
 import 'package:philips_remote/services/network_client/network_client.dart';
 
-class ScanScreen extends StatefulWidget {
+class ScanScreenOld extends StatefulWidget {
   @override
-  _ScanScreenState createState() => _ScanScreenState();
+  _ScanScreenOldState createState() => _ScanScreenOldState();
 }
 
-class _ScanScreenState extends State<ScanScreen> {
+class _ScanScreenOldState extends State<ScanScreenOld> {
   List<TV> tvs = [];
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

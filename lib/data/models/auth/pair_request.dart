@@ -4,30 +4,20 @@ import 'package:philips_remote/util/utils.dart';
 class PairRequest {
   TV tv;
   String ip;
+  Map<String, String> deviceSpec;
   Map<String, dynamic> data;
+
+  String sessionUsername;
 
   PairRequest({TV tv}) {
     this.tv = tv;
     this.ip = tv.ip;
-    this.data = _data();
-  }
 
-  Map<String, dynamic> _data() {
-    Map<String, dynamic> data = {
-      "scope": ["read", "write", "control"]
-    };
-
-    data["device"] = deviceSpec;
-
-    return data;
-  }
-
-  static Map<String, String> deviceSpec() {
     final deviceId = Utils.randomString(length: 16);
 
-    // Keystore.instance.user = deviceId;
+    sessionUsername = deviceId;
 
-    Map<String, String> deviceSpec = {
+    deviceSpec = {
       "device_name": "heliotrope",
       "device_os": "Android",
       "app_name": "Rhemote",
@@ -36,6 +26,11 @@ class PairRequest {
       "id": deviceId,
     };
 
-    return deviceSpec;
+    Map<String, dynamic> _data = {
+      "scope": ["read", "write", "control"],
+      "device": deviceSpec,
+    };
+
+    this.data = _data;
   }
 }

@@ -33,9 +33,8 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureProvider(
-      create: (context) => MainModel.load(),
-      initialData: MainModel.isLoading(),
+    return ChangeNotifierProvider<MainModel>(
+      create: (context) => MainModel(),
       child: RootWidget(),
     );
   }

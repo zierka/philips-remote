@@ -10,14 +10,10 @@ class AuthRepository {
 
   AuthRepository(this._client);
 
-  Future<PairResponse> pair(TV tv) {
+  /// POST `https://192.168.1.4:1926/6/pair/request`
+  Future<PairResponse> pair(TV tv) async {
     final request = PairRequest(tv: tv);
 
-    return _pairRequest(request);
-  }
-
-  /// POST `https://192.168.1.4:1926/6/pair/request`
-  Future<PairResponse> _pairRequest(PairRequest request) async {
     final endpoint = "pair/request";
 
     final response = await _client.post(endpoint, request.data);
@@ -28,11 +24,7 @@ class AuthRepository {
 
       final response = PairResponse.fromJson(responseJson);
 
-      // TV tv = request.tv;
-
-      // tv
-
-      // Keystore.instance.pass = response.authKey;
+      response.request = request;
 
       return response;
     } else {

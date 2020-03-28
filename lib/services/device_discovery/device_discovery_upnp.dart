@@ -22,6 +22,8 @@ class DeviceDiscoveryUpnp {
   }
 
   Future<List<TV>> getTVs() async {
+    print(">> searching for tvs upnp...");
+
     final candidates = await _getCandidates();
 
     List<TV> tvs = [];

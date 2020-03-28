@@ -18,8 +18,14 @@ class NetworkClient {
   Future<Response> get(String url) async {
     final Map<String, dynamic> payload = {
       "url": url,
-      "credential": session.credential.toJson(),
     };
+
+    if (session != null && session.credential != null) {
+      payload["credential"] = session.credential.toJson();
+    }
+
+    print(
+        ">> [NetworkClient] GET $url, credentials set ${payload["credentials"] == null ? "no" : "yes"}");
 
     final result = _networkMethodChannel.invokeMethod<Map>("get", payload);
 
@@ -31,8 +37,14 @@ class NetworkClient {
     final Map<String, dynamic> payload = {
       "url": url,
       "body": body,
-      "credential": session.credential.toJson(),
     };
+
+    if (session != null && session.credential != null) {
+      payload["credential"] = session.credential.toJson();
+    }
+
+    print(
+        ">> [NetworkClient] POST $url, credentials set ${payload["credentials"] == null ? "no" : "yes"}");
 
     final result = _networkMethodChannel.invokeMethod("post", payload);
 
