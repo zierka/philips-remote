@@ -56,10 +56,14 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
                     }
                 }
 
-                val user = sharedPref.getString("flutter.user", null)
-                val pass = sharedPref.getString("flutter.pass", null)
+                val credentials = payload["credentials"]
 
-                if (user != null && pass != null) {
+                if (credentials != null) {
+                    val credentials1 = credentials as Map<String, String>
+
+                    val user = credentials1["username"]
+                    val pass = credentials1["password"]
+
                     val credentials = Credentials(user, pass)
                     val authenticator = DigestAuthenticator(credentials)
                     val authCache: Map<String, CachingAuthenticator> = ConcurrentHashMap()

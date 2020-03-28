@@ -1,6 +1,3 @@
-import 'package:philips_remote/services/api/api.dart';
-import 'package:philips_remote/services/network_client/network_client.dart';
-
 enum InputKey {
   Standby,
   Back,
@@ -50,20 +47,4 @@ enum InputKey {
   Rewind,
   Record,
   Online,
-}
-
-class KeyInput {
-  static void postKey(InputKey key) {
-    final url = API.baseUrl + "input/key";
-
-    final keyName = key.toString().split(".").last ?? key;
-
-    print(">> post key $keyName");
-
-    Map<String, String> json = {
-      "key": keyName,
-    };
-
-    NetworkClient.post(url, json);
-  }
 }

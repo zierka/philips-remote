@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:philips_remote/data/models/channel.dart';
-import 'package:philips_remote/services/api/get.dart';
+import 'package:philips_remote/screens/content/channel_list_screen_model.dart';
+// import 'package:philips_remote/services/api/get.dart';
 import 'package:philips_remote/widgets/channel_item.dart';
 
-class ChannelsScreen extends StatefulWidget {
+class ChannelListScreen extends StatefulWidget {
   @override
-  _ChannelsScreenState createState() => _ChannelsScreenState();
+  _ChannelListScreenState createState() => _ChannelListScreenState();
 }
 
-class _ChannelsScreenState extends State<ChannelsScreen> {
-  final _channelListFuture = Get.channelList();
-  List<Channel> _fullChannelList;
-  List<Channel> _channelList;
+class _ChannelListScreenState extends State<ChannelListScreen> {
+  final _model = ChannelListScreenModel();
 
   FocusNode _searchFieldFocusNode;
   ScrollController _scrollController;
-
-  var _isSearching = false;
 
   @override
   void initState() {
@@ -26,9 +23,9 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
 
     _scrollController = ScrollController();
     _scrollController.addListener(() {
-      if (!_isSearching && _scrollController.offset < -100) {
+      if (!_model.isSearching && _scrollController.offset < -100) {
         setState(() {
-          _isSearching = !_isSearching;
+          _model.isSearching = !_model.isSearching;
         });
         _searchFieldFocusNode.requestFocus();
       }
@@ -53,27 +50,25 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
             focusNode: _searchFieldFocusNode,
             onChanged: (string) {
               setState(() {
-                _channelList = _fullChannelList.where((channel) {
-                  return channel.name.contains(string);
-                });
+                _model.search(string);
               });
             },
           ),
           secondChild: Text("Channels"),
-          crossFadeState: _isSearching
+          crossFadeState: _model.isSearching
               ? CrossFadeState.showFirst
               : CrossFadeState.showSecond,
           duration: Duration(milliseconds: 100),
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(_isSearching ? Icons.close : Icons.search),
+            icon: Icon(_model.isSearching ? Icons.close : Icons.search),
             onPressed: () {
               setState(() {
-                _isSearching = !_isSearching;
+                _model.isSearching = !_model.isSearching;
               });
 
-              if (_isSearching) {
+              if (_model.isSearching) {
                 _searchFieldFocusNode.requestFocus();
               } else {
                 _searchFieldFocusNode.unfocus();
@@ -83,7 +78,7 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
         ],
       ),
       body: FutureBuilder<List<Channel>>(
-        future: _channelListFuture,
+        future: _model.channelList,
         builder: ((context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -93,13 +88,15 @@ class _ChannelsScreenState extends State<ChannelsScreen> {
               return Text('Awaiting result...');
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-              _channelList = snapshot.data;
-              _fullChannelList = _channelList;
               return ListView.builder(
-                itemCount: _channelList.length,
+                itemCount: _model.currentChannelList.length,
                 itemBuilder: (context, index) {
-                  final item = _channelList[index];
-                  return ChannelItem(channel: item);
+                  final item = _model.currentChannelList[index];
+                  return ChannelItem(
+                    channel: item,
+                    onTap: () => _model.changeToChannel(item),
+                    imageCacheManager: _model.imageCacheManager,
+                  );
                 },
                 controller: _scrollController,
               );

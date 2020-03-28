@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:philips_remote/data/models/application.dart';
-import 'package:philips_remote/services/api/commands.dart';
-import 'package:philips_remote/services/api/get.dart';
-import 'package:philips_remote/services/image_handling.dart';
+import 'package:philips_remote/screens/content/app_list_model.dart';
 
 class AppsScreen extends StatefulWidget {
   @override
@@ -11,12 +9,7 @@ class AppsScreen extends StatefulWidget {
 }
 
 class _AppsScreenState extends State<AppsScreen> {
-  final _channelList = Get.applicationList();
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  final _model = AppListModel();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +18,7 @@ class _AppsScreenState extends State<AppsScreen> {
         title: Text("Applications"),
       ),
       body: FutureBuilder(
-        future: _channelList,
+        future: _model.applications(),
         builder: ((context, AsyncSnapshot<List<Application>> snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -42,11 +35,11 @@ class _AppsScreenState extends State<AppsScreen> {
                     return ListTile(
                       title: Text(item.label),
                       trailing: CachedNetworkImage(
-                        imageUrl: item.logoUrl,
-                        cacheManager: CustomCacheManager(),
+                        imageUrl: item.logoUrlEndpoint,
+                        cacheManager: _model.imageCacheManager,
                       ),
                       onTap: () {
-                        Commands.openApplication(item);
+                        _model.openApplication(item);
                       },
                     );
                   });

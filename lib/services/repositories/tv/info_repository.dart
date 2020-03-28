@@ -2,16 +2,18 @@ import 'package:philips_remote/data/models/application.dart';
 import 'package:philips_remote/data/models/channel.dart';
 import 'package:philips_remote/data/models/favorite_channel.dart';
 import 'package:philips_remote/data/models/volume.dart';
-import 'package:philips_remote/services/api/api.dart';
-import 'package:philips_remote/services/network_client/network_client.dart';
+import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
 import 'package:philips_remote/services/persistence/cache.dart';
 import 'package:philips_remote/util/convenience.dart';
 
-class Get {
-  // "audio/volume"
-  static Future<Volume> volume() async {
-    final url = API.baseUrl + "audio/volume";
-    final response = await NetworkClient.get(url);
+class InfoRepository {
+  EndpointNetworkClient _client;
+  InfoRepository(this._client);
+
+  /// "audio/volume"
+  Future<Volume> volume() async {
+    final endpoint = "audio/volume";
+    final response = await _client.get(endpoint);
     final volume = Volume.fromJson(response.toJson());
 
     Cache.volume = volume;
@@ -19,10 +21,10 @@ class Get {
     return volume;
   }
 
-  // "channeldb/tv/channelLists/all"
-  static Future<List<Channel>> channelList() async {
-    final url = API.baseUrl + "channeldb/tv/channelLists/all";
-    final response = await NetworkClient.get(url);
+  /// "channeldb/tv/channelLists/all"
+  Future<List<Channel>> channelList() async {
+    final endpoint = "channeldb/tv/channelLists/all";
+    final response = await _client.get(endpoint);
     final channels = ChannelList.fromJson(response.toJson()).channels;
 
     Cache.allChannels = channels;
@@ -30,10 +32,10 @@ class Get {
     return channels;
   }
 
-  // "channeldb/tv/channelLists/all"
-  static Future<List<Channel>> favoriteChannelList() async {
-    final url = API.baseUrl + "channeldb/tv/favoriteLists/1";
-    final response = await NetworkClient.get(url);
+  /// "channeldb/tv/channelLists/all"
+  Future<List<Channel>> favoriteChannelList() async {
+    final endpoint = "channeldb/tv/favoriteLists/1";
+    final response = await _client.get(endpoint);
     final channels = FavoriteChannelList.fromJson(response.toJson()).channels;
 
     // as the results are partial channel classes, get the full channel classes from the cache
@@ -53,9 +55,9 @@ class Get {
     return channels2;
   }
 
-  static Future<List<Application>> applicationList() async {
-    final url = API.baseUrl + "applications";
-    final response = await NetworkClient.get(url);
+  Future<List<Application>> applicationList() async {
+    final endpoint = "applications";
+    final response = await _client.get(endpoint);
     final applications =
         ApplicationResponse.fromJson(response.toJson()).applications;
     return applications;

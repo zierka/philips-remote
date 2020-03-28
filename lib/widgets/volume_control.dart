@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:philips_remote/data/models/volume.dart';
-import 'package:philips_remote/services/api/commands.dart';
-import 'package:philips_remote/services/api/get.dart';
-import 'package:philips_remote/services/api/key_input.dart';
 
 class VolumeControl extends StatefulWidget {
-  VolumeControl({Key key}) : super(key: key);
+  final ValueChanged<double> onChanged;
+  final VoidCallback onVolumeDownPressed;
+  final VoidCallback onVolumeUpPressed;
+
+  VolumeControl({
+    this.onChanged,
+    this.onVolumeDownPressed,
+    this.onVolumeUpPressed,
+    key,
+  }) : super(key: key);
 
   @override
   _VolumeControlState createState() => _VolumeControlState();
@@ -15,21 +21,6 @@ class VolumeControl extends StatefulWidget {
 class _VolumeControlState extends State<VolumeControl> {
   double _currentValue = 0;
   Volume volume = Volume(muted: false, min: 0, max: 40);
-
-  @override
-  void initState() {
-    super.initState();
-
-    print("VolumeControl.initState()");
-
-    Get.volume().then((volume) {
-      print(volume.toJson());
-
-      setState(() {
-        _currentValue = volume.current.toDouble();
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +33,10 @@ class _VolumeControlState extends State<VolumeControl> {
               icon: Icon(Icons.remove),
               color: Theme.of(context).accentColor,
               onPressed: () {
-                KeyInput.postKey(InputKey.VolumeDown);
                 setState(() {
                   _currentValue--;
                 });
+                widget.onVolumeDownPressed();
               },
             ),
             Expanded(
@@ -54,14 +45,13 @@ class _VolumeControlState extends State<VolumeControl> {
                 min: volume.min.toDouble(),
                 max: volume.max.toDouble(),
                 onChanged: (value) {
-                  Commands.changeVolume(value.toInt());
                   setState(() {
                     _currentValue = value;
                   });
+
+                  widget.onChanged(value);
                 },
                 onChangeEnd: (value) {
-                  print(value);
-
                   setState(() {
                     _currentValue = value;
                   });
@@ -75,10 +65,10 @@ class _VolumeControlState extends State<VolumeControl> {
               icon: Icon(Icons.add),
               color: Theme.of(context).accentColor,
               onPressed: () {
-                KeyInput.postKey(InputKey.VolumeUp);
                 setState(() {
                   _currentValue++;
                 });
+                widget.onVolumeUpPressed();
               },
             ),
           ],

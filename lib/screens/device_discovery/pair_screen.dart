@@ -1,29 +1,98 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/services/api/auth.dart';
-import 'package:philips_remote/services/persistence/keystore.dart';
+import 'package:flutter/widgets.dart';
+import 'package:philips_remote/main_model.dart';
+import 'package:philips_remote/screens/device_discovery/pair_screen_model.dart';
+import 'package:provider/provider.dart';
 
 class PairScreen extends StatefulWidget {
+  PairScreen({Key key}) : super(key: key);
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  PairScreenState createState() => PairScreenState();
 }
 
-class _MyHomePageState extends State<PairScreen> {
-  final _ipTextController = TextEditingController(text: "192.168.1.");
+class PairScreenState extends State<PairScreen> {
+  final _model = PairScreenModel();
 
-  PairResponse response;
-
-  void _pair() {
-    AuthService.pair().then((response) {
-      print("$response");
-
-      this.response = response;
-    }).catchError((error) {
-      print("error: $error");
-    });
+  @override
+  void initState() {
+    _model.scanTapped();
+    super.initState();
   }
 
-  void _pairConfirm() {
+  @override
+  void didChangeDependencies() {
+    _model.mainModel = Provider.of<MainModel>(context);
+
+    super.didChangeDependencies();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Scan"),
+        ),
+        body: ChangeNotifierProvider(
+          create: (context) => _model,
+          child: Consumer<PairScreenModel>(
+            builder: (context, model, child) {
+              return Padding(
+                padding: const EdgeInsets.all(0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      child:
+                          Text("Scan for Philips TVs on your local network."),
+                    ),
+                    if (model.isScanning)
+                      Center(
+                        child: Column(
+                          children: [
+                            CircularProgressIndicator(),
+                            SizedBox(height: 16),
+                            Text("Scanning..."),
+                          ],
+                        ),
+                      )
+                    else
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: model.tvs.length,
+                          itemBuilder: (context, index) {
+                            final tv = model.tvs[index];
+                            return ListTile(
+                              title: Text(tv.friendlyName ?? "TV"),
+                              subtitle: Text(
+                                tv.name ?? "",
+                                style: DefaultTextStyle.of(context).style,
+                              ),
+                              trailing: Text("${tv.ip}:${tv.port}"),
+                              onTap: () {
+                                model
+                                    .tvSelected(tv)
+                                    .then((value) => _showPairConfirmDialog());
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showPairConfirmDialog() {
     final controller = TextEditingController();
     final textField = CupertinoTextField(
         controller: controller, keyboardType: TextInputType.number);
@@ -39,11 +108,7 @@ class _MyHomePageState extends State<PairScreen> {
             print("pin $pin");
             Navigator.pop(context);
 
-            final confirmPair = ConfirmPairRequest(response, pin);
-
-            AuthService.confirmPair(confirmPair).then((_) {
-              print("confirm pair done");
-            });
+            _model.confirmPair(pin);
           },
         )
       ],
@@ -52,54 +117,6 @@ class _MyHomePageState extends State<PairScreen> {
     showCupertinoDialog(
       context: context,
       builder: (context) => dialog,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("pair"),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Text("user\n${Keystore.instance.user}\n"),
-              Text("pass\n${Keystore.instance.pass}\n"),
-              Text("ip\n${Keystore.instance.ip}\n"),
-              TextField(
-                controller: _ipTextController,
-                decoration: InputDecoration(hintText: "IP ADDRESS"),
-                onSubmitted: ((text) {
-                  Keystore.instance.ip = text;
-                  setState(() {});
-                }),
-              ),
-              CupertinoButton(
-                child: Text("RESET"),
-                onPressed: () {
-                  Keystore.instance.user = null;
-                  Keystore.instance.pass = null;
-                  Keystore.instance.ip = null;
-                  setState(() {});
-                },
-              ),
-              CupertinoButton(
-                child: Text("PAIR"),
-                onPressed: _pair,
-              ),
-              CupertinoButton(
-                child: Text("PAIR CONFIRM"),
-                onPressed: _pairConfirm,
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
