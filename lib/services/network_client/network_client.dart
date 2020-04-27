@@ -44,7 +44,7 @@ class NetworkClient {
     }
 
     print(
-        ">> [NetworkClient] POST $url, credentials set ${payload["credentials"] == null ? "no" : "yes"}");
+        ">> [NetworkClient] POST $url, credentials set ${payload["credential"] == null ? "no" : "yes"}");
 
     final result = _networkMethodChannel.invokeMethod("post", payload);
 
