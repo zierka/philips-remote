@@ -1,16 +1,19 @@
 # philips_remote
 
-A new Flutter project.
+## About
 
-## Getting Started
+An unofficial Philips TV remote control app written in Flutter.
 
-This project is a starting point for a Flutter application.
+The app is under heavy development.
 
-A few resources to get you started if this is your first Flutter project:
+## Features:
+- pairing
+- basic controls
+- d-pad
+- all/favorite channel lists
+- application list
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Screenshots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![screenshot1](_stuff/repo_content/screenshot1.png)
+![screenshot2](_stuff/repo_content/screenshot2.png)
