@@ -93,7 +93,9 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
                                     result.success(payload)
                                 }
                             } else {
-                                val payload = mapOf<String, Any>("status" to "failure", "error" to response.code)
+                                val errorBodyString = response.body!!.string()
+                                val error = mapOf<String, Any>("error" to errorBodyString, "code" to response.code)
+                                val payload = mapOf<String, Any>("status" to "failure", "error" to error)
 
                                 Handler(Looper.getMainLooper()).post {
                                     result.success(payload)

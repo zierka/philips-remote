@@ -77,7 +77,8 @@ class NetworkChannel {
                             result(payload)
                         } else {
                             let code = response.response?.statusCode ?? -1
-                            let payload: [String : Any] = ["status": "failure", "error": code]
+                            let errorDict: [String: Any] = ["error": String(describing: error), "code": code]
+                            let payload: [String: Any] = ["status": "failure", "error": errorDict]
                             result(payload)
                         }
                     }
@@ -92,8 +93,8 @@ class NetworkChannel {
 final class CustomServerTrustManager: ServerTrustManager {
     
     override public func serverTrustEvaluator(forHost host: String) throws -> ServerTrustEvaluating? {
-//        return DisabledEvaluator()
+        return DisabledEvaluator()
         
-        return DefaultTrustEvaluator(validateHost: false)
+//        return DefaultTrustEvaluator(validateHost: false)
     }
 }
