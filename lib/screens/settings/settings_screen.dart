@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:philips_remote/main_model.dart';
 import 'package:philips_remote/screens/device_discovery/pair_screen.dart';
 import 'package:philips_remote/screens/device_discovery/scan_screen_old.dart';
+import 'package:philips_remote/screens/settings/settings_screen_model.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {
+  final _model = SettingsScreenModel();
+
   final options = ["Scan", "Pair"];
 
   _action(int index, BuildContext context) {
@@ -22,6 +27,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _model.mainModel = Provider.of<MainModel>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
@@ -29,7 +36,9 @@ class SettingsScreen extends StatelessWidget {
           FlatButton(
             textColor: Theme.of(context).errorColor,
             child: Text("Unpair"),
-            onPressed: () {},
+            onPressed: () {
+              _model.unpair();
+            },
           ),
         ],
       ),
