@@ -27,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
         title: Text("Settings"),
         actions: <Widget>[
           FlatButton(
-            textColor: Theme.of(context).accentColor,
+            textColor: Theme.of(context).errorColor,
             child: Text("Unpair"),
             onPressed: () {},
           ),
