@@ -27,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _model.mainModel = Provider.of<MainModel>(context);
+    _model.mainModel = Provider.of<MainModel>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
