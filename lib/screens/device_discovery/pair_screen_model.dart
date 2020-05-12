@@ -5,18 +5,15 @@ import 'package:philips_remote/data/models/auth/pair_response.dart';
 import 'package:philips_remote/data/models/auth/session.dart';
 import 'package:philips_remote/data/models/tv.dart';
 import 'package:philips_remote/main_model.dart';
+import 'package:philips_remote/screens/device_discovery/scan_state.dart';
 import 'package:philips_remote/services/device_discovery/device_discovery.dart';
 import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
 import 'package:philips_remote/services/repositories/tv/auth_repository.dart';
 
 class PairScreenModel extends ChangeNotifier {
-  bool _isScanning = false;
-  get isScanning => _isScanning;
+  ScanState state = ScanState.loading();
 
   MainModel mainModel;
-
-  List<TV> _tvs = [];
-  get tvs => _tvs;
 
   TV _currentlyPairingTV;
   PairResponse _pairResponse;
@@ -27,12 +24,11 @@ class PairScreenModel extends ChangeNotifier {
   scanTapped() {
     print(">> scanning...");
 
-    _isScanning = true;
+    state = ScanState.loading();
     notifyListeners();
 
     _deviceDiscovery.getTVs().then((tvs) {
-      _tvs = tvs;
-      _isScanning = false;
+      state = ScanState.tvs(tvs);
       print(tvs);
       notifyListeners();
     });
