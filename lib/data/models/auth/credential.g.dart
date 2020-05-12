@@ -8,12 +8,13 @@ part of 'credential.dart';
 
 Credential _$CredentialFromJson(Map<String, dynamic> json) {
   return Credential(
-      username: json['username'] as String,
-      password: json['password'] as String);
+    username: json['username'] as String,
+    password: json['password'] as String,
+  );
 }
 
 Map<String, dynamic> _$CredentialToJson(Credential instance) =>
     <String, dynamic>{
       'username': instance.username,
-      'password': instance.password
+      'password': instance.password,
     };
