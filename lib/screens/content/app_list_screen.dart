@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:philips_remote/data/models/application.dart';
 import 'package:philips_remote/screens/content/app_list_model.dart';
 
-class AppsScreen extends StatefulWidget {
+class AppListScreen extends StatefulWidget {
   @override
-  _AppsScreenState createState() => _AppsScreenState();
+  _AppListScreenState createState() => _AppListScreenState();
 }
 
-class _AppsScreenState extends State<AppsScreen> {
+class _AppListScreenState extends State<AppListScreen> {
   final _model = AppListModel();
 
   @override
@@ -22,10 +22,11 @@ class _AppsScreenState extends State<AppsScreen> {
         builder: ((context, AsyncSnapshot<List<Application>> snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
-              return Text('Press button to start.');
             case ConnectionState.active:
             case ConnectionState.waiting:
-              return Text('Awaiting result...');
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
               return ListView.builder(

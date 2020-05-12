@@ -38,6 +38,8 @@ class MainModel extends ChangeNotifier {
       print(">> no session found");
     }
 
+    // show loading indicator for 1 sec
+
     await Future.delayed(Duration(seconds: 1), () => null);
 
     notifyListeners();
@@ -51,12 +53,32 @@ class MainModel extends ChangeNotifier {
     tv = session.tv;
 
     final store = PreferenceStore();
-
     store.session = session;
 
     _unregisterSessionServices();
     _registerSessionServices(session);
 
+    notifyListeners();
+  }
+
+  clearSession() async {
+    print(">> clear session");
+
+    tv = null;
+
+    final store = PreferenceStore();
+    store.session = null;
+
+    _unregisterSessionServices();
+
+    // show loading indicator for 1 sec
+
+    isLoading = true;
+    notifyListeners();
+
+    await Future.delayed(Duration(seconds: 1), () => null);
+
+    isLoading = false;
     notifyListeners();
   }
 

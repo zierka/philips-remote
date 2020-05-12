@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/screens/content/app_list.dart';
+import 'package:philips_remote/screens/content/app_list_screen.dart';
 import 'package:philips_remote/screens/content/channel_list_screen.dart';
 import 'package:philips_remote/screens/content/control_screen.dart';
 import 'package:philips_remote/screens/content/favorite_list_screen.dart';
@@ -61,7 +61,7 @@ class _ContentScreenState extends State<ContentScreen> {
           case 2:
             return ControlScreen();
           case 3:
-            return AppsScreen();
+            return AppListScreen();
           case 4:
             return SettingsScreen();
           default:

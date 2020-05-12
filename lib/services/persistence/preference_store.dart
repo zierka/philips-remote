@@ -73,5 +73,7 @@ class PreferenceStore implements Store {
 
   // current session
   get session => _currentSession();
-  set session(Session session) => saveObject(_SESSION, session.toJson());
+  // TODO: Improve this
+  set session(Session session) =>
+      saveObject(_SESSION, session?.toJson() ?? null);
 }
