@@ -46,12 +46,12 @@ class PairScreenState extends State<PairScreen> {
                   children: <Widget>[
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                       child:
                           Text("Scan for Philips TVs on your local network."),
                     ),
-                    if (model.isScanning)
-                      Center(
+                    model.state.when(loading: (() {
+                      return Center(
                         child: Column(
                           children: [
                             CircularProgressIndicator(),
@@ -59,13 +59,13 @@ class PairScreenState extends State<PairScreen> {
                             Text("Scanning..."),
                           ],
                         ),
-                      )
-                    else
-                      Expanded(
+                      );
+                    }), tvs: ((tvs) {
+                      return Expanded(
                         child: ListView.builder(
-                          itemCount: model.tvs.length,
+                          itemCount: tvs.length,
                           itemBuilder: (context, index) {
-                            final tv = model.tvs[index];
+                            final tv = tvs[index];
                             return ListTile(
                               title: Text(tv.friendlyName ?? "TV"),
                               subtitle: Text(
@@ -81,7 +81,8 @@ class PairScreenState extends State<PairScreen> {
                             );
                           },
                         ),
-                      ),
+                      );
+                    }))
                   ],
                 ),
               );

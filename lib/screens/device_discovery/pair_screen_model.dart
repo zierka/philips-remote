@@ -19,7 +19,7 @@ class PairScreenModel extends ChangeNotifier {
   PairResponse _pairResponse;
 
   DeviceDiscovery _deviceDiscovery = GetIt.instance.get<DeviceDiscovery>();
-  AuthRepository _authRepository; // = GetIt.instance.get<AuthRepository>();
+  AuthRepository _authRepository;
 
   scanTapped() {
     print(">> scanning...");
