@@ -8,5 +8,4 @@ part 'scan_state.freezed.dart';
 abstract class ScanState with _$ScanState {
   const factory ScanState.loading() = Loading;
   const factory ScanState.tvs(List<TV> tvs) = Data;
-  // const factory ScanState.nothingFound() = Empty;
 }

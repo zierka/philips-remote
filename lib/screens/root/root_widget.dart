@@ -12,15 +12,15 @@ class RootWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MainModel>(
       builder: (context, mainModel, child) {
-        if (mainModel.isLoading) {
+        return mainModel.state.when(loading: () {
           return Center(
             child: CircularProgressIndicator(),
           );
-        } else if (mainModel.tv != null) {
+        }, content: (tv) {
           return ContentScreen();
-        } else {
+        }, landing: () {
           return LandingScreen();
-        }
+        });
       },
     );
   }
