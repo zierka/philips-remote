@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:philips_remote/data/models/auth/session.dart';
-import 'package:philips_remote/data/models/tv.dart';
+import 'package:philips_remote/main/main_model_state.dart';
 import 'package:philips_remote/services/device_discovery/device_discovery.dart';
 import 'package:philips_remote/services/image_cache_manager.dart';
 import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
@@ -11,11 +11,10 @@ import 'package:philips_remote/services/repositories/tv/commands_repository.dart
 import 'package:philips_remote/services/repositories/tv/info_repository.dart';
 
 class MainModel extends ChangeNotifier {
-  TV tv;
-  bool isLoading = false;
+  MainModelState state;
 
   MainModel() {
-    isLoading = true;
+    state = MainModelState.loading();
 
     _registerGeneralServices();
 
@@ -26,16 +25,16 @@ class MainModel extends ChangeNotifier {
     final store = PreferenceStore();
     final session = await store.session;
 
-    isLoading = false;
-
-    if (session != null) {
+    if (session != null && session.tv != null) {
       print(">> loaded session from local store. tv ip ${session.tv.ip}");
 
-      tv = session.tv;
+      state = MainModelState.content(session.tv);
 
       _registerSessionServices(session);
     } else {
       print(">> no session found");
+
+      state = MainModelState.landing();
     }
 
     // show loading indicator for 1 sec
@@ -50,7 +49,7 @@ class MainModel extends ChangeNotifier {
   setSession(Session session) {
     print(">> setting session. tv ip ${session.tv.ip}");
 
-    tv = session.tv;
+    state = MainModelState.content(session.tv);
 
     final store = PreferenceStore();
     store.session = session;
@@ -64,8 +63,6 @@ class MainModel extends ChangeNotifier {
   clearSession() async {
     print(">> clear session");
 
-    tv = null;
-
     final store = PreferenceStore();
     store.session = null;
 
@@ -73,12 +70,12 @@ class MainModel extends ChangeNotifier {
 
     // show loading indicator for 1 sec
 
-    isLoading = true;
+    state = MainModelState.loading();
     notifyListeners();
 
     await Future.delayed(Duration(seconds: 1), () => null);
 
-    isLoading = false;
+    state = MainModelState.landing();
     notifyListeners();
   }
 

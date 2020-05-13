@@ -4,7 +4,7 @@ import 'package:philips_remote/data/models/auth/confirm_pair_response.dart';
 import 'package:philips_remote/data/models/auth/pair_response.dart';
 import 'package:philips_remote/data/models/auth/session.dart';
 import 'package:philips_remote/data/models/tv.dart';
-import 'package:philips_remote/main_model.dart';
+import 'package:philips_remote/main/main_model.dart';
 import 'package:philips_remote/screens/device_discovery/scan_state.dart';
 import 'package:philips_remote/services/device_discovery/device_discovery.dart';
 import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
