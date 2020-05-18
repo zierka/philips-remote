@@ -61,27 +61,38 @@ class PairScreenState extends State<PairScreen> {
                         ),
                       );
                     }), tvs: ((tvs) {
-                      return Expanded(
-                        child: ListView.builder(
-                          itemCount: tvs.length,
-                          itemBuilder: (context, index) {
-                            final tv = tvs[index];
-                            return ListTile(
-                              title: Text(tv.friendlyName ?? "TV"),
-                              subtitle: Text(
-                                tv.name ?? "",
-                                style: DefaultTextStyle.of(context).style,
-                              ),
-                              trailing: Text("${tv.ip}:${tv.port}"),
-                              onTap: () {
-                                model
-                                    .tvSelected(tv)
-                                    .then((value) => _showPairConfirmDialog());
-                              },
-                            );
-                          },
-                        ),
-                      );
+                      if (tvs.isEmpty) {
+                        return Center(
+                          child: FlatButton(
+                            child: Text("re-scan"),
+                            color: Theme.of(context).accentColor,
+                            onPressed: () {
+                              _model.scanTapped();
+                            },
+                          ),
+                        );
+                      } else {
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: tvs.length,
+                            itemBuilder: (context, index) {
+                              final tv = tvs[index];
+                              return ListTile(
+                                title: Text(tv.friendlyName ?? "TV"),
+                                subtitle: Text(
+                                  tv.name ?? "",
+                                  style: DefaultTextStyle.of(context).style,
+                                ),
+                                trailing: Text("${tv.ip}:${tv.port}"),
+                                onTap: () {
+                                  model.tvSelected(tv).then(
+                                      (value) => _showPairConfirmDialog());
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      }
                     }))
                   ],
                 ),

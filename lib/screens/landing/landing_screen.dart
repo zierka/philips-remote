@@ -17,7 +17,7 @@ class LandingScreen extends StatelessWidget {
       body: Center(
         child: FlatButton(
           child: Text("scan for tv"),
-          color: Colors.yellow,
+          color: Theme.of(context).accentColor,
           onPressed: () {
             final mainModel = Provider.of<MainModel>(context, listen: false);
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
