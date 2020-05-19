@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:philips_remote/data/models/tv.dart';
+import 'package:philips_remote/logic/models/tv.dart';
 
 class RootModel extends ChangeNotifier {
   TV currentTV() {

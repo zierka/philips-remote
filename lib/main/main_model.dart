@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:philips_remote/data/models/auth/session.dart';
+import 'package:philips_remote/logic/models/auth/session.dart';
 import 'package:philips_remote/main/main_model_state.dart';
-import 'package:philips_remote/services/device_discovery/device_discovery.dart';
-import 'package:philips_remote/services/image_cache_manager.dart';
-import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
-import 'package:philips_remote/services/network_client/network_client.dart';
-import 'package:philips_remote/services/persistence/preference_store.dart';
-import 'package:philips_remote/services/repositories/tv/commands_repository.dart';
-import 'package:philips_remote/services/repositories/tv/info_repository.dart';
+import 'package:philips_remote/data_access/device_discovery/device_discovery.dart';
+import 'package:philips_remote/logic/services/image_cache_manager.dart';
+import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
+import 'package:philips_remote/data_access/network_client/network_client.dart';
+import 'package:philips_remote/data_access/persistence/preference_store.dart';
+import 'package:philips_remote/logic/services/commands_repository.dart';
+import 'package:philips_remote/logic/services/info_repository.dart';
 
 class MainModel extends ChangeNotifier {
   MainModelState state;

@@ -1,7 +1,7 @@
-import 'package:philips_remote/data/models/application.dart';
-import 'package:philips_remote/data/models/channel.dart';
-import 'package:philips_remote/data/models/input_key.dart';
-import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
+import 'package:philips_remote/logic/models/application.dart';
+import 'package:philips_remote/logic/models/channel.dart';
+import 'package:philips_remote/logic/models/input_key.dart';
+import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
 
 class CommandsRepository {
   EndpointNetworkClient _client;

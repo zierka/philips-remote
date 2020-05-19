@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/data/models/auth/confirm_pair_response.dart';
-import 'package:philips_remote/data/models/auth/pair_response.dart';
-import 'package:philips_remote/services/persistence/preference_store.dart';
+import 'package:philips_remote/logic/models/auth/confirm_pair_response.dart';
+import 'package:philips_remote/logic/models/auth/pair_response.dart';
+import 'package:philips_remote/data_access/persistence/preference_store.dart';
 
 class PairScreenOld extends StatefulWidget {
   @override

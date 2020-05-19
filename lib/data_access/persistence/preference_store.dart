@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:philips_remote/data/models/auth/session.dart';
-import 'package:philips_remote/services/persistence/store.dart';
+import 'package:philips_remote/logic/models/auth/session.dart';
+import 'package:philips_remote/data_access/persistence/store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String _SESSION = "session";

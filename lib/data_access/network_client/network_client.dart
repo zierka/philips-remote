@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'dart:convert' as convert;
 
-import 'package:philips_remote/data/models/auth/session.dart';
+import 'package:philips_remote/logic/models/auth/session.dart';
 
 /// networking functions through platform channels
 class NetworkClient {

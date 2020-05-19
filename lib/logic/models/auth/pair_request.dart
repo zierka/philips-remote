@@ -1,4 +1,4 @@
-import 'package:philips_remote/data/models/tv.dart';
+import 'package:philips_remote/logic/models/tv.dart';
 import 'package:philips_remote/util/utils.dart';
 
 class PairRequest {

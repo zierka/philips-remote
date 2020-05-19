@@ -8,12 +8,8 @@ part of 'session.dart';
 
 Session _$SessionFromJson(Map<String, dynamic> json) {
   return Session(
-    tv: json['tv'] == null
-        ? null
-        : TV.fromJson(json['tv'] as Map<String, dynamic>),
-    credential: json['credential'] == null
-        ? null
-        : Credential.fromJson(json['credential'] as Map<String, dynamic>),
+    tv: json['tv'],
+    credential: json['credential'],
   );
 }
 

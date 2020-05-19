@@ -1,8 +1,8 @@
-import 'package:philips_remote/data/models/auth/confirm_pair_response.dart';
-import 'package:philips_remote/data/models/auth/pair_request.dart';
-import 'package:philips_remote/data/models/auth/pair_response.dart';
-import 'package:philips_remote/data/models/tv.dart';
-import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
+import 'package:philips_remote/logic/models/auth/confirm_pair_response.dart';
+import 'package:philips_remote/logic/models/auth/pair_request.dart';
+import 'package:philips_remote/logic/models/auth/pair_response.dart';
+import 'package:philips_remote/logic/models/tv.dart';
+import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
 import 'package:philips_remote/util/convenience.dart';
 
 class AuthRepository {

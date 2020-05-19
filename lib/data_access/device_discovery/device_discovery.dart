@@ -1,7 +1,7 @@
-import 'package:philips_remote/data/models/tv.dart';
-import 'package:philips_remote/services/device_discovery/device_discovery_direct_search.dart';
-import 'package:philips_remote/services/device_discovery/device_discovery_upnp.dart';
-import 'package:philips_remote/services/network_client/network_client.dart';
+import 'package:philips_remote/logic/models/tv.dart';
+import 'package:philips_remote/data_access/device_discovery/device_discovery_direct_search.dart';
+import 'package:philips_remote/data_access/device_discovery/device_discovery_upnp.dart';
+import 'package:philips_remote/data_access/network_client/network_client.dart';
 
 class DeviceDiscovery {
   NetworkClient _client;
@@ -23,5 +23,9 @@ class DeviceDiscovery {
     final tvs2 = await _directSearch.getTVs();
 
     return tvs2;
+
+    // await Future.delayed(Duration(seconds: 1), () => null);
+
+    // return [];
   }
 }

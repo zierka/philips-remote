@@ -1,4 +1,4 @@
-import 'package:philips_remote/data/models/auth/pair_response.dart';
+import 'package:philips_remote/logic/models/auth/pair_response.dart';
 import 'dart:convert' as convert;
 import 'package:crypto/crypto.dart';
 

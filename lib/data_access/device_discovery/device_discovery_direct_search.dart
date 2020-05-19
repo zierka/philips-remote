@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io';
 import 'package:http/http.dart';
 import 'dart:convert' as convert;
-import 'package:philips_remote/data/models/device_discovery/discovery_configuration.dart';
-import 'package:philips_remote/data/models/system.dart';
-import 'package:philips_remote/data/models/tv.dart';
-import 'package:philips_remote/services/network_client/network_client.dart';
+import 'package:philips_remote/logic/models/device_discovery/discovery_configuration.dart';
+import 'package:philips_remote/logic/models/system.dart';
+import 'package:philips_remote/logic/models/tv.dart';
+import 'package:philips_remote/data_access/network_client/network_client.dart';
 import 'package:ping_discover_network/ping_discover_network.dart';
 
 /// Alternative discovery method

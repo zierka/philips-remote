@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/data/models/channel.dart';
-import 'package:philips_remote/services/image_cache_manager.dart';
+import 'package:philips_remote/logic/models/channel.dart';
+import 'package:philips_remote/logic/services/image_cache_manager.dart';
 
 class ChannelItem extends StatelessWidget {
   final Channel channel;

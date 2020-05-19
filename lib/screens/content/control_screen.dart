@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/data/models/input_key.dart';
+import 'package:philips_remote/logic/models/input_key.dart';
 import 'package:philips_remote/screens/content/control_screen_model.dart';
 import 'package:philips_remote/widgets/gesture_pad.dart';
 import 'package:philips_remote/widgets/volume_control.dart';

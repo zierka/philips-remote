@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:philips_remote/data/models/auth/confirm_pair_response.dart';
-import 'package:philips_remote/data/models/auth/pair_response.dart';
-import 'package:philips_remote/data/models/auth/session.dart';
-import 'package:philips_remote/data/models/tv.dart';
+import 'package:philips_remote/logic/models/auth/confirm_pair_response.dart';
+import 'package:philips_remote/logic/models/auth/pair_response.dart';
+import 'package:philips_remote/logic/models/auth/session.dart';
+import 'package:philips_remote/logic/models/tv.dart';
 import 'package:philips_remote/main/main_model.dart';
 import 'package:philips_remote/screens/device_discovery/scan_state.dart';
-import 'package:philips_remote/services/device_discovery/device_discovery.dart';
-import 'package:philips_remote/services/network_client/endpoint_network_client.dart';
-import 'package:philips_remote/services/repositories/tv/auth_repository.dart';
+import 'package:philips_remote/data_access/device_discovery/device_discovery.dart';
+import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
+import 'package:philips_remote/logic/services/auth_repository.dart';
 
 class PairScreenModel extends ChangeNotifier {
   ScanState state = ScanState.loading();
