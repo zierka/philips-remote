@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:philips_remote/main_model.dart';
+import 'package:philips_remote/main/main_model.dart';
 import 'package:philips_remote/screens/device_discovery/pair_screen.dart';
 import 'package:philips_remote/screens/device_discovery/scan_screen_old.dart';
 import 'package:philips_remote/screens/settings/settings_screen_model.dart';

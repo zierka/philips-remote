@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/data/models/application.dart';
+import 'package:philips_remote/logic/models/application.dart';
 import 'package:philips_remote/screens/content/app_list_model.dart';
 
 class AppListScreen extends StatefulWidget {

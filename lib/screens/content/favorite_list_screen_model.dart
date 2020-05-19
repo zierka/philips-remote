@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
-import 'package:philips_remote/data/models/channel.dart';
-import 'package:philips_remote/services/image_cache_manager.dart';
-import 'package:philips_remote/services/repositories/tv/commands_repository.dart';
-import 'package:philips_remote/services/repositories/tv/info_repository.dart';
+import 'package:philips_remote/logic/models/channel.dart';
+import 'package:philips_remote/logic/services/image_cache_manager.dart';
+import 'package:philips_remote/logic/services/commands_repository.dart';
+import 'package:philips_remote/logic/services/info_repository.dart';
 
 class FavoriteListScreenModel {
   final _infoRepo = GetIt.instance.get<InfoRepository>();

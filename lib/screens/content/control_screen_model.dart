@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:philips_remote/data/models/input_key.dart';
-import 'package:philips_remote/services/repositories/tv/commands_repository.dart';
+import 'package:philips_remote/logic/models/input_key.dart';
+import 'package:philips_remote/logic/services/commands_repository.dart';
 import 'package:philips_remote/widgets/gesture_pad.dart';
 
 class ControlScreenModel {

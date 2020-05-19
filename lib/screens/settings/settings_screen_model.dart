@@ -1,4 +1,4 @@
-import 'package:philips_remote/main_model.dart';
+import 'package:philips_remote/main/main_model.dart';
 
 class SettingsScreenModel {
   MainModel mainModel;

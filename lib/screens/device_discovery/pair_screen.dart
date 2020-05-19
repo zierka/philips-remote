@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:philips_remote/main_model.dart';
+import 'package:philips_remote/main/main_model.dart';
 import 'package:philips_remote/screens/device_discovery/pair_screen_model.dart';
 import 'package:provider/provider.dart';
 
@@ -46,12 +46,12 @@ class PairScreenState extends State<PairScreen> {
                   children: <Widget>[
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                       child:
                           Text("Scan for Philips TVs on your local network."),
                     ),
-                    if (model.isScanning)
-                      Center(
+                    model.state.when(loading: (() {
+                      return Center(
                         child: Column(
                           children: [
                             CircularProgressIndicator(),
@@ -59,29 +59,41 @@ class PairScreenState extends State<PairScreen> {
                             Text("Scanning..."),
                           ],
                         ),
-                      )
-                    else
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: model.tvs.length,
-                          itemBuilder: (context, index) {
-                            final tv = model.tvs[index];
-                            return ListTile(
-                              title: Text(tv.friendlyName ?? "TV"),
-                              subtitle: Text(
-                                tv.name ?? "",
-                                style: DefaultTextStyle.of(context).style,
-                              ),
-                              trailing: Text("${tv.ip}:${tv.port}"),
-                              onTap: () {
-                                model
-                                    .tvSelected(tv)
-                                    .then((value) => _showPairConfirmDialog());
-                              },
-                            );
-                          },
-                        ),
-                      ),
+                      );
+                    }), tvs: ((tvs) {
+                      if (tvs.isEmpty) {
+                        return Center(
+                          child: FlatButton(
+                            child: Text("re-scan"),
+                            color: Theme.of(context).accentColor,
+                            onPressed: () {
+                              _model.scanTapped();
+                            },
+                          ),
+                        );
+                      } else {
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: tvs.length,
+                            itemBuilder: (context, index) {
+                              final tv = tvs[index];
+                              return ListTile(
+                                title: Text(tv.friendlyName ?? "TV"),
+                                subtitle: Text(
+                                  tv.name ?? "",
+                                  style: DefaultTextStyle.of(context).style,
+                                ),
+                                trailing: Text("${tv.ip}:${tv.port}"),
+                                onTap: () {
+                                  model.tvSelected(tv).then(
+                                      (value) => _showPairConfirmDialog());
+                                },
+                              );
+                            },
+                          ),
+                        );
+                      }
+                    }))
                   ],
                 ),
               );
