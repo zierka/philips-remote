@@ -1,9 +1,8 @@
-import 'dart:convert' as convert;
-import 'package:http/http.dart';
 import 'package:philips_remote/logic/models/device_discovery/discovery_configuration.dart';
 import 'package:philips_remote/logic/models/system.dart';
 import 'package:philips_remote/logic/models/tv.dart';
 import 'package:philips_remote/data_access/network_client/network_client.dart';
+import 'package:philips_remote/logic/services/system_repository.dart';
 
 import 'package:upnp/upnp.dart' as upnp;
 
@@ -65,18 +64,15 @@ class DeviceDiscoveryUpnp {
         friendlyName: candidate.friendlyName,
       );
 
-      final url = tv.baseUrl + "system";
+      final systemRepo = SystemRepository(_client);
 
-      Response response;
+      System system;
 
       try {
-        response = await _client.get(url);
+        system = await systemRepo.system();
       } catch (e) {
         continue;
       }
-
-      final responseJson = convert.json.decode(response.body);
-      final system = System.fromJson(responseJson);
 
       final apiVersion1 = system.apiVersion.major;
 
