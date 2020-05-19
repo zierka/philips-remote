@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:philips_remote/logic/models/channel.dart';
 import 'package:philips_remote/screens/content/channel_list_screen_model.dart';
-// import 'package:philips_remote/services/api/get.dart';
 import 'package:philips_remote/widgets/channel_item.dart';
 
 class ChannelListScreen extends StatefulWidget {

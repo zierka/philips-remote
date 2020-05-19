@@ -4,7 +4,7 @@ import 'package:philips_remote/logic/models/favorite_channel.dart';
 import 'package:philips_remote/logic/models/volume.dart';
 import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
 import 'package:philips_remote/data_access/persistence/cache.dart';
-import 'package:philips_remote/util/convenience.dart';
+import 'package:philips_remote/util/extensions/response.dart';
 
 class InfoRepository {
   EndpointNetworkClient _client;
