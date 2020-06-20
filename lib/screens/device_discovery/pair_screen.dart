@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/main/main_model.dart';
 import 'package:philips_remote/screens/device_discovery/pair_screen_model.dart';
+import 'package:philips_remote/widgets/my_platform_circular_progress_indicator.dart';
 import 'package:provider/provider.dart';
 
 class PairScreen extends StatefulWidget {
@@ -31,8 +32,9 @@ class PairScreenState extends State<PairScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: AppBar(
+      child: PlatformScaffold(
+        iosContentPadding: true,
+        appBar: PlatformAppBar(
           title: Text("Scan"),
         ),
         body: ChangeNotifierProvider(
@@ -54,18 +56,19 @@ class PairScreenState extends State<PairScreen> {
                       return Center(
                         child: Column(
                           children: [
-                            CircularProgressIndicator(),
+                            MyPlatformCircularProgressIndicator(),
                             SizedBox(height: 16),
-                            Text("Scanning..."),
+                            Text(
+                              "Scanning...",
+                            ),
                           ],
                         ),
                       );
                     }), tvs: ((tvs) {
                       if (tvs.isEmpty) {
                         return Center(
-                          child: FlatButton(
+                          child: PlatformButton(
                             child: Text("re-scan"),
-                            color: Theme.of(context).accentColor,
                             onPressed: () {
                               _model.scanTapped();
                             },
@@ -77,17 +80,28 @@ class PairScreenState extends State<PairScreen> {
                             itemCount: tvs.length,
                             itemBuilder: (context, index) {
                               final tv = tvs[index];
-                              return ListTile(
-                                title: Text(tv.friendlyName ?? "TV"),
-                                subtitle: Text(
-                                  tv.name ?? "",
-                                  style: DefaultTextStyle.of(context).style,
+                              return Theme(
+                                data: Theme.of(context).copyWith(
+                                  splashColor: Colors.transparent,
                                 ),
-                                trailing: Text("${tv.ip}:${tv.port}"),
-                                onTap: () {
-                                  model.tvSelected(tv).then(
-                                      (value) => _showPairConfirmDialog());
-                                },
+                                child: Material(
+                                  child: Ink(
+                                    color: Theme.of(context).accentColor,
+                                    child: ListTile(
+                                      title: Text(tv.friendlyName ?? "TV"),
+                                      subtitle: Text(
+                                        tv.name ?? "",
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                      ),
+                                      trailing: Text("${tv.ip}:${tv.port}"),
+                                      onTap: () {
+                                        model.tvSelected(tv).then((value) =>
+                                            _showPairConfirmDialog());
+                                      },
+                                    ),
+                                  ),
+                                ),
                               );
                             },
                           ),
@@ -106,14 +120,14 @@ class PairScreenState extends State<PairScreen> {
 
   void _showPairConfirmDialog() {
     final controller = TextEditingController();
-    final textField = CupertinoTextField(
+    final textField = PlatformTextField(
         controller: controller, keyboardType: TextInputType.number);
 
-    final dialog = CupertinoAlertDialog(
+    final dialog = PlatformAlertDialog(
       title: Text("Enter PIN"),
       content: textField,
       actions: <Widget>[
-        CupertinoDialogAction(
+        PlatformDialogAction(
           child: Text("OK"),
           onPressed: () {
             final pin = textField.controller.text;
@@ -126,7 +140,7 @@ class PairScreenState extends State<PairScreen> {
       ],
     );
 
-    showCupertinoDialog(
+    showPlatformDialog(
       context: context,
       builder: (context) => dialog,
     );

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/logic/models/channel.dart';
 import 'package:philips_remote/screens/content/channel_list_screen_model.dart';
-import 'package:philips_remote/widgets/channel_item.dart';
+import 'package:philips_remote/widgets/list_item.dart';
+import 'package:philips_remote/widgets/control_button.dart';
+import 'package:philips_remote/widgets/my_platform_circular_progress_indicator.dart';
 
 class ChannelListScreen extends StatefulWidget {
   @override
@@ -41,11 +44,11 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
         title: AnimatedCrossFade(
-          firstChild: TextField(
-            decoration: InputDecoration(hintText: "Search..."),
+          firstChild: PlatformTextField(
+            // decoration: InputDecoration(hintText: "Search..."),
             focusNode: _searchFieldFocusNode,
             onChanged: (string) {
               setState(() {
@@ -59,22 +62,22 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
               : CrossFadeState.showSecond,
           duration: Duration(milliseconds: 100),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(_model.isSearching ? Icons.close : Icons.search),
-            onPressed: () {
-              setState(() {
-                _model.isSearching = !_model.isSearching;
-              });
+        // trailingActions: <Widget>[
+        //   ControlButton(
+        //     icon: Icon(_model.isSearching ? Icons.close : Icons.search),
+        //     onPressed: () {
+        //       setState(() {
+        //         _model.isSearching = !_model.isSearching;
+        //       });
 
-              if (_model.isSearching) {
-                _searchFieldFocusNode.requestFocus();
-              } else {
-                _searchFieldFocusNode.unfocus();
-              }
-            },
-          )
-        ],
+        //       if (_model.isSearching) {
+        //         _searchFieldFocusNode.requestFocus();
+        //       } else {
+        //         _searchFieldFocusNode.unfocus();
+        //       }
+        //     },
+        //   )
+        // ],
       ),
       body: FutureBuilder<List<Channel>>(
         future: _model.channelList,
@@ -84,7 +87,7 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
             case ConnectionState.active:
             case ConnectionState.waiting:
               return Center(
-                child: CircularProgressIndicator(),
+                child: MyPlatformCircularProgressIndicator(),
               );
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
@@ -92,8 +95,8 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
                 itemCount: _model.currentChannelList.length,
                 itemBuilder: (context, index) {
                   final item = _model.currentChannelList[index];
-                  return ChannelItem(
-                    channel: item,
+                  return ListItem(
+                    data: item,
                     onTap: () => _model.changeToChannel(item),
                     imageCacheManager: _model.imageCacheManager,
                   );

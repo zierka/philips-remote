@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/screens/content/favorite_list_screen_model.dart';
-import 'package:philips_remote/widgets/channel_item.dart';
+import 'package:philips_remote/widgets/list_item.dart';
+import 'package:philips_remote/widgets/my_platform_circular_progress_indicator.dart';
 
 class FavoriteChannelListScreen extends StatefulWidget {
   @override
@@ -13,8 +15,8 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
         title: Text("Favorite channels"),
       ),
       body: FutureBuilder(
@@ -25,7 +27,7 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
             case ConnectionState.active:
             case ConnectionState.waiting:
               return Center(
-                child: CircularProgressIndicator(),
+                child: MyPlatformCircularProgressIndicator(),
               );
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
@@ -33,8 +35,8 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
                     final item = snapshot.data[index];
-                    return ChannelItem(
-                      channel: item,
+                    return ListItem(
+                      data: item,
                       onTap: () => _model.changeToChannel(item),
                       imageCacheManager: _model.imageCacheManager,
                     );

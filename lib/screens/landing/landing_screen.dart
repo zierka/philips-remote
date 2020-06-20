@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/main/main_model.dart';
 import 'package:philips_remote/screens/device_discovery/pair_screen.dart';
-import 'package:philips_remote/screens/device_discovery/pair_screen_old.dart';
 import 'package:provider/provider.dart';
 
 class LandingScreen extends StatelessWidget {
@@ -10,27 +10,20 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Landing"),
-      ),
+    return PlatformScaffold(
       body: Center(
-        child: FlatButton(
+        child: PlatformButton(
           child: Text("scan for tv"),
-          color: Theme.of(context).accentColor,
           onPressed: () {
             final mainModel = Provider.of<MainModel>(context, listen: false);
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return ChangeNotifierProvider<MainModel>.value(
-                value: mainModel,
-                child: PairScreen(),
-              );
-            }));
-          },
-          onLongPress: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return PairScreenOld();
-            }));
+            Navigator.of(context).push(platformPageRoute(
+                context: context,
+                builder: (context) {
+                  return ChangeNotifierProvider<MainModel>.value(
+                    value: mainModel,
+                    child: PairScreen(),
+                  );
+                }));
           },
         ),
       ),
