@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/screens/content/app_list_screen.dart';
 import 'package:philips_remote/screens/content/channel_list_screen.dart';
 import 'package:philips_remote/screens/content/control_screen.dart';
@@ -12,47 +13,36 @@ class ContentScreen extends StatefulWidget {
 }
 
 class _ContentScreenState extends State<ContentScreen> {
-  final CupertinoTabController _controller = CupertinoTabController();
+  final _controller = PlatformTabController(initialIndex: 2);
 
-  @override
-  void initState() {
-    _controller.index = 2;
-
-    super.initState();
-  }
+  final items = (BuildContext context) => [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.list),
+          title: Text("Channels"),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.star_border),
+          title: Text("Favorites"),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.dialpad),
+          title: Text("Controls"),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.apps),
+          title: Text("Apps"),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings),
+          title: Text("Settings"),
+        ),
+      ];
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      controller: _controller,
-      resizeToAvoidBottomInset: true,
-      tabBar: CupertinoTabBar(
-        backgroundColor: Colors.black,
-        activeColor: Theme.of(context).highlightColor,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            title: Text("Channels"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star_border),
-            title: Text("Favorites"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dialpad),
-            title: Text("Controls"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.apps),
-            title: Text("Apps"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text("Settings"),
-          ),
-        ],
-      ),
-      tabBuilder: (BuildContext context, int index) {
+    return PlatformTabScaffold(
+      tabController: _controller,
+      bodyBuilder: (context, index) {
         switch (index) {
           case 0:
             return ChannelListScreen();
@@ -68,6 +58,7 @@ class _ContentScreenState extends State<ContentScreen> {
             return Placeholder();
         }
       },
+      items: items(context),
     );
   }
 }

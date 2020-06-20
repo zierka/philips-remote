@@ -9,23 +9,18 @@ class DeviceDiscovery {
   DeviceDiscovery(this._client);
 
   Future<List<TV>> getTVs() async {
-    final DeviceDiscoveryUpnp _upnp = DeviceDiscoveryUpnp(_client);
+    final upnp = DeviceDiscoveryUpnp(_client);
 
-    final tvs = await _upnp.getTVs();
+    final tvs = await upnp.getTVs();
 
     if (tvs.isNotEmpty) {
       return tvs;
     }
 
-    DeviceDiscoveryDirectSearch _directSearch =
-        DeviceDiscoveryDirectSearch(_client);
+    final directSearch = DeviceDiscoveryDirectSearch(_client);
 
-    final tvs2 = await _directSearch.getTVs();
+    final tvs2 = await directSearch.getTVs();
 
     return tvs2;
-
-    // await Future.delayed(Duration(seconds: 1), () => null);
-
-    // return [];
   }
 }

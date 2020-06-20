@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/logic/models/input_key.dart';
 import 'package:philips_remote/screens/content/control_screen_model.dart';
+import 'package:philips_remote/widgets/control_button.dart';
 import 'package:philips_remote/widgets/gesture_pad.dart';
 import 'package:philips_remote/widgets/volume_control.dart';
 
@@ -17,14 +19,13 @@ class _ControlScreenState extends State<ControlScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PlatformScaffold(
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            IconButton(
+            ControlButton(
               icon: Icon(Icons.power_settings_new),
-              color: Theme.of(context).accentColor,
               onPressed: () {
                 model.postKey(InputKey.Standby);
               },
@@ -42,9 +43,8 @@ class _ControlScreenState extends State<ControlScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                IconButton(
+                ControlButton(
                   icon: Icon(Icons.arrow_back),
-                  color: Theme.of(context).accentColor,
                   onPressed: () {
                     model.postKey(InputKey.Back);
                   },
@@ -57,16 +57,14 @@ class _ControlScreenState extends State<ControlScreen> {
                 //     KeyInput.postKey(InputKey.Mute);
                 //   },
                 // ),
-                IconButton(
+                ControlButton(
                   icon: Icon(Icons.home),
-                  color: Theme.of(context).accentColor,
                   onPressed: () {
                     model.postKey(InputKey.Home);
                   },
                 ),
-                IconButton(
+                ControlButton(
                   icon: Icon(Icons.tv),
-                  color: Theme.of(context).accentColor,
                   onPressed: () {
                     model.postKey(InputKey.WatchTV);
                   },
@@ -76,16 +74,14 @@ class _ControlScreenState extends State<ControlScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                IconButton(
+                ControlButton(
                   icon: Icon(Icons.play_arrow),
-                  color: Theme.of(context).accentColor,
                   onPressed: () {
                     model.postKey(InputKey.Play);
                   },
                 ),
-                IconButton(
+                ControlButton(
                   icon: Icon(Icons.pause),
-                  color: Theme.of(context).accentColor,
                   onPressed: () {
                     model.postKey(InputKey.Pause);
                   },

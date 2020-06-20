@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:philips_remote/logic/models/volume.dart';
+import 'package:philips_remote/widgets/control_button.dart';
 
 class VolumeControl extends StatefulWidget {
   final ValueChanged<double> onChanged;
@@ -29,9 +30,8 @@ class _VolumeControlState extends State<VolumeControl> {
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: Row(
           children: <Widget>[
-            IconButton(
+            ControlButton(
               icon: Icon(Icons.remove),
-              color: Theme.of(context).accentColor,
               onPressed: () {
                 setState(() {
                   _currentValue--;
@@ -40,30 +40,31 @@ class _VolumeControlState extends State<VolumeControl> {
               },
             ),
             Expanded(
-              child: Slider(
-                value: _currentValue.toDouble(),
-                min: volume.min.toDouble(),
-                max: volume.max.toDouble(),
-                onChanged: (value) {
-                  setState(() {
-                    _currentValue = value;
-                  });
+              child: Material(
+                child: Slider(
+                  activeColor: Colors.deepOrange,
+                  inactiveColor: Colors.deepOrange.shade100,
+                  value: _currentValue.toDouble(),
+                  min: volume.min.toDouble(),
+                  max: volume.max.toDouble(),
+                  onChanged: (value) {
+                    setState(() {
+                      _currentValue = value;
+                    });
 
-                  widget.onChanged(value);
-                },
-                onChangeEnd: (value) {
-                  setState(() {
-                    _currentValue = value;
-                  });
-                },
-                label: _currentValue.toInt().toString(),
-                activeColor: Theme.of(context).accentColor,
-                inactiveColor: Theme.of(context).disabledColor,
+                    widget.onChanged(value);
+                  },
+                  onChangeEnd: (value) {
+                    setState(() {
+                      _currentValue = value;
+                    });
+                  },
+                  label: _currentValue.toInt().toString(),
+                ),
               ),
             ),
-            IconButton(
+            ControlButton(
               icon: Icon(Icons.add),
-              color: Theme.of(context).accentColor,
               onPressed: () {
                 setState(() {
                   _currentValue++;

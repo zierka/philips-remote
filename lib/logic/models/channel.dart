@@ -1,4 +1,6 @@
-class Channel {
+import 'package:philips_remote/widgets/list_item.dart';
+
+class Channel implements ListItemData {
   final int ccid;
   final String preset; // channel position
   final String name;
