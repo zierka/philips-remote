@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/main/main_model.dart';
-import 'package:philips_remote/screens/root/root_widget.dart';
+import 'package:phimote/constants/app_colors.dart';
+import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/root/root_widget.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -12,80 +14,32 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final brightness = Brightness.light;
-    final primaryColor = Colors.deepOrange;
-    final backgroundColor = Colors.yellow;
+    final brightness = Brightness.dark;
+    final primaryColor = AppColors.primaryColor;
+    final accentColor = AppColors.accentColor;
 
     final themeData = ThemeData(
       brightness: brightness,
       primaryColor: primaryColor,
-      backgroundColor: backgroundColor,
-      splashColor: Colors.transparent,
+      accentColor: accentColor,
+      splashColor: Platform.isIOS ? Colors.transparent : null,
+      appBarTheme: AppBarTheme(brightness: brightness),
+      textTheme: TextTheme(
+        bodyText1: TextStyle(color: Colors.white),
+      ),
+      scaffoldBackgroundColor: AppColors.backgroundColor,
       cupertinoOverrideTheme: CupertinoThemeData(
-        brightness: brightness,
         primaryColor: primaryColor,
       ),
     );
 
-    final cupertinoTheme =
-        MaterialBasedCupertinoThemeData(materialTheme: themeData);
-
-    return PlatformApp(
-      title: 'Philips TV remote controller',
-      ios: (_) => CupertinoAppData(theme: cupertinoTheme),
-      android: (_) => MaterialAppData(theme: themeData),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
     return ChangeNotifierProvider<MainModel>(
       create: (context) => MainModel(),
-      child: RootWidget(),
+      child: MaterialApp(
+        title: 'Philips TV remote controller',
+        theme: themeData,
+        home: RootWidget(),
+      ),
     );
   }
-}
-
-///////
-
-class NoSplashFactory extends InteractiveInkFeatureFactory {
-  const NoSplashFactory();
-
-  @override
-  InteractiveInkFeature create({
-    MaterialInkController controller,
-    RenderBox referenceBox,
-    Offset position,
-    Color color,
-    TextDirection textDirection,
-    bool containedInkWell = false,
-    rectCallback,
-    BorderRadius borderRadius,
-    ShapeBorder customBorder,
-    double radius,
-    onRemoved,
-  }) {
-    return NoSplash(
-      controller: controller,
-      referenceBox: referenceBox,
-    );
-  }
-}
-
-class NoSplash extends InteractiveInkFeature {
-  NoSplash({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-  })  : assert(controller != null),
-        assert(referenceBox != null),
-        super(
-          controller: controller,
-          referenceBox: referenceBox,
-        );
-
-  @override
-  void paintFeature(Canvas canvas, Matrix4 transform) {}
 }

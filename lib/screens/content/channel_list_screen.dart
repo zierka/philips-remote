@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/logic/models/channel.dart';
-import 'package:philips_remote/screens/content/channel_list_screen_model.dart';
-import 'package:philips_remote/widgets/list_item.dart';
-import 'package:philips_remote/widgets/control_button.dart';
-import 'package:philips_remote/widgets/my_platform_circular_progress_indicator.dart';
+import 'package:phimote/screens/content/channel_list_screen_model.dart';
+import 'package:phimote/widgets/list_item.dart';
+import 'package:phimote/widgets/widget_state_builder/widget_state_builder.dart';
 
 class ChannelListScreen extends StatefulWidget {
   @override
@@ -24,14 +22,14 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
     _searchFieldFocusNode = FocusNode();
 
     _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      if (!_model.isSearching && _scrollController.offset < -100) {
-        setState(() {
-          _model.isSearching = !_model.isSearching;
-        });
-        _searchFieldFocusNode.requestFocus();
-      }
-    });
+    // _scrollController.addListener(() {
+    //   if (!_model.isSearching && _scrollController.offset < -100) {
+    //     setState(() {
+    //       _model.isSearching = !_model.isSearching;
+    //     });
+    //     _searchFieldFocusNode.requestFocus();
+    //   }
+    // });
   }
 
   @override
@@ -44,8 +42,8 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PlatformScaffold(
-      appBar: PlatformAppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: AnimatedCrossFade(
           firstChild: PlatformTextField(
             // decoration: InputDecoration(hintText: "Search..."),
@@ -79,34 +77,23 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
         //   )
         // ],
       ),
-      body: FutureBuilder<List<Channel>>(
-        future: _model.channelList,
-        builder: ((context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.active:
-            case ConnectionState.waiting:
-              return Center(
-                child: MyPlatformCircularProgressIndicator(),
-              );
-            case ConnectionState.done:
-              if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-              return ListView.builder(
-                itemCount: _model.currentChannelList.length,
-                itemBuilder: (context, index) {
-                  final item = _model.currentChannelList[index];
-                  return ListItem(
-                    data: item,
-                    onTap: () => _model.changeToChannel(item),
-                    imageCacheManager: _model.imageCacheManager,
-                  );
-                },
-                controller: _scrollController,
-              );
-          }
-          return null; // unreachable
-        }),
-      ),
+      body: WidgetStateBuilder(
+          stream: _model.loadState,
+          onRetry: _model.reloadData,
+          builder: (context) {
+            return ListView.builder(
+              itemCount: _model.channelList.length,
+              itemBuilder: (context, index) {
+                final item = _model.channelList[index];
+                return ListItem(
+                  data: item,
+                  onTap: () => _model.changeToChannel(item),
+                  imageCacheManager: _model.imageCacheManager,
+                );
+              },
+              controller: _scrollController,
+            );
+          }),
     );
   }
 }

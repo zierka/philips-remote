@@ -1,5 +1,5 @@
-import 'package:philips_remote/logic/models/tv.dart';
-import 'package:philips_remote/util/utils.dart';
+import 'package:phimote/logic/models/tv.dart';
+import 'package:phimote/util/utils.dart';
 
 class PairRequest {
   TV tv;

@@ -1,6 +1,6 @@
-import 'package:philips_remote/data_access/network_client/network_client.dart';
-import 'package:philips_remote/logic/models/system.dart';
-import 'package:philips_remote/util/extensions/response.dart';
+import 'package:phimote/data_access/network_client/network_client.dart';
+import 'package:phimote/logic/models/system.dart';
+import 'package:phimote/util/extensions/response.dart';
 
 class SystemRepository {
   NetworkClient _client;

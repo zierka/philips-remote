@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:philips_remote/logic/models/tv.dart';
+import 'package:phimote/logic/models/tv.dart';
 
 part 'main_model_state.freezed.dart';
 

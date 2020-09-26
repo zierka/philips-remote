@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/logic/models/tv.dart';
-import 'package:philips_remote/data_access/device_discovery/device_discovery_upnp.dart';
-import 'package:philips_remote/data_access/network_client/network_client.dart';
+import 'package:phimote/logic/models/tv.dart';
+import 'package:phimote/data_access/device_discovery/device_discovery_upnp.dart';
+import 'package:phimote/data_access/network_client/network_client.dart';
 
 class ScanScreenOld extends StatefulWidget {
   @override

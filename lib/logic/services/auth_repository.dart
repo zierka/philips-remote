@@ -1,9 +1,9 @@
-import 'package:philips_remote/logic/models/auth/confirm_pair_response.dart';
-import 'package:philips_remote/logic/models/auth/pair_request.dart';
-import 'package:philips_remote/logic/models/auth/pair_response.dart';
-import 'package:philips_remote/logic/models/tv.dart';
-import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
-import 'package:philips_remote/util/extensions/response.dart';
+import 'package:phimote/logic/models/auth/confirm_pair_response.dart';
+import 'package:phimote/logic/models/auth/pair_request.dart';
+import 'package:phimote/logic/models/auth/pair_response.dart';
+import 'package:phimote/logic/models/tv.dart';
+import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
+import 'package:phimote/util/extensions/response.dart';
 
 class AuthRepository {
   EndpointNetworkClient _client;

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/screens/content/favorite_list_screen_model.dart';
-import 'package:philips_remote/widgets/list_item.dart';
-import 'package:philips_remote/widgets/my_platform_circular_progress_indicator.dart';
+import 'package:phimote/screens/content/favorite_list_screen_model.dart';
+import 'package:phimote/widgets/list_item.dart';
+import 'package:phimote/widgets/loading_indicator.dart';
 
 class FavoriteChannelListScreen extends StatefulWidget {
   @override
@@ -15,8 +14,8 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PlatformScaffold(
-      appBar: PlatformAppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: Text("Favorite channels"),
       ),
       body: FutureBuilder(
@@ -27,7 +26,7 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
             case ConnectionState.active:
             case ConnectionState.waiting:
               return Center(
-                child: MyPlatformCircularProgressIndicator(),
+                child: LoadingIndicator(),
               );
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');

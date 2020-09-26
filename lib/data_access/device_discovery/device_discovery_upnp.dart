@@ -1,8 +1,8 @@
-import 'package:philips_remote/logic/models/device_discovery/discovery_configuration.dart';
-import 'package:philips_remote/logic/models/system.dart';
-import 'package:philips_remote/logic/models/tv.dart';
-import 'package:philips_remote/data_access/network_client/network_client.dart';
-import 'package:philips_remote/logic/services/system_repository.dart';
+import 'package:phimote/logic/models/device_discovery/discovery_configuration.dart';
+import 'package:phimote/logic/models/system.dart';
+import 'package:phimote/logic/models/tv.dart';
+import 'package:phimote/data_access/network_client/network_client.dart';
+import 'package:phimote/logic/services/system_repository.dart';
 
 import 'package:upnp/upnp.dart' as upnp;
 

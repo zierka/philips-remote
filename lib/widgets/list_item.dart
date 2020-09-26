@@ -1,6 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/logic/services/image_cache_manager.dart';
+import 'package:phimote/logic/services/image_cache_manager.dart';
 
 class ListItemData {
   ListItemData(this._name, this._logoUrlEndpoint);
@@ -33,29 +32,29 @@ class ListItem extends StatelessWidget {
       ),
       child: Material(
         child: Ink(
-          // color: Colors.grey[800],
+          color: Colors.black,
           child: ListTile(
             title: Padding(
               padding: EdgeInsets.all(8),
               child: Text(data.name),
             ),
-            trailing: this.trailing ??
-                CachedNetworkImage(
-                  imageUrl: data.logoUrlEndpoint,
-                  cacheManager: imageCacheManager,
-                  imageBuilder: (context, imageProvider) => Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Image(
-                          image: imageProvider,
-                        ),
-                      ),
-                    ),
-                  ),
-                  fit: BoxFit.fill,
-                ),
+            //   trailing: this.trailing ??
+            //       CachedNetworkImage(
+            //         imageUrl: data.logoUrlEndpoint,
+            //         cacheManager: imageCacheManager,
+            //         imageBuilder: (context, imageProvider) => Container(
+            //           child: ClipRRect(
+            //             borderRadius: BorderRadius.circular(16.0),
+            //             child: Padding(
+            //               padding: EdgeInsets.all(4),
+            //               child: Image(
+            //                 image: imageProvider,
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //         fit: BoxFit.fill,
+            //       ),
             onTap: onTap,
           ),
         ),
