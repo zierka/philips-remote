@@ -41,6 +41,7 @@ class _VolumeControlState extends State<VolumeControl> {
             ),
             Expanded(
               child: Material(
+                color: Colors.transparent,
                 child: Slider(
                   activeColor: Colors.deepOrange,
                   inactiveColor: Colors.deepOrange.shade100,

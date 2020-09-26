@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/logic/models/input_key.dart';
 import 'package:philips_remote/screens/content/control_screen_model.dart';
 import 'package:philips_remote/widgets/control_button.dart';
@@ -19,7 +18,7 @@ class _ControlScreenState extends State<ControlScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PlatformScaffold(
+    return Scaffold(
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

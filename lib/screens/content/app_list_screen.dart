@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:philips_remote/logic/models/application.dart';
 import 'package:philips_remote/screens/content/app_list_model.dart';
 import 'package:philips_remote/widgets/list_item.dart';
-import 'package:philips_remote/widgets/my_platform_circular_progress_indicator.dart';
+import 'package:philips_remote/widgets/loading_indicator.dart';
 
 class AppListScreen extends StatefulWidget {
   @override
@@ -16,8 +14,8 @@ class _AppListScreenState extends State<AppListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PlatformScaffold(
-      appBar: PlatformAppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: Text("Applications"),
       ),
       body: FutureBuilder(
@@ -28,7 +26,7 @@ class _AppListScreenState extends State<AppListScreen> {
             case ConnectionState.active:
             case ConnectionState.waiting:
               return Center(
-                child: MyPlatformCircularProgressIndicator(),
+                child: LoadingIndicator(),
               );
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');

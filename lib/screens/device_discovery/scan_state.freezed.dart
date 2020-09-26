@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'scan_state.dart';
 
@@ -12,11 +12,13 @@ T _$identity<T>(T value) => value;
 class _$ScanStateTearOff {
   const _$ScanStateTearOff();
 
+// ignore: unused_element
   Loading loading() {
     return const Loading();
   }
 
-  Data tvs(List<dynamic> tvs) {
+// ignore: unused_element
+  Data tvs(List<TV> tvs) {
     return Data(
       tvs,
     );
@@ -30,12 +32,12 @@ mixin _$ScanState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loading(),
-    @required Result tvs(List<dynamic> tvs),
+    @required Result tvs(List<TV> tvs),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loading(),
-    Result tvs(List<dynamic> tvs),
+    Result tvs(List<TV> tvs),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -104,7 +106,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loading(),
-    @required Result tvs(List<dynamic> tvs),
+    @required Result tvs(List<TV> tvs),
   }) {
     assert(loading != null);
     assert(tvs != null);
@@ -115,7 +117,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loading(),
-    Result tvs(List<dynamic> tvs),
+    Result tvs(List<TV> tvs),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -158,7 +160,7 @@ abstract class Loading implements ScanState {
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
-  $Res call({List<dynamic> tvs});
+  $Res call({List<TV> tvs});
 }
 
 class _$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
@@ -174,7 +176,7 @@ class _$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
     Object tvs = freezed,
   }) {
     return _then(Data(
-      tvs == freezed ? _value.tvs : tvs as List<dynamic>,
+      tvs == freezed ? _value.tvs : tvs as List<TV>,
     ));
   }
 }
@@ -183,7 +185,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   const _$Data(this.tvs) : assert(tvs != null);
 
   @override
-  final List<dynamic> tvs;
+  final List<TV> tvs;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -218,7 +220,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loading(),
-    @required Result tvs(List<dynamic> tvs),
+    @required Result tvs(List<TV> tvs),
   }) {
     assert(loading != null);
     assert(tvs != null);
@@ -229,7 +231,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loading(),
-    Result tvs(List<dynamic> tvs),
+    Result tvs(List<TV> tvs),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -266,8 +268,8 @@ class _$Data with DiagnosticableTreeMixin implements Data {
 }
 
 abstract class Data implements ScanState {
-  const factory Data(List<dynamic> tvs) = _$Data;
+  const factory Data(List<TV> tvs) = _$Data;
 
-  List<dynamic> get tvs;
+  List<TV> get tvs;
   $DataCopyWith<Data> get copyWith;
 }

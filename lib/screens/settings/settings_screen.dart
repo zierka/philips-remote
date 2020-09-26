@@ -35,10 +35,10 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     _model.mainModel = Provider.of<MainModel>(context, listen: false);
 
-    return PlatformScaffold(
-      appBar: PlatformAppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: Text("Settings"),
-        trailingActions: <Widget>[
+        actions: <Widget>[
           FlatButton(
             textColor: Theme.of(context).errorColor,
             child: Text("Unpair"),
