@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:phimote/constants/constants.dart';
 import 'package:phimote/screens/content/channel_list_screen.dart';
 import 'package:phimote/screens/content/control_screen.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
@@ -39,10 +42,18 @@ class _ContentScreenState extends State<ContentScreen> {
           SettingsScreen(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedTabIndex,
-        items: items,
-        onTap: (index) => onTabTapped(index),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          highlightColor: Platform.isIOS ? Colors.transparent : null,
+        ),
+        child: BottomNavigationBar(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          backgroundColor: AppColors.backgroundColor,
+          currentIndex: _selectedTabIndex,
+          items: items,
+          onTap: (index) => onTabTapped(index),
+        ),
       ),
     );
   }

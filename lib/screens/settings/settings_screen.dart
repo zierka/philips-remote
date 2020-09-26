@@ -15,18 +15,28 @@ class SettingsScreen extends StatelessWidget {
   _action(int index, BuildContext context) {
     switch (index) {
       case 0:
-        Navigator.of(context).push(platformPageRoute(
-            context: context,
+        Navigator.push(
+          context,
+          MaterialPageRoute(
             builder: (context) {
               return ScanScreenOld();
-            }));
+            },
+          ),
+        );
         break;
       case 1:
-        Navigator.of(context).push(platformPageRoute(
-            context: context,
+        Navigator.push(
+          context,
+          MaterialPageRoute(
             builder: (context) {
-              return PairScreen();
-            }));
+              return PairScreen(
+                onPairFinished: () {
+                  // TODO: Implement [Erik]
+                },
+              );
+            },
+          ),
+        );
         break;
     }
   }

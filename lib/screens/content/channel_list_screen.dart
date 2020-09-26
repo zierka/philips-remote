@@ -12,16 +12,16 @@ class ChannelListScreen extends StatefulWidget {
 class _ChannelListScreenState extends State<ChannelListScreen> {
   final _model = ChannelListScreenModel();
 
-  FocusNode _searchFieldFocusNode;
-  ScrollController _scrollController;
+  // FocusNode _searchFieldFocusNode;
+  // ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
 
-    _searchFieldFocusNode = FocusNode();
+    // _searchFieldFocusNode = FocusNode();
 
-    _scrollController = ScrollController();
+    // _scrollController = ScrollController();
     // _scrollController.addListener(() {
     //   if (!_model.isSearching && _scrollController.offset < -100) {
     //     setState(() {
@@ -34,8 +34,8 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
 
   @override
   void dispose() {
-    _searchFieldFocusNode.dispose();
-    _scrollController.dispose();
+    // _searchFieldFocusNode.dispose();
+    // _scrollController.dispose();
 
     super.dispose();
   }
@@ -44,22 +44,23 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AnimatedCrossFade(
-          firstChild: PlatformTextField(
-            // decoration: InputDecoration(hintText: "Search..."),
-            focusNode: _searchFieldFocusNode,
-            onChanged: (string) {
-              setState(() {
-                _model.search(string);
-              });
-            },
-          ),
-          secondChild: Text("Channels"),
-          crossFadeState: _model.isSearching
-              ? CrossFadeState.showFirst
-              : CrossFadeState.showSecond,
-          duration: Duration(milliseconds: 100),
-        ),
+        title: Text("Channels"),
+        // title: AnimatedCrossFade(
+        //   firstChild: PlatformTextField(
+        //     // decoration: InputDecoration(hintText: "Search..."),
+        //     // focusNode: _searchFieldFocusNode,
+        //     onChanged: (string) {
+        //       setState(() {
+        //         _model.search(string);
+        //       });
+        //     },
+        //   ),
+        //   secondChild: Text("Channels"),
+        //   crossFadeState: _model.isSearching
+        //       ? CrossFadeState.showFirst
+        //       : CrossFadeState.showSecond,
+        //   duration: Duration(milliseconds: 100),
+        // ),
         // trailingActions: <Widget>[
         //   ControlButton(
         //     icon: Icon(_model.isSearching ? Icons.close : Icons.search),
@@ -91,7 +92,7 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
                   imageCacheManager: _model.imageCacheManager,
                 );
               },
-              controller: _scrollController,
+              // controller: _scrollController,
             );
           }),
     );

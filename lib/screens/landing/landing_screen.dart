@@ -26,12 +26,18 @@ class LandingScreen extends StatelessWidget {
   }
 }
 
+onPairFinished(BuildContext context) {
+  Navigator.of(context).popUntil((route) => route.isFirst);
+}
+
 onScanTapped(BuildContext context) {
-  Navigator.of(context).push(
-    platformPageRoute(
-      context: context,
-      builder: (context) {
-        return PairScreen();
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_context) {
+        return PairScreen(
+          onPairFinished: () => onPairFinished(_context),
+        );
       },
     ),
   );
