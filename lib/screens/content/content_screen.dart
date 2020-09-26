@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/screens/content/channel_list_screen.dart';
-import 'package:philips_remote/screens/content/control_screen.dart';
-import 'package:philips_remote/screens/settings/settings_screen.dart';
+import 'package:phimote/screens/content/channel_list_screen.dart';
+import 'package:phimote/screens/content/control_screen.dart';
+import 'package:phimote/screens/settings/settings_screen.dart';
 
 class ContentScreen extends StatefulWidget {
   @override

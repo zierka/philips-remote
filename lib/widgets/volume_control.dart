@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:philips_remote/logic/models/volume.dart';
-import 'package:philips_remote/widgets/control_button.dart';
+import 'package:phimote/logic/models/volume.dart';
+import 'package:phimote/widgets/control_button.dart';
 
 class VolumeControl extends StatefulWidget {
   final ValueChanged<double> onChanged;

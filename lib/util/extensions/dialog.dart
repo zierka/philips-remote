@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/constants/constants.dart';
+import 'package:phimote/constants/constants.dart';
 
 showTextDialog(String title, String message, BuildContext context) {
   showCustomDialog(title, Text(message), context);

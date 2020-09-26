@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/constants/constants.dart';
+import 'package:phimote/constants/constants.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController controller;

@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
-import 'package:philips_remote/logic/models/auth/session.dart';
-import 'package:philips_remote/data_access/network_client/network_client.dart';
+import 'package:phimote/logic/models/auth/session.dart';
+import 'package:phimote/data_access/network_client/network_client.dart';
 
 class EndpointNetworkClient extends NetworkClient {
   EndpointNetworkClient(Session session) : super.withSession(session);

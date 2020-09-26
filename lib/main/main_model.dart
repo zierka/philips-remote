@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:philips_remote/logic/models/auth/session.dart';
-import 'package:philips_remote/main/main_model_state.dart';
-import 'package:philips_remote/data_access/device_discovery/device_discovery.dart';
-import 'package:philips_remote/logic/services/image_cache_manager.dart';
-import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
-import 'package:philips_remote/data_access/network_client/network_client.dart';
-import 'package:philips_remote/data_access/persistence/preference_store.dart';
-import 'package:philips_remote/logic/services/commands_repository.dart';
-import 'package:philips_remote/logic/services/info_repository.dart';
+import 'package:phimote/logic/models/auth/session.dart';
+import 'package:phimote/main/main_model_state.dart';
+import 'package:phimote/data_access/device_discovery/device_discovery.dart';
+import 'package:phimote/logic/services/image_cache_manager.dart';
+import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
+import 'package:phimote/data_access/network_client/network_client.dart';
+import 'package:phimote/data_access/persistence/preference_store.dart';
+import 'package:phimote/logic/services/commands_repository.dart';
+import 'package:phimote/logic/services/info_repository.dart';
 
 class MainModel extends ChangeNotifier {
   MainModelState state;

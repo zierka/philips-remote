@@ -1,7 +1,7 @@
 import 'package:path/path.dart' as path;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
+import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'dart:async';
 
 class ImageCacheManager extends BaseCacheManager {

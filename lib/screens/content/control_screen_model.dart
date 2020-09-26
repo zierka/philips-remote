@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:philips_remote/logic/models/input_key.dart';
-import 'package:philips_remote/logic/services/commands_repository.dart';
-import 'package:philips_remote/widgets/gesture_pad.dart';
+import 'package:phimote/logic/models/input_key.dart';
+import 'package:phimote/logic/services/commands_repository.dart';
+import 'package:phimote/widgets/gesture_pad.dart';
 
 class ControlScreenModel {
   final _commandsRepo = GetIt.instance.get<CommandsRepository>();

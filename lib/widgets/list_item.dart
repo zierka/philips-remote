@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:philips_remote/logic/services/image_cache_manager.dart';
+import 'package:phimote/logic/services/image_cache_manager.dart';
 
 class ListItemData {
   ListItemData(this._name, this._logoUrlEndpoint);

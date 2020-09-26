@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:philips_remote/main/main_model.dart';
-import 'package:philips_remote/screens/content/content_screen.dart';
-import 'package:philips_remote/screens/landing/landing_screen.dart';
-import 'package:philips_remote/widgets/loading_indicator.dart';
+import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/content/content_screen.dart';
+import 'package:phimote/screens/landing/landing_screen.dart';
+import 'package:phimote/widgets/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class RootWidget extends StatelessWidget {

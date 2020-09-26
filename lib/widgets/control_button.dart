@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:philips_remote/constants/app_colors.dart';
+import 'package:phimote/constants/app_colors.dart';
 
 class ControlButton extends StatelessWidget {
   final Widget icon;

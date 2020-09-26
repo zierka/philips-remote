@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart' hide ErrorWidget;
-import 'package:philips_remote/widgets/widget_state_builder/widget_load_state.dart';
+import 'package:phimote/widgets/widget_state_builder/widget_load_state.dart';
 
 import 'empty_state_widget.dart';
 import 'error_state_widget.dart';

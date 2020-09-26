@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/constants/app_colors.dart';
+import 'package:phimote/constants/app_colors.dart';
 
 class TitleButton extends StatelessWidget {
   final String title;

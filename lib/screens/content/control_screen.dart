@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/logic/models/input_key.dart';
-import 'package:philips_remote/screens/content/control_screen_model.dart';
-import 'package:philips_remote/widgets/control_button.dart';
-import 'package:philips_remote/widgets/gesture_pad.dart';
-import 'package:philips_remote/widgets/volume_control.dart';
+import 'package:phimote/logic/models/input_key.dart';
+import 'package:phimote/screens/content/control_screen_model.dart';
+import 'package:phimote/widgets/control_button.dart';
+import 'package:phimote/widgets/gesture_pad.dart';
+import 'package:phimote/widgets/volume_control.dart';
 
 class ControlScreen extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:philips_remote/screens/content/favorite_list_screen_model.dart';
-import 'package:philips_remote/widgets/list_item.dart';
-import 'package:philips_remote/widgets/loading_indicator.dart';
+import 'package:phimote/screens/content/favorite_list_screen_model.dart';
+import 'package:phimote/widgets/list_item.dart';
+import 'package:phimote/widgets/loading_indicator.dart';
 
 class FavoriteChannelListScreen extends StatefulWidget {
   @override

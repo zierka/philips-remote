@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/constants/app_colors.dart';
-import 'package:philips_remote/logic/models/tv.dart';
-import 'package:philips_remote/main/main_model.dart';
-import 'package:philips_remote/screens/device_discovery/pair_screen_model.dart';
-import 'package:philips_remote/widgets/app_textfield.dart';
-import 'package:philips_remote/widgets/loading_indicator.dart';
-import 'package:philips_remote/widgets/title_button.dart';
+import 'package:phimote/constants/app_colors.dart';
+import 'package:phimote/logic/models/tv.dart';
+import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/device_discovery/pair_screen_model.dart';
+import 'package:phimote/widgets/app_textfield.dart';
+import 'package:phimote/widgets/loading_indicator.dart';
+import 'package:phimote/widgets/title_button.dart';
 import 'package:provider/provider.dart';
 
 class PairScreen extends StatefulWidget {

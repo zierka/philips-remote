@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:philips_remote/logic/models/application.dart';
-import 'package:philips_remote/screens/content/app_list_model.dart';
-import 'package:philips_remote/widgets/list_item.dart';
-import 'package:philips_remote/widgets/loading_indicator.dart';
+import 'package:phimote/logic/models/application.dart';
+import 'package:phimote/screens/content/app_list_model.dart';
+import 'package:phimote/widgets/list_item.dart';
+import 'package:phimote/widgets/loading_indicator.dart';
 
 class AppListScreen extends StatefulWidget {
   @override

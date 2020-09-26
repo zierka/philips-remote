@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/screens/content/channel_list_screen_model.dart';
-import 'package:philips_remote/widgets/list_item.dart';
-import 'package:philips_remote/widgets/widget_state_builder/widget_state_builder.dart';
+import 'package:phimote/screens/content/channel_list_screen_model.dart';
+import 'package:phimote/widgets/list_item.dart';
+import 'package:phimote/widgets/widget_state_builder/widget_state_builder.dart';
 
 class ChannelListScreen extends StatefulWidget {
   @override

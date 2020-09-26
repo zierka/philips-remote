@@ -1,2 +1,2 @@
-export 'package:philips_remote/constants/app_colors.dart';
-export 'package:philips_remote/constants/ui_constants.dart';
+export 'package:phimote/constants/app_colors.dart';
+export 'package:phimote/constants/ui_constants.dart';

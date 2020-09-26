@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:philips_remote/constants/app_colors.dart';
-import 'package:philips_remote/main/main_model.dart';
-import 'package:philips_remote/screens/root/root_widget.dart';
+import 'package:phimote/constants/app_colors.dart';
+import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/root/root_widget.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

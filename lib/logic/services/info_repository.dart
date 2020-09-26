@@ -1,10 +1,10 @@
-import 'package:philips_remote/logic/models/application.dart';
-import 'package:philips_remote/logic/models/channel.dart';
-import 'package:philips_remote/logic/models/favorite_channel.dart';
-import 'package:philips_remote/logic/models/volume.dart';
-import 'package:philips_remote/data_access/network_client/endpoint_network_client.dart';
-import 'package:philips_remote/data_access/persistence/cache.dart';
-import 'package:philips_remote/util/extensions/response.dart';
+import 'package:phimote/logic/models/application.dart';
+import 'package:phimote/logic/models/channel.dart';
+import 'package:phimote/logic/models/favorite_channel.dart';
+import 'package:phimote/logic/models/volume.dart';
+import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
+import 'package:phimote/data_access/persistence/cache.dart';
+import 'package:phimote/util/extensions/response.dart';
 
 class InfoRepository {
   EndpointNetworkClient _client;

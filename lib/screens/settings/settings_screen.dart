@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:philips_remote/main/main_model.dart';
-import 'package:philips_remote/screens/device_discovery/pair_screen.dart';
-import 'package:philips_remote/screens/device_discovery/scan_screen_old.dart';
-import 'package:philips_remote/screens/settings/settings_screen_model.dart';
-import 'package:philips_remote/widgets/list_item.dart';
+import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/device_discovery/pair_screen.dart';
+import 'package:phimote/screens/device_discovery/scan_screen_old.dart';
+import 'package:phimote/screens/settings/settings_screen_model.dart';
+import 'package:phimote/widgets/list_item.dart';
 import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {

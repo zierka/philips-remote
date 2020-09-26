@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:philips_remote/constants/constants.dart';
+import 'package:phimote/constants/constants.dart';
 
 import 'widget_load_state.dart';
 

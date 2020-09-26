@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:philips_remote/logic/services/api.dart';
+import 'package:phimote/logic/services/api.dart';
 
 part 'widget_load_state.freezed.dart';
 
