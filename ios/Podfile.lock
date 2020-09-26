@@ -1,6 +1,8 @@
 PODS:
   - Alamofire (5.2.1)
   - Flutter (1.0.0)
+  - flutter_vibrate (0.0.1):
+    - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -11,16 +13,14 @@ PODS:
   - sqflite (0.0.1):
     - Flutter
     - FMDB (~> 2.7.2)
-  - vibrate (0.0.1):
-    - Flutter
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
   - Flutter (from `Flutter`)
+  - flutter_vibrate (from `.symlinks/plugins/flutter_vibrate/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
-  - vibrate (from `.symlinks/plugins/vibrate/ios`)
 
 SPEC REPOS:
   trunk:
@@ -30,23 +30,23 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_vibrate:
+    :path: ".symlinks/plugins/flutter_vibrate/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
-  vibrate:
-    :path: ".symlinks/plugins/vibrate/ios"
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_vibrate: c0ca4ac994ff97c3f147f69865458bbc0cc3508b
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
-  vibrate: 967ba16b8bd87d2fa3646472bb10429f1927c32f
 
 PODFILE CHECKSUM: 7d6f661ad95d30c1dc49fe98cbb80d5544f36bb5
 
