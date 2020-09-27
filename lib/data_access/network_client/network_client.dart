@@ -25,7 +25,7 @@ class NetworkClient {
     }
 
     print(
-        ">> [NetworkClient] GET $url, credentials set ${payload["credentials"] == null ? "no" : "yes"}");
+        ">> [NetworkClient] GET $url, credentials set ${payload["credential"] == null ? "no" : "yes"}");
 
     final result = _networkMethodChannel.invokeMethod<Map>("get", payload);
 
