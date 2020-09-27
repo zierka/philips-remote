@@ -28,9 +28,9 @@ class AuthRepository {
 
       return response;
     } else {
-      print("error");
+      print("error $responseJson");
 
-      throw ("");
+      throw ("/pair/request returned failure");
     }
   }
 
