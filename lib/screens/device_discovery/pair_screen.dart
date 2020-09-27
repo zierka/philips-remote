@@ -12,7 +12,12 @@ import 'package:phimote/widgets/title_button.dart';
 import 'package:provider/provider.dart';
 
 class PairScreen extends StatefulWidget {
-  PairScreen({Key key}) : super(key: key);
+  final Function() onPairFinished;
+
+  PairScreen({
+    Key key,
+    @required this.onPairFinished,
+  }) : super(key: key);
 
   @override
   PairScreenState createState() => PairScreenState();
@@ -175,9 +180,8 @@ class PairScreenState extends State<PairScreen> {
   }
 
   onPinEntered(String pin) {
-    print("pin $pin");
-    Navigator.pop(context);
-
     _model.confirmPair(pin);
+
+    widget.onPairFinished();
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/main/main_model.dart';
 import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/screens/device_discovery/scan_screen_old.dart';
@@ -15,18 +14,28 @@ class SettingsScreen extends StatelessWidget {
   _action(int index, BuildContext context) {
     switch (index) {
       case 0:
-        Navigator.of(context).push(platformPageRoute(
-            context: context,
+        Navigator.push(
+          context,
+          MaterialPageRoute(
             builder: (context) {
               return ScanScreenOld();
-            }));
+            },
+          ),
+        );
         break;
       case 1:
-        Navigator.of(context).push(platformPageRoute(
-            context: context,
+        Navigator.push(
+          context,
+          MaterialPageRoute(
             builder: (context) {
-              return PairScreen();
-            }));
+              return PairScreen(
+                onPairFinished: () {
+                  // TODO: Implement [Erik]
+                },
+              );
+            },
+          ),
+        );
         break;
     }
   }

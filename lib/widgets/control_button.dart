@@ -8,9 +8,9 @@ class ControlButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   ControlButton({
-    this.icon,
+    @required this.icon,
     this.color,
-    this.onPressed,
+    @required this.onPressed,
   });
 
   @override

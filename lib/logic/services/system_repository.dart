@@ -1,11 +1,11 @@
-import 'package:phimote/data_access/network_client/network_client.dart';
+import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'package:phimote/logic/models/system.dart';
 import 'package:phimote/util/extensions/response.dart';
 
 class SystemRepository {
-  NetworkClient _client;
+  EndpointNetworkClient _client;
 
-  SystemRepository(NetworkClient client) {
+  SystemRepository(EndpointNetworkClient client) {
     _client = client;
   }
 

@@ -56,7 +56,7 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
                     }
                 }
 
-                val credentials = payload["credentials"]
+                val credentials = payload["credential"]
 
                 if (credentials != null) {
                     val credentials1 = credentials as Map<String, String>

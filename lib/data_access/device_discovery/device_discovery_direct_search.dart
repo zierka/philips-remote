@@ -1,18 +1,14 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:http/http.dart';
-import 'dart:convert' as convert;
 import 'package:phimote/logic/models/device_discovery/discovery_configuration.dart';
-import 'package:phimote/logic/models/system.dart';
 import 'package:phimote/logic/models/tv.dart';
-import 'package:phimote/data_access/network_client/network_client.dart';
 import 'package:ping_discover_network/ping_discover_network.dart';
 
-/// Alternative discovery method
-class DeviceDiscoveryDirectSearch {
-  NetworkClient _client;
+import 'device_discovery_mixin.dart';
 
-  DeviceDiscoveryDirectSearch(this._client);
+/// Alternative discovery method
+class DeviceDiscoveryDirectSearch with DeviceDiscoveryMixin {
+  DeviceDiscoveryDirectSearch();
 
   Future<List<TV>> getTVs() async {
     print(">> searching for tvs with direct search...");
@@ -78,59 +74,8 @@ class DeviceDiscoveryDirectSearch {
   }
 
   Future<TV> _getDeviceDetails(TVCandidate2 candidate) async {
-    for (int apiVersion in DiscoveryConfiguration.apiVersions) {
-      final _candidate = TVCandidate(ip: candidate.ip);
+    final _candidate = TVCandidate(ip: candidate.ip);
 
-      final tv = TV(
-        protocol: DiscoveryConfiguration.nonAndroid.scheme,
-        ip: _candidate.ip,
-        port: DiscoveryConfiguration.nonAndroid.port,
-        apiVersion: apiVersion,
-        name: _candidate.name,
-        friendlyName: _candidate.friendlyName,
-      );
-
-      final url = tv.baseUrl + "system";
-
-      Response response;
-
-      try {
-        response = await _client.get(url);
-      } catch (e) {
-        continue;
-      }
-
-      final responseJson = convert.json.decode(response.body);
-      final system = System.fromJson(responseJson);
-
-      final apiVersion1 = system.apiVersion.major;
-      final name = system.name;
-
-      tv.friendlyName = name;
-      tv.name = "";
-
-      if (system.featuring.systemFeatures.pairingType ==
-          "digest_auth_pairing") {
-        return TV(
-          protocol: DiscoveryConfiguration.android.scheme,
-          ip: tv.ip,
-          port: DiscoveryConfiguration.android.port,
-          apiVersion: apiVersion1,
-          name: tv.name,
-          friendlyName: tv.friendlyName,
-        );
-      } else {
-        return TV(
-          protocol: DiscoveryConfiguration.nonAndroid.scheme,
-          ip: tv.ip,
-          port: DiscoveryConfiguration.nonAndroid.port,
-          apiVersion: apiVersion1,
-          name: tv.name,
-          friendlyName: tv.friendlyName,
-        );
-      }
-    }
-
-    return null;
+    return getDeviceDetails(_candidate);
   }
 }

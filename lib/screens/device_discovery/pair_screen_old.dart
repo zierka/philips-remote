@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:phimote/logic/models/auth/confirm_pair_response.dart';
 import 'package:phimote/logic/models/auth/pair_response.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
 
@@ -40,7 +39,7 @@ class _MyHomePageState extends State<PairScreenOld> {
             print("pin $pin");
             Navigator.pop(context);
 
-            final confirmPair = ConfirmPairRequest(response, pin);
+            // final confirmPair = ConfirmPairRequest(response, pin);
 
             // AuthService.confirmPair(confirmPair).then((_) {
             //   print("confirm pair done");

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/widgets/title_button.dart';
 
@@ -26,12 +25,18 @@ class LandingScreen extends StatelessWidget {
   }
 }
 
+onPairFinished(BuildContext context) {
+  Navigator.of(context).popUntil((route) => route.isFirst);
+}
+
 onScanTapped(BuildContext context) {
-  Navigator.of(context).push(
-    platformPageRoute(
-      context: context,
-      builder: (context) {
-        return PairScreen();
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_context) {
+        return PairScreen(
+          onPairFinished: () => onPairFinished(_context),
+        );
       },
     ),
   );

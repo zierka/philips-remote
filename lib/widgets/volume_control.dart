@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/volume.dart';
 import 'package:phimote/widgets/control_button.dart';
 
@@ -10,8 +11,8 @@ class VolumeControl extends StatefulWidget {
 
   VolumeControl({
     this.onChanged,
-    this.onVolumeDownPressed,
-    this.onVolumeUpPressed,
+    @required this.onVolumeDownPressed,
+    @required this.onVolumeUpPressed,
     key,
   }) : super(key: key);
 
@@ -27,7 +28,7 @@ class _VolumeControlState extends State<VolumeControl> {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16),
+        padding: const EdgeInsets.symmetric(horizontal: Paddings.x2),
         child: Row(
           children: <Widget>[
             ControlButton(

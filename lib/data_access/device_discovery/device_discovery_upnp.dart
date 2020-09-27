@@ -1,23 +1,17 @@
-import 'package:phimote/logic/models/device_discovery/discovery_configuration.dart';
-import 'package:phimote/logic/models/system.dart';
 import 'package:phimote/logic/models/tv.dart';
-import 'package:phimote/data_access/network_client/network_client.dart';
-import 'package:phimote/logic/services/system_repository.dart';
-
 import 'package:upnp/upnp.dart' as upnp;
+import 'device_discovery_mixin.dart';
 
 /// Discovers TV's on the local network.
 /// - searches for upnp devices
 /// - gets device details
 /// - for every device makes a request with all the known api versions
 /// - for the ones that responds with 200, detemine port and scheme
-class DeviceDiscoveryUpnp {
+class DeviceDiscoveryUpnp with DeviceDiscoveryMixin {
   upnp.DeviceDiscoverer _discoverer;
-  NetworkClient _client;
 
-  DeviceDiscoveryUpnp(NetworkClient client) {
+  DeviceDiscoveryUpnp() {
     _discoverer = upnp.DeviceDiscoverer();
-    _client = client;
   }
 
   Future<List<TV>> getTVs() async {
@@ -25,10 +19,17 @@ class DeviceDiscoveryUpnp {
 
     final candidates = await _getCandidates();
 
+    print("found candidate: $candidates");
+
     List<TV> tvs = [];
 
     for (TVCandidate candidate in candidates) {
-      final tv = await _getDeviceDetails(candidate);
+      print("get details for candidate ${candidate.ip}");
+
+      final tv = await getDeviceDetails(candidate);
+
+      print("details for candidate ${candidate.ip}: $tv");
+
       if (tv != null) {
         tvs.add(tv);
       }
@@ -51,53 +52,5 @@ class DeviceDiscoveryUpnp {
     });
 
     return candidates.toList();
-  }
-
-  Future<TV> _getDeviceDetails(TVCandidate candidate) async {
-    for (int apiVersion in DiscoveryConfiguration.apiVersions) {
-      final tv = TV(
-        protocol: DiscoveryConfiguration.nonAndroid.scheme,
-        ip: candidate.ip,
-        port: DiscoveryConfiguration.nonAndroid.port,
-        apiVersion: apiVersion,
-        name: candidate.name,
-        friendlyName: candidate.friendlyName,
-      );
-
-      final systemRepo = SystemRepository(_client);
-
-      System system;
-
-      try {
-        system = await systemRepo.system();
-      } catch (e) {
-        continue;
-      }
-
-      final apiVersion1 = system.apiVersion.major;
-
-      if (system.featuring.systemFeatures.pairingType ==
-          "digest_auth_pairing") {
-        return TV(
-          protocol: DiscoveryConfiguration.android.scheme,
-          ip: tv.ip,
-          port: DiscoveryConfiguration.android.port,
-          apiVersion: apiVersion1,
-          name: tv.name,
-          friendlyName: tv.friendlyName,
-        );
-      } else {
-        return TV(
-          protocol: DiscoveryConfiguration.nonAndroid.scheme,
-          ip: tv.ip,
-          port: DiscoveryConfiguration.nonAndroid.port,
-          apiVersion: apiVersion1,
-          name: tv.name,
-          friendlyName: tv.friendlyName,
-        );
-      }
-    }
-
-    return null;
   }
 }

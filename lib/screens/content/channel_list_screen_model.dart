@@ -19,20 +19,9 @@ class ChannelListScreenModel {
 
   List<Channel> channelList;
 
-  // List<Channel> _fullChannelList;
-  // List<Channel> currentChannelList;
-
   var isSearching = false;
 
   ChannelListScreenModel() {
-    // channelList = _channelList();
-    // _fullChannelList = [];
-    // currentChannelList = [];
-
-    // channelList.then((channels) {
-    //   _fullChannelList = channels;
-    //   currentChannelList = channels;
-    // });
     _loadData();
   }
 
@@ -50,15 +39,7 @@ class ChannelListScreenModel {
     _loadData();
   }
 
-  search(String query) {
-    // currentChannelList = _fullChannelList.where((channel) {
-    //   return channel.name.contains(query);
-    // });
-  }
-
-  // Future<List<Channel>> _channelList() {
-  //   return;
-  // }
+  search(String query) {}
 
   changeToChannel(Channel channel) {
     _commandsRepo.changeToChannel(channel);

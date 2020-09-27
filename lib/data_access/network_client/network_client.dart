@@ -25,7 +25,7 @@ class NetworkClient {
     }
 
     print(
-        ">> [NetworkClient] GET $url, credentials set ${payload["credentials"] == null ? "no" : "yes"}");
+        ">> [NetworkClient] GET $url, credentials set ${payload["credential"] == null ? "no" : "yes"}");
 
     final result = _networkMethodChannel.invokeMethod<Map>("get", payload);
 
@@ -51,14 +51,14 @@ class NetworkClient {
     return _handleResult(result);
   }
 
-  Future<Response> _handleResult(Future<dynamic> result) {
-    return result.then((value) {
-      if (value["status"] == "failure") throw (value["error"]);
+  Future<Response> _handleResult(Future<dynamic> result) async {
+    final value = await result;
 
-      final responseBody = value["result"];
-      Response response = Response.bytes(responseBody, 200);
+    if (value["status"] == "failure") throw (value["error"]);
 
-      return Future.value(response);
-    });
+    final responseBody = value["result"];
+    Response response = Response.bytes(responseBody, 200);
+
+    return response;
   }
 }

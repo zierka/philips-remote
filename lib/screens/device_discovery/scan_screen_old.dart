@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phimote/logic/models/tv.dart';
-import 'package:phimote/data_access/device_discovery/device_discovery_upnp.dart';
-import 'package:phimote/data_access/network_client/network_client.dart';
 
 class ScanScreenOld extends StatefulWidget {
   @override
@@ -32,11 +30,11 @@ class _ScanScreenOldState extends State<ScanScreenOld> {
                     tvs = null;
                   });
 
-                  DeviceDiscoveryUpnp(NetworkClient()).getTVs().then((tvs) {
-                    setState(() {
-                      this.tvs = tvs;
-                    });
-                  });
+                  // DeviceDiscoveryUpnp(NetworkClient()).getTVs().then((tvs) {
+                  //   setState(() {
+                  //     this.tvs = tvs;
+                  //   });
+                  // });
                 },
               ),
             ),
