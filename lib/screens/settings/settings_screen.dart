@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/main/main_model.dart';
 import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/screens/device_discovery/scan_screen_old.dart';

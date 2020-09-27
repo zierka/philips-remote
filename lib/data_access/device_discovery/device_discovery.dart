@@ -1,15 +1,12 @@
 import 'package:phimote/logic/models/tv.dart';
 import 'package:phimote/data_access/device_discovery/device_discovery_direct_search.dart';
 import 'package:phimote/data_access/device_discovery/device_discovery_upnp.dart';
-import 'package:phimote/data_access/network_client/network_client.dart';
 
 class DeviceDiscovery {
-  NetworkClient _client;
-
-  DeviceDiscovery(this._client);
+  DeviceDiscovery();
 
   Future<List<TV>> getTVs() async {
-    final upnp = DeviceDiscoveryUpnp(_client);
+    final upnp = DeviceDiscoveryUpnp();
 
     final tvs = await upnp.getTVs();
 
@@ -17,7 +14,7 @@ class DeviceDiscovery {
       return tvs;
     }
 
-    final directSearch = DeviceDiscoveryDirectSearch(_client);
+    final directSearch = DeviceDiscoveryDirectSearch();
 
     final tvs2 = await directSearch.getTVs();
 

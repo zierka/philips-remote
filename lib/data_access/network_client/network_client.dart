@@ -51,14 +51,14 @@ class NetworkClient {
     return _handleResult(result);
   }
 
-  Future<Response> _handleResult(Future<dynamic> result) {
-    return result.then((value) {
-      if (value["status"] == "failure") throw (value["error"]);
+  Future<Response> _handleResult(Future<dynamic> result) async {
+    final value = await result;
 
-      final responseBody = value["result"];
-      Response response = Response.bytes(responseBody, 200);
+    if (value["status"] == "failure") throw (value["error"]);
 
-      return Future.value(response);
-    });
+    final responseBody = value["result"];
+    Response response = Response.bytes(responseBody, 200);
+
+    return response;
   }
 }

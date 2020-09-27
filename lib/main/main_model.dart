@@ -5,7 +5,6 @@ import 'package:phimote/main/main_model_state.dart';
 import 'package:phimote/data_access/device_discovery/device_discovery.dart';
 import 'package:phimote/logic/services/image_cache_manager.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
-import 'package:phimote/data_access/network_client/network_client.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
 import 'package:phimote/logic/services/commands_repository.dart';
 import 'package:phimote/logic/services/info_repository.dart';
@@ -82,10 +81,8 @@ class MainModel extends ChangeNotifier {
   _registerGeneralServices() {
     final getIt = GetIt.instance;
 
-    final networkClient = NetworkClient();
-
     getIt.registerLazySingleton<DeviceDiscovery>(
-      () => DeviceDiscovery(networkClient),
+      () => DeviceDiscovery(),
     );
   }
 

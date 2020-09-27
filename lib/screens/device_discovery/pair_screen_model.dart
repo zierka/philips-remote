@@ -21,17 +21,18 @@ class PairScreenModel extends ChangeNotifier {
   DeviceDiscovery _deviceDiscovery = GetIt.instance.get<DeviceDiscovery>();
   AuthRepository _authRepository;
 
-  scanTapped() {
+  scanTapped() async {
     print(">> scanning...");
 
     state = ScanState.loading();
     notifyListeners();
 
-    _deviceDiscovery.getTVs().then((tvs) {
-      state = ScanState.tvs(tvs);
-      print(tvs);
-      notifyListeners();
-    });
+    final tvs = await _deviceDiscovery.getTVs();
+
+    state = ScanState.tvs(tvs);
+    print(tvs);
+
+    notifyListeners();
   }
 
   Future<void> tvSelected(TV tv) async {
@@ -54,8 +55,10 @@ class PairScreenModel extends ChangeNotifier {
     print(">> confirm pairing pin $pin");
 
     // update auth repo with a networking client that has session (credential) info
-    final session =
-        Session(tv: _currentlyPairingTV, credential: _pairResponse.credential);
+    final session = Session(
+      tv: _currentlyPairingTV,
+      credential: _pairResponse.credential,
+    );
     final client = EndpointNetworkClient(session);
     _authRepository = AuthRepository(client);
 

@@ -20,7 +20,7 @@ class PairRequest {
     deviceSpec = {
       "device_name": "heliotrope",
       "device_os": "Android",
-      "app_name": "Rhemote",
+      "app_name": "Phimote",
       "type": "native",
       "app_id": "app.id",
       "id": deviceId,
