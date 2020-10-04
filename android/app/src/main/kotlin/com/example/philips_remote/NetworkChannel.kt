@@ -9,11 +9,13 @@ import com.burgstaller.okhttp.CachingAuthenticatorDecorator
 import com.burgstaller.okhttp.digest.CachingAuthenticator
 import com.burgstaller.okhttp.digest.Credentials
 import com.burgstaller.okhttp.digest.DigestAuthenticator
+import dev.flutter.pigeon.Pigeon
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import okio.IOException
+//import java.io.IOException
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import java.util.concurrent.ConcurrentHashMap
@@ -23,11 +25,12 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 
-class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
-    private val CHANNEL_NAME = "izerik.dev/network"
+class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeon.NetworkChannelApiRequest {
     private val SHARED_PREFERENCES_NAME = "FlutterSharedPreferences"
     private val sharedPref: SharedPreferences
     private var client: OkHttpClient
+
+    private val responseChannel: Pigeon.NetworkChannelApiResponse
 
     init {
         this.sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -35,95 +38,118 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) {
             ignoreAllSSLErrors()
         }.build()
 
-        MethodChannel(binaryMessenger, CHANNEL_NAME).setMethodCallHandler { call, result ->
+        responseChannel = Pigeon.NetworkChannelApiResponse(binaryMessenger)
 
-            val callMethod = call.method
+        Pigeon.NetworkChannelApiRequest.setup(binaryMessenger, this)
+    }
 
-            if (call.method == "get" || call.method == "post") {
-                val method = call.method
 
-                val payload = call.arguments as Map<String, Any>
+    override fun sendRequest(arg: Pigeon.ChannelRequest?) {
 
-                val url = payload["url"] as String
+        val method = arg?.method
 
-                var request: Request = Request.Builder().url(url).get().build()
+        if (method != "get" && method != "post") {
+            return
+        }
 
-                if (method == "post") {
-                    val body = payload["body"]
-                    if (body is String) {
-                        var postBody: RequestBody = body.toRequestBody()
-                        request = request.newBuilder().post(postBody).build()
-                    }
+        val payload = arg.payload
+
+        val url = payload.url
+
+        var request: Request = Request.Builder().url(url).get().build()
+
+        if (method == "post") {
+            val body = payload.body
+            val postBody: RequestBody = body.toRequestBody()
+            request = request.newBuilder().post(postBody).build()
+        }
+
+        val credentials = payload.credential
+
+        if (credentials != null &&
+                credentials.username != null && credentials.username.isNotEmpty() &&
+                credentials.password != null && credentials.password.isNotEmpty())
+        {
+            val user = credentials.username
+            val pass = credentials.password
+
+            val credentials1 = Credentials(user, pass)
+            val authenticator = DigestAuthenticator(credentials1)
+            val authCache: Map<String, CachingAuthenticator> = ConcurrentHashMap()
+
+            client = this.client.newBuilder()
+                    .authenticator(CachingAuthenticatorDecorator(authenticator, authCache))
+                    .addInterceptor(AuthenticationCacheInterceptor(authCache))
+                    .build()
+        }
+
+        val channelResponse = Pigeon.ChannelResponse()
+        channelResponse.id = arg.id
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+
+                val _error = Pigeon.Error()
+                _error.error = e.toString()
+                _error.code = -1
+
+                channelResponse.status = "failure"
+                channelResponse.error = _error
+
+                Handler(Looper.getMainLooper()).post {
+                    responseChannel.onResult(channelResponse) { }
                 }
+            }
 
-                val credentials = payload["credential"]
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    if (response.isSuccessful) {
+                        val payloadData = response.body!!.bytes()
 
-                if (credentials != null) {
-                    val credentials1 = credentials as Map<String, String>
+                        channelResponse.status = "success"
+                        channelResponse.result = payloadData
 
-                    val user = credentials1["username"]
-                    val pass = credentials1["password"]
+                        // specify dummy error as it cant be null on the android side
+                        val _error = Pigeon.Error()
+                        _error.error = ""
+                        _error.code = -1
 
-                    val credentials = Credentials(user, pass)
-                    val authenticator = DigestAuthenticator(credentials)
-                    val authCache: Map<String, CachingAuthenticator> = ConcurrentHashMap()
-
-                    client = this.client.newBuilder()
-                            .authenticator(CachingAuthenticatorDecorator(authenticator, authCache))
-                            .addInterceptor(AuthenticationCacheInterceptor(authCache))
-                            .build()
-                }
-
-                client.newCall(request).enqueue(object : Callback {
-                    override fun onFailure(call: Call, e: IOException) {
-                        val payload = mapOf<String, Any>("status" to "failure", "error" to -1)
+                        channelResponse.error = _error
 
                         Handler(Looper.getMainLooper()).post {
-                            result.success(payload)
+                            responseChannel.onResult(channelResponse) { }
+                        }
+                    } else {
+                        val _error = Pigeon.Error()
+                        _error.error = response.body!!.string()
+                        _error.code = response.code.toLong()
+
+                        channelResponse.status = "failure"
+                        channelResponse.error = _error
+
+                        Handler(Looper.getMainLooper()).post {
+                            responseChannel.onResult(channelResponse) { }
                         }
                     }
-
-                    override fun onResponse(call: Call, response: Response) {
-                        response.use {
-                            if (response.isSuccessful) {
-                                val payloadResult = response.body!!.bytes()
-                                val payload = mapOf<String, Any>("status" to "success", "result" to payloadResult!!)
-
-                                Handler(Looper.getMainLooper()).post {
-                                    result.success(payload)
-                                }
-                            } else {
-                                val errorBodyString = response.body!!.string()
-                                val error = mapOf<String, Any>("error" to errorBodyString, "code" to response.code)
-                                val payload = mapOf<String, Any>("status" to "failure", "error" to error)
-
-                                Handler(Looper.getMainLooper()).post {
-                                    result.success(payload)
-                                }
-                            }
-                        }
-                    }
-                })
-            } else {
-                result.notImplemented()
+                }
             }
-        }
+        })
+    }
+}
+
+private fun OkHttpClient.Builder.ignoreAllSSLErrors(): OkHttpClient.Builder {
+    val naiveTrustManager = object : X509TrustManager {
+        override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+        override fun checkClientTrusted(certs: Array<X509Certificate>, authType: String) = Unit
+        override fun checkServerTrusted(certs: Array<X509Certificate>, authType: String) = Unit
     }
 
-    private fun OkHttpClient.Builder.ignoreAllSSLErrors(): OkHttpClient.Builder {
-        val naiveTrustManager = object : X509TrustManager {
-            override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
-            override fun checkClientTrusted(certs: Array<X509Certificate>, authType: String) = Unit
-            override fun checkServerTrusted(certs: Array<X509Certificate>, authType: String) = Unit
-        }
+    val insecureSocketFactory = SSLContext.getInstance("TLSv1.2").apply {
+        val trustAllCerts = arrayOf<TrustManager>(naiveTrustManager)
+        init(null, trustAllCerts, SecureRandom())
+    }.socketFactory
 
-        val insecureSocketFactory = SSLContext.getInstance("TLSv1.2").apply {
-            val trustAllCerts = arrayOf<TrustManager>(naiveTrustManager)
-            init(null, trustAllCerts, SecureRandom())
-        }.socketFactory
-
-        sslSocketFactory(insecureSocketFactory, naiveTrustManager)
-        hostnameVerifier(HostnameVerifier { _, _ -> true })
-        return this
-    }
+    sslSocketFactory(insecureSocketFactory, naiveTrustManager)
+    hostnameVerifier(HostnameVerifier { _, _ -> true })
+    return this
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0398E6CC2520DE0D005857DD /* pigeon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0398E6CB2520DE0D005857DD /* pigeon.m */; };
 		03EAEEFE2401CAF900580254 /* NetworkChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EAEEFD2401CAF900580254 /* NetworkChannel.swift */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -31,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0398E6CA2520DE0D005857DD /* pigeon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pigeon.h; sourceTree = "<group>"; };
+		0398E6CB2520DE0D005857DD /* pigeon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pigeon.m; sourceTree = "<group>"; };
 		03EAEEFD2401CAF900580254 /* NetworkChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChannel.swift; sourceTree = "<group>"; };
 		04BBE62BF670CFB7B64A0978 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 		03EAEEFC2401CACC00580254 /* Channels */ = {
 			isa = PBXGroup;
 			children = (
+				0398E6CA2520DE0D005857DD /* pigeon.h */,
+				0398E6CB2520DE0D005857DD /* pigeon.m */,
 				03EAEEFD2401CAF900580254 /* NetworkChannel.swift */,
 			);
 			path = Channels;
@@ -306,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				0398E6CC2520DE0D005857DD /* pigeon.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				03EAEEFE2401CAF900580254 /* NetworkChannel.swift in Sources */,
 			);
