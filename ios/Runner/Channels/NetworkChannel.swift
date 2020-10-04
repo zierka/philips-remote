@@ -9,82 +9,97 @@
 import Foundation
 import Alamofire
 
-private let channelName = "izerik.dev/network"
-
-class NetworkChannel {
-    private let session: Session
-    private let methodChannel: FlutterMethodChannel
+class NetworkChannel: NetworkChannelApiRequest {
+    
+    private let session: Session    
+    private let responseChannel: NetworkChannelApiResponse
     
     init(binaryMessenger: FlutterBinaryMessenger) {
         let manager = CustomServerTrustManager(evaluators: [:])
         
         session = Session(configuration: URLSessionConfiguration.af.default, delegate: SessionDelegate(), rootQueue: DispatchQueue(label: "org.alamofire.session.rootQueue"), serverTrustManager: manager)
+
+        responseChannel = NetworkChannelApiResponse(binaryMessenger: binaryMessenger)
         
-        methodChannel = FlutterMethodChannel(name: channelName, binaryMessenger: binaryMessenger)
-        
-        setupChannel()
+        NetworkChannelApiRequestSetup(binaryMessenger, self)
     }
     
-    private func setupChannel() {
-        methodChannel.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
-            guard let self = self else { return }
-            
-            print(">> host >> \(call.method) \(call.arguments)")
-            
-            if call.method == "get" || call.method == "post" {
-                let method = HTTPMethod(rawValue: call.method.uppercased())
-            
-                let payload = call.arguments as! [String:Any]
+    
+    func send(_ input: ChannelRequest, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
+        
+        guard let method = input.method else { return }
+        guard method == "get" || method == "post" else { return }
+        
+        guard let payload = input.payload else { return }
+        guard let url = payload.url else { return }
+        
+        let httpMethod = HTTPMethod(rawValue: method.uppercased())
+        
+        var request = try! URLRequest(url: url, method: httpMethod)
+        
+        switch httpMethod {
+        case .get:
+            break
+        case .post:
+            if let body = payload.body {
+                request.httpBody = body.data(using: .utf8)
+            }
+        default:
+            break
+        }
+        
+        /*
+         status: success/failure
+         reault: response body/error code
+         */
+        
+        var dataRequest = self.session.request(request)
+        
+        if let credential = payload.credential,
+            let user = credential.username, user != "",
+            let pass = credential.password, pass != ""
+        {
+            dataRequest = dataRequest.authenticate(username: user, password: pass)
+        }
+        
+        let channelResponse = ChannelResponse()
+        channelResponse.id = input.id;
+        
+        dataRequest.validate(statusCode: 200..<300).responseData { response in
+            switch response.result {
+            case .success(let data):
+                let payloadData = FlutterStandardTypedData(bytes: data)
+        
+                channelResponse.status = "success"
+                channelResponse.result = payloadData
                 
-                let url = payload["url"] as! String
-                var request = try! URLRequest(url: url, method: method)
-                
-                switch method {
-                case .get:
-                    break
-                case .post:
-                    if let body = payload["body"] as? String {
-                        request.httpBody = body.data(using: .utf8)
-                    }
-                default:
-                    break
+                self.responseChannel.onResult(channelResponse) { (error) in
+                    print("error")
                 }
                 
-                /*
-                 status: success/failure
-                 reault: response body/error code
-                 */
-                 
-                var dataRequest = self.session.request(request)
-                
-                if let credential = payload["credential"] as? [String: String],
-                    let user = credential["username"],
-                    let pass = credential["password"] {
+            case .failure(let error):
+                if case .responseSerializationFailed(let reason) = error, case .inputDataNilOrZeroLength = reason {
+                    let payloadData = FlutterStandardTypedData(bytes: Data())
+                        
+                    channelResponse.status = "success"
+                    channelResponse.result = payloadData
                     
-                    dataRequest = dataRequest.authenticate(username: user, password: pass)
-                }
-                
-                dataRequest.validate(statusCode: 200..<300).responseData { response in
-                    switch response.result {
-                    case .success(let data):
-                        let payloadData = FlutterStandardTypedData(bytes: data)
-                        let payload: [String: Any] = ["status": "success", "result": payloadData]
-                        result(payload)
-                    case .failure(let error):
-                        if case .responseSerializationFailed(let reason) = error, case .inputDataNilOrZeroLength = reason {
-                            let payloadData = FlutterStandardTypedData(bytes: Data())
-                            let payload: [String: Any] = ["status": "success", "result": payloadData]
-                            result(payload)
-                        } else {
-                            let code = response.response?.statusCode ?? -1
-                            let errorDict: [String: Any] = ["error": String(describing: error), "code": code]
-                            let payload: [String: Any] = ["status": "failure", "error": errorDict]
-                            result(payload)
-                        }
+                    self.responseChannel.onResult(channelResponse) { (error) in
+                        print("error")
+                    }
+                } else {
+                    let _error = Error()
+                    _error.error = String(describing: error)
+                    let code = response.response?.statusCode ?? -1
+                    _error.code = NSNumber(value: code)
+                    
+                    channelResponse.status = "failure"
+                    channelResponse.error = _error
+                    
+                    self.responseChannel.onResult(channelResponse) { (error) in
+                        print("error")
                     }
                 }
-            } else {
-                result(FlutterMethodNotImplemented)
             }
         }
     }
