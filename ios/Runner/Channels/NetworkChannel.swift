@@ -105,10 +105,12 @@ class NetworkChannel: NetworkChannelApiRequest {
     }
 }
 
+// MARK: - ServerTrustManager
+
 final class CustomServerTrustManager: ServerTrustManager {
     
     override public func serverTrustEvaluator(forHost host: String) throws -> ServerTrustEvaluating? {
-        return DisabledEvaluator()
+        return DisabledTrustEvaluator()
         
 //        return DefaultTrustEvaluator(validateHost: false)
     }
