@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:phimote/main/main_model.dart';
 import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/screens/device_discovery/scan_screen_old.dart';
@@ -9,7 +10,7 @@ import 'package:provider/provider.dart';
 class SettingsScreen extends StatelessWidget {
   final _model = SettingsScreenModel();
 
-  final options = ["Scan", "Pair"];
+  final options = ["Scan", "Pair", "Send feedback"];
 
   _action(int index, BuildContext context) {
     switch (index) {
@@ -36,6 +37,13 @@ class SettingsScreen extends StatelessWidget {
             },
           ),
         );
+        break;
+      case 2:
+        // send feedback
+        final options = MailOptions(
+            subject: "[Phimote] Feedback",
+            recipients: ["erik.interwebz@gmail.com"]);
+        FlutterMailer.send(options);
         break;
     }
   }
