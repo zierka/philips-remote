@@ -1,8 +1,10 @@
+import 'package:get_it/get_it.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
 import 'package:phimote/main/app_state.dart';
 import 'package:phimote/logic/models/auth/session.dart';
 
 import 'service_registrator.dart';
+import 'system_repository.dart';
 
 class SessionHandler {
   AppState state;
@@ -11,20 +13,51 @@ class SessionHandler {
     state = AppState.loading();
   }
 
-  Future<void> loadSession() async {
+  Future<void> resumeSession() async {
+    final session = await _loadSession();
+
+    if (session != null) {
+      final success = await _loadSystemInfo(session);
+
+      if (success) {
+        print(">> success");
+      } else {
+        print(">> failure");
+      }
+    } else {
+      // do nothing
+    }
+  }
+
+  Future<Session> _loadSession() async {
     final store = PreferenceStore();
     final session = await store.session;
 
-    if (session != null && session.tv != null) {
+    if (session?.tv != null) {
       print(">> loaded session from local store. tv ip ${session.tv.ip}");
 
       state = AppState.content(session.tv);
 
       ServiceRegistrator.registerSessionServices(session);
+
+      return session;
     } else {
       print(">> no session found");
 
       state = AppState.landing();
+
+      return null;
+    }
+  }
+
+  Future<bool> _loadSystemInfo(Session session) async {
+    final systemRepo = GetIt.instance.get<SystemRepository>();
+
+    try {
+      await systemRepo.system();
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 

@@ -6,6 +6,8 @@ import 'package:phimote/data_access/network_client/endpoint_network_client.dart'
 import 'package:phimote/logic/services/commands_repository.dart';
 import 'package:phimote/logic/services/info_repository.dart';
 
+import 'system_repository.dart';
+
 class ServiceRegistrator {
   static registerGeneralServices() {
     final getIt = GetIt.instance;
@@ -21,6 +23,10 @@ class ServiceRegistrator {
     final getIt = GetIt.instance;
 
     final endpointNetworkClient = EndpointNetworkClient(session);
+
+    getIt.registerLazySingleton<SystemRepository>(
+      () => SystemRepository(endpointNetworkClient),
+    );
 
     getIt.registerLazySingleton<CommandsRepository>(
       () => CommandsRepository(endpointNetworkClient),

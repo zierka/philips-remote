@@ -20,7 +20,7 @@ class RootModel extends ChangeNotifier {
   }
 
   Future<void> _loadSession() async {
-    await sessionHandler.loadSession();
+    await sessionHandler.resumeSession();
 
     // add artificial delay to show loading. looks better :D
     await Future.delayed(Duration(seconds: 1), () => null);
