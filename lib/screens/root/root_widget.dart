@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:phimote/main/main_model.dart';
+import 'root_model.dart';
 import 'package:phimote/screens/content/content_screen.dart';
 import 'package:phimote/screens/landing/landing_screen.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
@@ -11,9 +11,9 @@ class RootWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MainModel>(
-      builder: (context, mainModel, child) {
-        return mainModel.state.when(loading: () {
+    return Consumer<RootModel>(
+      builder: (context, model, child) {
+        return model.state.when(loading: () {
           return Center(
             child: LoadingIndicator(),
           );

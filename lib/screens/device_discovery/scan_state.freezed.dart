@@ -9,6 +9,7 @@ part of 'scan_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ScanStateTearOff {
   const _$ScanStateTearOff();
 
@@ -25,9 +26,11 @@ class _$ScanStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ScanState = _$ScanStateTearOff();
 
+/// @nodoc
 mixin _$ScanState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -53,11 +56,13 @@ mixin _$ScanState {
   });
 }
 
+/// @nodoc
 abstract class $ScanStateCopyWith<$Res> {
   factory $ScanStateCopyWith(ScanState value, $Res Function(ScanState) then) =
       _$ScanStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ScanStateCopyWithImpl<$Res> implements $ScanStateCopyWith<$Res> {
   _$ScanStateCopyWithImpl(this._value, this._then);
 
@@ -66,11 +71,13 @@ class _$ScanStateCopyWithImpl<$Res> implements $ScanStateCopyWith<$Res> {
   final $Res Function(ScanState) _then;
 }
 
+/// @nodoc
 abstract class $LoadingCopyWith<$Res> {
   factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
       _$LoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$LoadingCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
     implements $LoadingCopyWith<$Res> {
   _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
@@ -80,6 +87,7 @@ class _$LoadingCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
   Loading get _value => super._value as Loading;
 }
 
+/// @nodoc
 class _$Loading with DiagnosticableTreeMixin implements Loading {
   const _$Loading();
 
@@ -157,12 +165,14 @@ abstract class Loading implements ScanState {
   const factory Loading() = _$Loading;
 }
 
+/// @nodoc
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
   $Res call({List<TV> tvs});
 }
 
+/// @nodoc
 class _$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
     implements $DataCopyWith<$Res> {
   _$DataCopyWithImpl(Data _value, $Res Function(Data) _then)
@@ -181,6 +191,7 @@ class _$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$Data with DiagnosticableTreeMixin implements Data {
   const _$Data(this.tvs) : assert(tvs != null);
 

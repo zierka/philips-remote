@@ -4,7 +4,7 @@ import 'package:phimote/logic/models/auth/confirm_pair_response.dart';
 import 'package:phimote/logic/models/auth/pair_response.dart';
 import 'package:phimote/logic/models/auth/session.dart';
 import 'package:phimote/logic/models/tv.dart';
-import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/device_discovery/scan_state.dart';
 import 'package:phimote/data_access/device_discovery/device_discovery.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
@@ -13,7 +13,7 @@ import 'package:phimote/logic/services/auth_repository.dart';
 class PairScreenModel extends ChangeNotifier {
   ScanState state = ScanState.loading();
 
-  MainModel mainModel;
+  RootModel rootModel;
 
   TV _currentlyPairingTV;
   PairResponse _pairResponse;
@@ -66,6 +66,6 @@ class PairScreenModel extends ChangeNotifier {
 
     await _authRepository.confirmPair(confirmPair);
 
-    mainModel.setSession(session);
+    rootModel.setSession(session);
   }
 }

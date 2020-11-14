@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
-import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/screens/device_discovery/scan_screen_old.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
@@ -50,7 +50,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _model.mainModel = Provider.of<MainModel>(context, listen: false);
+    _model.rootModel = Provider.of<RootModel>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(

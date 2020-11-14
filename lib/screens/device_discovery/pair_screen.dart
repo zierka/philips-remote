@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/logic/models/tv.dart';
-import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/device_discovery/pair_screen_model.dart';
 import 'package:phimote/widgets/app_textfield.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
@@ -34,7 +34,7 @@ class PairScreenState extends State<PairScreen> {
 
   @override
   void didChangeDependencies() {
-    _model.mainModel = Provider.of<MainModel>(context);
+    _model.rootModel = Provider.of<RootModel>(context);
 
     super.didChangeDependencies();
   }
