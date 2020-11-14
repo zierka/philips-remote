@@ -17,12 +17,19 @@ class SessionHandler {
     final session = await _loadSession();
 
     if (session != null) {
+      // make a reques to the system api to see if connection is ok
       final success = await _loadSystemInfo(session);
 
       if (success) {
         print(">> success");
+        // do nothing, connection is ok
       } else {
         print(">> failure");
+        // handle connection failure
+
+        // possible causes:
+        // - tv ip changed
+        // - not connected to local network
       }
     } else {
       // do nothing
