@@ -39,8 +39,8 @@ class NetworkClient implements NetworkChannelApiResponse {
     _resultHandlers.remove(arg.id);
   }
 
-  Future<Response> get(String url) async {
-    final request = _makeRequestSkeleton();
+  Future<Response> get(String url, {RequestOptions options}) async {
+    final request = _makeRequestSkeleton(options: options);
     request.method = _HttpMethod.get;
 
     request.payload.url = url;
@@ -62,13 +62,13 @@ class NetworkClient implements NetworkChannelApiResponse {
     return _handleResponse(response);
   }
 
-  ChannelRequest _makeRequestSkeleton() {
+  ChannelRequest _makeRequestSkeleton({RequestOptions options}) {
     final request = ChannelRequest();
     request.id = DateTime.now().millisecondsSinceEpoch;
 
     final credential = Credential();
 
-    if (session != null && session.credential != null) {
+    if (session?.credential != null) {
       credential
         ..username = session.credential.username
         ..password = session.credential.password;
@@ -79,6 +79,8 @@ class NetworkClient implements NetworkChannelApiResponse {
     payload.credential = credential;
 
     request.payload = payload;
+
+    request.options = options ?? RequestOptions();
 
     return request;
   }
@@ -95,7 +97,7 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   Response _handleResponse(ChannelResponse response) {
-    if (response.status == "failure") throw (response.error);
+    if (response.error != null) throw (response.error);
 
     final responseBody = response.result;
     Response _response = Response.bytes(responseBody, 200);

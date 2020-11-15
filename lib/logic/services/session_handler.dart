@@ -14,9 +14,17 @@ class SessionHandler {
   }
 
   Future<void> resumeSession() async {
-    final session = await _loadSession();
+    final session = await _loadPersistedSession();
 
-    if (session != null) {
+    if (session?.tv != null) {
+      print(">> loaded session from local store. tv ip ${session.tv.ip}");
+
+      state = AppState.content(session.tv);
+
+      ServiceRegistrator.registerSessionServices(session);
+
+      session.tv.ip = "192.168.100.168";
+
       // make a reques to the system api to see if connection is ok
       final success = await _loadSystemInfo(session);
 
@@ -28,42 +36,33 @@ class SessionHandler {
         // handle connection failure
 
         // possible causes:
-        // - tv ip changed
-        // - not connected to local network
+        // - to handle:
+        //   - tv ip changed
+        // - not handled:
+        //   - not connected to local network
       }
-    } else {
-      // do nothing
-    }
-  }
-
-  Future<Session> _loadSession() async {
-    final store = PreferenceStore();
-    final session = await store.session;
-
-    if (session?.tv != null) {
-      print(">> loaded session from local store. tv ip ${session.tv.ip}");
-
-      state = AppState.content(session.tv);
-
-      ServiceRegistrator.registerSessionServices(session);
-
-      return session;
     } else {
       print(">> no session found");
 
       state = AppState.landing();
-
-      return null;
     }
+  }
+
+  Future<Session> _loadPersistedSession() async {
+    final store = PreferenceStore();
+    final session = await store.session;
+
+    return session;
   }
 
   Future<bool> _loadSystemInfo(Session session) async {
     final systemRepo = GetIt.instance.get<SystemRepository>();
 
     try {
-      await systemRepo.system();
+      await systemRepo.system(timeout: 2);
       return true;
     } catch (e) {
+      print(">> ${e.toString}");
       return false;
     }
   }

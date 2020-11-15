@@ -20,6 +20,8 @@ The app is under heavy development.
 
 ### Pigeon
 
+Edit `pigeons/messages.dart`.
+
 ```
 flutter pub run pigeon \
   --input pigeons/messages.dart \
@@ -28,4 +30,16 @@ flutter pub run pigeon \
   --objc_source_out ios/Runner/Channels/pigeon.m \
   --java_out ./android/app/src/main/java/dev/flutter/pigeon/Pigeon.java \
   --java_package "dev.flutter.pigeon";
+```
+
+### Update `json_serializable`, `freezed` and `flutter_gen` generated code
+
+```
+flutter pub run build_runner build
+```
+
+If you encounter issues, try
+
+```
+flutter pub run build_runner build --delete-conflicting-outputs
 ```

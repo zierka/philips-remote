@@ -18,7 +18,9 @@ import okio.IOException
 //import java.io.IOException
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
+import java.time.Duration
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.TimeUnit
 import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
@@ -83,6 +85,17 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
                     .build()
         }
 
+        val options = arg?.options
+
+        if (options != null) {
+            val timeout = options.timeout
+            if (timeout != null) {
+               client = this.client.newBuilder()
+                       .readTimeout(timeout, TimeUnit.SECONDS)
+                       .build()
+            }
+        }
+
         val channelResponse = Pigeon.ChannelResponse()
         channelResponse.id = arg.id
 
@@ -93,7 +106,6 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
                 _error.error = e.toString()
                 _error.code = -1
 
-                channelResponse.status = "failure"
                 channelResponse.error = _error
 
                 Handler(Looper.getMainLooper()).post {
@@ -106,7 +118,6 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
                     if (response.isSuccessful) {
                         val payloadData = response.body!!.bytes()
 
-                        channelResponse.status = "success"
                         channelResponse.result = payloadData
 
                         // specify dummy error as it cant be null on the android side
@@ -124,7 +135,6 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
                         _error.error = response.body!!.string()
                         _error.code = response.code.toLong()
 
-                        channelResponse.status = "failure"
                         channelResponse.error = _error
 
                         Handler(Looper.getMainLooper()).post {

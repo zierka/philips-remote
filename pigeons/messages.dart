@@ -4,6 +4,7 @@ class ChannelRequest {
   int id;
   String method;
   RequestPayload payload;
+  RequestOptions options;
 }
 
 class ChannelResponse {
@@ -17,6 +18,10 @@ class RequestPayload {
   String url;
   String body;
   Credential credential;
+}
+
+class RequestOptions {
+  int timeout;
 }
 
 class Credential {
