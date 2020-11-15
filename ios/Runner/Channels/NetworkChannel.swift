@@ -91,7 +91,7 @@ class NetworkChannel: NetworkChannelApiRequest {
                         print("error")
                     }
                 } else {
-                    let _error = Error()
+                    let _error = NetworkError()
                     _error.error = String(describing: error)
                     let code = response.response?.statusCode ?? -1
                     _error.code = NSNumber(value: code)

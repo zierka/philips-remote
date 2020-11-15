@@ -59,7 +59,7 @@ class SessionHandler {
     final systemRepo = GetIt.instance.get<SystemRepository>();
 
     try {
-      await systemRepo.system(timeout: 2);
+      await systemRepo.system(timeout: 1);
       return true;
     } catch (e) {
       print(">> ${e.toString}");

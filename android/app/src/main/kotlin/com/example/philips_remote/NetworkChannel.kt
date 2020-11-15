@@ -102,7 +102,7 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
-                val _error = Pigeon.Error()
+                val _error = Pigeon.NetworkError()
                 _error.error = e.toString()
                 _error.code = -1
 
@@ -121,7 +121,7 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
                         channelResponse.result = payloadData
 
                         // specify dummy error as it cant be null on the android side
-                        val _error = Pigeon.Error()
+                        val _error = Pigeon.NetworkError()
                         _error.error = ""
                         _error.code = -1
 
@@ -131,7 +131,7 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
                             responseChannel.onResult(channelResponse) { }
                         }
                     } else {
-                        val _error = Pigeon.Error()
+                        val _error = Pigeon.NetworkError()
                         _error.error = response.body!!.string()
                         _error.code = response.code.toLong()
 

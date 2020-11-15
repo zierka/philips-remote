@@ -33,6 +33,10 @@ class ControlScreenModel {
   }
 
   Future<void> changeVolume(int value, {bool mute = false}) async {
-    return _commandsRepo.changeVolume(value, mute: mute);
+    try {
+      await _commandsRepo.changeVolume(value, mute: mute);
+    } catch (e) {
+      //
+    }
   }
 }

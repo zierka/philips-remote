@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:phimote/pigeon.dart';
 
 enum ApiErrorType {
   unknown,
@@ -8,7 +9,23 @@ enum ApiErrorType {
 }
 
 class ApiException implements Exception {
-  ApiErrorType type;
+  String error;
+  int code;
+
+  // ignore: missing_return
+  ApiErrorType get type {
+    switch (code) {
+      case 404:
+        return ApiErrorType.notFound;
+        break;
+      case 408:
+        return ApiErrorType.timeout;
+        break;
+      default:
+        return ApiErrorType.unknown;
+        break;
+    }
+  }
 
   // ignore: missing_return
   String get message {
@@ -28,23 +45,10 @@ class ApiException implements Exception {
     }
   }
 
-  ApiException({
-    @required this.type,
-  });
-
-  ApiException.statusCode({
-    @required int statusCode,
-  }) {
-    switch (statusCode) {
-      case 404:
-        type = ApiErrorType.notFound;
-        break;
-      case 408:
-        type = ApiErrorType.timeout;
-        break;
-      default:
-        type = ApiErrorType.unknown;
-        break;
-    }
+  ApiException.error(
+    NetworkError error,
+  ) {
+    this.error = error.error;
+    this.code = error.code;
   }
 }

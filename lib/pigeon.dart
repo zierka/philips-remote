@@ -92,7 +92,7 @@ class ChannelResponse {
   int id;
   String status;
   Uint8List result;
-  Error error;
+  NetworkError error;
   // ignore: unused_element
   Map<dynamic, dynamic> _toMap() {
     final Map<dynamic, dynamic> pigeonMap = <dynamic, dynamic>{};
@@ -108,12 +108,12 @@ class ChannelResponse {
     result.id = pigeonMap['id'];
     result.status = pigeonMap['status'];
     result.result = pigeonMap['result'];
-    result.error = pigeonMap['error'] != null ? Error._fromMap(pigeonMap['error']) : null;
+    result.error = pigeonMap['error'] != null ? NetworkError._fromMap(pigeonMap['error']) : null;
     return result;
   }
 }
 
-class Error {
+class NetworkError {
   String error;
   int code;
   // ignore: unused_element
@@ -124,8 +124,8 @@ class Error {
     return pigeonMap;
   }
   // ignore: unused_element
-  static Error _fromMap(Map<dynamic, dynamic> pigeonMap) {
-    final Error result = Error();
+  static NetworkError _fromMap(Map<dynamic, dynamic> pigeonMap) {
+    final NetworkError result = NetworkError();
     result.error = pigeonMap['error'];
     result.code = pigeonMap['code'];
     return result;

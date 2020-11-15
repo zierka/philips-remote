@@ -11,7 +11,7 @@ class ChannelResponse {
   int id;
   String status;
   Uint8List result;
-  Error error;
+  NetworkError error;
 }
 
 class RequestPayload {
@@ -29,7 +29,7 @@ class Credential {
   String password;
 }
 
-class Error {
+class NetworkError {
   String error;
   int code;
 }

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class Credential;
 @class RequestOptions;
 @class ChannelResponse;
-@class Error;
+@class NetworkError;
 
 @interface ChannelRequest : NSObject
 @property(nonatomic, strong, nullable) NSNumber * id;
@@ -40,10 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) NSNumber * id;
 @property(nonatomic, copy, nullable) NSString * status;
 @property(nonatomic, strong, nullable) FlutterStandardTypedData * result;
-@property(nonatomic, strong, nullable) Error * error;
+@property(nonatomic, strong, nullable) NetworkError * error;
 @end
 
-@interface Error : NSObject
+@interface NetworkError : NSObject
 @property(nonatomic, copy, nullable) NSString * error;
 @property(nonatomic, strong, nullable) NSNumber * code;
 @end

@@ -145,9 +145,9 @@ public class Pigeon {
     public byte[] getResult() { return result; }
     public void setResult(byte[] setterArg) { this.result = setterArg; }
 
-    private Error error;
-    public Error getError() { return error; }
-    public void setError(Error setterArg) { this.error = setterArg; }
+    private NetworkError error;
+    public NetworkError getError() { return error; }
+    public void setError(NetworkError setterArg) { this.error = setterArg; }
 
     HashMap toMap() {
       HashMap<String, Object> toMapResult = new HashMap<>();
@@ -166,13 +166,13 @@ public class Pigeon {
       Object result = map.get("result");
       fromMapResult.result = (byte[])result;
       Object error = map.get("error");
-      fromMapResult.error = Error.fromMap((HashMap)error);
+      fromMapResult.error = NetworkError.fromMap((HashMap)error);
       return fromMapResult;
     }
   }
 
   /** Generated class from Pigeon that represents data sent in messages. */
-  public static class Error {
+  public static class NetworkError {
     private String error;
     public String getError() { return error; }
     public void setError(String setterArg) { this.error = setterArg; }
@@ -187,8 +187,8 @@ public class Pigeon {
       toMapResult.put("code", code);
       return toMapResult;
     }
-    static Error fromMap(HashMap map) {
-      Error fromMapResult = new Error();
+    static NetworkError fromMap(HashMap map) {
+      NetworkError fromMapResult = new NetworkError();
       Object error = map.get("error");
       fromMapResult.error = (String)error;
       Object code = map.get("code");

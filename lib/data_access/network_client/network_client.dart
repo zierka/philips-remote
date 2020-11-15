@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'dart:convert' as convert;
 
 import 'package:phimote/logic/models/auth/session.dart';
+import 'package:phimote/logic/services/api.dart';
 import 'package:phimote/pigeon.dart';
 
 class _HttpMethod {
@@ -39,6 +40,7 @@ class NetworkClient implements NetworkChannelApiResponse {
     _resultHandlers.remove(arg.id);
   }
 
+  /// Throws [ApiException]
   Future<Response> get(String url, {RequestOptions options}) async {
     final request = _makeRequestSkeleton(options: options);
     request.method = _HttpMethod.get;
@@ -47,9 +49,14 @@ class NetworkClient implements NetworkChannelApiResponse {
 
     final response = await _handleRequest(request);
 
-    return _handleResponse(response);
+    try {
+      return _handleResponse(response);
+    } catch (_) {
+      rethrow;
+    }
   }
 
+  /// Throws [ApiException]
   Future<Response> post(String url, [Map<String, dynamic> json]) async {
     final request = _makeRequestSkeleton();
     request.method = _HttpMethod.post;
@@ -59,7 +66,11 @@ class NetworkClient implements NetworkChannelApiResponse {
 
     final response = await _handleRequest(request);
 
-    return _handleResponse(response);
+    try {
+      return _handleResponse(response);
+    } catch (_) {
+      rethrow;
+    }
   }
 
   ChannelRequest _makeRequestSkeleton({RequestOptions options}) {
@@ -80,7 +91,13 @@ class NetworkClient implements NetworkChannelApiResponse {
 
     request.payload = payload;
 
-    request.options = options ?? RequestOptions();
+    if (options != null) {
+      request.options = options;
+    } else {
+      final options = RequestOptions();
+      options.timeout = 2;
+      request.options = options;
+    }
 
     return request;
   }
@@ -97,7 +114,7 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   Response _handleResponse(ChannelResponse response) {
-    if (response.error != null) throw (response.error);
+    if (response.error != null) throw ApiException.error(response.error);
 
     final responseBody = response.result;
     Response _response = Response.bytes(responseBody, 200);

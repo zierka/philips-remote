@@ -42,8 +42,8 @@ static NSDictionary* wrapResult(NSDictionary *result, FlutterError *error) {
 +(ChannelResponse*)fromMap:(NSDictionary*)dict;
 -(NSDictionary*)toMap;
 @end
-@interface Error ()
-+(Error*)fromMap:(NSDictionary*)dict;
+@interface NetworkError ()
++(NetworkError*)fromMap:(NSDictionary*)dict;
 -(NSDictionary*)toMap;
 @end
 
@@ -142,7 +142,7 @@ static NSDictionary* wrapResult(NSDictionary *result, FlutterError *error) {
   if ((NSNull *)result.result == [NSNull null]) {
     result.result = nil;
   }
-  result.error = [Error fromMap:dict[@"error"]];
+  result.error = [NetworkError fromMap:dict[@"error"]];
   if ((NSNull *)result.error == [NSNull null]) {
     result.error = nil;
   }
@@ -153,9 +153,9 @@ static NSDictionary* wrapResult(NSDictionary *result, FlutterError *error) {
 }
 @end
 
-@implementation Error
-+(Error*)fromMap:(NSDictionary*)dict {
-  Error* result = [[Error alloc] init];
+@implementation NetworkError
++(NetworkError*)fromMap:(NSDictionary*)dict {
+  NetworkError* result = [[NetworkError alloc] init];
   result.error = dict[@"error"];
   if ((NSNull *)result.error == [NSNull null]) {
     result.error = nil;
