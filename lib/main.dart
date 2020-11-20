@@ -3,9 +3,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phimote/constants/app_colors.dart';
-import 'package:phimote/main/main_model.dart';
 import 'package:phimote/screens/root/root_widget.dart';
 import 'package:provider/provider.dart';
+
+import 'screens/root/root_model.dart';
 
 void main() async {
   runApp(MyApp());
@@ -33,8 +34,8 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return ChangeNotifierProvider<MainModel>(
-      create: (context) => MainModel(),
+    return ChangeNotifierProvider<RootModel>(
+      create: (context) => RootModel(),
       child: MaterialApp(
         title: 'Philips TV remote controller',
         theme: themeData,

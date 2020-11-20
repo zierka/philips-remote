@@ -28,11 +28,15 @@ class ChannelListScreenModel {
   _loadData() async {
     _loadStateStreamController.add(WidgetLoadState.loading());
 
-    final channels = await _infoRepo.channelList();
+    try {
+      final channels = await _infoRepo.channelList();
+      channelList = channels;
 
-    channelList = channels;
-
-    _loadStateStreamController.add(WidgetLoadState.content());
+      _loadStateStreamController.add(WidgetLoadState.content());
+    } catch (e) {
+      _loadStateStreamController
+          .add(WidgetLoadState.error(ScreenError.apiException(e)));
+    }
   }
 
   reloadData() async {
@@ -42,6 +46,10 @@ class ChannelListScreenModel {
   search(String query) {}
 
   changeToChannel(Channel channel) {
-    _commandsRepo.changeToChannel(channel);
+    try {
+      _commandsRepo.changeToChannel(channel);
+    } catch (e) {
+      //
+    }
   }
 }

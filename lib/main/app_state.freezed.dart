@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'main_model_state.dart';
+part of 'app_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,8 +9,9 @@ part of 'main_model_state.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$MainModelStateTearOff {
-  const _$MainModelStateTearOff();
+/// @nodoc
+class _$AppStateTearOff {
+  const _$AppStateTearOff();
 
 // ignore: unused_element
   Loading loading() {
@@ -30,10 +31,12 @@ class _$MainModelStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
-const $MainModelState = _$MainModelStateTearOff();
+const $AppState = _$AppStateTearOff();
 
-mixin _$MainModelState {
+/// @nodoc
+mixin _$AppState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loading(),
@@ -62,27 +65,29 @@ mixin _$MainModelState {
   });
 }
 
-abstract class $MainModelStateCopyWith<$Res> {
-  factory $MainModelStateCopyWith(
-          MainModelState value, $Res Function(MainModelState) then) =
-      _$MainModelStateCopyWithImpl<$Res>;
+/// @nodoc
+abstract class $AppStateCopyWith<$Res> {
+  factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
+      _$AppStateCopyWithImpl<$Res>;
 }
 
-class _$MainModelStateCopyWithImpl<$Res>
-    implements $MainModelStateCopyWith<$Res> {
-  _$MainModelStateCopyWithImpl(this._value, this._then);
+/// @nodoc
+class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
+  _$AppStateCopyWithImpl(this._value, this._then);
 
-  final MainModelState _value;
+  final AppState _value;
   // ignore: unused_field
-  final $Res Function(MainModelState) _then;
+  final $Res Function(AppState) _then;
 }
 
+/// @nodoc
 abstract class $LoadingCopyWith<$Res> {
   factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
       _$LoadingCopyWithImpl<$Res>;
 }
 
-class _$LoadingCopyWithImpl<$Res> extends _$MainModelStateCopyWithImpl<$Res>
+/// @nodoc
+class _$LoadingCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     implements $LoadingCopyWith<$Res> {
   _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
       : super(_value, (v) => _then(v as Loading));
@@ -91,18 +96,19 @@ class _$LoadingCopyWithImpl<$Res> extends _$MainModelStateCopyWithImpl<$Res>
   Loading get _value => super._value as Loading;
 }
 
+/// @nodoc
 class _$Loading with DiagnosticableTreeMixin implements Loading {
   const _$Loading();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MainModelState.loading()';
+    return 'AppState.loading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'MainModelState.loading'));
+    properties..add(DiagnosticsProperty('type', 'AppState.loading'));
   }
 
   @override
@@ -170,17 +176,19 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   }
 }
 
-abstract class Loading implements MainModelState {
+abstract class Loading implements AppState {
   const factory Loading() = _$Loading;
 }
 
+/// @nodoc
 abstract class $ContentCopyWith<$Res> {
   factory $ContentCopyWith(Content value, $Res Function(Content) then) =
       _$ContentCopyWithImpl<$Res>;
   $Res call({TV tv});
 }
 
-class _$ContentCopyWithImpl<$Res> extends _$MainModelStateCopyWithImpl<$Res>
+/// @nodoc
+class _$ContentCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     implements $ContentCopyWith<$Res> {
   _$ContentCopyWithImpl(Content _value, $Res Function(Content) _then)
       : super(_value, (v) => _then(v as Content));
@@ -198,6 +206,7 @@ class _$ContentCopyWithImpl<$Res> extends _$MainModelStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$Content with DiagnosticableTreeMixin implements Content {
   const _$Content(this.tv) : assert(tv != null);
 
@@ -206,14 +215,14 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MainModelState.content(tv: $tv)';
+    return 'AppState.content(tv: $tv)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'MainModelState.content'))
+      ..add(DiagnosticsProperty('type', 'AppState.content'))
       ..add(DiagnosticsProperty('tv', tv));
   }
 
@@ -290,19 +299,21 @@ class _$Content with DiagnosticableTreeMixin implements Content {
   }
 }
 
-abstract class Content implements MainModelState {
+abstract class Content implements AppState {
   const factory Content(TV tv) = _$Content;
 
   TV get tv;
   $ContentCopyWith<Content> get copyWith;
 }
 
+/// @nodoc
 abstract class $LandingCopyWith<$Res> {
   factory $LandingCopyWith(Landing value, $Res Function(Landing) then) =
       _$LandingCopyWithImpl<$Res>;
 }
 
-class _$LandingCopyWithImpl<$Res> extends _$MainModelStateCopyWithImpl<$Res>
+/// @nodoc
+class _$LandingCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     implements $LandingCopyWith<$Res> {
   _$LandingCopyWithImpl(Landing _value, $Res Function(Landing) _then)
       : super(_value, (v) => _then(v as Landing));
@@ -311,18 +322,19 @@ class _$LandingCopyWithImpl<$Res> extends _$MainModelStateCopyWithImpl<$Res>
   Landing get _value => super._value as Landing;
 }
 
+/// @nodoc
 class _$Landing with DiagnosticableTreeMixin implements Landing {
   const _$Landing();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MainModelState.landing()';
+    return 'AppState.landing()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'MainModelState.landing'));
+    properties..add(DiagnosticsProperty('type', 'AppState.landing'));
   }
 
   @override
@@ -390,6 +402,6 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
   }
 }
 
-abstract class Landing implements MainModelState {
+abstract class Landing implements AppState {
   const factory Landing() = _$Landing;
 }

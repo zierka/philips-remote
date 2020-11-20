@@ -9,6 +9,7 @@ part of 'widget_load_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$WidgetLoadStateTearOff {
   const _$WidgetLoadStateTearOff();
 
@@ -44,9 +45,11 @@ class _$WidgetLoadStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $WidgetLoadState = _$WidgetLoadStateTearOff();
 
+/// @nodoc
 mixin _$WidgetLoadState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -84,12 +87,14 @@ mixin _$WidgetLoadState {
   });
 }
 
+/// @nodoc
 abstract class $WidgetLoadStateCopyWith<$Res> {
   factory $WidgetLoadStateCopyWith(
           WidgetLoadState value, $Res Function(WidgetLoadState) then) =
       _$WidgetLoadStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$WidgetLoadStateCopyWithImpl<$Res>
     implements $WidgetLoadStateCopyWith<$Res> {
   _$WidgetLoadStateCopyWithImpl(this._value, this._then);
@@ -99,11 +104,13 @@ class _$WidgetLoadStateCopyWithImpl<$Res>
   final $Res Function(WidgetLoadState) _then;
 }
 
+/// @nodoc
 abstract class $ContentCopyWith<$Res> {
   factory $ContentCopyWith(Content value, $Res Function(Content) then) =
       _$ContentCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ContentCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
     implements $ContentCopyWith<$Res> {
   _$ContentCopyWithImpl(Content _value, $Res Function(Content) _then)
@@ -113,6 +120,7 @@ class _$ContentCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
   Content get _value => super._value as Content;
 }
 
+/// @nodoc
 class _$Content implements Content {
   const _$Content();
 
@@ -202,6 +210,7 @@ abstract class Content implements WidgetLoadState {
   const factory Content() = _$Content;
 }
 
+/// @nodoc
 abstract class $ContentKeepLoadingCopyWith<$Res> {
   factory $ContentKeepLoadingCopyWith(
           ContentKeepLoading value, $Res Function(ContentKeepLoading) then) =
@@ -209,6 +218,7 @@ abstract class $ContentKeepLoadingCopyWith<$Res> {
   $Res call({Future<dynamic> until});
 }
 
+/// @nodoc
 class _$ContentKeepLoadingCopyWithImpl<$Res>
     extends _$WidgetLoadStateCopyWithImpl<$Res>
     implements $ContentKeepLoadingCopyWith<$Res> {
@@ -229,6 +239,7 @@ class _$ContentKeepLoadingCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ContentKeepLoading implements ContentKeepLoading {
   const _$ContentKeepLoading(this.until) : assert(until != null);
 
@@ -333,11 +344,13 @@ abstract class ContentKeepLoading implements WidgetLoadState {
   $ContentKeepLoadingCopyWith<ContentKeepLoading> get copyWith;
 }
 
+/// @nodoc
 abstract class $LoadingCopyWith<$Res> {
   factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
       _$LoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$LoadingCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
     implements $LoadingCopyWith<$Res> {
   _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
@@ -347,6 +360,7 @@ class _$LoadingCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
   Loading get _value => super._value as Loading;
 }
 
+/// @nodoc
 class _$Loading implements Loading {
   const _$Loading();
 
@@ -436,12 +450,14 @@ abstract class Loading implements WidgetLoadState {
   const factory Loading() = _$Loading;
 }
 
+/// @nodoc
 abstract class $ErrorCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
   $Res call({ScreenError error});
 }
 
+/// @nodoc
 class _$ErrorCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
     implements $ErrorCopyWith<$Res> {
   _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
@@ -460,6 +476,7 @@ class _$ErrorCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$Error implements Error {
   const _$Error(this.error) : assert(error != null);
 
@@ -563,12 +580,14 @@ abstract class Error implements WidgetLoadState {
   $ErrorCopyWith<Error> get copyWith;
 }
 
+/// @nodoc
 abstract class $EmptyCopyWith<$Res> {
   factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
       _$EmptyCopyWithImpl<$Res>;
   $Res call({EmptyStateData data});
 }
 
+/// @nodoc
 class _$EmptyCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
     implements $EmptyCopyWith<$Res> {
   _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
@@ -587,6 +606,7 @@ class _$EmptyCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$Empty implements Empty {
   const _$Empty([this.data]);
 

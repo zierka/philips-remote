@@ -24,7 +24,6 @@ class NetworkChannel: NetworkChannelApiRequest {
         NetworkChannelApiRequestSetup(binaryMessenger, self)
     }
     
-    
     func send(_ input: ChannelRequest, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
         
         guard let method = input.method else { return }
@@ -36,6 +35,12 @@ class NetworkChannel: NetworkChannelApiRequest {
         let httpMethod = HTTPMethod(rawValue: method.uppercased())
         
         var request = try! URLRequest(url: url, method: httpMethod)
+            
+        if let options = input.options {
+            if let timeout = options.timeout {
+                request.timeoutInterval = timeout.doubleValue
+            }
+        }
         
         switch httpMethod {
         case .get:
@@ -70,7 +75,6 @@ class NetworkChannel: NetworkChannelApiRequest {
             case .success(let data):
                 let payloadData = FlutterStandardTypedData(bytes: data)
         
-                channelResponse.status = "success"
                 channelResponse.result = payloadData
                 
                 self.responseChannel.onResult(channelResponse) { (error) in
@@ -81,19 +85,17 @@ class NetworkChannel: NetworkChannelApiRequest {
                 if case .responseSerializationFailed(let reason) = error, case .inputDataNilOrZeroLength = reason {
                     let payloadData = FlutterStandardTypedData(bytes: Data())
                         
-                    channelResponse.status = "success"
                     channelResponse.result = payloadData
                     
                     self.responseChannel.onResult(channelResponse) { (error) in
                         print("error")
                     }
                 } else {
-                    let _error = Error()
+                    let _error = NetworkError()
                     _error.error = String(describing: error)
                     let code = response.response?.statusCode ?? -1
                     _error.code = NSNumber(value: code)
                     
-                    channelResponse.status = "failure"
                     channelResponse.error = _error
                     
                     self.responseChannel.onResult(channelResponse) { (error) in

@@ -1,13 +1,13 @@
-import 'package:phimote/main/main_model.dart';
+import 'package:phimote/screens/root/root_model.dart';
 
 class SettingsScreenModel {
-  MainModel mainModel;
+  RootModel rootModel;
 
   SettingsScreenModel();
 
   unpair() {
     print("unpair");
 
-    mainModel.clearSession();
+    rootModel.clearSession();
   }
 }

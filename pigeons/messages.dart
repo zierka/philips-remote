@@ -4,13 +4,14 @@ class ChannelRequest {
   int id;
   String method;
   RequestPayload payload;
+  RequestOptions options;
 }
 
 class ChannelResponse {
   int id;
   String status;
   Uint8List result;
-  Error error;
+  NetworkError error;
 }
 
 class RequestPayload {
@@ -19,12 +20,16 @@ class RequestPayload {
   Credential credential;
 }
 
+class RequestOptions {
+  int timeout;
+}
+
 class Credential {
   String username;
   String password;
 }
 
-class Error {
+class NetworkError {
   String error;
   int code;
 }

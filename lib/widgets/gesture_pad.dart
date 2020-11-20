@@ -113,8 +113,6 @@ class _GestureHandler {
   bool vibrate = false;
 
   _GestureHandler(this.onGestureAction) {
-    print("yolo");
-
     stream.stream.distinct().where((a) {
       return a != GestureAction.End;
     }).listen((action) {
