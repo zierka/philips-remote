@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:phimote/constants/ui_constants.dart';
 
+import 'loading_indicator.dart';
 import 'message.dart';
 
 class MessageOverlay extends StatefulWidget {
@@ -99,11 +100,11 @@ class _MessageOverlayState extends State<MessageOverlay> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(message.icon),
+            message.showLoading ? LoadingIndicator() : Icon(message.icon),
             SizedBox(width: Paddings.x1),
             Flexible(
               child: Text(
-                message.message ?? "",
+                message.message,
                 textAlign: TextAlign.center,
               ),
             ),

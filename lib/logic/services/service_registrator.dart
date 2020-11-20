@@ -44,6 +44,10 @@ class ServiceRegistrator {
   static unregisterSessionServices() {
     final getIt = GetIt.instance;
 
+    if (getIt.isRegistered<SystemRepository>()) {
+      getIt.unregister<SystemRepository>();
+    }
+
     if (getIt.isRegistered<CommandsRepository>()) {
       getIt.unregister<CommandsRepository>();
     }

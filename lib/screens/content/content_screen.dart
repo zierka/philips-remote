@@ -7,8 +7,8 @@ import 'package:phimote/screens/content/channel_list_screen.dart';
 import 'package:phimote/screens/content/content_screen_model.dart';
 import 'package:phimote/screens/content/control_screen.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
-import 'package:phimote/widgets/message.dart';
 import 'package:phimote/widgets/message_overlay.dart';
+import 'package:provider/provider.dart';
 
 class ContentScreen extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _ContentScreenState extends State<ContentScreen>
     with WidgetsBindingObserver {
   int _selectedTabIndex = 1;
 
-  final ContentScreenModel model = ContentScreenModel();
+  ContentScreenModel model;
 
   final items = [
     BottomNavigationBarItem(
@@ -38,6 +38,8 @@ class _ContentScreenState extends State<ContentScreen>
 
   @override
   void initState() {
+    model = ContentScreenModel(context.read);
+
     WidgetsBinding.instance.addObserver(this);
 
     model.resume();

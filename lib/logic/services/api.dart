@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:phimote/pigeon.dart';
 
 enum ApiErrorType {

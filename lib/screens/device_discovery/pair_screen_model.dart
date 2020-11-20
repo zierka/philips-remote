@@ -30,7 +30,6 @@ class PairScreenModel extends ChangeNotifier {
     final tvs = await _deviceDiscovery.getTVs();
 
     state = ScanState.tvs(tvs);
-    print(tvs);
 
     notifyListeners();
   }

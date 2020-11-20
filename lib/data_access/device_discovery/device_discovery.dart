@@ -11,6 +11,7 @@ class DeviceDiscovery {
     final tvs = await upnp.getTVs();
 
     if (tvs.isNotEmpty) {
+      print(tvs);
       return tvs;
     }
 
@@ -18,6 +19,7 @@ class DeviceDiscovery {
 
     final tvs2 = await directSearch.getTVs();
 
+    print(tvs2);
     return tvs2;
   }
 }

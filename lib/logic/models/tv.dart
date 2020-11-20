@@ -34,6 +34,11 @@ class TV {
 
   factory TV.fromJson(Map<String, dynamic> json) => _$TVFromJson(json);
   Map<String, dynamic> toJson() => _$TVToJson(this);
+
+  @override
+  String toString() {
+    return 'TV(protocol: $protocol, ip: $ip, port: $port, apiVersion: $apiVersion, name: $name, friendlyName: $friendlyName)';
+  }
 }
 
 class TVCandidate {
@@ -42,6 +47,10 @@ class TVCandidate {
   String friendlyName;
 
   TVCandidate({this.ip, this.name, this.friendlyName});
+
+  @override
+  String toString() =>
+      'TVCandidate(ip: $ip, name: $name, friendlyName: $friendlyName)';
 }
 
 class TVCandidate2 {
@@ -49,4 +58,7 @@ class TVCandidate2 {
   int port;
 
   TVCandidate2({this.ip, this.port});
+
+  @override
+  String toString() => 'TVCandidate2(ip: $ip, port: $port)';
 }

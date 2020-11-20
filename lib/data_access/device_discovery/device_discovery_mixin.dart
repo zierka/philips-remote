@@ -39,7 +39,7 @@ mixin DeviceDiscoveryMixin {
           port: DiscoveryConfiguration.android.port,
           apiVersion: apiVersion1,
           name: tv.name,
-          friendlyName: tv.friendlyName,
+          friendlyName: tv.friendlyName ?? system.name,
         );
       } else {
         return TV(
@@ -48,7 +48,7 @@ mixin DeviceDiscoveryMixin {
           port: DiscoveryConfiguration.nonAndroid.port,
           apiVersion: apiVersion1,
           name: tv.name,
-          friendlyName: tv.friendlyName,
+          friendlyName: tv.friendlyName ?? system.name,
         );
       }
     }

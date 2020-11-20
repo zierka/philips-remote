@@ -7,11 +7,13 @@ class Message {
   // final String actionName;
   // final Function action;
 
+  bool showLoading;
   Message previousMessage;
 
   Message({
-    @required this.icon,
+    this.icon,
     @required this.message,
     this.hidesAfter,
+    this.showLoading = false,
   });
 }

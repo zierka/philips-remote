@@ -1,0 +1,41 @@
+{
+	"notifyChange": "http",
+	"menulanguage": "Hungarian",
+	"name": "big tv",
+	"country": "Romania",
+	"serialnumber_encrypted": "wGAD2wBPHGVhSjvMTeTDbIaBQ3QhoAClFlVZvOZxRTY=\n",
+	"softwareversion_encrypted": "E\/aSkcyXXnsSSZtlfoxUaPjKlSERx9GfSLe7OrOF3t8F5npn7JWBKSkXng0rGNod\n",
+	"model_encrypted": "\/xZJKYF3WNIttjW5\/VSnum5lVyV\/oqgEqfHs3P6fb0I=\n",
+	"deviceid_encrypted": "w+BkUKZS7o0Jgiloe7kVCsJJ1Wa6bIxp2QZRaZQ+pkw=\n",
+	"nettvversion": "8.0.2",
+	"epgsource": "one",
+	"api_version": {
+		"Major": 6,
+		"Minor": 1,
+		"Patch": 0
+	},
+	"featuring": {
+		"jsonfeatures": {
+			"editfavorites": ["TVChannels", "SatChannels"],
+			"recordings": ["List", "Schedule", "Manage"],
+			"ambilight": ["LoungeLight", "Hue", "Ambilight"],
+			"menuitems": ["Setup_Menu"],
+			"textentry": ["context_based", "initial_string_available", "editor_info_available"],
+			"applications": ["TV_Apps", "TV_Games", "TV_Settings"],
+			"pointer": ["not_available"],
+			"inputkey": ["key"],
+			"activities": ["intent"],
+			"channels": ["preset_string"],
+			"mappings": ["server_mapping"]
+		},
+		"systemfeatures": {
+			"tvtype": "consumer",
+			"content": ["dmr", "pvr"],
+			"tvsearch": "intent",
+			"pairing_type": "digest_auth_pairing",
+			"secured_transport": "true",
+			"companion_screen": "true"
+		}
+	},
+	"os_type": "MSAF_2018_O"
+}
