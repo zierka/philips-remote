@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:phimote/constants/constants.dart';
@@ -6,6 +8,7 @@ import 'package:phimote/logic/models/input_key.dart';
 import 'package:phimote/logic/models/volume.dart';
 import 'package:phimote/screens/content/content_screen_model.dart';
 import 'package:phimote/screens/content/control_provider.dart';
+import 'package:phimote/widgets/continuous_control_button.dart';
 import 'package:phimote/widgets/control_button.dart';
 import 'package:phimote/widgets/selectable_button.dart';
 import 'package:provider/provider.dart';
@@ -59,11 +62,11 @@ class _VolumeControlState extends State<VolumeControl> {
                   await _loadVolume();
                 },
               ),
-              ControlButton(
+              ContinuousControlButton(
                 icon: Icon(Icons.remove),
                 onPressed: () {
                   setState(() {
-                    volume.current--;
+                    volume.current = max(volume.current - 1, volume.min);
                   });
 
                   controlProvider.postKey(InputKey.VolumeDown);
@@ -92,11 +95,11 @@ class _VolumeControlState extends State<VolumeControl> {
                   ),
                 ),
               ),
-              ControlButton(
+              ContinuousControlButton(
                 icon: Icon(Icons.add),
                 onPressed: () {
                   setState(() {
-                    volume.current++;
+                    volume.current = min(volume.current + 1, volume.max);
                   });
                   controlProvider.postKey(InputKey.VolumeUp);
                 },
