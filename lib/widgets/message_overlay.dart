@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/ui_constants.dart';
 
 import 'loading_indicator.dart';
@@ -94,7 +95,7 @@ class _MessageOverlayState extends State<MessageOverlay> {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(2),
-          color: Colors.grey[900],
+          color: AppColors.grey,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
