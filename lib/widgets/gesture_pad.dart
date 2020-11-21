@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+import 'package:phimote/constants/app_colors.dart';
 
 class GesturePad extends StatefulWidget {
   final ValueChanged<GestureAction> onGestureAction;
@@ -39,7 +40,7 @@ class _GesturePadState extends State<GesturePad> {
       child: Container(
         height: 250,
         decoration: BoxDecoration(
-          color: Colors.grey[900],
+          color: AppColors.grey,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: GestureDetector(

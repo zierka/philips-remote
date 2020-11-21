@@ -8,4 +8,5 @@ class AppColors {
   static const primaryColor = Colors.black;
   static const accentColor = orange;
   static const backgroundColor = Colors.black87;
+  static final grey = Colors.grey[900];
 }
