@@ -2,6 +2,7 @@ import 'package:phimote/logic/models/application.dart';
 import 'package:phimote/logic/models/channel.dart';
 import 'package:phimote/logic/models/input_key.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
+import 'package:phimote/pigeon.dart';
 
 class CommandsRepository {
   EndpointNetworkClient _client;
@@ -19,7 +20,7 @@ class CommandsRepository {
       "key": keyName,
     };
 
-    _client.post(endpoint, json);
+    _client.post(endpoint, json: json);
   }
 
   /// POST audio/volume
@@ -27,7 +28,7 @@ class CommandsRepository {
     final endpoint = "audio/volume";
     Map<String, dynamic> json = {"current": value, "muted": mute};
 
-    await _client.post(endpoint, json);
+    await _client.post(endpoint, json: json);
 
     return Future.value(null);
   }
@@ -42,7 +43,7 @@ class CommandsRepository {
       "channel": {"ccid": channel.ccid},
     };
 
-    await _client.post(endpoint, json);
+    await _client.post(endpoint, json: json);
   }
 
   /// open application
@@ -52,13 +53,34 @@ class CommandsRepository {
 
     Map<String, dynamic> json = application.toJson();
 
-    await _client.post(endpoint, json);
+    await _client.post(endpoint, json: json);
   }
 
   void powerOn() async {
-    final endpoint = "/ChromeCast";
+    final endpoint = "apps/ChromeCast";
 
-    await _client.post(endpoint);
+    final options = RequestOptions();
+    options.protocol = "http";
+    options.port = 8008;
+
+    await _client.post(endpoint, options: options);
+  }
+
+  void powerOnSetting() async {
+    final endpoint = "menuitems/settings/update";
+
+    Map<String, dynamic> json = {
+      "values": [
+        {
+          "value": {
+            "Nodeid": 2131230736,
+            "data": {"selected_item": 1}
+          }
+        }
+      ]
+    };
+
+    await _client.post(endpoint, json: json);
   }
 
   void sendText(String text) async {
@@ -68,6 +90,6 @@ class CommandsRepository {
       "currentstring": text,
     };
 
-    await _client.post(endpoint, json);
+    await _client.post(endpoint, json: json);
   }
 }

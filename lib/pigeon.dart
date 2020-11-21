@@ -74,16 +74,28 @@ class Credential {
 
 class RequestOptions {
   int timeout;
+  String protocol;
+  String ip;
+  int port;
+  int apiVersion;
   // ignore: unused_element
   Map<dynamic, dynamic> _toMap() {
     final Map<dynamic, dynamic> pigeonMap = <dynamic, dynamic>{};
     pigeonMap['timeout'] = timeout;
+    pigeonMap['protocol'] = protocol;
+    pigeonMap['ip'] = ip;
+    pigeonMap['port'] = port;
+    pigeonMap['apiVersion'] = apiVersion;
     return pigeonMap;
   }
   // ignore: unused_element
   static RequestOptions _fromMap(Map<dynamic, dynamic> pigeonMap) {
     final RequestOptions result = RequestOptions();
     result.timeout = pigeonMap['timeout'];
+    result.protocol = pigeonMap['protocol'];
+    result.ip = pigeonMap['ip'];
+    result.port = pigeonMap['port'];
+    result.apiVersion = pigeonMap['apiVersion'];
     return result;
   }
 }

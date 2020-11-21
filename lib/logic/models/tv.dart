@@ -13,7 +13,7 @@ class TV {
   String name;
   String friendlyName;
 
-  get baseUrl =>
+  String get baseUrl =>
       protocol +
       "://" +
       ip +
@@ -38,6 +38,24 @@ class TV {
   @override
   String toString() {
     return 'TV(protocol: $protocol, ip: $ip, port: $port, apiVersion: $apiVersion, name: $name, friendlyName: $friendlyName)';
+  }
+
+  TV copyWith({
+    String protocol,
+    String ip,
+    int port,
+    int apiVersion,
+    String name,
+    String friendlyName,
+  }) {
+    return TV(
+      protocol: protocol ?? this.protocol,
+      ip: ip ?? this.ip,
+      port: port ?? this.port,
+      apiVersion: apiVersion ?? this.apiVersion,
+      name: name ?? this.name,
+      friendlyName: friendlyName ?? this.friendlyName,
+    );
   }
 }
 

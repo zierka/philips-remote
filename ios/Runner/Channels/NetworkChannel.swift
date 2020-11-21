@@ -112,7 +112,11 @@ class NetworkChannel: NetworkChannelApiRequest {
 final class CustomServerTrustManager: ServerTrustManager {
     
     override public func serverTrustEvaluator(forHost host: String) throws -> ServerTrustEvaluating? {
-        return DisabledTrustEvaluator()
+//        if host.contains("8008") {
+//            return DefaultTrustEvaluator()
+//        } else {
+            return DisabledTrustEvaluator()
+//        }
         
 //        return DefaultTrustEvaluator(validateHost: false)
     }

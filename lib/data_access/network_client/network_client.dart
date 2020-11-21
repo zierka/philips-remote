@@ -41,7 +41,10 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   /// Throws [ApiException]
-  Future<Response> get(String url, {RequestOptions options}) async {
+  Future<Response> get(
+    String url, {
+    RequestOptions options,
+  }) async {
     final request = _makeRequestSkeleton(options: options);
     request.method = _HttpMethod.get;
 
@@ -57,8 +60,12 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   /// Throws [ApiException]
-  Future<Response> post(String url, [Map<String, dynamic> json]) async {
-    final request = _makeRequestSkeleton();
+  Future<Response> post(
+    String url, {
+    Map<String, dynamic> json,
+    RequestOptions options,
+  }) async {
+    final request = _makeRequestSkeleton(options: options);
     request.method = _HttpMethod.post;
 
     request.payload.url = url;

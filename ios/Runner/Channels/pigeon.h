@@ -34,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RequestOptions : NSObject
 @property(nonatomic, strong, nullable) NSNumber * timeout;
+@property(nonatomic, copy, nullable) NSString * protocol;
+@property(nonatomic, copy, nullable) NSString * ip;
+@property(nonatomic, strong, nullable) NSNumber * port;
+@property(nonatomic, strong, nullable) NSNumber * apiVersion;
 @end
 
 @interface ChannelResponse : NSObject

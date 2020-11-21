@@ -10,6 +10,10 @@ class ControlScreenModel {
     _commandsRepo.postKey(key);
   }
 
+  powerOn() {
+    _commandsRepo.powerOn();
+  }
+
   handleGesture(GestureAction action) {
     switch (action) {
       case GestureAction.Up:
