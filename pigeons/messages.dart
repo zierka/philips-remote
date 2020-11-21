@@ -22,6 +22,11 @@ class RequestPayload {
 
 class RequestOptions {
   int timeout;
+
+  String protocol;
+  String ip;
+  int port;
+  int apiVersion;
 }
 
 class Credential {

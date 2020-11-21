@@ -118,15 +118,43 @@ public class Pigeon {
     public Long getTimeout() { return timeout; }
     public void setTimeout(Long setterArg) { this.timeout = setterArg; }
 
+    private String protocol;
+    public String getProtocol() { return protocol; }
+    public void setProtocol(String setterArg) { this.protocol = setterArg; }
+
+    private String ip;
+    public String getIp() { return ip; }
+    public void setIp(String setterArg) { this.ip = setterArg; }
+
+    private Long port;
+    public Long getPort() { return port; }
+    public void setPort(Long setterArg) { this.port = setterArg; }
+
+    private Long apiVersion;
+    public Long getApiVersion() { return apiVersion; }
+    public void setApiVersion(Long setterArg) { this.apiVersion = setterArg; }
+
     HashMap toMap() {
       HashMap<String, Object> toMapResult = new HashMap<>();
       toMapResult.put("timeout", timeout);
+      toMapResult.put("protocol", protocol);
+      toMapResult.put("ip", ip);
+      toMapResult.put("port", port);
+      toMapResult.put("apiVersion", apiVersion);
       return toMapResult;
     }
     static RequestOptions fromMap(HashMap map) {
       RequestOptions fromMapResult = new RequestOptions();
       Object timeout = map.get("timeout");
       fromMapResult.timeout = (timeout == null) ? null : ((timeout instanceof Integer) ? (Integer)timeout : (Long)timeout);
+      Object protocol = map.get("protocol");
+      fromMapResult.protocol = (String)protocol;
+      Object ip = map.get("ip");
+      fromMapResult.ip = (String)ip;
+      Object port = map.get("port");
+      fromMapResult.port = (port == null) ? null : ((port instanceof Integer) ? (Integer)port : (Long)port);
+      Object apiVersion = map.get("apiVersion");
+      fromMapResult.apiVersion = (apiVersion == null) ? null : ((apiVersion instanceof Integer) ? (Integer)apiVersion : (Long)apiVersion);
       return fromMapResult;
     }
   }

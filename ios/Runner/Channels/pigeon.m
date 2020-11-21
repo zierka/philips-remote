@@ -120,10 +120,26 @@ static NSDictionary* wrapResult(NSDictionary *result, FlutterError *error) {
   if ((NSNull *)result.timeout == [NSNull null]) {
     result.timeout = nil;
   }
+  result.protocol = dict[@"protocol"];
+  if ((NSNull *)result.protocol == [NSNull null]) {
+    result.protocol = nil;
+  }
+  result.ip = dict[@"ip"];
+  if ((NSNull *)result.ip == [NSNull null]) {
+    result.ip = nil;
+  }
+  result.port = dict[@"port"];
+  if ((NSNull *)result.port == [NSNull null]) {
+    result.port = nil;
+  }
+  result.apiVersion = dict[@"apiVersion"];
+  if ((NSNull *)result.apiVersion == [NSNull null]) {
+    result.apiVersion = nil;
+  }
   return result;
 }
 -(NSDictionary*)toMap {
-  return [NSDictionary dictionaryWithObjectsAndKeys:(self.timeout ? self.timeout : [NSNull null]), @"timeout", nil];
+  return [NSDictionary dictionaryWithObjectsAndKeys:(self.timeout ? self.timeout : [NSNull null]), @"timeout", (self.protocol ? self.protocol : [NSNull null]), @"protocol", (self.ip ? self.ip : [NSNull null]), @"ip", (self.port ? self.port : [NSNull null]), @"port", (self.apiVersion ? self.apiVersion : [NSNull null]), @"apiVersion", nil];
 }
 @end
 

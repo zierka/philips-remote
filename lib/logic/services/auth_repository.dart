@@ -16,7 +16,7 @@ class AuthRepository {
 
     final endpoint = "pair/request";
 
-    final response = await _client.post(endpoint, request.data);
+    final response = await _client.post(endpoint, json: request.data);
     final responseJson = response.toJson();
 
     if (responseJson["error_id"] == "SUCCESS") {
@@ -38,6 +38,6 @@ class AuthRepository {
   Future<void> confirmPair(ConfirmPairRequest request) async {
     final endpoint = "pair/grant";
 
-    await _client.post(endpoint, request.data);
+    await _client.post(endpoint, json: request.data);
   }
 }
