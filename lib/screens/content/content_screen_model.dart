@@ -5,12 +5,15 @@ import 'package:phimote/logic/services/connection/connection_resumer.dart';
 import 'package:phimote/widgets/message.dart';
 import 'package:provider/provider.dart';
 
-class ContentScreenModel {
+class ContentScreenModel with ChangeNotifier {
   ConnectionResumer _connectionResumer;
 
   StreamController<Message> _streamController = StreamController();
 
   Stream<Message> get messageStream => _streamController.stream;
+
+  Stream<bool> get connectedStream => _connectionResumer.connectionState
+      .map((state) => state == ConnectionState.connected);
 
   Locator locator;
 
@@ -21,6 +24,7 @@ class ContentScreenModel {
   }
 
   void dispose() {
+    super.dispose();
     _connectionResumer.dispose();
   }
 

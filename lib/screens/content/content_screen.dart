@@ -72,13 +72,16 @@ class _ContentScreenState extends State<ContentScreen>
       resizeToAvoidBottomInset: true,
       body: Stack(
         children: [
-          IndexedStack(
-            index: _selectedTabIndex,
-            children: [
-              ChannelListScreen(),
-              ControlScreen(),
-              SettingsScreen(),
-            ],
+          ChangeNotifierProvider.value(
+            value: model,
+            child: IndexedStack(
+              index: _selectedTabIndex,
+              children: [
+                ChannelListScreen(),
+                ControlScreen(),
+                SettingsScreen(),
+              ],
+            ),
           ),
           Positioned(
             bottom: Paddings.x1,

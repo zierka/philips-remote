@@ -95,7 +95,7 @@ class _MessageOverlayState extends State<MessageOverlay> {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(2),
-          color: AppColors.grey,
+          color: AppColors.greyDark,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

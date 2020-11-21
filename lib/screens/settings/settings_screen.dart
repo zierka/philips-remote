@@ -25,6 +25,7 @@ enum _SettingsItem {
 }
 
 extension on _SettingsItem {
+  // ignore: missing_return
   String get title {
     switch (this) {
       case _SettingsItem.feedback:
@@ -145,7 +146,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             style: Theme.of(context)
                 .textTheme
                 .bodyText1
-                .copyWith(color: AppColors.grey),
+                .copyWith(color: AppColors.greyLight),
           ),
           SizedBox(height: Paddings.x2),
         ],

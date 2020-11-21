@@ -40,7 +40,7 @@ class _GesturePadState extends State<GesturePad> {
       child: Container(
         height: 250,
         decoration: BoxDecoration(
-          color: AppColors.grey,
+          color: AppColors.greyDark,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: GestureDetector(

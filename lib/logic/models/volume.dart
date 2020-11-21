@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 class Volume {
-  final bool muted;
-  final int current;
+  bool muted;
+  int current;
   final int min;
   final int max;
 

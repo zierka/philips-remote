@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:phimote/constants/constants.dart';
 
-class SelectableButton extends StatefulWidget {
+class SelectableButton extends StatelessWidget {
   SelectableButton({
     Key key,
-    this.child,
-    this.color,
-    this.onPressed,
+    @required this.selected,
+    @required this.title,
+    this.enabledTitle,
+    @required this.onPressed,
   }) : super(key: key);
 
-  final Widget child;
-  final Color color;
-  @required
-  final VoidCallback onPressed;
-
-  @override
-  _SelectableButtonState createState() => _SelectableButtonState();
-}
-
-class _SelectableButtonState extends State<SelectableButton> {
-  bool isSelected = false;
+  final bool selected;
+  final String title;
+  final String enabledTitle;
+  final Function(bool) onPressed;
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      child: widget.child,
-      color: isSelected ? widget.color : Colors.yellow,
-      onPressed: () {
-        widget.onPressed();
-        setState(() {
-          isSelected = !isSelected;
-        });
-      },
+      child: Text(
+        selected ? enabledTitle ?? title : title,
+        style: TextStyle(
+            color: !selected ? AppColors.orange : AppColors.backgroundColor),
+      ),
+      color: selected ? AppColors.orange : AppColors.backgroundColor,
+      onPressed: () => onPressed(!selected),
     );
   }
 }
