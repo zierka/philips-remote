@@ -30,4 +30,9 @@ class Volume {
         "min": min,
         "max": max,
       };
+
+  @override
+  String toString() {
+    return 'Volume(muted: $muted, current: $current, min: $min, max: $max)';
+  }
 }

@@ -41,6 +41,7 @@ class _VolumeControlState extends State<VolumeControl> {
 
   _loadVolume() async {
     volume = await controlProvider.currentVolume();
+    print(">> volume: $volume");
     setState(() {});
   }
 
@@ -57,20 +58,11 @@ class _VolumeControlState extends State<VolumeControl> {
                 title: "MUTE",
                 selectedTitle: "MUTED",
                 minWidth: 110,
-                onPressed: () async {
-                  await controlProvider.postKey(InputKey.Mute);
-                  await _loadVolume();
-                },
+                onPressed: () => _volumeMuted(),
               ),
               ContinuousControlButton(
                 icon: Icon(Icons.remove),
-                onPressed: () {
-                  setState(() {
-                    volume.current = max(volume.current - 1, volume.min);
-                  });
-
-                  controlProvider.postKey(InputKey.VolumeDown);
-                },
+                onPressed: () => _volumeIncremented(false),
               ),
               Expanded(
                 child: Material(
@@ -81,33 +73,49 @@ class _VolumeControlState extends State<VolumeControl> {
                     value: volume.current.toDouble(),
                     min: volume.min.toDouble(),
                     max: volume.max.toDouble(),
-                    onChanged: (value) {
-                      setState(() {
-                        volume.current = value.toInt();
-                      });
-                      controlProvider.changeVolume(value.toInt());
-                    },
-                    onChangeEnd: (value) {
-                      setState(() {
-                        volume.muted = false;
-                      });
-                    },
+                    onChanged: (value) => _volumeChanged(value),
                   ),
                 ),
               ),
               ContinuousControlButton(
                 icon: Icon(Icons.add),
-                onPressed: () {
-                  setState(() {
-                    volume.current = min(volume.current + 1, volume.max);
-                  });
-                  controlProvider.postKey(InputKey.VolumeUp);
-                },
+                onPressed: () => _volumeIncremented(true),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  _volumeChanged(double value) {
+    setState(() {
+      volume.current = value.toInt();
+      volume.muted = false;
+    });
+    controlProvider.changeVolume(value.toInt());
+  }
+
+  _volumeIncremented(bool isIncrement) async {
+    await controlProvider
+        .postKey(isIncrement ? InputKey.VolumeUp : InputKey.VolumeDown);
+
+    if (volume.muted) {
+      volume.muted = false;
+      _loadVolume();
+    }
+
+    setState(() {
+      if (isIncrement) {
+        volume.current = min(volume.current + 1, volume.max);
+      } else {
+        volume.current = max(volume.current - 1, volume.min);
+      }
+    });
+  }
+
+  _volumeMuted() async {
+    await controlProvider.postKey(InputKey.Mute);
+    await _loadVolume();
   }
 }
