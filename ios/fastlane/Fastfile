@@ -1,0 +1,33 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+
+    app_store_connect_api_key(
+      key_id: "HRAB2933HJ",
+      issuer_id: "b7f32197-387b-4c7c-a0eb-53de593d15e5",
+      key_content: "-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg/E64AqwNDwwlQgxQ\n3adaDOSfFuj29WVxVDb2llsZfTqgCgYIKoZIzj0DAQehRANCAAQe26+7M1rcnM9L\nSLcIBhAUFbJlDQZVdBCFXHMPdzRbseYSuqU0QAbuKgzlQO5ZWj3S5/I/I/u5V1IA\n2mT8zpRN\n-----END PRIVATE KEY-----",
+  )
+
+    # increment_build_number(xcodeproj: "Runner.xcodeproj")
+    match()
+    # build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
+    upload_to_testflight
+  end
+end
