@@ -59,7 +59,7 @@ class _ControlScreenState extends State<ControlScreen> {
                     },
                   ),
                   ControlButton(
-                    icon: Icon(Icons.tv),
+                    title: "TV",
                     onPressed: () {
                       controlProvider.postKey(InputKey.WatchTV);
                     },
