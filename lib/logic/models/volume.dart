@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 class Volume {
-  final bool muted;
-  final int current;
+  bool muted;
+  int current;
   final int min;
   final int max;
 
@@ -30,4 +30,9 @@ class Volume {
         "min": min,
         "max": max,
       };
+
+  @override
+  String toString() {
+    return 'Volume(muted: $muted, current: $current, min: $min, max: $max)';
+  }
 }

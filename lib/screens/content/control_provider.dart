@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:phimote/logic/models/input_key.dart';
+import 'package:phimote/logic/models/volume.dart';
 import 'package:phimote/logic/services/commands_repository.dart';
+import 'package:phimote/logic/services/info_repository.dart';
 import 'package:phimote/widgets/gesture_pad.dart';
 
-class ControlScreenModel {
+class ControlProvider with ChangeNotifier {
   final _commandsRepo = GetIt.instance.get<CommandsRepository>();
+  final _infoRepo = GetIt.instance.get<InfoRepository>();
 
-  postKey(InputKey key) {
-    _commandsRepo.postKey(key);
-  }
+  Future<void> postKey(InputKey key) => _commandsRepo.postKey(key);
 
   powerOn() {
     _commandsRepo.powerOn();
@@ -35,6 +37,8 @@ class ControlScreenModel {
         break;
     }
   }
+
+  Future<Volume> currentVolume() => _infoRepo.volume();
 
   Future<void> changeVolume(int value, {bool mute = false}) async {
     try {

@@ -9,7 +9,7 @@ class CommandsRepository {
 
   CommandsRepository(this._client);
 
-  void postKey(InputKey key) {
+  Future<void> postKey(InputKey key) async {
     final endpoint = "input/key";
 
     final keyName = key.toString().split(".").last ?? key;
@@ -20,7 +20,7 @@ class CommandsRepository {
       "key": keyName,
     };
 
-    _client.post(endpoint, json: json);
+    await _client.post(endpoint, json: json);
   }
 
   /// POST audio/volume

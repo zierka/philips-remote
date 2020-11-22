@@ -33,7 +33,8 @@ class ConnectionResumer {
   final WifiConnectionListener _wifiConnection = WifiConnectionListener();
   final TvConnectionChecker _tvConnection = TvConnectionChecker();
 
-  StreamController<ConnectionState> _streamController = StreamController();
+  StreamController<ConnectionState> _streamController =
+      StreamController.broadcast();
 
   Stream<ConnectionState> get connectionState => _streamController.stream;
 
