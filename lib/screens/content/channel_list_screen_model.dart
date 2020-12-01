@@ -8,9 +8,9 @@ import 'package:phimote/logic/services/info_repository.dart';
 import 'package:phimote/widgets/widget_state_builder/widget_load_state.dart';
 
 class ChannelListScreenModel {
-  final _infoRepo = GetIt.instance.get<InfoRepository>();
-  final _commandsRepo = GetIt.instance.get<CommandsRepository>();
-  final imageCacheManager = GetIt.instance.get<ImageCacheManager>();
+  get _infoRepo => GetIt.instance.get<InfoRepository>();
+  get _commandsRepo => GetIt.instance.get<CommandsRepository>();
+  get imageCacheManager => GetIt.instance.get<ImageCacheManager>();
 
   final StreamController _loadStateStreamController =
       StreamController<WidgetLoadState>();

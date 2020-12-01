@@ -5,9 +5,9 @@ import 'package:phimote/logic/services/commands_repository.dart';
 import 'package:phimote/logic/services/info_repository.dart';
 
 class AppListModel {
-  final _infoRepo = GetIt.instance.get<InfoRepository>();
-  final _commandsRepo = GetIt.instance.get<CommandsRepository>();
-  final imageCacheManager = GetIt.instance.get<ImageCacheManager>();
+  get _infoRepo => GetIt.instance.get<InfoRepository>();
+  get _commandsRepo => GetIt.instance.get<CommandsRepository>();
+  get imageCacheManager => GetIt.instance.get<ImageCacheManager>();
 
   Future<List<Application>> applications() {
     return _infoRepo.applicationList();

@@ -11,10 +11,11 @@ class TvConnectionChecker {
     return success;
   }
 
-  final systemRepo = GetIt.instance.get<SystemRepository>();
+  get _systemRepo => GetIt.instance.get<SystemRepository>();
+
   Future<bool> _loadSystemInfo() async {
     try {
-      await systemRepo.system(timeout: 1);
+      await _systemRepo.system(timeout: 1);
       return true;
     } catch (e) {
       return false;

@@ -18,7 +18,7 @@ class PairScreenModel extends ChangeNotifier {
   TV _currentlyPairingTV;
   PairResponse _pairResponse;
 
-  DeviceDiscovery _deviceDiscovery = GetIt.instance.get<DeviceDiscovery>();
+  DeviceDiscovery get _deviceDiscovery => GetIt.instance.get<DeviceDiscovery>();
   AuthRepository _authRepository;
 
   scanTapped() async {
