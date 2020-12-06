@@ -4,6 +4,7 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 import 'package:phimote/constants/constants.dart';
 import 'package:phimote/screens/root/root_model.dart';
+import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
 import 'package:phimote/util/extensions/dialog.dart';
 import 'package:phimote/widgets/list_item.dart';
@@ -17,6 +18,7 @@ String _twitterHandle = "@zierka";
 String _twitterHandleUrl = "https://twitter.com/zierka";
 
 enum _SettingsItem {
+  general,
   feedback,
   twitter,
   rate,
@@ -28,6 +30,8 @@ extension on _SettingsItem {
   // ignore: missing_return
   String get title {
     switch (this) {
+      case _SettingsItem.general:
+        return "General";
       case _SettingsItem.feedback:
         return "Send feedback";
       case _SettingsItem.twitter:
@@ -74,6 +78,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future _action(_SettingsItem item, BuildContext context) async {
     switch (item) {
+      case _SettingsItem.general:
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => GeneralSettingsScreen(),
+          ),
+        );
+        break;
       case _SettingsItem.feedback:
         // send feedback
         final options = MailOptions(
@@ -136,7 +147,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 return ListItem(
                   data: ListItemData(item.title, ""),
                   onTap: () => _action(item, context),
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
                 );
               },
             ),

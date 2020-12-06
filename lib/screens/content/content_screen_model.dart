@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart' hide ConnectionState;
+import 'package:phimote/data_access/persistence/preference_store.dart';
 import 'package:phimote/logic/services/connection/connection_resumer.dart';
 import 'package:phimote/widgets/message.dart';
 import 'package:provider/provider.dart';
+import 'package:wakelock/wakelock.dart';
 
 class ContentScreenModel with ChangeNotifier {
   ConnectionResumer _connectionResumer;
@@ -32,10 +34,21 @@ class ContentScreenModel with ChangeNotifier {
     final stream =
         _connectionResumer.connectionState.map((state) => state.message);
     _streamController.addStream(stream);
+
+    _updateWakelock();
   }
 
   resume() async {
     await _connectionResumer.resume();
+
+    _updateWakelock();
+  }
+
+  _updateWakelock() async {
+    final store = PreferenceStore();
+    final keep = await store.keepScreenOn;
+
+    Wakelock.toggle(enable: keep);
   }
 }
 

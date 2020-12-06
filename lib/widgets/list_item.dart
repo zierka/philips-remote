@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/services/image_cache_manager.dart';
 
 class ListItemData {
@@ -35,10 +36,10 @@ class ListItem extends StatelessWidget {
           color: Colors.black,
           child: ListTile(
             title: Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(Paddings.x1),
               child: Text(data.name),
             ),
-            //   trailing: this.trailing ??
+            trailing: this.trailing, // ??
             //       CachedNetworkImage(
             //         imageUrl: data.logoUrlEndpoint,
             //         cacheManager: imageCacheManager,

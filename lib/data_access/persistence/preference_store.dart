@@ -4,13 +4,20 @@ import 'package:phimote/logic/models/auth/session.dart';
 import 'package:phimote/data_access/persistence/store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const String _SESSION = "session";
+class _Keys {
+  static const _keyPrefix = "com.izerik.preference_store.key.";
+
+  static final String session = "session";
+  static final String keepScreenOn = _keyPrefix + "keep_screen_on";
+}
 
 class PreferenceStore implements Store {
   final _prefs = SharedPreferences.getInstance();
 
   final _jsonEncoder = JsonEncoder();
   final _jsonDecoder = JsonDecoder();
+
+  // string
 
   @override
   Future<String> string(String key) async {
@@ -31,6 +38,28 @@ class PreferenceStore implements Store {
 
     return Future.value();
   }
+
+  // bool
+
+  Future<bool> boolean(String key) async {
+    final prefs = await _prefs;
+
+    try {
+      final value = prefs.getBool(key);
+      return Future.value(value);
+    } catch (e) {
+      return Future.value(null);
+    }
+  }
+
+  Future<void> saveBool(String key, bool value) async {
+    final prefs = await _prefs;
+    prefs.setBool(key, value);
+
+    return Future.value();
+  }
+
+  // object
 
   @override
   Future<Map<String, dynamic>> object(String key) async {
@@ -61,7 +90,7 @@ class PreferenceStore implements Store {
   // STUFF
 
   Future<Session> _currentSession() async {
-    final o = await object(_SESSION);
+    final o = await object(_Keys.session);
 
     try {
       final session = Session.fromJson(o);
@@ -75,5 +104,10 @@ class PreferenceStore implements Store {
   get session => _currentSession();
   // TODO: Improve this
   set session(Session session) =>
-      saveObject(_SESSION, session?.toJson() ?? null);
+      saveObject(_Keys.session, session?.toJson() ?? null);
+
+  Future<bool> get keepScreenOn => boolean(_Keys.keepScreenOn)
+      .then((value) => Future.value(value != null ? value : true));
+
+  setKeepScreenOn(bool keep) => saveBool(_Keys.keepScreenOn, keep);
 }

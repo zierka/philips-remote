@@ -25,6 +25,8 @@ PODS:
     - FMDB (>= 2.7.5)
   - url_launcher (0.0.1):
     - Flutter
+  - wakelock (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
@@ -38,6 +40,7 @@ DEPENDENCIES:
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
+  - wakelock (from `.symlinks/plugins/wakelock/ios`)
 
 SPEC REPOS:
   trunk:
@@ -66,6 +69,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sqflite/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
+  wakelock:
+    :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
@@ -81,6 +86,7 @@ SPEC CHECKSUMS:
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
+  wakelock: bfc7955c418d0db797614075aabbc58a39ab5107
 
 PODFILE CHECKSUM: 7d6f661ad95d30c1dc49fe98cbb80d5544f36bb5
 
