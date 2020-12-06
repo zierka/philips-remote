@@ -32,37 +32,30 @@ class _ControlScreenState extends State<ControlScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               ControlButton(
-                icon: Icon(Icons.power_settings_new),
-                onPressed: () {
-                  controlProvider.postKey(InputKey.Standby);
-                },
+                child: Icon(Icons.power_settings_new),
+                onPressed: () => controlProvider.postKey(InputKey.Standby),
               ),
               GesturePad(
-                onGestureAction: (action) {
-                  controlProvider.handleGesture(action);
-                },
+                onGestureAction: (action) =>
+                    controlProvider.handleGesture(action),
               ),
               VolumeControl(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   ControlButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      controlProvider.postKey(InputKey.Back);
-                    },
+                    child: Icon(Icons.arrow_back),
+                    onPressed: () => controlProvider.postKey(InputKey.Back),
                   ),
                   ControlButton(
-                    icon: Icon(Icons.home),
+                    child: Icon(Icons.home),
                     onPressed: () {
                       controlProvider.postKey(InputKey.Home);
                     },
                   ),
                   ControlButton(
-                    title: "TV",
-                    onPressed: () {
-                      controlProvider.postKey(InputKey.WatchTV);
-                    },
+                    child: Text("TV"),
+                    onPressed: () => controlProvider.postKey(InputKey.WatchTV),
                   ),
                 ],
               ),
@@ -70,16 +63,14 @@ class _ControlScreenState extends State<ControlScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   ControlButton(
-                    icon: Icon(Icons.play_arrow),
-                    onPressed: () {
-                      controlProvider.postKey(InputKey.Play);
-                    },
-                  ),
-                  ControlButton(
-                    icon: Icon(Icons.pause),
-                    onPressed: () {
-                      controlProvider.postKey(InputKey.Pause);
-                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.play_arrow),
+                        Text("/"),
+                        Icon(Icons.pause),
+                      ],
+                    ),
+                    onPressed: () => controlProvider.postKey(InputKey.Pause),
                   ),
                 ],
               ),

@@ -6,33 +6,28 @@ import 'control_button.dart';
 class SelectableControlButton extends StatelessWidget {
   SelectableControlButton({
     Key key,
-    this.icon,
-    this.title,
+    this.child,
     this.color = AppColors.orange,
     this.backgroundColor = AppColors.backgroundColor,
     @required this.onPressed,
     this.minWidth,
     this.selected,
-    this.selectedIcon,
-    this.selectedTitle,
+    this.selectedChild,
   }) : super(key: key);
 
-  final Widget icon;
-  final String title;
+  final Widget child;
   final Color color;
   final Color backgroundColor;
   final VoidCallback onPressed;
   final double minWidth;
 
   final bool selected;
-  final Widget selectedIcon;
-  final String selectedTitle;
+  final Widget selectedChild;
 
   @override
   Widget build(BuildContext context) {
     return ControlButton(
-      icon: selected ? selectedIcon : icon,
-      title: selected ? selectedTitle : title,
+      child: selected ? selectedChild : child,
       color: selected ? backgroundColor : color,
       backgroundColor: selected ? color : backgroundColor,
       onPressed: onPressed,

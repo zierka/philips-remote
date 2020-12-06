@@ -55,8 +55,8 @@ class _VolumeControlState extends State<VolumeControl> {
             children: <Widget>[
               SelectableControlButton(
                 selected: volume.muted,
-                title: "MUTE",
-                selectedTitle: "MUTED",
+                child: Text("MUTE"),
+                selectedChild: Text("MUTED"),
                 minWidth: 110,
                 onPressed: () => _volumeMuted(),
               ),

@@ -35,7 +35,7 @@ class _ContinuousControlButtonState extends State<ContinuousControlButton> {
       onPointerUp: (e) => _onTapCancel(),
       onPointerCancel: (e) => _onTapCancel(),
       child: ControlButton(
-        icon: widget.icon,
+        child: widget.icon,
         color: widget.color,
         onPressed: () {},
       ),
