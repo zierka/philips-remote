@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 import 'control_button.dart';
 
@@ -42,7 +43,7 @@ class _ContinuousControlButtonState extends State<ContinuousControlButton> {
   }
 
   _onTapDown() {
-    widget.onPressed();
+    _onPressed();
 
     firstTimer = Timer(Duration(milliseconds: 300), () {
       _runPeriodicTimer();
@@ -56,7 +57,12 @@ class _ContinuousControlButtonState extends State<ContinuousControlButton> {
 
   _runPeriodicTimer() {
     periodicTimer = Timer.periodic(Duration(milliseconds: 150), (timer) {
-      widget.onPressed();
+      _onPressed();
     });
+  }
+
+  _onPressed() {
+    widget.onPressed();
+    Vibrate.feedback(FeedbackType.light);
   }
 }

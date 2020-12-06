@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/constants.dart';
 
@@ -32,12 +33,12 @@ class ControlButton extends StatelessWidget {
               icon: icon,
               iconSize: 30,
               color: color ?? AppColors.accentColor,
-              onPressed: onPressed,
+              onPressed: _onPressed,
             )
           : FlatButton(
               minWidth: minWidth,
               padding: padding.add(EdgeInsets.all(Paddings.x1)),
-              onPressed: onPressed,
+              onPressed: _onPressed,
               child: Text(
                 title,
                 style: TextStyle(
@@ -48,5 +49,10 @@ class ControlButton extends StatelessWidget {
               ),
             ),
     );
+  }
+
+  _onPressed() {
+    onPressed();
+    Vibrate.feedback(FeedbackType.light);
   }
 }
