@@ -5,9 +5,9 @@ class AppColors {
 
   static const orange = Colors.deepOrange;
 
-  static const primaryColor = Colors.black;
+  static const primaryColor = backgroundColor;
   static const accentColor = orange;
-  static const backgroundColor = Colors.black87;
+  static const backgroundColor = Color(0xFF121212);
   static final greyLight = Colors.grey[400];
   static final greyDark = Colors.grey[900];
 }

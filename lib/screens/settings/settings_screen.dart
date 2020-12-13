@@ -11,19 +11,19 @@ import 'package:phimote/widgets/list_item.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-String _feedbackEmail = "erik.interwebz@gmail.com";
-String _appStoreId = "1214299218";
+String _feedbackEmail = "phimoteapp@gmail.com";
+// String _appStoreId = "1214299218";
 String _privacyPolicyUrl = "https://ranchero.com/netnewswire/privacypolicy";
-String _twitterHandle = "@zierka";
-String _twitterHandleUrl = "https://twitter.com/zierka";
+// String _twitterHandle = "@zierka";
+// String _twitterHandleUrl = "https://twitter.com/zierka";
 
 enum _SettingsItem {
   general,
   feedback,
-  twitter,
-  rate,
-  privacyPolicy,
-  licenses,
+  // twitter,
+  // rate,
+  // privacyPolicy,
+  // licenses,
 }
 
 extension on _SettingsItem {
@@ -34,14 +34,14 @@ extension on _SettingsItem {
         return "General";
       case _SettingsItem.feedback:
         return "Send feedback";
-      case _SettingsItem.twitter:
-        return "$_twitterHandle on twitter";
-      case _SettingsItem.rate:
-        return "Rate app";
-      case _SettingsItem.privacyPolicy:
-        return "Privacy Policy";
-      case _SettingsItem.licenses:
-        return "Licenses";
+      // case _SettingsItem.twitter:
+      //   return "$_twitterHandle on twitter";
+      // case _SettingsItem.rate:
+      //   return "Rate app";
+      // case _SettingsItem.privacyPolicy:
+      //   return "Privacy Policy";
+      // case _SettingsItem.licenses:
+      //   return "Licenses";
     }
   }
 }
@@ -94,29 +94,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
         } else {
           showCustomDialog(
             "Unable to show email composer",
-            Text("Send your feedback to $_feedbackEmail.\nThank you!"),
+            SelectableText(
+                "Send your feedback to $_feedbackEmail.\nThank you!"),
             context,
           );
         }
         break;
-      case _SettingsItem.twitter:
-        if (await canLaunch(_twitterHandleUrl)) {
-          await launch(_twitterHandleUrl);
-        }
-        break;
-      case _SettingsItem.rate:
-        final inAppReview = InAppReview.instance;
-        inAppReview.openStoreListing(appStoreId: _appStoreId);
-        break;
-      case _SettingsItem.privacyPolicy:
-        if (await canLaunch(_privacyPolicyUrl)) {
-          await launch(_privacyPolicyUrl);
-        }
+      // case _SettingsItem.twitter:
+      //   if (await canLaunch(_twitterHandleUrl)) {
+      //     await launch(_twitterHandleUrl);
+      //   }
+      //   break;
+      // case _SettingsItem.rate:
+      //   final inAppReview = InAppReview.instance;
+      //   inAppReview.openStoreListing(appStoreId: _appStoreId);
+      //   break;
+      // case _SettingsItem.privacyPolicy:
+      //   if (await canLaunch(_privacyPolicyUrl)) {
+      //     await launch(_privacyPolicyUrl);
+      //   }
 
-        break;
-      case _SettingsItem.licenses:
-        showLicensePage(context: context);
-        break;
+      //   break;
+      // case _SettingsItem.licenses:
+      //   showLicensePage(context: context);
+      //   break;
     }
   }
 

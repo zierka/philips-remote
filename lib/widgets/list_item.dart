@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phimote/constants/constants.dart';
 import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/services/image_cache_manager.dart';
 
@@ -33,7 +34,7 @@ class ListItem extends StatelessWidget {
       ),
       child: Material(
         child: Ink(
-          color: Colors.black,
+          color: AppColors.backgroundColor,
           child: ListTile(
             title: Padding(
               padding: EdgeInsets.all(Paddings.x1),
