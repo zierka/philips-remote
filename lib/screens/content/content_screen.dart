@@ -23,11 +23,11 @@ class _ContentScreenState extends State<ContentScreen>
 
   final items = [
     BottomNavigationBarItem(
-      icon: Icon(Icons.list),
+      icon: Icon(Icons.list_alt),
       label: "Channels",
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.dialpad),
+      icon: Icon(Icons.apps),
       label: "Controls",
     ),
     BottomNavigationBarItem(

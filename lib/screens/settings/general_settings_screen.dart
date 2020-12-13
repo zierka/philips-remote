@@ -18,6 +18,8 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
     _model.load().then((_) {
       setState(() {});
     });
+
+    super.initState();
   }
 
   @override

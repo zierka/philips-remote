@@ -72,6 +72,10 @@ class _ControlScreenState extends State<ControlScreen> {
                     ),
                     onPressed: () => controlProvider.postKey(InputKey.Pause),
                   ),
+                  ControlButton(
+                    child: Text("SOURCE"),
+                    onPressed: () => controlProvider.postKey(InputKey.Source),
+                  ),
                 ],
               ),
               SizedBox(height: 5),
