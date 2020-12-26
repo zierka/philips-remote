@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/screens/root/root_widget.dart';
@@ -9,6 +10,10 @@ import 'package:provider/provider.dart';
 import 'screens/root/root_model.dart';
 
 void main() async {
+  if (kReleaseMode) {
+    debugPrint = (String message, {int wrapWidth}) {};
+  }
+
   runApp(MyApp());
 }
 

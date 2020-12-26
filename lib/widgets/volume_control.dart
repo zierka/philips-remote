@@ -41,7 +41,7 @@ class _VolumeControlState extends State<VolumeControl> {
 
   _loadVolume() async {
     volume = await controlProvider.currentVolume();
-    print(">> volume: $volume");
+    debugPrint(">> volume: $volume");
     setState(() {});
   }
 

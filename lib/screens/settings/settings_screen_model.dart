@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:phimote/screens/root/root_model.dart';
 
 class SettingsScreenModel {
@@ -6,7 +7,7 @@ class SettingsScreenModel {
   SettingsScreenModel();
 
   unpair() {
-    print("unpair");
+    debugPrint("unpair");
 
     rootModel.clearSession();
   }

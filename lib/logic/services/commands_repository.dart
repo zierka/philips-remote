@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:phimote/logic/models/application.dart';
 import 'package:phimote/logic/models/channel.dart';
 import 'package:phimote/logic/models/input_key.dart';
@@ -14,7 +15,7 @@ class CommandsRepository {
 
     final keyName = key.toString().split(".").last ?? key;
 
-    print(">> post key $keyName");
+    debugPrint(">> post key $keyName");
 
     Map<String, String> json = {
       "key": keyName,

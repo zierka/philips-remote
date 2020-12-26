@@ -22,7 +22,7 @@ class PairScreenModel extends ChangeNotifier {
   AuthRepository _authRepository;
 
   scanTapped() async {
-    print(">> scanning...");
+    debugPrint(">> scanning...");
 
     state = ScanState.loading();
     notifyListeners();
@@ -39,7 +39,7 @@ class PairScreenModel extends ChangeNotifier {
   }
 
   Future<void> _pair(TV tv) async {
-    print(">> pairing with tv ${tv.ip}");
+    debugPrint(">> pairing with tv ${tv.ip}");
 
     _currentlyPairingTV = tv;
 
@@ -51,7 +51,7 @@ class PairScreenModel extends ChangeNotifier {
   }
 
   Future<void> confirmPair(String pin) async {
-    print(">> confirm pairing pin $pin");
+    debugPrint(">> confirm pairing pin $pin");
 
     // update auth repo with a networking client that has session (credential) info
     final session = Session(

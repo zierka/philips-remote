@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:phimote/logic/models/device_discovery/discovery_configuration.dart';
 import 'package:phimote/logic/models/tv.dart';
 import 'package:ping_discover_network/ping_discover_network.dart';
@@ -11,7 +12,7 @@ class DeviceDiscoveryDirectSearch with DeviceDiscoveryMixin {
   DeviceDiscoveryDirectSearch();
 
   Future<List<TV>> getTVs() async {
-    print(">> searching for tvs with direct search...");
+    debugPrint(">> searching for tvs with direct search...");
 
     final candidates = await _getCandidates();
 

@@ -36,7 +36,7 @@ class _MyHomePageState extends State<PairScreenOld> {
           child: Text("OK"),
           onPressed: () {
             final pin = textField.controller.text;
-            print("pin $pin");
+            debugPrint("pin $pin");
             Navigator.pop(context);
 
             // final confirmPair = ConfirmPairRequest(response, pin);

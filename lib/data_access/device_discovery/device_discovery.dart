@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:phimote/logic/models/tv.dart';
 import 'package:phimote/data_access/device_discovery/device_discovery_direct_search.dart';
 import 'package:phimote/data_access/device_discovery/device_discovery_upnp.dart';
@@ -11,7 +12,7 @@ class DeviceDiscovery {
     final tvs = await upnp.getTVs();
 
     if (tvs.isNotEmpty) {
-      print(tvs);
+      debugPrint(tvs.toString());
       return tvs;
     }
 
@@ -19,7 +20,7 @@ class DeviceDiscovery {
 
     final tvs2 = await directSearch.getTVs();
 
-    print(tvs2);
+    debugPrint(tvs2.toString());
     return tvs2;
   }
 }
