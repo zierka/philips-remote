@@ -52,6 +52,7 @@ class _VolumeControlState extends State<VolumeControl> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Paddings.x2),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               SelectableControlButton(
                 selected: volume.muted,
@@ -64,19 +65,21 @@ class _VolumeControlState extends State<VolumeControl> {
                 icon: Icon(Icons.remove),
                 onPressed: () => _volumeIncremented(false),
               ),
-              Expanded(
-                child: Material(
-                  color: Colors.transparent,
-                  child: Slider(
-                    activeColor: Colors.deepOrange,
-                    inactiveColor: Colors.deepOrange.shade100,
-                    value: volume.current.toDouble(),
-                    min: volume.min.toDouble(),
-                    max: volume.max.toDouble(),
-                    onChanged: (value) => _volumeChanged(value),
-                  ),
-                ),
-              ),
+              // temp disabled
+
+              // Expanded(
+              //   child: Material(
+              //     color: Colors.transparent,
+              //     child: Slider(
+              //       activeColor: Colors.deepOrange,
+              //       inactiveColor: Colors.deepOrange.shade100,
+              //       value: volume.current.toDouble(),
+              //       min: volume.min.toDouble(),
+              //       max: volume.max.toDouble(),
+              //       onChanged: (value) => _volumeChanged(value),
+              //     ),
+              //   ),
+              // ),
               ContinuousControlButton(
                 icon: Icon(Icons.add),
                 onPressed: () => _volumeIncremented(true),
