@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'package:phimote/logic/models/system.dart';
 import 'package:phimote/pigeon.dart';
@@ -21,5 +22,19 @@ class SystemRepository {
     final system = System.fromJson(response.toJson());
 
     return system;
+  }
+
+  /// this ain't working, no idea how it should be used
+  Future<void> notifyChange() async {
+    final endpoint = "notifychange";
+
+    final options = RequestOptions();
+    options.port = 1925;
+
+    final response = await _client.post(endpoint, options: options);
+    debugPrint(response.toString());
+    // final system = System.fromJson(response.toJson());
+
+    // return system;
   }
 }

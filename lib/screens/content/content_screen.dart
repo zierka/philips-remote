@@ -7,6 +7,7 @@ import 'package:phimote/screens/content/channel_list_screen.dart';
 import 'package:phimote/screens/content/content_screen_model.dart';
 import 'package:phimote/screens/content/control_screen.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
+import 'package:phimote/widgets/control_button.dart';
 import 'package:phimote/widgets/message_overlay.dart';
 import 'package:provider/provider.dart';
 
@@ -68,6 +69,12 @@ class _ContentScreenState extends State<ContentScreen>
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Temp disable tabbar, show controls only
+    return ChangeNotifierProvider.value(
+      value: model,
+      child: ControlScreen(),
+    );
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Stack(

@@ -84,12 +84,19 @@ class CommandsRepository {
     await _client.post(endpoint, json: json);
   }
 
-  void sendText(String text) async {
+  void sendText(
+    String text, {
+    bool search = false,
+  }) async {
     final endpoint = "input/textentry";
 
     Map<String, dynamic> json = {
       "currentstring": text,
     };
+
+    if (search) {
+      json["action_id"] = "IME_ACTION_SEARCH";
+    }
 
     await _client.post(endpoint, json: json);
   }

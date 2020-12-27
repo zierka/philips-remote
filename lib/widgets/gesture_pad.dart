@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:phimote/constants/app_colors.dart';
+import 'package:phimote/constants/constants.dart';
 
 const _repeatDuration = Duration(milliseconds: 250);
 
@@ -42,29 +43,37 @@ class _GesturePadState extends State<GesturePad> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+      padding: EdgeInsets.only(
+        left: Paddings.x2,
+        right: Paddings.x2,
+        // top: Paddings.x1,
+        // bottom: Paddings.x1,
+      ),
       child: Container(
         height: 250,
         decoration: BoxDecoration(
           color: AppColors.greyDark,
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child: GestureDetector(
-          onTap: _onTap,
-          onTapCancel: _onTapCancel,
-          onVerticalDragStart: _onVerticalDragStart,
-          onVerticalDragUpdate: _onVerticalDragUpdate,
-          onVerticalDragEnd: _onDragEnd,
-          onVerticalDragCancel: _onVerticalDragCancel,
-          onHorizontalDragStart: _onHorizontalDragStart,
-          onHorizontalDragUpdate: _onHorizontalDragUpdate,
-          onHorizontalDragEnd: _onDragEnd,
-          onHorizontalDragCancel: _onHorizontalDragCancel,
-          // onPanStart: _onPanStart,
-          // onPanUpdate: _onPanUpdate,
-          // onPanEnd: _onPanEnd,
-          // onPanCancel: _onPanCancel,
-          // onPanDown: _onPanDown,
+        child: SizedBox(
+          // constraints: BoxConstraints(minHeight: 200, maxHeight: 300),
+          child: GestureDetector(
+            onTap: _onTap,
+            onTapCancel: _onTapCancel,
+            onVerticalDragStart: _onVerticalDragStart,
+            onVerticalDragUpdate: _onVerticalDragUpdate,
+            onVerticalDragEnd: _onDragEnd,
+            onVerticalDragCancel: _onVerticalDragCancel,
+            onHorizontalDragStart: _onHorizontalDragStart,
+            onHorizontalDragUpdate: _onHorizontalDragUpdate,
+            onHorizontalDragEnd: _onDragEnd,
+            onHorizontalDragCancel: _onHorizontalDragCancel,
+            // onPanStart: _onPanStart,
+            // onPanUpdate: _onPanUpdate,
+            // onPanEnd: _onPanEnd,
+            // onPanCancel: _onPanCancel,
+            // onPanDown: _onPanDown,
+          ),
         ),
       ),
     );
@@ -165,25 +174,25 @@ class _GesturePadState extends State<GesturePad> {
 
   // PAN
 
-  _onPanStart(DragStartDetails details) {
-    debugPrint(">> _onPanStart");
-  }
+  // _onPanStart(DragStartDetails details) {
+  //   debugPrint(">> _onPanStart");
+  // }
 
-  _onPanDown(DragDownDetails details) {
-    debugPrint(">> _onPanDown");
-  }
+  // _onPanDown(DragDownDetails details) {
+  //   debugPrint(">> _onPanDown");
+  // }
 
-  _onPanUpdate(DragUpdateDetails details) {
-    debugPrint(">> _onPanUpdate");
-  }
+  // _onPanUpdate(DragUpdateDetails details) {
+  //   debugPrint(">> _onPanUpdate");
+  // }
 
-  _onPanEnd(DragEndDetails details) {
-    debugPrint(">> _onPanEnd");
-  }
+  // _onPanEnd(DragEndDetails details) {
+  //   debugPrint(">> _onPanEnd");
+  // }
 
-  _onPanCancel() {
-    debugPrint(">> _onPanCancel");
-  }
+  // _onPanCancel() {
+  //   debugPrint(">> _onPanCancel");
+  // }
 }
 
 enum GestureAction { Up, Down, Left, Right, Tap, End }
