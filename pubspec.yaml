@@ -34,6 +34,7 @@ dependencies:
   package_info: '>=0.4.3+2 <2.0.0'
   wakelock: ^0.2.1+1
   smooth_page_indicator: ^0.2.0
+  flutter_launcher_icons: ^0.8.1
 
 dev_dependencies:
   build_runner: ^1.10.1
@@ -49,4 +50,11 @@ flutter:
 
   assets:
     - assets/available_commands.json
-    
+
+flutter_icons:
+  ios: "AppIcon"
+  android: "ic_launcher"
+  image_path_ios: "lib/assets/app_icon_ios.png"
+  image_path_android: "lib/assets/app_icon_android.png"
+  adaptive_icon_background: "#121212"
+  adaptive_icon_foreground: "lib/assets/app_icon_android.png"

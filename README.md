@@ -43,3 +43,11 @@ If you encounter issues, try
 ```
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
+
+### App icon
+
+Add app icons to `lib/assets`.
+
+```
+flutter pub run flutter_launcher_icons:main
+```
