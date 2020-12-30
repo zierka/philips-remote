@@ -122,7 +122,7 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   Response _handleResponse(ChannelResponse response) {
-    if (response.error != null) {
+    if (response.error != null && response.error.code != -1) {
       debugPrint(response.error.toString());
       throw ApiException.error(response.error);
     }
