@@ -1,10 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/input_key.dart';
-import 'package:phimote/logic/services/system_repository.dart';
 import 'package:phimote/screens/content/control_provider.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
 import 'package:phimote/widgets/control_button.dart';
@@ -36,37 +36,49 @@ class _ControlScreenState extends State<ControlScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        actions: [
-          ControlButton(
-            child: Icon(Icons.settings),
-            onPressed: onSettingsTapped,
-          ),
-        ],
-      ),
       body: SafeArea(
         child: ChangeNotifierProvider.value(
           value: controlProvider,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              ControlButton(
-                child: Icon(Icons.power_settings_new),
-                onPressed: () => controlProvider.postKey(InputKey.Standby),
+              Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: ControlButton(
+                      child: Icon(Icons.settings),
+                      onPressed: onSettingsTapped,
+                    ),
+                  ),
+                  Center(
+                    child: ControlButton(
+                      child: Icon(Icons.power_settings_new),
+                      onPressed: () =>
+                          controlProvider.postKey(InputKey.Standby),
+                    ),
+                  ),
+                ],
               ),
-              GesturePad(
-                onGestureAction: (action) =>
-                    controlProvider.handleGesture(action),
+              SizedBox(height: Paddings.x1),
+              Expanded(
+                child: GesturePad(
+                  onGestureAction: (action) =>
+                      controlProvider.handleGesture(action),
+                ),
               ),
+              SizedBox(height: Paddings.x1),
               persistentControls(controlProvider),
+              SizedBox(height: Paddings.x1),
               Divider(
                 thickness: 2,
+                height: 4,
                 indent: Paddings.x2,
                 endIndent: Paddings.x2,
                 color: AppColors.greyDark,
               ),
+              SizedBox(height: Paddings.x1),
               SizedBox(
-                height: 150,
+                height: 130,
                 child: PageView(
                   controller: controller,
                   children: [
@@ -75,17 +87,23 @@ class _ControlScreenState extends State<ControlScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: Paddings.x2),
               Container(
                 child: SmoothPageIndicator(
                   controller: controller,
                   count: 2,
                   effect: SlideEffect(
-                    dotWidth: 8.0,
-                    dotHeight: 8.0,
+                    dotWidth: 8,
+                    dotHeight: 8,
                     dotColor: AppColors.greyDark,
                     activeDotColor: AppColors.accentColor,
                   ),
+                ),
+              ),
+              SizedBox(
+                height: max(
+                  MediaQuery.of(context).viewPadding.bottom,
+                  Paddings.x2,
                 ),
               ),
             ],

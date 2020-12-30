@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<RootModel>(
       create: (context) => RootModel(),
       child: MaterialApp(
-        title: 'Philips TV remote controller',
+        title: 'Phimote',
         theme: themeData,
         home: RootWidget(),
       ),

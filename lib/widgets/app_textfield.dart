@@ -5,11 +5,13 @@ import 'package:phimote/constants/constants.dart';
 class AppTextField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final bool autofocus;
 
   const AppTextField({
     Key key,
     this.controller,
     this.keyboardType,
+    this.autofocus,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class AppTextField extends StatelessWidget {
       ),
       controller: controller,
       keyboardType: keyboardType,
+      autofocus: autofocus,
     );
   }
 }

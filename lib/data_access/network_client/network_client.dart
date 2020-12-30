@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'dart:convert' as convert;
 
@@ -121,7 +122,10 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   Response _handleResponse(ChannelResponse response) {
-    if (response.error != null) throw ApiException.error(response.error);
+    if (response.error != null) {
+      debugPrint(response.error.toString());
+      throw ApiException.error(response.error);
+    }
 
     final responseBody = response.result;
     Response _response = Response.bytes(responseBody, 200);

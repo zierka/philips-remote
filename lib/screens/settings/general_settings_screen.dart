@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/screens/settings/general_settings_screen_model.dart';
 import 'package:phimote/widgets/list_item.dart';
+import 'package:phimote/widgets/navigation_bar.dart';
 
 class GeneralSettingsScreen extends StatefulWidget {
   const GeneralSettingsScreen({Key key}) : super(key: key);
@@ -25,7 +26,7 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: NavigationBar(
         title: Text("General"),
       ),
       body: ListView(

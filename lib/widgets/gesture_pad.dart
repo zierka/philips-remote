@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:phimote/constants/app_colors.dart';
@@ -50,7 +49,7 @@ class _GesturePadState extends State<GesturePad> {
         // bottom: Paddings.x1,
       ),
       child: Container(
-        height: 250,
+        height: 200,
         decoration: BoxDecoration(
           color: AppColors.greyDark,
           borderRadius: BorderRadius.circular(10.0),

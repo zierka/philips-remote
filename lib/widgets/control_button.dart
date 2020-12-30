@@ -15,7 +15,7 @@ class ControlButton extends StatelessWidget {
 
   ControlButton({
     @required this.child,
-    this.color = AppColors.orange,
+    this.color = AppColors.accentColor,
     this.backgroundColor = AppColors.backgroundColor,
     @required this.onPressed,
     this.padding = const EdgeInsets.all(Paddings.x1 + Paddings.small),
@@ -27,22 +27,23 @@ class ControlButton extends StatelessWidget {
     return Material(
       color: backgroundColor ?? Colors.transparent,
       child: FlatButton(
-          minWidth: minWidth,
-          padding: padding.add(EdgeInsets.all(Paddings.x1)),
-          onPressed: _onPressed,
-          child: Theme(
-            data: Theme.of(context).copyWith(
-              iconTheme: IconThemeData(color: color ?? AppColors.accentColor),
+        minWidth: minWidth,
+        padding: padding.add(EdgeInsets.all(Paddings.x1)),
+        onPressed: _onPressed,
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            iconTheme: IconThemeData(color: color ?? AppColors.accentColor),
+          ),
+          child: DefaultTextStyle(
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: color,
             ),
-            child: DefaultTextStyle(
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: color,
-              ),
-              child: child,
-            ),
-          )),
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 

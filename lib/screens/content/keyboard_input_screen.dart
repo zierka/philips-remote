@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:phimote/constants/constants.dart';
 import 'package:phimote/logic/services/commands_repository.dart';
-import 'package:phimote/widgets/control_button.dart';
+import 'package:phimote/widgets/navigation_bar.dart';
 
 class KeyboardInputScreen extends StatelessWidget {
   final VoidCallback onFinished;
@@ -17,14 +17,8 @@ class KeyboardInputScreen extends StatelessWidget {
     final commandsRepo = GetIt.instance.get<CommandsRepository>();
 
     return Scaffold(
-      appBar: AppBar(
-        shadowColor: Colors.transparent,
-        leading: IconButton(
-          icon: Icon(Icons.close),
-          onPressed: () {
-            onFinished();
-          },
-        ),
+      appBar: NavigationBar(
+        leadingIcon: Icons.close,
       ),
       body: Container(
         padding: EdgeInsets.all(Paddings.x2),

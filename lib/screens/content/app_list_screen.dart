@@ -3,6 +3,7 @@ import 'package:phimote/logic/models/application.dart';
 import 'package:phimote/screens/content/app_list_model.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
+import 'package:phimote/widgets/navigation_bar.dart';
 
 class AppListScreen extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _AppListScreenState extends State<AppListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: NavigationBar(
         title: Text("Applications"),
       ),
       body: FutureBuilder(

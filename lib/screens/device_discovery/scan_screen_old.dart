@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phimote/logic/models/tv.dart';
+import 'package:phimote/widgets/navigation_bar.dart';
 
 class ScanScreenOld extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _ScanScreenOldState extends State<ScanScreenOld> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: NavigationBar(
         title: Text("Scan"),
       ),
       body: Padding(

@@ -8,6 +8,7 @@ import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
 import 'package:phimote/util/extensions/dialog.dart';
 import 'package:phimote/widgets/list_item.dart';
+import 'package:phimote/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -126,7 +127,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _model.rootModel = Provider.of<RootModel>(context, listen: false);
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: NavigationBar(
         title: Text("Settings"),
         actions: <Widget>[
           FlatButton(
@@ -134,6 +135,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Text("Unpair"),
             onPressed: () {
               _model.unpair();
+              Navigator.of(context).pop();
             },
           ),
         ],

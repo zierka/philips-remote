@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phimote/logic/models/auth/pair_response.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
+import 'package:phimote/widgets/navigation_bar.dart';
 
 class PairScreenOld extends StatefulWidget {
   @override
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<PairScreenOld> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: NavigationBar(
         title: Text("pair"),
       ),
       body: Center(
