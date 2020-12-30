@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:in_app_review/in_app_review.dart';
@@ -90,7 +92,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // send feedback
         final options = MailOptions(
             subject: "[Phimote] Feedback", recipients: [_feedbackEmail]);
-        if (await FlutterMailer.canSendMail()) {
+        if (Platform.isAndroid ||
+            Platform.isIOS && await FlutterMailer.canSendMail()) {
           FlutterMailer.send(options);
         } else {
           showCustomDialog(
