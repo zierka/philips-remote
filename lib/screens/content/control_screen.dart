@@ -7,6 +7,7 @@ import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/input_key.dart';
 import 'package:phimote/screens/content/control_provider.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
+import 'package:phimote/widgets/continuous_control_button.dart';
 import 'package:phimote/widgets/control_button.dart';
 import 'package:phimote/widgets/gesture_pad.dart';
 import 'package:phimote/widgets/volume_control.dart';
@@ -93,8 +94,8 @@ class _ControlScreenState extends State<ControlScreen> {
                   controller: controller,
                   count: 2,
                   effect: SlideEffect(
-                    dotWidth: 8,
-                    dotHeight: 8,
+                    dotWidth: 6,
+                    dotHeight: 6,
                     dotColor: AppColors.greyDark,
                     activeDotColor: AppColors.accentColor,
                   ),
@@ -157,7 +158,7 @@ class _ControlScreenState extends State<ControlScreen> {
               onPressed: () => controlProvider.postKey(InputKey.Pause),
             ),
             ControlButton(
-              child: Text("SOURCE"),
+              child: Text("SOURCES"),
               onPressed: () => controlProvider.postKey(InputKey.Source),
             ),
           ],
@@ -165,11 +166,11 @@ class _ControlScreenState extends State<ControlScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ControlButton(
+            ContinuousControlButton(
               child: Icon(Icons.fast_rewind),
               onPressed: () => controlProvider.postKey(InputKey.Rewind),
             ),
-            ControlButton(
+            ContinuousControlButton(
               child: Icon(Icons.fast_forward),
               onPressed: () => controlProvider.postKey(InputKey.FastForward),
             ),

@@ -62,7 +62,7 @@ class _VolumeControlState extends State<VolumeControl> {
                 onPressed: () => _volumeMuted(),
               ),
               ContinuousControlButton(
-                icon: Icon(Icons.remove),
+                child: Icon(Icons.remove),
                 onPressed: () => _volumeIncremented(false),
               ),
               // temp disabled
@@ -81,7 +81,7 @@ class _VolumeControlState extends State<VolumeControl> {
               //   ),
               // ),
               ContinuousControlButton(
-                icon: Icon(Icons.add),
+                child: Icon(Icons.add),
                 onPressed: () => _volumeIncremented(true),
               ),
             ],
