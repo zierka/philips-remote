@@ -6,12 +6,14 @@ class AppTextField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType keyboardType;
   final bool autofocus;
+  final Function(String) onSubmitted;
 
   const AppTextField({
     Key key,
     this.controller,
     this.keyboardType,
     this.autofocus,
+    this.onSubmitted,
   }) : super(key: key);
 
   @override
@@ -27,6 +29,7 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       autofocus: autofocus,
+      onSubmitted: onSubmitted,
     );
   }
 }

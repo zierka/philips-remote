@@ -153,6 +153,7 @@ class PairScreenState extends State<PairScreen> {
       controller: controller,
       keyboardType: TextInputType.number,
       autofocus: true,
+      onSubmitted: onPinEntered,
     );
 
     final dialog = PlatformAlertDialog(
