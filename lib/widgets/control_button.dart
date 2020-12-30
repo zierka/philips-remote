@@ -30,17 +30,20 @@ class ControlButton extends StatelessWidget {
         minWidth: minWidth,
         padding: padding.add(EdgeInsets.all(Paddings.x1)),
         onPressed: _onPressed,
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            iconTheme: IconThemeData(color: color ?? AppColors.accentColor),
-          ),
-          child: DefaultTextStyle(
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: color,
+        child: MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              iconTheme: IconThemeData(color: color ?? AppColors.accentColor),
             ),
-            child: child,
+            child: DefaultTextStyle(
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: color,
+              ),
+              child: child,
+            ),
           ),
         ),
       ),
