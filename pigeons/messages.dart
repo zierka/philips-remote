@@ -48,3 +48,10 @@ abstract class NetworkChannelApiRequest {
 abstract class NetworkChannelApiResponse {
   void onResult(ChannelResponse response);
 }
+
+// for android
+
+@HostApi()
+abstract class AndroidLifecycleHelper {
+  void sendToBackground();
+}
