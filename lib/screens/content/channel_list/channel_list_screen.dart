@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phimote/screens/content/channel_list_screen_model.dart';
+import 'package:phimote/screens/content/channel_list/channel_list_screen_model.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 import 'package:phimote/widgets/widget_state_builder/widget_state_builder.dart';

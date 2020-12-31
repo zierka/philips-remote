@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/input_key.dart';
-import 'package:phimote/screens/content/control_provider.dart';
+import 'package:phimote/screens/content/control_screen/control_provider.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
 import 'package:phimote/widgets/continuous_control_button.dart';
 import 'package:phimote/widgets/control_button.dart';
@@ -14,7 +14,7 @@ import 'package:phimote/widgets/volume_control.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'keyboard_input_screen.dart';
+import '../keyboard_input/keyboard_input_screen.dart';
 
 class ControlScreen extends StatefulWidget {
   @override

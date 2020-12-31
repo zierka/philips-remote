@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:phimote/logic/models/application.dart';
-import 'package:phimote/screens/content/app_list_model.dart';
+import 'package:phimote/screens/content/favorite_list/favorite_list_screen_model.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 
-class AppListScreen extends StatefulWidget {
+class FavoriteChannelListScreen extends StatefulWidget {
   @override
-  _AppListScreenState createState() => _AppListScreenState();
+  _FavoriteChannelListScreenState createState() =>
+      _FavoriteChannelListScreenState();
 }
 
-class _AppListScreenState extends State<AppListScreen> {
-  final _model = AppListModel();
+class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
+  final _model = FavoriteListScreenModel();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NavigationBar(
-        title: Text("Applications"),
+        title: Text("Favorite channels"),
       ),
       body: FutureBuilder(
-        future: _model.applications(),
-        builder: ((context, AsyncSnapshot<List<Application>> snapshot) {
+        future: _model.favoriteChannelList(),
+        builder: ((context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.active:
@@ -36,10 +36,8 @@ class _AppListScreenState extends State<AppListScreen> {
                   itemBuilder: (context, index) {
                     final item = snapshot.data[index];
                     return ListItem(
-                      data: ListItemData(item.label, item.logoUrlEndpoint),
-                      onTap: () {
-                        _model.openApplication(item);
-                      },
+                      data: item,
+                      onTap: () => _model.changeToChannel(item),
                       imageCacheManager: _model.imageCacheManager,
                     );
                   });

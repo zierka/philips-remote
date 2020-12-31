@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:phimote/screens/content/favorite_list_screen_model.dart';
+import 'package:phimote/logic/models/application.dart';
+import 'package:phimote/screens/content/app_list/app_list_model.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 
-class FavoriteChannelListScreen extends StatefulWidget {
+class AppListScreen extends StatefulWidget {
   @override
-  _FavoriteChannelListScreenState createState() =>
-      _FavoriteChannelListScreenState();
+  _AppListScreenState createState() => _AppListScreenState();
 }
 
-class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
-  final _model = FavoriteListScreenModel();
+class _AppListScreenState extends State<AppListScreen> {
+  final _model = AppListModel();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NavigationBar(
-        title: Text("Favorite channels"),
+        title: Text("Applications"),
       ),
       body: FutureBuilder(
-        future: _model.favoriteChannelList(),
-        builder: ((context, snapshot) {
+        future: _model.applications(),
+        builder: ((context, AsyncSnapshot<List<Application>> snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.active:
@@ -36,8 +36,10 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
                   itemBuilder: (context, index) {
                     final item = snapshot.data[index];
                     return ListItem(
-                      data: item,
-                      onTap: () => _model.changeToChannel(item),
+                      data: ListItemData(item.label, item.logoUrlEndpoint),
+                      onTap: () {
+                        _model.openApplication(item);
+                      },
                       imageCacheManager: _model.imageCacheManager,
                     );
                   });
