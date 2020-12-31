@@ -62,4 +62,10 @@ class InfoRepository {
         ApplicationResponse.fromJson(response.toJson()).applications;
     return applications;
   }
+
+  Future<void> currentActivity() async {
+    final endpoint = "activities/current";
+    final response = await _client.get(endpoint);
+    print(response);
+  }
 }

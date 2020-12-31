@@ -24,6 +24,18 @@ class CommandsRepository {
     await _client.post(endpoint, json: json);
   }
 
+  Future<void> postString(String string) async {
+    final endpoint = "input/key";
+
+    debugPrint(">> post key $string");
+
+    Map<String, String> json = {
+      "unicode": string,
+    };
+
+    await _client.post(endpoint, json: json);
+  }
+
   /// POST audio/volume
   Future<void> changeVolume(int value, {bool mute = false}) async {
     final endpoint = "audio/volume";

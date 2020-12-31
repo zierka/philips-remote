@@ -11,8 +11,8 @@ class SelectableControlButton extends StatelessWidget {
     this.backgroundColor = AppColors.backgroundColor,
     @required this.onPressed,
     this.minWidth,
-    this.selected,
-    this.selectedChild,
+    @required this.selected,
+    @required this.selectedChild,
   }) : super(key: key);
 
   final Widget child;
