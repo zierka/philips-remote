@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
@@ -168,7 +169,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 .bodyText1
                 .copyWith(color: AppColors.greyLight),
           ),
-          SizedBox(height: Paddings.x2),
+          SizedBox(
+              height:
+                  max(MediaQuery.of(context).viewPadding.bottom, Paddings.x2)),
         ],
       ),
     );

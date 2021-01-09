@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,50 +70,66 @@ class _ContentScreenState extends State<ContentScreen>
   @override
   Widget build(BuildContext context) {
     // TODO: Temp disable tabbar, show controls only
-    return ChangeNotifierProvider.value(
-      value: model,
-      child: ControlScreen(),
-    );
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Stack(
-        children: [
-          ChangeNotifierProvider.value(
-            value: model,
-            child: IndexedStack(
-              index: _selectedTabIndex,
-              children: [
-                ChannelListScreen(),
-                ControlScreen(),
-                SettingsScreen(),
-              ],
+      body: ChangeNotifierProvider.value(
+        value: model,
+        child: Stack(
+          children: [
+            ControlScreen(),
+            Positioned(
+              bottom:
+                  max(MediaQuery.of(context).viewPadding.bottom, Paddings.x5),
+              left: Paddings.x2,
+              right: Paddings.x2,
+              child: MessageOverlay(
+                messageStream: model.messageStream,
+              ),
             ),
-          ),
-          Positioned(
-            bottom: Paddings.x1,
-            left: Paddings.x2,
-            right: Paddings.x2,
-            child: MessageOverlay(
-              messageStream: model.messageStream,
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          highlightColor: Platform.isIOS ? Colors.transparent : null,
-        ),
-        child: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          backgroundColor: AppColors.backgroundColor,
-          currentIndex: _selectedTabIndex,
-          items: items,
-          onTap: (index) => onTabTapped(index),
+          ],
         ),
       ),
     );
+
+    // return Scaffold(
+    //   resizeToAvoidBottomInset: true,
+    //   body: Stack(
+    //     children: [
+    //       ChangeNotifierProvider.value(
+    //         value: model,
+    //         child: IndexedStack(
+    //           index: _selectedTabIndex,
+    //           children: [
+    //             ChannelListScreen(),
+    //             ControlScreen(),
+    //             SettingsScreen(),
+    //           ],
+    //         ),
+    //       ),
+    //       Positioned(
+    //         bottom: Paddings.x1,
+    //         left: Paddings.x2,
+    //         right: Paddings.x2,
+    //         child: MessageOverlay(
+    //           messageStream: model.messageStream,
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    //   bottomNavigationBar: Theme(
+    //     data: Theme.of(context).copyWith(
+    //       highlightColor: Platform.isIOS ? Colors.transparent : null,
+    //     ),
+    //     child: BottomNavigationBar(
+    //       showSelectedLabels: false,
+    //       showUnselectedLabels: false,
+    //       backgroundColor: AppColors.backgroundColor,
+    //       currentIndex: _selectedTabIndex,
+    //       items: items,
+    //       onTap: (index) => onTabTapped(index),
+    //     ),
+    //   ),
+    // );
   }
 
   onTabTapped(int index) {
