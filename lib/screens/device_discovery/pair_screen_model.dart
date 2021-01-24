@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:get_it/get_it.dart';
 import 'package:phimote/logic/models/auth/confirm_pair_response.dart';
 import 'package:phimote/logic/models/auth/pair_response.dart';
@@ -22,7 +23,7 @@ class PairScreenModel extends ChangeNotifier {
   AuthRepository _authRepository;
 
   scanTapped() async {
-    debugPrint(">> scanning...");
+    Log.d(">> scanning...");
 
     state = ScanState.loading();
     notifyListeners();
@@ -39,7 +40,7 @@ class PairScreenModel extends ChangeNotifier {
   }
 
   Future<void> _pair(TV tv) async {
-    debugPrint(">> pairing with tv ${tv.ip}");
+    Log.d(">> pairing with tv ${tv.ip}");
 
     _currentlyPairingTV = tv;
 
@@ -51,7 +52,7 @@ class PairScreenModel extends ChangeNotifier {
   }
 
   Future<void> confirmPair(String pin) async {
-    debugPrint(">> confirm pairing pin $pin");
+    Log.d(">> confirm pairing pin $pin");
 
     // update auth repo with a networking client that has session (credential) info
     final session = Session(

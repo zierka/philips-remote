@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/logic/models/auth/confirm_pair_response.dart';
 import 'package:phimote/logic/models/auth/pair_request.dart';
 import 'package:phimote/logic/models/auth/pair_response.dart';
@@ -21,7 +21,7 @@ class AuthRepository {
     final responseJson = response.toJson();
 
     if (responseJson["error_id"] == "SUCCESS") {
-      debugPrint("success");
+      Log.d("success");
 
       final response = PairResponse.fromJson(responseJson);
 
@@ -29,7 +29,7 @@ class AuthRepository {
 
       return response;
     } else {
-      debugPrint("error $responseJson");
+      Log.d("error $responseJson");
 
       throw ("/pair/request returned failure");
     }

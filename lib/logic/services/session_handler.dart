@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
 import 'package:phimote/main/app_state.dart';
 import 'package:phimote/logic/models/auth/session.dart';
@@ -16,13 +16,13 @@ class SessionHandler {
     final session = await _loadPersistedSession();
 
     if (session?.tv != null) {
-      debugPrint(">> loaded session from local store. tv ip ${session.tv.ip}");
+      Log.d(">> loaded session from local store. tv ip ${session.tv.ip}");
 
       state = AppState.content(session.tv);
 
       ServiceRegistrator.registerSessionServices(session);
     } else {
-      debugPrint(">> no session found");
+      Log.d(">> no session found");
 
       state = AppState.landing();
     }
@@ -36,7 +36,7 @@ class SessionHandler {
   }
 
   setSession(Session session) async {
-    debugPrint(">> setting session. tv ip ${session.tv.ip}");
+    Log.d(">> setting session. tv ip ${session.tv.ip}");
 
     state = AppState.content(session.tv);
 
@@ -48,7 +48,7 @@ class SessionHandler {
   }
 
   clearSession() async {
-    debugPrint(">> clear session");
+    Log.d(">> clear session");
 
     final store = PreferenceStore();
     store.session = null;

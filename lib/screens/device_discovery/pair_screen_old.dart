@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phimote/logic/models/auth/pair_response.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 
 class PairScreenOld extends StatefulWidget {
@@ -37,7 +38,7 @@ class _MyHomePageState extends State<PairScreenOld> {
           child: Text("OK"),
           onPressed: () {
             final pin = textField.controller.text;
-            debugPrint("pin $pin");
+            Log.d("pin $pin");
             Navigator.pop(context);
 
             // final confirmPair = ConfirmPairRequest(response, pin);

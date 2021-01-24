@@ -97,7 +97,7 @@ class NetworkChannel(binaryMessenger: BinaryMessenger, context: Context) : Pigeo
         }
 
         val channelResponse = Pigeon.ChannelResponse()
-        channelResponse.id = arg.id
+        channelResponse.request = arg
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {

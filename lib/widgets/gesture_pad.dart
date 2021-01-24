@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/constants.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 
 const _repeatDuration = Duration(milliseconds: 250);
 
@@ -86,13 +87,13 @@ class _GesturePadState extends State<GesturePad> {
   }
 
   _onTapCancel() {
-    debugPrint("onTapCancel");
+    Log.d("onTapCancel");
   }
 
   // DRAG
 
   _onDragEnd(DragEndDetails details) {
-    debugPrint(">> _onDragEnd");
+    Log.d(">> _onDragEnd");
 
     _stopContinousDragAction();
   }
@@ -100,11 +101,11 @@ class _GesturePadState extends State<GesturePad> {
   // vertical drag
 
   _onVerticalDragStart(DragStartDetails details) {
-    debugPrint(">> _onVerticalDragStart");
+    Log.d(">> _onVerticalDragStart");
   }
 
   _onVerticalDragUpdate(DragUpdateDetails details) {
-    debugPrint(">> _onVerticalDragUpdate");
+    Log.d(">> _onVerticalDragUpdate");
 
     if (details.primaryDelta.abs() < 2) return;
 
@@ -117,17 +118,17 @@ class _GesturePadState extends State<GesturePad> {
   }
 
   _onVerticalDragCancel() {
-    debugPrint(">> _onVerticalDragCancel");
+    Log.d(">> _onVerticalDragCancel");
   }
 
   // horizontal drag
 
   _onHorizontalDragStart(DragStartDetails details) {
-    debugPrint(">> _onHorizontalDragStart");
+    Log.d(">> _onHorizontalDragStart");
   }
 
   _onHorizontalDragUpdate(DragUpdateDetails details) {
-    debugPrint(">> _onHorizontalDragUpdate");
+    Log.d(">> _onHorizontalDragUpdate");
 
     if (details.primaryDelta.abs() < 2) return;
 
@@ -140,7 +141,7 @@ class _GesturePadState extends State<GesturePad> {
   }
 
   _onHorizontalDragCancel() {
-    debugPrint(">> _onHorizontalDragCancel");
+    Log.d(">> _onHorizontalDragCancel");
   }
 
   // LOGIC
@@ -150,7 +151,7 @@ class _GesturePadState extends State<GesturePad> {
 
     _fireDragAction();
 
-    debugPrint(">> _startTimer");
+    Log.d(">> _startTimer");
 
     _dragTimer = Timer.periodic(_repeatDuration, (timer) {
       _fireDragAction();
@@ -158,7 +159,7 @@ class _GesturePadState extends State<GesturePad> {
   }
 
   _stopContinousDragAction() {
-    debugPrint(">> _endTimer");
+    Log.d(">> _endTimer");
 
     _currentDragAction = null;
     _dragTimer.cancel();
@@ -174,23 +175,23 @@ class _GesturePadState extends State<GesturePad> {
   // PAN
 
   // _onPanStart(DragStartDetails details) {
-  //   debugPrint(">> _onPanStart");
+  //   Log.d(">> _onPanStart");
   // }
 
   // _onPanDown(DragDownDetails details) {
-  //   debugPrint(">> _onPanDown");
+  //   Log.d(">> _onPanDown");
   // }
 
   // _onPanUpdate(DragUpdateDetails details) {
-  //   debugPrint(">> _onPanUpdate");
+  //   Log.d(">> _onPanUpdate");
   // }
 
   // _onPanEnd(DragEndDetails details) {
-  //   debugPrint(">> _onPanEnd");
+  //   Log.d(">> _onPanEnd");
   // }
 
   // _onPanCancel() {
-  //   debugPrint(">> _onPanCancel");
+  //   Log.d(">> _onPanCancel");
   // }
 }
 
@@ -218,7 +219,7 @@ class _GestureHandler {
   }
 
   handleRawGesture(GestureAction action) {
-    debugPrint(">> raw gesture $action");
+    Log.d(">> raw gesture $action");
 
     stream.add(action);
   }

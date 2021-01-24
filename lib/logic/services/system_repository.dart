@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'package:phimote/logic/models/system.dart';
 import 'package:phimote/pigeon.dart';
@@ -32,7 +32,7 @@ class SystemRepository {
     options.port = 1925;
 
     final response = await _client.post(endpoint, options: options);
-    debugPrint(response.toString());
+    Log.d(response.toString());
     // final system = System.fromJson(response.toJson());
 
     // return system;

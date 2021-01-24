@@ -1,12 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:http/http.dart';
 import 'dart:convert' as convert;
 
 import 'package:phimote/logic/models/auth/session.dart';
 import 'package:phimote/logic/services/api.dart';
 import 'package:phimote/pigeon.dart';
+import 'package:phimote/util/extensions/network_error.dart';
 
 class _HttpMethod {
   static final get = "get";
@@ -34,11 +35,11 @@ class NetworkClient implements NetworkChannelApiResponse {
 
   @override
   void onResult(ChannelResponse arg) {
-    final completer = _resultHandlers[arg.id];
+    final completer = _resultHandlers[arg.request.id];
 
     completer.complete(arg);
 
-    _resultHandlers.remove(arg.id);
+    _resultHandlers.remove(arg.request.id);
   }
 
   /// Throws [ApiException]
@@ -111,6 +112,8 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   Future<ChannelResponse> _handleRequest(ChannelRequest request) async {
+    Log.net(request.payload.url, request.payload.body);
+
     await _channelApi.sendRequest(request);
 
     final completer = Completer<ChannelResponse>();
@@ -123,12 +126,14 @@ class NetworkClient implements NetworkChannelApiResponse {
 
   Response _handleResponse(ChannelResponse response) {
     if (response.error != null && response.error.error.isNotEmpty) {
-      debugPrint(response.error.toString());
+      Log.endNet(response.request.payload.url.toString(), response.error.code,
+          response.error.toString2());
       throw ApiException.error(response.error);
     }
 
     final responseBody = response.result;
     Response _response = Response.bytes(responseBody, 200);
+    Log.endNet(response.request.payload.url.toString(), 200, _response.body);
 
     return _response;
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tv.g.dart';

@@ -6,6 +6,7 @@ import 'package:phimote/constants/constants.dart';
 import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/input_key.dart';
 import 'package:phimote/logic/models/volume.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/screens/content/content_screen_model.dart';
 import 'package:phimote/screens/content/control_screen/control_provider.dart';
 import 'package:phimote/widgets/continuous_control_button.dart';
@@ -41,7 +42,8 @@ class _VolumeControlState extends State<VolumeControl> {
 
   _loadVolume() async {
     volume = await controlProvider.currentVolume();
-    debugPrint(">> volume: $volume");
+    Log.d(">> volume: $volume");
+
     setState(() {});
   }
 

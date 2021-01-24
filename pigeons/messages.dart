@@ -8,10 +8,11 @@ class ChannelRequest {
 }
 
 class ChannelResponse {
-  int id;
   String status;
   Uint8List result;
   NetworkError error;
+
+  ChannelRequest request;
 }
 
 class RequestPayload {

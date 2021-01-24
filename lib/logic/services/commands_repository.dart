@@ -1,9 +1,10 @@
-import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/logic/models/application.dart';
 import 'package:phimote/logic/models/channel.dart';
 import 'package:phimote/logic/models/input_key.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'package:phimote/pigeon.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 
 class CommandsRepository {
   EndpointNetworkClient _client;
@@ -15,7 +16,7 @@ class CommandsRepository {
 
     final keyName = key.toString().split(".").last ?? key;
 
-    debugPrint(">> post key $keyName");
+    Log.d(">> post key $keyName");
 
     Map<String, String> json = {
       "key": keyName,
@@ -27,7 +28,7 @@ class CommandsRepository {
   Future<void> postString(String string) async {
     final endpoint = "input/key";
 
-    debugPrint(">> post key $string");
+    Log.d(">> post key $string");
 
     Map<String, String> json = {
       "unicode": string,

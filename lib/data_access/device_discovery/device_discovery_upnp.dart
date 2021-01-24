@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/logic/models/tv.dart';
 import 'package:upnp/upnp.dart' as upnp;
 import 'device_discovery_mixin.dart';
@@ -16,20 +16,20 @@ class DeviceDiscoveryUpnp with DeviceDiscoveryMixin {
   }
 
   Future<List<TV>> getTVs() async {
-    debugPrint(">> searching for tvs upnp...");
+    Log.d(">> searching for tvs upnp...");
 
     final candidates = await _getCandidates();
 
-    debugPrint("found candidate: $candidates");
+    Log.d("found candidate: $candidates");
 
     List<TV> tvs = [];
 
     for (TVCandidate candidate in candidates) {
-      debugPrint("get details for candidate ${candidate.ip}");
+      Log.d("get details for candidate ${candidate.ip}");
 
       final tv = await getDeviceDetails(candidate);
 
-      debugPrint("details for candidate ${candidate.ip}: $tv");
+      Log.d("details for candidate ${candidate.ip}: $tv");
 
       if (tv != null) {
         tvs.add(tv);

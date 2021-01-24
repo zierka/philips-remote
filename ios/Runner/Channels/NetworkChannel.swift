@@ -68,7 +68,7 @@ class NetworkChannel: NetworkChannelApiRequest {
         }
         
         let channelResponse = ChannelResponse()
-        channelResponse.id = input.id;
+        channelResponse.request = input;
         
         dataRequest.validate(statusCode: 200..<300).responseData { response in
             switch response.result {

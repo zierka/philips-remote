@@ -6,6 +6,7 @@ import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 import 'package:phimote/constants/constants.dart';
+import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
@@ -90,9 +91,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
         );
         break;
       case _SettingsItem.feedback:
+        // final path = await Log.logFilePath();
+
         // send feedback
         final options = MailOptions(
-            subject: "[Phimote] Feedback", recipients: [_feedbackEmail]);
+          subject: "[Phimote] Feedback",
+          recipients: [_feedbackEmail],
+          // attachments: [path],
+        );
         if (Platform.isAndroid ||
             Platform.isIOS && await FlutterMailer.canSendMail()) {
           FlutterMailer.send(options);
