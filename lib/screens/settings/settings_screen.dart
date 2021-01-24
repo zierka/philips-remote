@@ -3,10 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
-import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 import 'package:phimote/constants/constants.dart';
-import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
@@ -14,7 +12,6 @@ import 'package:phimote/util/extensions/dialog.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 String _feedbackEmail = "phimoteapp@gmail.com";
 // String _appStoreId = "1214299218";

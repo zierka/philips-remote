@@ -4,7 +4,6 @@ import 'package:phimote/logic/models/channel.dart';
 import 'package:phimote/logic/models/input_key.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'package:phimote/pigeon.dart';
-import 'package:phimote/logic/services/logging/log.dart';
 
 class CommandsRepository {
   EndpointNetworkClient _client;

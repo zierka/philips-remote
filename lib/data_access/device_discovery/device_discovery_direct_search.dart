@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/logic/models/device_discovery/discovery_configuration.dart';
 import 'package:phimote/logic/models/tv.dart';
-import 'package:phimote/logic/services/logging/log.dart';
 import 'package:ping_discover_network/ping_discover_network.dart';
 
 import 'device_discovery_mixin.dart';

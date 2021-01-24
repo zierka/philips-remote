@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:let_log/let_log.dart' as thirdParty;
 
 class Log {
@@ -17,5 +16,4 @@ class Log {
 
   static void endNet(String endpoint, int status, dynamic data) =>
       thirdParty.Logger.endNet(endpoint, status: status, data: data);
-
 }

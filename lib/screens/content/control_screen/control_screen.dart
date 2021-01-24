@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:let_log/let_log.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/input_key.dart';
