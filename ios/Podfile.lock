@@ -8,11 +8,17 @@ PODS:
     - Flutter
   - flutter_vibrate (0.0.1):
     - Flutter
+  - flutuate_mixpanel (1.1.2):
+    - Flutter
+    - Mixpanel-swift (= 2.8.1)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - in_app_review (0.2.0):
     - Flutter
+  - Mixpanel-swift (2.8.1):
+    - Mixpanel-swift/Complete (= 2.8.1)
+  - Mixpanel-swift/Complete (2.8.1)
   - package_info (0.0.1):
     - Flutter
   - path_provider (0.0.1):
@@ -36,6 +42,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_mailer (from `.symlinks/plugins/flutter_mailer/ios`)
   - flutter_vibrate (from `.symlinks/plugins/flutter_vibrate/ios`)
+  - flutuate_mixpanel (from `.symlinks/plugins/flutuate_mixpanel/ios`)
   - in_app_review (from `.symlinks/plugins/in_app_review/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -49,6 +56,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - FMDB
+    - Mixpanel-swift
     - Reachability
 
 EXTERNAL SOURCES:
@@ -60,6 +68,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_mailer/ios"
   flutter_vibrate:
     :path: ".symlinks/plugins/flutter_vibrate/ios"
+  flutuate_mixpanel:
+    :path: ".symlinks/plugins/flutuate_mixpanel/ios"
   in_app_review:
     :path: ".symlinks/plugins/in_app_review/ios"
   package_info:
@@ -83,8 +93,10 @@ SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_mailer: 2ef5a67087bc8c6c4cefd04a178bf1ae2c94cd83
   flutter_vibrate: c0ca4ac994ff97c3f147f69865458bbc0cc3508b
+  flutuate_mixpanel: 7c8aff85f458a7d7fc0cd0452465cf36ffbee6a2
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   in_app_review: 4a97249f7a2f539a0f294c2d9196b7fe35e49541
+  Mixpanel-swift: 9d3a2597ef015f187abae0bfa5fda5997d5e4429
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/logic/services/logging/log.dart';
 import 'package:flutter/material.dart';
 import 'package:phimote/constants/app_colors.dart';
@@ -15,7 +16,10 @@ void main() {
     debugPrint = (String message, {int wrapWidth}) {};
   }
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   Log.configure();
+  Analytics.configure();
 
   runApp(MyApp());
 }

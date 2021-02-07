@@ -312,6 +312,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutuate_mixpanel:
+    dependency: "direct main"
+    description:
+      name: flutuate_mixpanel
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.7"
   freezed:
     dependency: "direct dev"
     description:
