@@ -36,7 +36,11 @@ class PairScreenModel extends ChangeNotifier {
   }
 
   Future<void> tvSelected(TV tv) async {
-    await _pair(tv);
+    if (tv.needsAuth) {
+      await _pair(tv);
+    } else {
+      _saveSession(tv);
+    }
   }
 
   Future<void> _pair(TV tv) async {

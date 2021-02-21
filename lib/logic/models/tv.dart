@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'device_discovery/discovery_configuration.dart';
+
 part 'tv.g.dart';
 
 @JsonSerializable()
@@ -22,6 +24,8 @@ class TV {
       "/" +
       apiVersion.toString() +
       "/";
+
+  bool get needsAuth => protocol == DiscoveryConfiguration.android.scheme;
 
   TV({
     @required this.protocol,
