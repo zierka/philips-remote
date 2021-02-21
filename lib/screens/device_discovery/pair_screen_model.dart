@@ -52,7 +52,13 @@ class PairScreenModel extends ChangeNotifier {
     final client = EndpointNetworkClient(session);
     _authRepository = AuthRepository(client);
 
-    _pairResponse = await _authRepository.pair(tv);
+    try {
+      _pairResponse = await _authRepository.pair(tv);
+    } on ConcurrentPairApiException catch (_) {
+      // do nothing
+    } catch (e) {
+      // handle it
+    }
   }
 
   Future<void> confirmPair(String pin) async {
@@ -69,6 +75,12 @@ class PairScreenModel extends ChangeNotifier {
     final confirmPair = ConfirmPairRequest(_pairResponse, pin);
 
     await _authRepository.confirmPair(confirmPair);
+
+    rootModel.setSession(session);
+  }
+
+  _saveSession(TV tv) {
+    final session = Session(tv: tv);
 
     rootModel.setSession(session);
   }

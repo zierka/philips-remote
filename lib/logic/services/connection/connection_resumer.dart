@@ -17,7 +17,7 @@ class _Messages {
   static final connected = "Connected";
   static final notOnWifi = "You're not connected to your local network";
   static final reconnecting = "Reconnecting to tv...";
-  static final tvNotFound = "TV not found";
+  static final tvNotFound = "TV not found / offline";
   static final unknown = "Unknown error";
 }
 

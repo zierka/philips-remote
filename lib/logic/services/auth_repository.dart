@@ -6,12 +6,15 @@ import 'package:phimote/logic/models/tv.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'package:phimote/util/extensions/response.dart';
 
+class ConcurrentPairApiException implements Exception {}
+
 class AuthRepository {
   EndpointNetworkClient _client;
 
   AuthRepository(this._client);
 
   /// POST `https://192.168.1.4:1926/6/pair/request`
+  /// TODO: Handle concurrent pairing {error_id: CONCURRENT_PAIRING, error_text: Another pairing is in process}
   Future<PairResponse> pair(TV tv) async {
     final request = PairRequest(tv: tv);
 
@@ -28,6 +31,8 @@ class AuthRepository {
       response.request = request;
 
       return response;
+    } else if (responseJson["error_id"] == "CONCURRENT_PAIRING") {
+      throw ConcurrentPairApiException();
     } else {
       Log.d("error $responseJson");
 
