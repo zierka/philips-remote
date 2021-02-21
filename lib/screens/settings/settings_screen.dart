@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:package_info/package_info.dart';
 import 'package:phimote/constants/constants.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
@@ -81,6 +82,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future _action(_SettingsItem item, BuildContext context) async {
     switch (item) {
       case _SettingsItem.general:
+        Analytics.track("general settings tap");
+
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => GeneralSettingsScreen(),
@@ -88,6 +91,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         );
         break;
       case _SettingsItem.feedback:
+        Analytics.track("feedback tap");
+
         // final path = await Log.logFilePath();
 
         // send feedback
@@ -98,7 +103,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         );
         if (Platform.isAndroid ||
             Platform.isIOS && await FlutterMailer.canSendMail()) {
-          FlutterMailer.send(options);
+          await FlutterMailer.send(options);
         } else {
           showCustomDialog(
             "Unable to show email composer",
@@ -141,6 +146,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             textColor: Theme.of(context).errorColor,
             child: Text("Unpair"),
             onPressed: () {
+              Analytics.track("unpair tap");
+
               _model.unpair();
               Navigator.of(context).pop();
             },

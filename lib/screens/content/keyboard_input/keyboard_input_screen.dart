@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/constants/constants.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/content/keyboard_input/keyboard_input_help_screen.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 
@@ -37,6 +38,11 @@ class _KeyboardInputScreenState extends State<KeyboardInputScreen> {
               onChanged: (value) {
                 setState(() {
                   model.alternateInputMode = value;
+
+                  Analytics.track(
+                    "keyboard alternate input toggle",
+                    properties: {"state": value ? "on" : "off"},
+                  );
                 });
               },
             ),
@@ -71,6 +77,8 @@ class _KeyboardInputScreenState extends State<KeyboardInputScreen> {
   }
 
   showHelpScreen() async {
+    Analytics.track("keyboard help tap");
+
     Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,

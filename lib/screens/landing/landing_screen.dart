@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/widgets/title_button.dart';
 
@@ -30,6 +31,8 @@ onPairFinished(BuildContext context) {
 }
 
 onScanTapped(BuildContext context) {
+  Analytics.track("scan tap");
+
   Navigator.push(
     context,
     MaterialPageRoute(

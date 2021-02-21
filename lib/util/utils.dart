@@ -10,3 +10,5 @@ class Utils {
     return base64Url.encode(values);
   }
 }
+
+String enumValueToString(Object theEnum) => theEnum.toString().split('.').last;

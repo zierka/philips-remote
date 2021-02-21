@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/input_key.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/content/control_screen/control_provider.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
 import 'package:phimote/widgets/continuous_control_button.dart';
@@ -26,9 +27,20 @@ class _ControlScreenState extends State<ControlScreen> {
 
   final controller = PageController(viewportFraction: 1.0);
 
+  int _analyticsCurrentPage = 0;
+
   @override
   void initState() {
     controlProvider = ControlProvider();
+
+    controller.addListener(() {
+      final _page = controller.page.toInt();
+
+      if (_analyticsCurrentPage != _page) {
+        Analytics.track("control swipe");
+        _analyticsCurrentPage = _page;
+      }
+    });
 
     super.initState();
   }
@@ -233,6 +245,8 @@ class _ControlScreenState extends State<ControlScreen> {
   }
 
   onSettingsTapped() {
+    Analytics.track("settings tap");
+
     Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
@@ -242,6 +256,8 @@ class _ControlScreenState extends State<ControlScreen> {
   }
 
   keyboardButtonTapped() {
+    Analytics.track("keyboard tap");
+
     showModalBottomSheet(
       context: context,
       builder: (context) => KeyboardInputScreen(

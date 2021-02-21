@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/logic/models/tv.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/device_discovery/pair_screen_model.dart';
 import 'package:phimote/widgets/app_textfield.dart';
@@ -105,6 +106,8 @@ class PairScreenState extends State<PairScreen> {
       child: TitleButton(
         title: "re-scan",
         onPressed: () {
+          Analytics.track("re-scan tap");
+
           _model.scanTapped();
         },
       ),
@@ -142,6 +145,8 @@ class PairScreenState extends State<PairScreen> {
   }
 
   onTvSelected(TV tv, PairScreenModel model) async {
+    Analytics.track("tv selected");
+
     await model.tvSelected(tv);
 
     showPairConfirmDialog();
@@ -162,7 +167,20 @@ class PairScreenState extends State<PairScreen> {
       actions: <Widget>[
         PlatformDialogAction(
           child: Text(
-            "OK",
+            "Cancel",
+            style: Theme.of(context)
+                .accentTextTheme
+                .button
+                .copyWith(color: AppColors.accentColor),
+          ),
+          onPressed: () {
+            Analytics.track("cancel pin dialog tap");
+            Navigator.of(context).pop();
+          },
+        ),
+        PlatformDialogAction(
+          child: Text(
+            "Connect",
             style: Theme.of(context)
                 .accentTextTheme
                 .button
@@ -172,7 +190,7 @@ class PairScreenState extends State<PairScreen> {
             final pin = textField.controller.text;
             onPinEntered(pin);
           },
-        )
+        ),
       ],
     );
 
@@ -182,8 +200,10 @@ class PairScreenState extends State<PairScreen> {
     );
   }
 
-  onPinEntered(String pin) {
-    _model.confirmPair(pin);
+  onPinEntered(String pin) async {
+    Analytics.track("pin entered");
+
+    await _model.confirmPair(pin);
 
     widget.onPairFinished();
   }

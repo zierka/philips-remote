@@ -1,5 +1,7 @@
 import 'package:flutuate_mixpanel/flutuate_mixpanel.dart';
 
+import 'log.dart';
+
 const String _apiKey = "<redacted>";
 
 class Analytics {
@@ -11,5 +13,11 @@ class Analytics {
 
   static void track(String eventName, {Map<String, dynamic> properties}) {
     _instance.track(eventName, properties);
+
+    if (properties == null) {
+      Log.d("[Analytics] $eventName");
+    } else {
+      Log.d("[Analytics] $eventName | properties: $properties");
+    }
   }
 }
