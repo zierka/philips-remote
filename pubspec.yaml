@@ -14,39 +14,39 @@ dependencies:
 
   cupertino_icons: ^1.0.0
 
-  shared_preferences: ^0.5.4+3
-  http: ^0.12.0+2
-  http_auth: ^0.3.0
-  json_annotation: ^3.0.1
+  shared_preferences: ^2.0.5
+  http: ^0.13.1
+  http_auth: ^1.0.0
+  json_annotation: ^4.0.1
   ping_discover_network: ^0.2.0+1
   material_search: ^0.2.8
   flutter_vibrate: ^1.0.0
   cached_network_image: ^2.4.1
-  provider: ^4.0.4
+  provider: ^5.0.0
   upnp: ^2.0.0+1
-  get_it: ^5.0.1
-  freezed_annotation: ^0.12.0
-  flutter_platform_widgets: ^0.72.0
+  get_it: ^6.0.0
+  freezed_annotation: ^0.14.1
+  flutter_platform_widgets: ^0.80.1
   flutter_mailer: ^1.0.1
-  connectivity: ^2.0.1
-  in_app_review: ^1.0.3
-  url_launcher: ^5.7.10
-  package_info: '>=0.4.3+2 <2.0.0'
-  wakelock: ^0.2.1+1
+  connectivity: ^3.0.3
+  in_app_review: ^2.0.1
+  url_launcher: ^6.0.2
+  package_info: ^2.0.0
+  wakelock: ^0.5.0+2
   smooth_page_indicator: ^0.2.0
   flutter_launcher_icons: #^0.8.1
     git:
       url: git@github.com:zierka/flutter_launcher_icons.git
       ref: scaling
-  path_provider: ^1.6.27
+  path_provider: ^2.0.1
   let_log: ^1.1.4
-  shake: ^0.1.0
+  shake: ^1.0.0
   flutuate_mixpanel: ^1.1.7
 
 dev_dependencies:
   build_runner: ^1.10.1
-  json_serializable: ^3.3.0
-  freezed: ^0.12.1
+  json_serializable: ^4.0.2
+  freezed: ^0.14.1
   pigeon: ^0.1.9
 
   flutter_test:
