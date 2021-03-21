@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/logic/services/logging/log.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,13 @@ class MyApp extends StatelessWidget {
     final brightness = Brightness.dark;
     final primaryColor = AppColors.primaryColor;
     final accentColor = AppColors.accentColor;
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: AppColors.backgroundColor,
+      ),
+    );
 
     final themeData = ThemeData(
       brightness: brightness,
