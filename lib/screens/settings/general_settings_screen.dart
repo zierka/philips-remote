@@ -42,6 +42,17 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
               },
             ),
           ),
+          ListItem(
+            data: ListItemData("Shake to send feedback / view logs", ""),
+            trailing: PlatformSwitch(
+              value: _model.shakeToFeedback,
+              onChanged: (value) {
+                setState(() {
+                  _model.saveShakeToFeedback(value);
+                });
+              },
+            ),
+          ),
         ],
       ),
     );

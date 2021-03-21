@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:let_log/let_log.dart';
+import 'package:phimote/data_access/persistence/preference_store.dart';
 import 'package:phimote/pigeon.dart';
+import 'package:phimote/util/extensions/dialog.dart';
+import 'package:phimote/util/flows.dart';
 import 'package:shake/shake.dart';
 import 'root_model.dart';
 import 'package:phimote/screens/content/content_screen.dart';
@@ -19,13 +22,15 @@ class RootWidget extends StatefulWidget {
 }
 
 class _RootWidgetState extends State<RootWidget> {
-  bool isLogScreenVisible = false;
-
   @override
   void initState() {
-    ShakeDetector.autoStart(onPhoneShake: () {
-      showLogScreen();
-    });
+    ShakeDetector.autoStart(
+      shakeThresholdGravity: 5,
+      shakeSlopTimeMS: 1000,
+      onPhoneShake: () {
+        shakeHappened();
+      },
+    );
 
     super.initState();
   }
@@ -57,20 +62,40 @@ class _RootWidgetState extends State<RootWidget> {
     );
   }
 
-  showLogScreen() {
-    if (isLogScreenVisible) return;
-    isLogScreenVisible = true;
+  Future shakeHappened() async {
+    final store = PreferenceStore();
 
+    final enabled = await store.shakeToFeedback;
+
+    if (!enabled) return;
+
+    showAppModalBottomSheet(
+      context,
+      [
+        DialogAction(
+          title: "Send feedback",
+          icon: Icons.mail_outline,
+          action: () => startSendFeedbackFlow(context),
+        ),
+        DialogAction(
+          title: "Show logs",
+          icon: Icons.list,
+          action: () => showLogScreen(),
+        ),
+        DialogAction(
+          title: "Don't show me this again",
+          icon: Icons.remove_circle_outline,
+          action: () => store.setShakeToFeedback(false),
+        ),
+      ],
+    );
+  }
+
+  showLogScreen() {
     Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (context) => WillPopScope(
-          onWillPop: () {
-            isLogScreenVisible = false;
-            return Future.value(true);
-          },
-          child: Logger(),
-        ),
+        builder: (context) => Logger(),
       ),
     );
   }

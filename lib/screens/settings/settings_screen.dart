@@ -10,11 +10,11 @@ import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
 import 'package:phimote/util/extensions/dialog.dart';
+import 'package:phimote/util/flows.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
 
-String _feedbackEmail = "phimoteapp@gmail.com";
 // String _appStoreId = "1214299218";
 String _privacyPolicyUrl = "https://ranchero.com/netnewswire/privacypolicy";
 // String _twitterHandle = "@zierka";
@@ -93,25 +93,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       case _SettingsItem.feedback:
         Analytics.track("feedback tap");
 
-        // final path = await Log.logFilePath();
+        await startSendFeedbackFlow(context);
 
-        // send feedback
-        final options = MailOptions(
-          subject: "[Phimote] Feedback",
-          recipients: [_feedbackEmail],
-          // attachments: [path],
-        );
-        if (Platform.isAndroid ||
-            Platform.isIOS && await FlutterMailer.canSendMail()) {
-          await FlutterMailer.send(options);
-        } else {
-          showCustomDialog(
-            "Unable to show email composer",
-            SelectableText(
-                "Send your feedback to $_feedbackEmail.\nThank you!"),
-            context,
-          );
-        }
         break;
       // case _SettingsItem.twitter:
       //   if (await canLaunch(_twitterHandleUrl)) {

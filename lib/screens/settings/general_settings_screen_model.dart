@@ -3,11 +3,13 @@ import 'package:wakelock/wakelock.dart';
 
 class GeneralSettingsScreenModel {
   bool keepScreenOn = false;
+  bool shakeToFeedback = false;
 
   PreferenceStore _store = PreferenceStore();
 
   Future load() async {
     keepScreenOn = await _store.keepScreenOn;
+    shakeToFeedback = await _store.shakeToFeedback;
   }
 
   saveKeepScreenOn(bool keep) {
@@ -15,5 +17,10 @@ class GeneralSettingsScreenModel {
     keepScreenOn = keep;
 
     Wakelock.toggle(enable: keep);
+  }
+
+  saveShakeToFeedback(bool enabled) {
+    _store.setShakeToFeedback(enabled);
+    shakeToFeedback = enabled;
   }
 }

@@ -9,6 +9,7 @@ class _Keys {
 
   static final String session = "session";
   static final String keepScreenOn = _keyPrefix + "keep_screen_on";
+  static final String shakeToFeedback = _keyPrefix + "shake_to_feedback";
 }
 
 class PreferenceStore implements Store {
@@ -106,8 +107,17 @@ class PreferenceStore implements Store {
   set session(Session session) =>
       saveObject(_Keys.session, session?.toJson() ?? null);
 
+  //
+
   Future<bool> get keepScreenOn => boolean(_Keys.keepScreenOn)
       .then((value) => Future.value(value != null ? value : true));
 
   setKeepScreenOn(bool keep) => saveBool(_Keys.keepScreenOn, keep);
+
+  //
+
+  Future<bool> get shakeToFeedback => boolean(_Keys.shakeToFeedback)
+      .then((value) => Future.value(value != null ? value : true));
+
+  setShakeToFeedback(bool enabled) => saveBool(_Keys.shakeToFeedback, enabled);
 }
