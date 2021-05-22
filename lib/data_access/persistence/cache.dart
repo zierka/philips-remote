@@ -3,5 +3,5 @@ import 'package:phimote/logic/models/volume.dart';
 
 class Cache {
   static List<Channel> allChannels = [];
-  static Volume volume;
+  static Volume? volume;
 }

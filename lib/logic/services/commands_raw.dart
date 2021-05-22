@@ -8,7 +8,7 @@ Future<Map<String, dynamic>> parseJsonFromAssets(String assetsPath) async {
 }
 
 class CommandsRaw {
-  Map<String, dynamic> _json;
+  late Map<String, dynamic> _json;
 
   CommandsRaw() {
     parseJsonFromAssets("assets/available_commands.json").then((json) {

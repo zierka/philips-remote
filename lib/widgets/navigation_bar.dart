@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class NavigationBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget title;
-  final List<Widget> actions;
-  final IconData leadingIcon;
+  final Widget? title;
+  final List<Widget>? actions;
+  final IconData? leadingIcon;
 
   const NavigationBar({
-    Key key,
+    Key? key,
     this.title,
     this.actions,
     this.leadingIcon,
@@ -22,7 +22,7 @@ class NavigationBar extends StatelessWidget implements PreferredSizeWidget {
           child: Icon(
             leadingIcon != null
                 ? leadingIcon
-                : ModalRoute.of(context).fullscreenDialog
+                : ModalRoute.of(context)?.fullscreenDialog ?? false
                     ? Icons.close
                     : Icons.arrow_back_ios,
           ),

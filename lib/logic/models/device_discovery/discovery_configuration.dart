@@ -7,5 +7,5 @@ class DiscoveryConfiguration {
 
   static const apiVersions = [6, 5, 2];
 
-  const DiscoveryConfiguration({this.scheme, this.port});
+  const DiscoveryConfiguration({required this.scheme, required this.port});
 }

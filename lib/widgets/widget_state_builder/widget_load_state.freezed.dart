@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'widget_load_state.dart';
 
@@ -9,36 +9,34 @@ part of 'widget_load_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$WidgetLoadStateTearOff {
   const _$WidgetLoadStateTearOff();
 
-// ignore: unused_element
   Content content() {
     return const Content();
   }
 
-// ignore: unused_element
   ContentKeepLoading contentKeepLoading(Future<dynamic> until) {
     return ContentKeepLoading(
       until,
     );
   }
 
-// ignore: unused_element
   Loading loading() {
     return const Loading();
   }
 
-// ignore: unused_element
   Error error(ScreenError error) {
     return Error(
       error,
     );
   }
 
-// ignore: unused_element
-  Empty empty([EmptyStateData data]) {
+  Empty empty(EmptyStateData? data) {
     return Empty(
       data,
     );
@@ -46,45 +44,48 @@ class _$WidgetLoadStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $WidgetLoadState = _$WidgetLoadStateTearOff();
 
 /// @nodoc
 mixin _$WidgetLoadState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result content(),
-    @required Result contentKeepLoading(Future<dynamic> until),
-    @required Result loading(),
-    @required Result error(ScreenError error),
-    @required Result empty(EmptyStateData data),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() content,
+    required TResult Function(Future<dynamic> until) contentKeepLoading,
+    required TResult Function() loading,
+    required TResult Function(ScreenError error) error,
+    required TResult Function(EmptyStateData? data) empty,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result content(),
-    Result contentKeepLoading(Future<dynamic> until),
-    Result loading(),
-    Result error(ScreenError error),
-    Result empty(EmptyStateData data),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? content,
+    TResult Function(Future<dynamic> until)? contentKeepLoading,
+    TResult Function()? loading,
+    TResult Function(ScreenError error)? error,
+    TResult Function(EmptyStateData? data)? empty,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result content(Content value),
-    @required Result contentKeepLoading(ContentKeepLoading value),
-    @required Result loading(Loading value),
-    @required Result error(Error value),
-    @required Result empty(Empty value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Content value) content,
+    required TResult Function(ContentKeepLoading value) contentKeepLoading,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Empty value) empty,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result content(Content value),
-    Result contentKeepLoading(ContentKeepLoading value),
-    Result loading(Loading value),
-    Result error(Error value),
-    Result empty(Empty value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Content value)? content,
+    TResult Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Empty value)? empty,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -121,6 +122,7 @@ class _$ContentCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Content implements Content {
   const _$Content();
 
@@ -139,32 +141,26 @@ class _$Content implements Content {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result content(),
-    @required Result contentKeepLoading(Future<dynamic> until),
-    @required Result loading(),
-    @required Result error(ScreenError error),
-    @required Result empty(EmptyStateData data),
+  TResult when<TResult extends Object?>({
+    required TResult Function() content,
+    required TResult Function(Future<dynamic> until) contentKeepLoading,
+    required TResult Function() loading,
+    required TResult Function(ScreenError error) error,
+    required TResult Function(EmptyStateData? data) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return content();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result content(),
-    Result contentKeepLoading(Future<dynamic> until),
-    Result loading(),
-    Result error(ScreenError error),
-    Result empty(EmptyStateData data),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? content,
+    TResult Function(Future<dynamic> until)? contentKeepLoading,
+    TResult Function()? loading,
+    TResult Function(ScreenError error)? error,
+    TResult Function(EmptyStateData? data)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (content != null) {
       return content();
     }
@@ -173,32 +169,26 @@ class _$Content implements Content {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result content(Content value),
-    @required Result contentKeepLoading(ContentKeepLoading value),
-    @required Result loading(Loading value),
-    @required Result error(Error value),
-    @required Result empty(Empty value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Content value) content,
+    required TResult Function(ContentKeepLoading value) contentKeepLoading,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Empty value) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return content(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result content(Content value),
-    Result contentKeepLoading(ContentKeepLoading value),
-    Result loading(Loading value),
-    Result error(Error value),
-    Result empty(Empty value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Content value)? content,
+    TResult Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Empty value)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (content != null) {
       return content(this);
     }
@@ -231,17 +221,21 @@ class _$ContentKeepLoadingCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object until = freezed,
+    Object? until = freezed,
   }) {
     return _then(ContentKeepLoading(
-      until == freezed ? _value.until : until as Future<dynamic>,
+      until == freezed
+          ? _value.until
+          : until // ignore: cast_nullable_to_non_nullable
+              as Future<dynamic>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$ContentKeepLoading implements ContentKeepLoading {
-  const _$ContentKeepLoading(this.until) : assert(until != null);
+  const _$ContentKeepLoading(this.until);
 
   @override
   final Future<dynamic> until;
@@ -263,38 +257,33 @@ class _$ContentKeepLoading implements ContentKeepLoading {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(until);
 
+  @JsonKey(ignore: true)
   @override
   $ContentKeepLoadingCopyWith<ContentKeepLoading> get copyWith =>
       _$ContentKeepLoadingCopyWithImpl<ContentKeepLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result content(),
-    @required Result contentKeepLoading(Future<dynamic> until),
-    @required Result loading(),
-    @required Result error(ScreenError error),
-    @required Result empty(EmptyStateData data),
+  TResult when<TResult extends Object?>({
+    required TResult Function() content,
+    required TResult Function(Future<dynamic> until) contentKeepLoading,
+    required TResult Function() loading,
+    required TResult Function(ScreenError error) error,
+    required TResult Function(EmptyStateData? data) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return contentKeepLoading(until);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result content(),
-    Result contentKeepLoading(Future<dynamic> until),
-    Result loading(),
-    Result error(ScreenError error),
-    Result empty(EmptyStateData data),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? content,
+    TResult Function(Future<dynamic> until)? contentKeepLoading,
+    TResult Function()? loading,
+    TResult Function(ScreenError error)? error,
+    TResult Function(EmptyStateData? data)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (contentKeepLoading != null) {
       return contentKeepLoading(until);
     }
@@ -303,32 +292,26 @@ class _$ContentKeepLoading implements ContentKeepLoading {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result content(Content value),
-    @required Result contentKeepLoading(ContentKeepLoading value),
-    @required Result loading(Loading value),
-    @required Result error(Error value),
-    @required Result empty(Empty value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Content value) content,
+    required TResult Function(ContentKeepLoading value) contentKeepLoading,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Empty value) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return contentKeepLoading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result content(Content value),
-    Result contentKeepLoading(ContentKeepLoading value),
-    Result loading(Loading value),
-    Result error(Error value),
-    Result empty(Empty value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Content value)? content,
+    TResult Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Empty value)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (contentKeepLoading != null) {
       return contentKeepLoading(this);
     }
@@ -340,8 +323,10 @@ abstract class ContentKeepLoading implements WidgetLoadState {
   const factory ContentKeepLoading(Future<dynamic> until) =
       _$ContentKeepLoading;
 
-  Future<dynamic> get until;
-  $ContentKeepLoadingCopyWith<ContentKeepLoading> get copyWith;
+  Future<dynamic> get until => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ContentKeepLoadingCopyWith<ContentKeepLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -361,6 +346,7 @@ class _$LoadingCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Loading implements Loading {
   const _$Loading();
 
@@ -379,32 +365,26 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result content(),
-    @required Result contentKeepLoading(Future<dynamic> until),
-    @required Result loading(),
-    @required Result error(ScreenError error),
-    @required Result empty(EmptyStateData data),
+  TResult when<TResult extends Object?>({
+    required TResult Function() content,
+    required TResult Function(Future<dynamic> until) contentKeepLoading,
+    required TResult Function() loading,
+    required TResult Function(ScreenError error) error,
+    required TResult Function(EmptyStateData? data) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result content(),
-    Result contentKeepLoading(Future<dynamic> until),
-    Result loading(),
-    Result error(ScreenError error),
-    Result empty(EmptyStateData data),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? content,
+    TResult Function(Future<dynamic> until)? contentKeepLoading,
+    TResult Function()? loading,
+    TResult Function(ScreenError error)? error,
+    TResult Function(EmptyStateData? data)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -413,32 +393,26 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result content(Content value),
-    @required Result contentKeepLoading(ContentKeepLoading value),
-    @required Result loading(Loading value),
-    @required Result error(Error value),
-    @required Result empty(Empty value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Content value) content,
+    required TResult Function(ContentKeepLoading value) contentKeepLoading,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Empty value) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result content(Content value),
-    Result contentKeepLoading(ContentKeepLoading value),
-    Result loading(Loading value),
-    Result error(Error value),
-    Result empty(Empty value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Content value)? content,
+    TResult Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Empty value)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -468,17 +442,21 @@ class _$ErrorCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(Error(
-      error == freezed ? _value.error : error as ScreenError,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as ScreenError,
     ));
   }
 }
 
 /// @nodoc
+
 class _$Error implements Error {
-  const _$Error(this.error) : assert(error != null);
+  const _$Error(this.error);
 
   @override
   final ScreenError error;
@@ -500,38 +478,33 @@ class _$Error implements Error {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $ErrorCopyWith<Error> get copyWith =>
       _$ErrorCopyWithImpl<Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result content(),
-    @required Result contentKeepLoading(Future<dynamic> until),
-    @required Result loading(),
-    @required Result error(ScreenError error),
-    @required Result empty(EmptyStateData data),
+  TResult when<TResult extends Object?>({
+    required TResult Function() content,
+    required TResult Function(Future<dynamic> until) contentKeepLoading,
+    required TResult Function() loading,
+    required TResult Function(ScreenError error) error,
+    required TResult Function(EmptyStateData? data) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result content(),
-    Result contentKeepLoading(Future<dynamic> until),
-    Result loading(),
-    Result error(ScreenError error),
-    Result empty(EmptyStateData data),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? content,
+    TResult Function(Future<dynamic> until)? contentKeepLoading,
+    TResult Function()? loading,
+    TResult Function(ScreenError error)? error,
+    TResult Function(EmptyStateData? data)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -540,32 +513,26 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result content(Content value),
-    @required Result contentKeepLoading(ContentKeepLoading value),
-    @required Result loading(Loading value),
-    @required Result error(Error value),
-    @required Result empty(Empty value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Content value) content,
+    required TResult Function(ContentKeepLoading value) contentKeepLoading,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Empty value) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result content(Content value),
-    Result contentKeepLoading(ContentKeepLoading value),
-    Result loading(Loading value),
-    Result error(Error value),
-    Result empty(Empty value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Content value)? content,
+    TResult Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Empty value)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -576,15 +543,16 @@ class _$Error implements Error {
 abstract class Error implements WidgetLoadState {
   const factory Error(ScreenError error) = _$Error;
 
-  ScreenError get error;
-  $ErrorCopyWith<Error> get copyWith;
+  ScreenError get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EmptyCopyWith<$Res> {
   factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
       _$EmptyCopyWithImpl<$Res>;
-  $Res call({EmptyStateData data});
+  $Res call({EmptyStateData? data});
 }
 
 /// @nodoc
@@ -598,20 +566,24 @@ class _$EmptyCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object data = freezed,
+    Object? data = freezed,
   }) {
     return _then(Empty(
-      data == freezed ? _value.data : data as EmptyStateData,
+      data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as EmptyStateData?,
     ));
   }
 }
 
 /// @nodoc
+
 class _$Empty implements Empty {
-  const _$Empty([this.data]);
+  const _$Empty(this.data);
 
   @override
-  final EmptyStateData data;
+  final EmptyStateData? data;
 
   @override
   String toString() {
@@ -630,38 +602,33 @@ class _$Empty implements Empty {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
 
+  @JsonKey(ignore: true)
   @override
   $EmptyCopyWith<Empty> get copyWith =>
       _$EmptyCopyWithImpl<Empty>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result content(),
-    @required Result contentKeepLoading(Future<dynamic> until),
-    @required Result loading(),
-    @required Result error(ScreenError error),
-    @required Result empty(EmptyStateData data),
+  TResult when<TResult extends Object?>({
+    required TResult Function() content,
+    required TResult Function(Future<dynamic> until) contentKeepLoading,
+    required TResult Function() loading,
+    required TResult Function(ScreenError error) error,
+    required TResult Function(EmptyStateData? data) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return empty(data);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result content(),
-    Result contentKeepLoading(Future<dynamic> until),
-    Result loading(),
-    Result error(ScreenError error),
-    Result empty(EmptyStateData data),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? content,
+    TResult Function(Future<dynamic> until)? contentKeepLoading,
+    TResult Function()? loading,
+    TResult Function(ScreenError error)? error,
+    TResult Function(EmptyStateData? data)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (empty != null) {
       return empty(data);
     }
@@ -670,32 +637,26 @@ class _$Empty implements Empty {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result content(Content value),
-    @required Result contentKeepLoading(ContentKeepLoading value),
-    @required Result loading(Loading value),
-    @required Result error(Error value),
-    @required Result empty(Empty value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Content value) content,
+    required TResult Function(ContentKeepLoading value) contentKeepLoading,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Empty value) empty,
   }) {
-    assert(content != null);
-    assert(contentKeepLoading != null);
-    assert(loading != null);
-    assert(error != null);
-    assert(empty != null);
     return empty(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result content(Content value),
-    Result contentKeepLoading(ContentKeepLoading value),
-    Result loading(Loading value),
-    Result error(Error value),
-    Result empty(Empty value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Content value)? content,
+    TResult Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Empty value)? empty,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (empty != null) {
       return empty(this);
     }
@@ -704,8 +665,9 @@ class _$Empty implements Empty {
 }
 
 abstract class Empty implements WidgetLoadState {
-  const factory Empty([EmptyStateData data]) = _$Empty;
+  const factory Empty(EmptyStateData? data) = _$Empty;
 
-  EmptyStateData get data;
-  $EmptyCopyWith<Empty> get copyWith;
+  EmptyStateData? get data => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EmptyCopyWith<Empty> get copyWith => throw _privateConstructorUsedError;
 }

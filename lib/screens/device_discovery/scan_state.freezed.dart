@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'scan_state.dart';
 
@@ -9,16 +9,17 @@ part of 'scan_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ScanStateTearOff {
   const _$ScanStateTearOff();
 
-// ignore: unused_element
   Loading loading() {
     return const Loading();
   }
 
-// ignore: unused_element
   Data tvs(List<TV> tvs) {
     return Data(
       tvs,
@@ -27,33 +28,36 @@ class _$ScanStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ScanState = _$ScanStateTearOff();
 
 /// @nodoc
 mixin _$ScanState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loading(),
-    @required Result tvs(List<TV> tvs),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<TV> tvs) tvs,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loading(),
-    Result tvs(List<TV> tvs),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<TV> tvs)? tvs,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loading(Loading value),
-    @required Result tvs(Data value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Data value) tvs,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loading(Loading value),
-    Result tvs(Data value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Data value)? tvs,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -88,6 +92,7 @@ class _$LoadingCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Loading with DiagnosticableTreeMixin implements Loading {
   const _$Loading();
 
@@ -112,23 +117,20 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loading(),
-    @required Result tvs(List<TV> tvs),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<TV> tvs) tvs,
   }) {
-    assert(loading != null);
-    assert(tvs != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loading(),
-    Result tvs(List<TV> tvs),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<TV> tvs)? tvs,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -137,23 +139,20 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loading(Loading value),
-    @required Result tvs(Data value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Data value) tvs,
   }) {
-    assert(loading != null);
-    assert(tvs != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loading(Loading value),
-    Result tvs(Data value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Data value)? tvs,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -183,17 +182,21 @@ class _$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object tvs = freezed,
+    Object? tvs = freezed,
   }) {
     return _then(Data(
-      tvs == freezed ? _value.tvs : tvs as List<TV>,
+      tvs == freezed
+          ? _value.tvs
+          : tvs // ignore: cast_nullable_to_non_nullable
+              as List<TV>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$Data with DiagnosticableTreeMixin implements Data {
-  const _$Data(this.tvs) : assert(tvs != null);
+  const _$Data(this.tvs);
 
   @override
   final List<TV> tvs;
@@ -223,29 +226,27 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(tvs);
 
+  @JsonKey(ignore: true)
   @override
   $DataCopyWith<Data> get copyWith =>
       _$DataCopyWithImpl<Data>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loading(),
-    @required Result tvs(List<TV> tvs),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<TV> tvs) tvs,
   }) {
-    assert(loading != null);
-    assert(tvs != null);
     return tvs(this.tvs);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loading(),
-    Result tvs(List<TV> tvs),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<TV> tvs)? tvs,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (tvs != null) {
       return tvs(this.tvs);
     }
@@ -254,23 +255,20 @@ class _$Data with DiagnosticableTreeMixin implements Data {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loading(Loading value),
-    @required Result tvs(Data value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Data value) tvs,
   }) {
-    assert(loading != null);
-    assert(tvs != null);
     return tvs(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loading(Loading value),
-    Result tvs(Data value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Data value)? tvs,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (tvs != null) {
       return tvs(this);
     }
@@ -281,6 +279,7 @@ class _$Data with DiagnosticableTreeMixin implements Data {
 abstract class Data implements ScanState {
   const factory Data(List<TV> tvs) = _$Data;
 
-  List<TV> get tvs;
-  $DataCopyWith<Data> get copyWith;
+  List<TV> get tvs => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
 }

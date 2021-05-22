@@ -9,9 +9,9 @@ class ErrorStateWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const ErrorStateWidget({
-    Key key,
-    @required this.error,
-    @required this.onPressed,
+    Key? key,
+    required this.error,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

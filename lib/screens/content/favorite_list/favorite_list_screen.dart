@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phimote/logic/models/channel.dart';
 import 'package:phimote/screens/content/favorite_list/favorite_list_screen_model.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
@@ -19,7 +20,7 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
       appBar: NavigationBar(
         title: Text("Favorite channels"),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<Channel>>(
         future: _model.favoriteChannelList(),
         builder: ((context, snapshot) {
           switch (snapshot.connectionState) {
@@ -32,9 +33,9 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
               return ListView.builder(
-                  itemCount: snapshot.data.length,
+                  itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    final item = snapshot.data[index];
+                    final item = snapshot.data![index];
                     return ListItem(
                       data: item,
                       onTap: () => _model.changeToChannel(item),
@@ -42,7 +43,6 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
                     );
                   });
           }
-          return null; // unreachable
         }),
       ),
     );

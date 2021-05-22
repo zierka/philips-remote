@@ -23,7 +23,7 @@ class VolumeControl extends StatefulWidget {
 class _VolumeControlState extends State<VolumeControl> {
   Volume volume = Volume(current: 0, muted: false, min: 0, max: 40);
 
-  ControlProvider controlProvider;
+  late ControlProvider controlProvider;
 
   @override
   void initState() {

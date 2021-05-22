@@ -5,7 +5,8 @@ class PairResponse {
   int timestamp;
   String authKey;
 
-  PairRequest request;
+  // TODO: This could be problematic
+  late PairRequest request;
 
   get credential =>
       Credential(username: request.sessionUsername, password: authKey);

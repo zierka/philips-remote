@@ -5,6 +5,7 @@ import 'package:phimote/logic/models/volume.dart';
 import 'package:phimote/data_access/network_client/endpoint_network_client.dart';
 import 'package:phimote/data_access/persistence/cache.dart';
 import 'package:phimote/util/extensions/response.dart';
+import 'package:phimote/util/extensions/iterable.dart';
 
 class InfoRepository {
   EndpointNetworkClient _client;
@@ -43,7 +44,7 @@ class InfoRepository {
     final List<Channel> channels2 = [];
 
     channels.forEach((fav) {
-      final chan = Cache.allChannels.firstWhere((c) {
+      final chan = Cache.allChannels.firstWhereOrNull((c) {
         return c.ccid == fav.ccid;
       });
 

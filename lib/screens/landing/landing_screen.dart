@@ -6,7 +6,7 @@ import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/widgets/title_button.dart';
 
 class LandingScreen extends StatelessWidget {
-  const LandingScreen({Key key}) : super(key: key);
+  const LandingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,43 +1,43 @@
 import 'package:pigeon/pigeon.dart';
 
 class ChannelRequest {
-  int id;
-  String method;
-  RequestPayload payload;
-  RequestOptions options;
+  int? id;
+  String? method;
+  RequestPayload? payload;
+  RequestOptions? options;
 }
 
 class ChannelResponse {
-  String status;
-  Uint8List result;
-  NetworkError error;
+  String? status;
+  Uint8List? result;
+  NetworkError? error;
 
-  ChannelRequest request;
+  ChannelRequest? request;
 }
 
 class RequestPayload {
-  String url;
-  String body;
-  Credential credential;
+  String? url;
+  String? body;
+  Credential? credential;
 }
 
 class RequestOptions {
-  int timeout;
+  int? timeout;
 
-  String protocol;
-  String ip;
-  int port;
-  int apiVersion;
+  String? protocol;
+  String? ip;
+  int? port;
+  int? apiVersion;
 }
 
 class Credential {
-  String username;
-  String password;
+  String? username;
+  String? password;
 }
 
 class NetworkError {
-  String error;
-  int code;
+  String? error;
+  int? code;
 }
 
 @HostApi()

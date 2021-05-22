@@ -14,12 +14,8 @@ System _$SystemFromJson(Map<String, dynamic> json) {
     json['serialnumber_encrypted'] as String,
     json['model_encrypted'] as String,
     json['deviceid_encrypted'] as String,
-    json['api_version'] == null
-        ? null
-        : ApiVersion.fromJson(json['api_version'] as Map<String, dynamic>),
-    json['featuring'] == null
-        ? null
-        : Featuring.fromJson(json['featuring'] as Map<String, dynamic>),
+    ApiVersion.fromJson(json['api_version'] as Map<String, dynamic>),
+    Featuring.fromJson(json['featuring'] as Map<String, dynamic>),
   );
 }
 
@@ -51,13 +47,8 @@ Map<String, dynamic> _$ApiVersionToJson(ApiVersion instance) =>
 
 Featuring _$FeaturingFromJson(Map<String, dynamic> json) {
   return Featuring(
-    json['jsonfeatures'] == null
-        ? null
-        : JsonFeatures.fromJson(json['jsonfeatures'] as Map<String, dynamic>),
-    json['systemfeatures'] == null
-        ? null
-        : SystemFeatures.fromJson(
-            json['systemfeatures'] as Map<String, dynamic>),
+    JsonFeatures.fromJson(json['jsonfeatures'] as Map<String, dynamic>),
+    SystemFeatures.fromJson(json['systemfeatures'] as Map<String, dynamic>),
   );
 }
 
@@ -68,8 +59,8 @@ Map<String, dynamic> _$FeaturingToJson(Featuring instance) => <String, dynamic>{
 
 JsonFeatures _$JsonFeaturesFromJson(Map<String, dynamic> json) {
   return JsonFeatures(
-    (json['ambilight'] as List)?.map((e) => e as String)?.toList(),
-    (json['textentry'] as List)?.map((e) => e as String)?.toList(),
+    (json['ambilight'] as List<dynamic>).map((e) => e as String).toList(),
+    (json['textentry'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 

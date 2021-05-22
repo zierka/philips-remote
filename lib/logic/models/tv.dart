@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'device_discovery/discovery_configuration.dart';
@@ -12,8 +11,8 @@ class TV {
   int port;
   int apiVersion;
 
-  String name;
-  String friendlyName;
+  String? name;
+  String? friendlyName;
 
   String get baseUrl =>
       protocol +
@@ -28,12 +27,12 @@ class TV {
   bool get needsAuth => protocol == DiscoveryConfiguration.android.scheme;
 
   TV({
-    @required this.protocol,
-    @required this.ip,
-    @required this.port,
-    @required this.apiVersion,
-    @required this.name,
-    @required this.friendlyName,
+    required this.protocol,
+    required this.ip,
+    required this.port,
+    required this.apiVersion,
+    required this.name,
+    required this.friendlyName,
   });
 
   factory TV.fromJson(Map<String, dynamic> json) => _$TVFromJson(json);
@@ -45,12 +44,12 @@ class TV {
   }
 
   TV copyWith({
-    String protocol,
-    String ip,
-    int port,
-    int apiVersion,
-    String name,
-    String friendlyName,
+    String? protocol,
+    String? ip,
+    int? port,
+    int? apiVersion,
+    String? name,
+    String? friendlyName,
   }) {
     return TV(
       protocol: protocol ?? this.protocol,
@@ -65,10 +64,14 @@ class TV {
 
 class TVCandidate {
   String ip;
-  String name;
-  String friendlyName;
+  String? name;
+  String? friendlyName;
 
-  TVCandidate({this.ip, this.name, this.friendlyName});
+  TVCandidate({
+    required this.ip,
+    this.name,
+    this.friendlyName,
+  });
 
   @override
   String toString() =>
@@ -79,7 +82,7 @@ class TVCandidate2 {
   String ip;
   int port;
 
-  TVCandidate2({this.ip, this.port});
+  TVCandidate2({required this.ip, required this.port});
 
   @override
   String toString() => 'TVCandidate2(ip: $ip, port: $port)';

@@ -9,11 +9,7 @@ import 'device_discovery_mixin.dart';
 /// - for every device makes a request with all the known api versions
 /// - for the ones that responds with 200, detemine port and scheme
 class DeviceDiscoveryUpnp with DeviceDiscoveryMixin {
-  upnp.DeviceDiscoverer _discoverer;
-
-  DeviceDiscoveryUpnp() {
-    _discoverer = upnp.DeviceDiscoverer();
-  }
+  late upnp.DeviceDiscoverer _discoverer = upnp.DeviceDiscoverer();
 
   Future<List<TV>> getTVs() async {
     Log.d(">> searching for tvs upnp...");
@@ -42,15 +38,17 @@ class DeviceDiscoveryUpnp with DeviceDiscoveryMixin {
   Future<List<TVCandidate>> _getCandidates() async {
     final devices = await _discoverer.getDevices();
 
-    final candidates = devices.map((e) {
-      final uri = Uri.parse(e.urlBase);
+    final candidates = devices.where((e) => e.urlBase != null).map(
+      (e) {
+        final uri = Uri.parse(e.urlBase!);
 
-      return TVCandidate(
-        ip: uri.host,
-        name: e.modelName,
-        friendlyName: e.friendlyName,
-      );
-    });
+        return TVCandidate(
+          ip: uri.host,
+          name: e.modelName ?? "",
+          friendlyName: e.friendlyName ?? "",
+        );
+      },
+    );
 
     return candidates.toList();
   }

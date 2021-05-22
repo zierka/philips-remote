@@ -23,7 +23,7 @@ class ControlScreen extends StatefulWidget {
 }
 
 class _ControlScreenState extends State<ControlScreen> {
-  ControlProvider controlProvider;
+  late ControlProvider controlProvider;
 
   final controller = PageController(viewportFraction: 1.0);
 
@@ -34,7 +34,7 @@ class _ControlScreenState extends State<ControlScreen> {
     controlProvider = ControlProvider();
 
     controller.addListener(() {
-      final _page = controller.page.toInt();
+      final _page = (controller.page ?? 0).toInt();
 
       if (_analyticsCurrentPage != _page) {
         Analytics.track("control swipe");

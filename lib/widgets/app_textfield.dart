@@ -9,11 +9,11 @@ class AppTextField extends StatelessWidget {
   final Function(String) onSubmitted;
 
   const AppTextField({
-    Key key,
-    this.controller,
-    this.keyboardType,
-    this.autofocus,
-    this.onSubmitted,
+    Key? key,
+    required this.controller,
+    required this.keyboardType,
+    required this.autofocus,
+    required this.onSubmitted,
   }) : super(key: key);
 
   @override

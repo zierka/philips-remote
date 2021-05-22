@@ -10,16 +10,16 @@ import 'package:flutter_cache_manager/src/web/mime_converter.dart';
 class ImageCacheManager extends CacheManager {
   static const key = "libCachedImageData";
 
-  static EndpointNetworkClient _client;
+  static late EndpointNetworkClient _client;
 
-  static ImageCacheManager _instance;
+  static ImageCacheManager? _instance;
 
   factory ImageCacheManager(EndpointNetworkClient client) {
     if (_instance == null) {
       _client = client;
       _instance = new ImageCacheManager._(client);
     }
-    return _instance;
+    return _instance!;
   }
 
   ImageCacheManager._(EndpointNetworkClient client)
@@ -33,7 +33,7 @@ class _FileService extends FileService {
 
   @override
   Future<FileServiceResponse> get(String url,
-      {Map<String, String> headers}) async {
+      {Map<String, String>? headers}) async {
     final response = await client.get(url);
 
     return _HttpGetResponse(response);
@@ -55,7 +55,7 @@ class _HttpGetResponse implements FileServiceResponse {
     return _response.headers.containsKey(name);
   }
 
-  String _header(String name) {
+  String? _header(String name) {
     return _response.headers[name];
   }
 
@@ -63,15 +63,16 @@ class _HttpGetResponse implements FileServiceResponse {
   Stream<List<int>> get content => Stream.value(_response.bodyBytes);
 
   @override
-  int get contentLength => _response.contentLength;
+  int? get contentLength => _response.contentLength;
 
   @override
   DateTime get validTill {
     // Without a cache-control header we keep the file for a week
     var ageDuration = const Duration(days: 7);
     if (_hasHeader(HttpHeaders.cacheControlHeader)) {
+      // TODO: check if this is ok. force unwrap
       final controlSettings =
-          _header(HttpHeaders.cacheControlHeader).split(',');
+          _header(HttpHeaders.cacheControlHeader)!.split(',');
       for (final setting in controlSettings) {
         final sanitizedSetting = setting.trim().toLowerCase();
         if (sanitizedSetting == 'no-cache') {
@@ -89,8 +90,9 @@ class _HttpGetResponse implements FileServiceResponse {
     return _receivedTime.add(ageDuration);
   }
 
+  // TODO: check if this is ok. force unwrap
   @override
-  String get eTag => _hasHeader(HttpHeaders.etagHeader)
+  String? get eTag => _hasHeader(HttpHeaders.etagHeader)
       ? _header(HttpHeaders.etagHeader)
       : null;
 
@@ -99,8 +101,9 @@ class _HttpGetResponse implements FileServiceResponse {
     var fileExtension = '';
 
     if (_hasHeader(HttpHeaders.contentTypeHeader)) {
+      // TODO: check if this is ok. force unwrap
       var contentType =
-          ContentType.parse(_header(HttpHeaders.contentTypeHeader));
+          ContentType.parse(_header(HttpHeaders.contentTypeHeader)!);
       fileExtension = contentType.fileExtension ?? '';
     }
     return fileExtension;

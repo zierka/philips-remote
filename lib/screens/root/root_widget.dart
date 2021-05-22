@@ -16,7 +16,7 @@ import 'package:phimote/widgets/loading_indicator.dart';
 import 'package:provider/provider.dart';
 
 class RootWidget extends StatefulWidget {
-  const RootWidget({Key key}) : super(key: key);
+  const RootWidget({Key? key}) : super(key: key);
 
   @override
   _RootWidgetState createState() => _RootWidgetState();

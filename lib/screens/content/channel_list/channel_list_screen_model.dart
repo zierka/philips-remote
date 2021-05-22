@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:get_it/get_it.dart';
 import 'package:phimote/logic/models/channel.dart';
+import 'package:phimote/logic/services/api.dart';
 import 'package:phimote/logic/services/image_cache_manager.dart';
 import 'package:phimote/logic/services/commands_repository.dart';
 import 'package:phimote/logic/services/info_repository.dart';
@@ -12,12 +13,12 @@ class ChannelListScreenModel {
   get _commandsRepo => GetIt.instance.get<CommandsRepository>();
   get imageCacheManager => GetIt.instance.get<ImageCacheManager>();
 
-  final StreamController _loadStateStreamController =
-      StreamController<WidgetLoadState>();
+  final StreamController<WidgetLoadState> _loadStateStreamController =
+      StreamController();
 
-  Stream get loadState => _loadStateStreamController.stream;
+  Stream<WidgetLoadState> get loadState => _loadStateStreamController.stream;
 
-  List<Channel> channelList;
+  List<Channel> channelList = [];
 
   var isSearching = false;
 
@@ -33,7 +34,7 @@ class ChannelListScreenModel {
       channelList = channels;
 
       _loadStateStreamController.add(WidgetLoadState.content());
-    } catch (e) {
+    } on ApiException catch (e) {
       _loadStateStreamController
           .add(WidgetLoadState.error(ScreenError.apiException(e)));
     }

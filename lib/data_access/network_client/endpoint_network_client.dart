@@ -9,7 +9,7 @@ class EndpointNetworkClient extends NetworkClient {
   @override
   Future<Response> get(
     String url, {
-    RequestOptions options,
+    RequestOptions? options,
   }) async {
     final _url = _fullUrl(url, options);
 
@@ -19,21 +19,25 @@ class EndpointNetworkClient extends NetworkClient {
   @override
   Future<Response> post(
     String url, {
-    Map<String, dynamic> json,
-    RequestOptions options,
+    Map<String, dynamic>? json,
+    RequestOptions? options,
   }) async {
     final _url = _fullUrl(url, options);
 
     return super.post(_url, json: json, options: options);
   }
 
-  String _fullUrl(String endpoint, RequestOptions options) {
-    var tv = session.tv.copyWith(
-      protocol: options?.protocol,
-      ip: options?.ip,
-      apiVersion: options?.apiVersion,
-      port: options?.port,
-    );
+  String _fullUrl(String endpoint, RequestOptions? options) {
+    var tv = session.tv;
+
+    if (options != null) {
+      tv = tv.copyWith(
+        protocol: options.protocol,
+        ip: options.ip,
+        apiVersion: options.apiVersion,
+        port: options.port,
+      );
+    }
 
     final _url = tv.baseUrl + endpoint;
 

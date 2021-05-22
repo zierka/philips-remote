@@ -4,7 +4,7 @@ import 'package:connectivity/connectivity.dart';
 class WifiConnectionListener {
   static final _connectivity = Connectivity();
 
-  Stream<bool> connectedStream;
+  late Stream<bool> connectedStream;
 
   Future<bool> get isConnected async {
     final result = await _connectivity.checkConnectivity();

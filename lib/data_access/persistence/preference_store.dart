@@ -21,7 +21,7 @@ class PreferenceStore implements Store {
   // string
 
   @override
-  Future<String> string(String key) async {
+  Future<String?> string(String key) async {
     final prefs = await _prefs;
 
     try {
@@ -33,16 +33,20 @@ class PreferenceStore implements Store {
   }
 
   @override
-  Future<void> saveString(String key, String value) async {
+  Future<void> saveString(String key, String? value) async {
     final prefs = await _prefs;
-    prefs.setString(key, value);
+    if (value == null) {
+      prefs.remove(key);
+    } else {
+      prefs.setString(key, value);
+    }
 
     return Future.value();
   }
 
   // bool
 
-  Future<bool> boolean(String key) async {
+  Future<bool?> boolean(String key) async {
     final prefs = await _prefs;
 
     try {
@@ -63,7 +67,7 @@ class PreferenceStore implements Store {
   // object
 
   @override
-  Future<Map<String, dynamic>> object(String key) async {
+  Future<Map<String, dynamic>?> object(String key) async {
     final value = await string(key);
 
     if (value != null) {
@@ -75,11 +79,11 @@ class PreferenceStore implements Store {
   }
 
   @override
-  Future<void> saveObject(String key, Map<String, dynamic> object) async {
+  Future<void> saveObject(String key, Map<String, dynamic>? object) async {
     final prefs = await _prefs;
 
     if (object == null) {
-      prefs.setString(key, null);
+      prefs.remove(key);
     } else {
       final value = _jsonEncoder.convert(object);
       prefs.setString(key, value);
@@ -90,11 +94,13 @@ class PreferenceStore implements Store {
 
   // STUFF
 
-  Future<Session> _currentSession() async {
-    final o = await object(_Keys.session);
+  Future<Session?> _currentSession() async {
+    final map = await object(_Keys.session);
+
+    if (map == null) return null;
 
     try {
-      final session = Session.fromJson(o);
+      final session = Session.fromJson(map);
       return session;
     } catch (e) {
       return null;
@@ -102,9 +108,9 @@ class PreferenceStore implements Store {
   }
 
   // current session
-  get session => _currentSession();
+  Future<Session?> get currentSession => _currentSession();
   // TODO: Improve this
-  set session(Session session) =>
+  set session(Session? session) =>
       saveObject(_Keys.session, session?.toJson() ?? null);
 
   //

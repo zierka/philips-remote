@@ -8,11 +8,10 @@ part of 'application.dart';
 
 ApplicationResponse _$ApplicationResponseFromJson(Map<String, dynamic> json) {
   return ApplicationResponse(
-    version: json['version'] as int,
-    applications: (json['applications'] as List)
-        ?.map((e) =>
-            e == null ? null : Application.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    json['version'] as int,
+    (json['applications'] as List<dynamic>)
+        .map((e) => Application.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -25,13 +24,11 @@ Map<String, dynamic> _$ApplicationResponseToJson(
 
 Application _$ApplicationFromJson(Map<String, dynamic> json) {
   return Application(
-    label: json['label'] as String,
-    intent: json['intent'] == null
-        ? null
-        : Intent.fromJson(json['intent'] as Map<String, dynamic>),
-    order: json['order'] as int,
-    id: json['id'] as String,
-    type: json['type'] as String,
+    json['label'] as String,
+    Intent.fromJson(json['intent'] as Map<String, dynamic>),
+    json['order'] as int,
+    json['id'] as String,
+    json['type'] as String,
   );
 }
 
@@ -46,10 +43,8 @@ Map<String, dynamic> _$ApplicationToJson(Application instance) =>
 
 Intent _$IntentFromJson(Map<String, dynamic> json) {
   return Intent(
-    component: json['component'] == null
-        ? null
-        : Component.fromJson(json['component'] as Map<String, dynamic>),
-    action: json['action'] as String,
+    Component.fromJson(json['component'] as Map<String, dynamic>),
+    json['action'] as String,
   );
 }
 
@@ -60,8 +55,8 @@ Map<String, dynamic> _$IntentToJson(Intent instance) => <String, dynamic>{
 
 Component _$ComponentFromJson(Map<String, dynamic> json) {
   return Component(
-    packageName: json['packageName'] as String,
-    className: json['className'] as String,
+    json['packageName'] as String,
+    json['className'] as String,
   );
 }
 

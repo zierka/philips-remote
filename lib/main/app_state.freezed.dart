@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'app_state.dart';
 
@@ -9,60 +9,63 @@ part of 'app_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AppStateTearOff {
   const _$AppStateTearOff();
 
-// ignore: unused_element
   Loading loading() {
     return const Loading();
   }
 
-// ignore: unused_element
   Content content(TV tv) {
     return Content(
       tv,
     );
   }
 
-// ignore: unused_element
   Landing landing() {
     return const Landing();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppState = _$AppStateTearOff();
 
 /// @nodoc
 mixin _$AppState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loading(),
-    @required Result content(TV tv),
-    @required Result landing(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(TV tv) content,
+    required TResult Function() landing,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loading(),
-    Result content(TV tv),
-    Result landing(),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(TV tv)? content,
+    TResult Function()? landing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loading(Loading value),
-    @required Result content(Content value),
-    @required Result landing(Landing value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Content value) content,
+    required TResult Function(Landing value) landing,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loading(Loading value),
-    Result content(Content value),
-    Result landing(Landing value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Content value)? content,
+    TResult Function(Landing value)? landing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -97,6 +100,7 @@ class _$LoadingCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Loading with DiagnosticableTreeMixin implements Loading {
   const _$Loading();
 
@@ -121,26 +125,22 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loading(),
-    @required Result content(TV tv),
-    @required Result landing(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(TV tv) content,
+    required TResult Function() landing,
   }) {
-    assert(loading != null);
-    assert(content != null);
-    assert(landing != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loading(),
-    Result content(TV tv),
-    Result landing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(TV tv)? content,
+    TResult Function()? landing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -149,26 +149,22 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loading(Loading value),
-    @required Result content(Content value),
-    @required Result landing(Landing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Content value) content,
+    required TResult Function(Landing value) landing,
   }) {
-    assert(loading != null);
-    assert(content != null);
-    assert(landing != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loading(Loading value),
-    Result content(Content value),
-    Result landing(Landing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Content value)? content,
+    TResult Function(Landing value)? landing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -198,17 +194,21 @@ class _$ContentCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object tv = freezed,
+    Object? tv = freezed,
   }) {
     return _then(Content(
-      tv == freezed ? _value.tv : tv as TV,
+      tv == freezed
+          ? _value.tv
+          : tv // ignore: cast_nullable_to_non_nullable
+              as TV,
     ));
   }
 }
 
 /// @nodoc
+
 class _$Content with DiagnosticableTreeMixin implements Content {
-  const _$Content(this.tv) : assert(tv != null);
+  const _$Content(this.tv);
 
   @override
   final TV tv;
@@ -238,32 +238,29 @@ class _$Content with DiagnosticableTreeMixin implements Content {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(tv);
 
+  @JsonKey(ignore: true)
   @override
   $ContentCopyWith<Content> get copyWith =>
       _$ContentCopyWithImpl<Content>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loading(),
-    @required Result content(TV tv),
-    @required Result landing(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(TV tv) content,
+    required TResult Function() landing,
   }) {
-    assert(loading != null);
-    assert(content != null);
-    assert(landing != null);
     return content(tv);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loading(),
-    Result content(TV tv),
-    Result landing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(TV tv)? content,
+    TResult Function()? landing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (content != null) {
       return content(tv);
     }
@@ -272,26 +269,22 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loading(Loading value),
-    @required Result content(Content value),
-    @required Result landing(Landing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Content value) content,
+    required TResult Function(Landing value) landing,
   }) {
-    assert(loading != null);
-    assert(content != null);
-    assert(landing != null);
     return content(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loading(Loading value),
-    Result content(Content value),
-    Result landing(Landing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Content value)? content,
+    TResult Function(Landing value)? landing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (content != null) {
       return content(this);
     }
@@ -302,8 +295,9 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 abstract class Content implements AppState {
   const factory Content(TV tv) = _$Content;
 
-  TV get tv;
-  $ContentCopyWith<Content> get copyWith;
+  TV get tv => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ContentCopyWith<Content> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -323,6 +317,7 @@ class _$LandingCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$Landing with DiagnosticableTreeMixin implements Landing {
   const _$Landing();
 
@@ -347,26 +342,22 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loading(),
-    @required Result content(TV tv),
-    @required Result landing(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(TV tv) content,
+    required TResult Function() landing,
   }) {
-    assert(loading != null);
-    assert(content != null);
-    assert(landing != null);
     return landing();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loading(),
-    Result content(TV tv),
-    Result landing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(TV tv)? content,
+    TResult Function()? landing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (landing != null) {
       return landing();
     }
@@ -375,26 +366,22 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loading(Loading value),
-    @required Result content(Content value),
-    @required Result landing(Landing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(Content value) content,
+    required TResult Function(Landing value) landing,
   }) {
-    assert(loading != null);
-    assert(content != null);
-    assert(landing != null);
     return landing(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loading(Loading value),
-    Result content(Content value),
-    Result landing(Landing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(Content value)? content,
+    TResult Function(Landing value)? landing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (landing != null) {
       return landing(this);
     }

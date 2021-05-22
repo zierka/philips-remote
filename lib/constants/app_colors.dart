@@ -8,6 +8,6 @@ class AppColors {
   static const primaryColor = backgroundColor;
   static const accentColor = _orange;
   static const backgroundColor = Color(0xFF121212);
-  static final greyLight = Colors.grey[400];
-  static final greyDark = Colors.grey[900];
+  static final greyLight = Colors.grey[400]!;
+  static final greyDark = Colors.grey[900]!;
 }

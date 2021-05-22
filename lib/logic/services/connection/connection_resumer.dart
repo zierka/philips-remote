@@ -6,6 +6,7 @@ import 'package:phimote/data_access/persistence/preference_store.dart';
 import 'package:phimote/logic/models/auth/session.dart';
 import 'package:phimote/logic/services/connection/tv_connection_checker.dart';
 import 'package:phimote/screens/root/root_model.dart';
+import 'package:phimote/util/extensions/iterable.dart';
 import 'package:provider/provider.dart';
 
 import 'tv_connection_checker.dart';
@@ -56,10 +57,14 @@ class ConnectionResumer {
 
       final session = await _loadPersistedSession();
 
-      final success = await _reconnect(session);
+      if (session != null) {
+        final success = await _reconnect(session);
 
-      if (success) {
-        _streamController.add(ConnectionState.connected);
+        if (success) {
+          _streamController.add(ConnectionState.connected);
+        } else {
+          _streamController.add(ConnectionState.tvNotFound);
+        }
       } else {
         _streamController.add(ConnectionState.tvNotFound);
       }
@@ -87,9 +92,8 @@ class ConnectionResumer {
 
     final tvs = await deviceDiscovery.getTVs();
 
-    final matchingTv = tvs.firstWhere(
+    final matchingTv = tvs.firstWhereOrNull(
       (tv) => tv.friendlyName == session.tv.friendlyName,
-      orElse: () => null,
     );
 
     if (matchingTv != null) {
@@ -103,9 +107,9 @@ class ConnectionResumer {
     }
   }
 
-  Future<Session> _loadPersistedSession() async {
+  Future<Session?> _loadPersistedSession() async {
     final store = PreferenceStore();
-    final session = await store.session;
+    final session = await store.currentSession;
 
     return session;
   }

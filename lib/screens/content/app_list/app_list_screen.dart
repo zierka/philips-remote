@@ -32,9 +32,9 @@ class _AppListScreenState extends State<AppListScreen> {
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
               return ListView.builder(
-                  itemCount: snapshot.data.length,
+                  itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    final item = snapshot.data[index];
+                    final item = snapshot.data![index];
                     return ListItem(
                       data: ListItemData(item.label, item.logoUrlEndpoint),
                       onTap: () {
@@ -44,7 +44,6 @@ class _AppListScreenState extends State<AppListScreen> {
                     );
                   });
           }
-          return null; // unreachable
         }),
       ),
     );

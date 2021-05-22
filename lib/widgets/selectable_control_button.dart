@@ -5,14 +5,14 @@ import 'control_button.dart';
 
 class SelectableControlButton extends StatelessWidget {
   SelectableControlButton({
-    Key key,
-    this.child,
+    Key? key,
+    required this.child,
     this.color = AppColors.accentColor,
     this.backgroundColor = AppColors.backgroundColor,
-    @required this.onPressed,
-    this.minWidth,
-    @required this.selected,
-    @required this.selectedChild,
+    required this.onPressed,
+    required this.minWidth,
+    required this.selected,
+    required this.selectedChild,
   }) : super(key: key);
 
   final Widget child;
@@ -38,11 +38,11 @@ class SelectableControlButton extends StatelessWidget {
 
 // class SelectableButtonOld extends StatelessWidget {
 //   SelectableButtonOld({
-//     Key key,
-//     @required this.selected,
-//     @required this.title,
+//     Key? key,
+//     required this.selected,
+//     required this.title,
 //     this.enabledTitle,
-//     @required this.onPressed,
+//     required this.onPressed,
 //   }) : super(key: key);
 
 //   final bool selected;

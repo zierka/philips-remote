@@ -17,8 +17,8 @@ class PairScreen extends StatefulWidget {
   final Function() onPairFinished;
 
   PairScreen({
-    Key key,
-    @required this.onPairFinished,
+    Key? key,
+    required this.onPairFinished,
   }) : super(key: key);
 
   @override
@@ -171,7 +171,7 @@ class PairScreenState extends State<PairScreen> {
             style: Theme.of(context)
                 .accentTextTheme
                 .button
-                .copyWith(color: AppColors.accentColor),
+                ?.copyWith(color: AppColors.accentColor),
           ),
           onPressed: () {
             Analytics.track("cancel pin dialog tap");
@@ -184,7 +184,7 @@ class PairScreenState extends State<PairScreen> {
             style: Theme.of(context)
                 .accentTextTheme
                 .button
-                .copyWith(color: AppColors.accentColor),
+                ?.copyWith(color: AppColors.accentColor),
           ),
           onPressed: () {
             final pin = textField.controller.text;

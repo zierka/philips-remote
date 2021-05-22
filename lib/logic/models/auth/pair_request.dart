@@ -2,14 +2,14 @@ import 'package:phimote/logic/models/tv.dart';
 import 'package:phimote/util/utils.dart';
 
 class PairRequest {
-  TV tv;
-  String ip;
-  Map<String, String> deviceSpec;
-  Map<String, dynamic> data;
+  late TV tv;
+  late String ip;
+  late Map<String, String> deviceSpec;
+  late Map<String, dynamic> data;
 
-  String sessionUsername;
+  late String sessionUsername;
 
-  PairRequest({TV tv}) {
+  PairRequest({required TV tv}) {
     this.tv = tv;
     this.ip = tv.ip;
 

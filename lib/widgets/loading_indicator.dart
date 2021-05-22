@@ -8,7 +8,7 @@ class LoadingIndicator extends StatelessWidget {
   final Brightness brightness;
 
   LoadingIndicator({
-    Key key,
+    Key? key,
     this.brightness = Brightness.dark,
   }) : super(key: key);
 

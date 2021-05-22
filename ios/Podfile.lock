@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.2.1)
+  - Alamofire (5.4.3)
   - connectivity (0.0.1):
     - Flutter
     - Reachability
@@ -88,7 +88,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
-  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_mailer: 2ef5a67087bc8c6c4cefd04a178bf1ae2c94cd83

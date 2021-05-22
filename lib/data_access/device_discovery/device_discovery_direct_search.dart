@@ -30,7 +30,7 @@ class DeviceDiscoveryDirectSearch with DeviceDiscoveryMixin {
 
   // returns the ip addresses that respond to ping on the specified port
   Future<List<String>> _ips(int port) async {
-    String localIP;
+    String? localIP;
 
     for (var interface in await NetworkInterface.list()) {
       for (var addr in interface.addresses) {
@@ -39,6 +39,8 @@ class DeviceDiscoveryDirectSearch with DeviceDiscoveryMixin {
         }
       }
     }
+
+    if (localIP == null) return [];
 
     final String subnet = localIP.substring(0, localIP.lastIndexOf('.'));
 
@@ -74,7 +76,7 @@ class DeviceDiscoveryDirectSearch with DeviceDiscoveryMixin {
     return candidates;
   }
 
-  Future<TV> _getDeviceDetails(TVCandidate2 candidate) async {
+  Future<TV?> _getDeviceDetails(TVCandidate2 candidate) async {
     final _candidate = TVCandidate(ip: candidate.ip);
 
     return getDeviceDetails(_candidate);

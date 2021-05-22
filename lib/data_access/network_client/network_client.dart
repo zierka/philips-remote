@@ -19,7 +19,7 @@ class NetworkClient implements NetworkChannelApiResponse {
   static final _channelApi = NetworkChannelApiRequest();
   static final _resultHandlers = Map<int, Completer<ChannelResponse>>();
 
-  Session session;
+  late Session session;
 
   NetworkClient() {
     _init();
@@ -35,22 +35,22 @@ class NetworkClient implements NetworkChannelApiResponse {
 
   @override
   void onResult(ChannelResponse arg) {
-    final completer = _resultHandlers[arg.request.id];
+    final completer = _resultHandlers[arg.request?.id];
 
-    completer.complete(arg);
+    completer?.complete(arg);
 
-    _resultHandlers.remove(arg.request.id);
+    _resultHandlers.remove(arg.request?.id);
   }
 
   /// Throws [ApiException]
   Future<Response> get(
     String url, {
-    RequestOptions options,
+    RequestOptions? options,
   }) async {
     final request = _makeRequestSkeleton(options: options);
     request.method = _HttpMethod.get;
 
-    request.payload.url = url;
+    request.payload?.url = url;
 
     final response = await _handleRequest(request);
 
@@ -64,14 +64,14 @@ class NetworkClient implements NetworkChannelApiResponse {
   /// Throws [ApiException]
   Future<Response> post(
     String url, {
-    Map<String, dynamic> json,
-    RequestOptions options,
+    Map<String, dynamic>? json,
+    RequestOptions? options,
   }) async {
     final request = _makeRequestSkeleton(options: options);
     request.method = _HttpMethod.post;
 
-    request.payload.url = url;
-    request.payload.body = convert.json.encode(json);
+    request.payload?.url = url;
+    request.payload?.body = convert.json.encode(json);
 
     final response = await _handleRequest(request);
 
@@ -82,16 +82,16 @@ class NetworkClient implements NetworkChannelApiResponse {
     }
   }
 
-  ChannelRequest _makeRequestSkeleton({RequestOptions options}) {
+  ChannelRequest _makeRequestSkeleton({RequestOptions? options}) {
     final request = ChannelRequest();
     request.id = DateTime.now().millisecondsSinceEpoch;
 
     final credential = Credential();
 
-    if (session?.credential != null) {
+    if (session.credential != null) {
       credential
-        ..username = session.credential.username
-        ..password = session.credential.password;
+        ..username = session.credential!.username
+        ..password = session.credential!.password;
     }
 
     final payload = RequestPayload();
@@ -112,12 +112,12 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   Future<ChannelResponse> _handleRequest(ChannelRequest request) async {
-    Log.net(request.payload.url, request.payload.body);
+    Log.net(request.payload!.url!, request.payload?.body);
 
     await _channelApi.sendRequest(request);
 
     final completer = Completer<ChannelResponse>();
-    _resultHandlers[request.id] = completer;
+    _resultHandlers[request.id!] = completer;
 
     final response = await completer.future;
 
@@ -125,15 +125,17 @@ class NetworkClient implements NetworkChannelApiResponse {
   }
 
   Response _handleResponse(ChannelResponse response) {
-    if (response.error != null && response.error.error.isNotEmpty) {
-      Log.endNet(response.request.payload.url.toString(), response.error.code,
-          response.error.toString2());
-      throw ApiException.error(response.error);
+    if (response.error != null &&
+        response.error!.error != null &&
+        response.error!.error!.isNotEmpty) {
+      Log.endNet(response.request!.payload!.url.toString(),
+          response.error!.code!, response.error!.toString2());
+      throw ApiException.error(response.error!);
     }
 
-    final responseBody = response.result;
+    final responseBody = response.result!;
     Response _response = Response.bytes(responseBody, 200);
-    Log.endNet(response.request.payload.url.toString(), 200, _response.body);
+    Log.endNet(response.request!.payload!.url.toString(), 200, _response.body);
 
     return _response;
   }

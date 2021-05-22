@@ -13,8 +13,8 @@ class KeyboardInputScreen extends StatefulWidget {
   final VoidCallback onFinished;
 
   const KeyboardInputScreen({
-    Key key,
-    @required this.onFinished,
+    Key? key,
+    required this.onFinished,
   }) : super(key: key);
 
   @override

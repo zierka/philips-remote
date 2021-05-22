@@ -11,8 +11,8 @@ class MessageOverlay extends StatefulWidget {
   final Stream<Message> messageStream;
 
   MessageOverlay({
-    Key key,
-    @required this.messageStream,
+    Key? key,
+    required this.messageStream,
   }) : super(key: key);
 
   @override
@@ -20,10 +20,10 @@ class MessageOverlay extends StatefulWidget {
 }
 
 class _MessageOverlayState extends State<MessageOverlay> {
-  StreamController<Message> _messageOutStreamController;
-  Message _currentOutMessage;
+  late StreamController<Message> _messageOutStreamController;
+  Message? _currentOutMessage;
 
-  StreamController<Message> _messageHideStreamController;
+  late StreamController<Message> _messageHideStreamController;
 
   @override
   void initState() {
@@ -52,9 +52,11 @@ class _MessageOverlayState extends State<MessageOverlay> {
     });
 
     _messageHideStreamController.stream.listen((message) async {
-      await Future.delayed(message.previousMessage.hidesAfter);
+      final hidesAfter = message.previousMessage?.hidesAfter;
 
-      if (_currentOutMessage.message == message.previousMessage.message) {
+      if (hidesAfter != null) await Future.delayed(hidesAfter);
+
+      if (_currentOutMessage?.message == message.previousMessage?.message) {
         _messageOutStreamController.add(message);
       }
     });
@@ -70,11 +72,11 @@ class _MessageOverlayState extends State<MessageOverlay> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<Message>(
       stream: _messageOutStreamController.stream,
       builder: (context, snapshot) {
         final message = snapshot.data;
-        final show = snapshot.hasData && message.message != null;
+        final show = snapshot.hasData && message?.message != null;
         return AnimatedOpacity(
           opacity: show ? 0.8 : 0,
           duration: Duration(milliseconds: 200),
@@ -84,8 +86,8 @@ class _MessageOverlayState extends State<MessageOverlay> {
     );
   }
 
-  Widget _buildOverlay(Message message) {
-    if (message?.message == null) return Container();
+  Widget _buildOverlay(Message? message) {
+    if (message == null || message.message == null) return Container();
 
     return IgnorePointer(
       child: Container(
@@ -105,7 +107,7 @@ class _MessageOverlayState extends State<MessageOverlay> {
             SizedBox(width: Paddings.x1),
             Flexible(
               child: Text(
-                message.message,
+                message.message!,
                 textAlign: TextAlign.center,
               ),
             ),

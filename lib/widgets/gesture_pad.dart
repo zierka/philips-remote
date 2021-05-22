@@ -10,17 +10,17 @@ const _repeatDuration = Duration(milliseconds: 250);
 class GesturePad extends StatefulWidget {
   final ValueChanged<GestureAction> onGestureAction;
 
-  GesturePad({this.onGestureAction});
+  GesturePad({required this.onGestureAction});
 
   @override
   _GesturePadState createState() => _GesturePadState();
 }
 
 class _GesturePadState extends State<GesturePad> {
-  _GestureHandler gestureHandler;
+  late _GestureHandler gestureHandler;
 
-  Timer _dragTimer;
-  GestureAction _currentDragAction;
+  Timer? _dragTimer;
+  GestureAction? _currentDragAction;
 
   @override
   void initState() {
@@ -107,10 +107,12 @@ class _GesturePadState extends State<GesturePad> {
   _onVerticalDragUpdate(DragUpdateDetails details) {
     Log.d(">> _onVerticalDragUpdate");
 
-    if (details.primaryDelta.abs() < 2) return;
+    final delta = details.primaryDelta;
+    if (delta == null) return;
 
-    final action =
-        details.primaryDelta >= 0 ? GestureAction.Down : GestureAction.Up;
+    if (delta.abs() < 2) return;
+
+    final action = delta >= 0 ? GestureAction.Down : GestureAction.Up;
 
     _currentDragAction = action;
 
@@ -130,10 +132,12 @@ class _GesturePadState extends State<GesturePad> {
   _onHorizontalDragUpdate(DragUpdateDetails details) {
     Log.d(">> _onHorizontalDragUpdate");
 
-    if (details.primaryDelta.abs() < 2) return;
+    final delta = details.primaryDelta;
+    if (delta == null) return;
 
-    final action =
-        details.primaryDelta >= 0 ? GestureAction.Right : GestureAction.Left;
+    if (delta.abs() < 2) return;
+
+    final action = delta >= 0 ? GestureAction.Right : GestureAction.Left;
 
     _currentDragAction = action;
 
@@ -162,14 +166,14 @@ class _GesturePadState extends State<GesturePad> {
     Log.d(">> _endTimer");
 
     _currentDragAction = null;
-    _dragTimer.cancel();
+    _dragTimer?.cancel();
     _dragTimer = null;
   }
 
   _fireDragAction() {
     if (_currentDragAction == null) return;
 
-    gestureHandler.handleRawGesture(_currentDragAction);
+    gestureHandler.handleRawGesture(_currentDragAction!);
   }
 
   // PAN

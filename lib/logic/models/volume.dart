@@ -7,10 +7,10 @@ class Volume {
   final int max;
 
   Volume({
-    this.muted,
-    this.current,
-    this.min,
-    this.max,
+    required this.muted,
+    required this.current,
+    required this.min,
+    required this.max,
   });
 
   factory Volume.fromRawJson(String str) => Volume.fromJson(json.decode(str));

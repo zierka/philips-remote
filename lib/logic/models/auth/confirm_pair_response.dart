@@ -3,9 +3,8 @@ import 'dart:convert' as convert;
 import 'package:crypto/crypto.dart';
 
 class ConfirmPairRequest {
-  PairResponse pairResponse;
-
-  Map<String, dynamic> data;
+  late PairResponse pairResponse;
+  late Map<String, dynamic> data;
 
   ConfirmPairRequest(PairResponse pairResponse, String pin) {
     final Map<String, dynamic> auth = {

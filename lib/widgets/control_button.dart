@@ -7,20 +7,20 @@ import 'package:phimote/constants/constants.dart';
 class ControlButton extends StatelessWidget {
   final Widget child;
 
-  final Color color;
-  final Color backgroundColor;
+  final Color? color;
+  final Color? backgroundColor;
   final VoidCallback onPressed;
   final EdgeInsets padding;
   final double minWidth;
 
   ControlButton({
-    @required this.child,
+    required this.child,
     this.color = AppColors.accentColor,
     this.backgroundColor = AppColors.backgroundColor,
-    @required this.onPressed,
+    required this.onPressed,
     this.padding = const EdgeInsets.all(Paddings.x1 + Paddings.small),
     this.minWidth = 60,
-  }) : assert(child != null);
+  });
 
   @override
   Widget build(BuildContext context) {

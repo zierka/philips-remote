@@ -9,13 +9,13 @@ import 'control_button.dart';
 /// [onPressed] called repeatedly on long tap until touch up/cancel.
 class ContinuousControlButton extends StatefulWidget {
   final Widget child;
-  final Color color;
+  final Color? color;
   final VoidCallback onPressed;
 
   ContinuousControlButton({
-    @required this.child,
+    required this.child,
     this.color,
-    @required this.onPressed,
+    required this.onPressed,
   });
 
   @override
@@ -24,8 +24,8 @@ class ContinuousControlButton extends StatefulWidget {
 }
 
 class _ContinuousControlButtonState extends State<ContinuousControlButton> {
-  Timer firstTimer;
-  Timer periodicTimer;
+  Timer? firstTimer;
+  Timer? periodicTimer;
 
   @override
   Widget build(BuildContext context) {

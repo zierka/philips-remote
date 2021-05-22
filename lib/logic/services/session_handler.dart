@@ -6,16 +6,12 @@ import 'package:phimote/logic/models/auth/session.dart';
 import 'service_registrator.dart';
 
 class SessionHandler {
-  AppState state;
-
-  SessionHandler() {
-    state = AppState.loading();
-  }
+  AppState state = AppState.loading();
 
   Future<void> resumeSession() async {
     final session = await _loadPersistedSession();
 
-    if (session?.tv != null) {
+    if (session != null) {
       Log.d(">> loaded session from local store. tv ip ${session.tv.ip}");
 
       state = AppState.content(session.tv);
@@ -28,9 +24,9 @@ class SessionHandler {
     }
   }
 
-  Future<Session> _loadPersistedSession() async {
+  Future<Session?> _loadPersistedSession() async {
     final store = PreferenceStore();
-    final session = await store.session;
+    final session = await store.currentSession;
 
     return session;
   }

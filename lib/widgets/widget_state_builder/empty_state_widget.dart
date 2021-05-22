@@ -7,8 +7,8 @@ class EmptyStateWidget extends StatelessWidget {
   final EmptyStateData data;
 
   const EmptyStateWidget({
-    Key key,
-    @required this.data,
+    Key? key,
+    required this.data,
   }) : super(key: key);
 
   @override

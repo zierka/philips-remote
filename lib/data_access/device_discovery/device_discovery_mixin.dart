@@ -6,7 +6,7 @@ import 'package:phimote/logic/models/tv.dart';
 import 'package:phimote/logic/services/system_repository.dart';
 
 mixin DeviceDiscoveryMixin {
-  Future<TV> getDeviceDetails(TVCandidate candidate) async {
+  Future<TV?> getDeviceDetails(TVCandidate candidate) async {
     for (int apiVersion in DiscoveryConfiguration.apiVersions) {
       final tv = TV(
         protocol: DiscoveryConfiguration.nonAndroid.scheme,

@@ -7,9 +7,9 @@ class TitleButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const TitleButton({
-    Key key,
-    @required this.title,
-    @required this.onPressed,
+    Key? key,
+    required this.title,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -21,7 +21,7 @@ class TitleButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.button.copyWith(
+          style: Theme.of(context).textTheme.button?.copyWith(
                 color: AppColors.accentColor,
               ),
         ),

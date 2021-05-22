@@ -7,7 +7,7 @@ class Credential {
   final String username;
   final String password;
 
-  Credential({this.username, this.password});
+  Credential({required this.username, required this.password});
 
   factory Credential.fromJson(Map<String, dynamic> json) =>
       _$CredentialFromJson(json);

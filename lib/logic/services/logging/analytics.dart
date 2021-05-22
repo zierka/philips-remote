@@ -5,14 +5,14 @@ import 'log.dart';
 const String _apiKey = "<redacted>";
 
 class Analytics {
-  static MixpanelAPI _instance;
+  static MixpanelAPI? _instance;
 
   static Future configure() async {
     _instance = await MixpanelAPI.getInstance(_apiKey);
   }
 
-  static void track(String eventName, {Map<String, dynamic> properties}) {
-    _instance.track(eventName, properties);
+  static void track(String eventName, {Map<String, dynamic>? properties}) {
+    _instance?.track(eventName, properties ?? {});
 
     if (properties == null) {
       Log.d("[Analytics] $eventName");

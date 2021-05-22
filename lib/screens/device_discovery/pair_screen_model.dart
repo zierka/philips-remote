@@ -14,13 +14,12 @@ import 'package:phimote/logic/services/auth_repository.dart';
 class PairScreenModel extends ChangeNotifier {
   ScanState state = ScanState.loading();
 
-  RootModel rootModel;
+  RootModel? rootModel;
 
-  TV _currentlyPairingTV;
-  PairResponse _pairResponse;
+  TV? _currentlyPairingTV;
+  PairResponse? _pairResponse;
 
   DeviceDiscovery get _deviceDiscovery => GetIt.instance.get<DeviceDiscovery>();
-  AuthRepository _authRepository;
 
   scanTapped() async {
     Log.d(">> scanning...");
@@ -50,10 +49,10 @@ class PairScreenModel extends ChangeNotifier {
 
     final session = Session(tv: tv);
     final client = EndpointNetworkClient(session);
-    _authRepository = AuthRepository(client);
+    final authRepository = AuthRepository(client);
 
     try {
-      _pairResponse = await _authRepository.pair(tv);
+      _pairResponse = await authRepository.pair(tv);
     } on ConcurrentPairApiException catch (_) {
       // do nothing
     } catch (e) {
@@ -66,22 +65,22 @@ class PairScreenModel extends ChangeNotifier {
 
     // update auth repo with a networking client that has session (credential) info
     final session = Session(
-      tv: _currentlyPairingTV,
-      credential: _pairResponse.credential,
+      tv: _currentlyPairingTV!,
+      credential: _pairResponse!.credential,
     );
     final client = EndpointNetworkClient(session);
-    _authRepository = AuthRepository(client);
+    final authRepository = AuthRepository(client);
 
-    final confirmPair = ConfirmPairRequest(_pairResponse, pin);
+    final confirmPair = ConfirmPairRequest(_pairResponse!, pin);
 
-    await _authRepository.confirmPair(confirmPair);
+    await authRepository.confirmPair(confirmPair);
 
-    rootModel.setSession(session);
+    rootModel?.setSession(session);
   }
 
   _saveSession(TV tv) {
     final session = Session(tv: tv);
 
-    rootModel.setSession(session);
+    rootModel?.setSession(session);
   }
 }

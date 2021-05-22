@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
 
 class ContentScreenModel with ChangeNotifier {
-  ConnectionResumer _connectionResumer;
+  late ConnectionResumer _connectionResumer;
 
   StreamController<Message> _streamController = StreamController();
 

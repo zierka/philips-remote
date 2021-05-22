@@ -18,8 +18,6 @@ class ServiceRegistrator {
   }
 
   static registerSessionServices(Session session) {
-    if (session == null) return;
-
     final getIt = GetIt.instance;
 
     final endpointNetworkClient = EndpointNetworkClient(session);

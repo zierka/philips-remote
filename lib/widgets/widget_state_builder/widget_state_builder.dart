@@ -21,26 +21,25 @@ class _Keys {
 
 class WidgetStateBuilder extends StatelessWidget {
   final Widget Function(BuildContext context) builder;
-  final Widget loadingWidget;
-  final Widget errorWidget;
+  final Widget? loadingWidget;
+  final Widget? errorWidget;
   final Stream<WidgetLoadState> stream;
-  final VoidCallback onRetry;
-  final Color loadingBackgroundColor;
+  final VoidCallback? onRetry;
+  final Color? loadingBackgroundColor;
 
   /// pass empty state data here or in [WidgetLoadState.empty(data)]
-  final EmptyStateData emptyStateData;
+  final EmptyStateData? emptyStateData;
 
   const WidgetStateBuilder({
-    Key key,
-    @required this.stream,
-    @required this.builder,
+    Key? key,
+    required this.stream,
+    required this.builder,
     this.loadingWidget,
     this.errorWidget,
     this.loadingBackgroundColor,
     this.onRetry,
     this.emptyStateData,
-  })  : assert(stream != null, "Must pass a non-null stream"),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +65,9 @@ class WidgetStateBuilder extends StatelessWidget {
         case ConnectionState.none:
         case ConnectionState.waiting:
           return widgetForState(WidgetLoadState.loading(), context);
-          break;
         case ConnectionState.active:
-          return widgetForState(snapshot.data, context);
-          break;
+          return widgetForState(
+              snapshot.data ?? WidgetLoadState.loading(), context);
         case ConnectionState.done:
           // ¯\_(ツ)_/¯
           break;
@@ -158,15 +156,21 @@ class WidgetStateBuilder extends StatelessWidget {
       child: errorWidget ??
           ErrorStateWidget(
             error: error,
-            onPressed: onRetry,
+            onPressed: onRetry ?? () {},
           ),
     );
   }
 
-  Widget buildEmptyWidget(EmptyStateData data) {
+  Widget buildEmptyWidget(EmptyStateData? data) {
     return Container(
       key: ValueKey<String>(_Keys.empty),
-      child: EmptyStateWidget(data: data ?? emptyStateData),
+      child: EmptyStateWidget(
+        data: data ??
+            EmptyStateData(
+              title: "Empty",
+              text: "Nothing to see here, carry on.",
+            ),
+      ),
     );
   }
 }

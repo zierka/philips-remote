@@ -7,12 +7,10 @@ import 'package:phimote/util/extensions/response.dart';
 class SystemRepository {
   EndpointNetworkClient _client;
 
-  SystemRepository(EndpointNetworkClient client) {
-    _client = client;
-  }
+  SystemRepository(this._client);
 
   /// "system"
-  Future<System> system({int timeout}) async {
+  Future<System> system({int? timeout}) async {
     final endpoint = "system";
 
     final options = RequestOptions();

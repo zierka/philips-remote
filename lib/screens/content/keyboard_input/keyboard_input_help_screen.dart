@@ -3,7 +3,7 @@ import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 
 class KeyboardInputHelpScreen extends StatelessWidget {
-  const KeyboardInputHelpScreen({Key key}) : super(key: key);
+  const KeyboardInputHelpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

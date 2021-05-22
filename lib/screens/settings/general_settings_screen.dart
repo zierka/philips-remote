@@ -6,7 +6,7 @@ import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 
 class GeneralSettingsScreen extends StatefulWidget {
-  const GeneralSettingsScreen({Key key}) : super(key: key);
+  const GeneralSettingsScreen({Key? key}) : super(key: key);
 
   @override
   _GeneralSettingsScreenState createState() => _GeneralSettingsScreenState();

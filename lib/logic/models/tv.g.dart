@@ -12,8 +12,8 @@ TV _$TVFromJson(Map<String, dynamic> json) {
     ip: json['ip'] as String,
     port: json['port'] as int,
     apiVersion: json['apiVersion'] as int,
-    name: json['name'] as String,
-    friendlyName: json['friendlyName'] as String,
+    name: json['name'] as String?,
+    friendlyName: json['friendlyName'] as String?,
   );
 }
 

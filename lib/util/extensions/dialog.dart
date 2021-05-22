@@ -9,11 +9,11 @@ import 'package:phimote/constants/constants.dart';
 class DialogAction {
   final String title;
   final VoidCallback action;
-  final IconData icon;
+  final IconData? icon;
 
   DialogAction({
-    @required this.title,
-    @required this.action,
+    required this.title,
+    required this.action,
     this.icon,
   });
 }
@@ -28,7 +28,7 @@ showCustomDialog(String title, Widget content, BuildContext context) {
     builder: (context) => PlatformAlertDialog(
       title: Padding(
         padding: EdgeInsets.only(bottom: Paddings.x1),
-        child: Text(title ?? ""),
+        child: Text(title),
       ),
       content: content,
       actions: [
@@ -43,8 +43,8 @@ showCustomDialog(String title, Widget content, BuildContext context) {
 
 showAppModalBottomSheet(
   BuildContext context, {
-  VoidCallback onDismiss,
-  @required List<DialogAction> actions,
+  required VoidCallback onDismiss,
+  required List<DialogAction> actions,
 }) {
   if (Platform.isIOS) {
     showCupertinoModalPopup(

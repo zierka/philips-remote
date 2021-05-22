@@ -15,12 +15,12 @@ class ListItemData {
 
 class ListItem extends StatelessWidget {
   final ListItemData data;
-  final VoidCallback onTap;
-  final Widget trailing;
-  final ImageCacheManager imageCacheManager;
+  final VoidCallback? onTap;
+  final Widget? trailing;
+  final ImageCacheManager? imageCacheManager;
 
   ListItem({
-    this.data,
+    required this.data,
     this.onTap,
     this.trailing,
     this.imageCacheManager,

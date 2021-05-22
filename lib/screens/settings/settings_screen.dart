@@ -160,7 +160,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             style: Theme.of(context)
                 .textTheme
                 .bodyText1
-                .copyWith(color: AppColors.greyLight),
+                ?.copyWith(color: AppColors.greyLight),
           ),
           SizedBox(
               height:

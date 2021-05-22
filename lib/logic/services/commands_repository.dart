@@ -13,7 +13,7 @@ class CommandsRepository {
   Future<void> postKey(InputKey key) async {
     final endpoint = "input/key";
 
-    final keyName = key.toString().split(".").last ?? key;
+    final String keyName = key.toString().split(".").last;
 
     Log.d(">> post key $keyName");
 

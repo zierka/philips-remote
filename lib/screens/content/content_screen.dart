@@ -19,7 +19,7 @@ class _ContentScreenState extends State<ContentScreen>
     with WidgetsBindingObserver {
   int _selectedTabIndex = 1;
 
-  ContentScreenModel model;
+  late ContentScreenModel model;
 
   final items = [
     BottomNavigationBarItem(
@@ -40,7 +40,7 @@ class _ContentScreenState extends State<ContentScreen>
   void initState() {
     model = ContentScreenModel(context.read);
 
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance?.addObserver(this);
 
     model.resume();
 
@@ -49,7 +49,7 @@ class _ContentScreenState extends State<ContentScreen>
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance?.removeObserver(this);
     model.dispose();
 
     super.dispose();

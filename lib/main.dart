@@ -14,7 +14,7 @@ import 'screens/root/root_model.dart';
 
 void main() {
   if (kReleaseMode) {
-    debugPrint = (String message, {int wrapWidth}) {};
+    debugPrint = (String? message, {int? wrapWidth}) {};
   }
 
   WidgetsFlutterBinding.ensureInitialized();

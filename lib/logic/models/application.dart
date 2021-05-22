@@ -11,10 +11,10 @@ class ApplicationResponse {
       _$ApplicationResponseFromJson(json);
   Map<String, dynamic> toJson() => _$ApplicationResponseToJson(this);
 
-  ApplicationResponse({
+  ApplicationResponse(
     this.version,
     this.applications,
-  });
+  );
 }
 
 @JsonSerializable()
@@ -31,13 +31,13 @@ class Application {
       _$ApplicationFromJson(json);
   Map<String, dynamic> toJson() => _$ApplicationToJson(this);
 
-  Application({
+  Application(
     this.label,
     this.intent,
     this.order,
     this.id,
     this.type,
-  });
+  );
 }
 
 @JsonSerializable()
@@ -48,10 +48,10 @@ class Intent {
   factory Intent.fromJson(Map<String, dynamic> json) => _$IntentFromJson(json);
   Map<String, dynamic> toJson() => _$IntentToJson(this);
 
-  Intent({
+  Intent(
     this.component,
     this.action,
-  });
+  );
 }
 
 @JsonSerializable()
@@ -63,8 +63,8 @@ class Component {
       _$ComponentFromJson(json);
   Map<String, dynamic> toJson() => _$ComponentToJson(this);
 
-  Component({
+  Component(
     this.packageName,
     this.className,
-  });
+  );
 }
