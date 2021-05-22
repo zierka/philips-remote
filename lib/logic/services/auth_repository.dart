@@ -14,7 +14,6 @@ class AuthRepository {
   AuthRepository(this._client);
 
   /// POST `https://192.168.1.4:1926/6/pair/request`
-  /// TODO: Handle concurrent pairing {error_id: CONCURRENT_PAIRING, error_text: Another pairing is in process}
   Future<PairResponse> pair(TV tv) async {
     final request = PairRequest(tv: tv);
 
