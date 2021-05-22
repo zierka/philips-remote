@@ -21,7 +21,9 @@ class CommandsRepository {
       "key": keyName,
     };
 
-    await _client.post(endpoint, json: json);
+    try {
+      await _client.post(endpoint, json: json);
+    } catch (e) {}
   }
 
   Future<void> postString(String string) async {

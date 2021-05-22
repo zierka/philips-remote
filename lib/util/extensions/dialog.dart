@@ -41,23 +41,31 @@ showCustomDialog(String title, Widget content, BuildContext context) {
   );
 }
 
-showAppModalBottomSheet(BuildContext context, List<DialogAction> actions) {
+showAppModalBottomSheet(
+  BuildContext context, {
+  VoidCallback onDismiss,
+  @required List<DialogAction> actions,
+}) {
   if (Platform.isIOS) {
     showCupertinoModalPopup(
       context: context,
-      builder: (_) => _actionSheet(context, actions),
+      builder: (_) => _actionSheet(context, onDismiss, actions),
     );
   } else {
     showModalBottomSheet(
       context: context,
-      builder: (_) => _bottomSheet(context, actions),
+      builder: (_) => _bottomSheet(context, onDismiss, actions),
     );
   }
 }
 
-Widget _bottomSheet(BuildContext context, List<DialogAction> actions) {
+Widget _bottomSheet(
+  BuildContext context,
+  VoidCallback onDismiss,
+  List<DialogAction> actions,
+) {
   actions.add(
-    DialogAction(title: "Cancel", action: () {}, icon: Icons.close),
+    DialogAction(title: "Cancel", action: onDismiss, icon: Icons.close),
   );
 
   return Wrap(
@@ -66,14 +74,15 @@ Widget _bottomSheet(BuildContext context, List<DialogAction> actions) {
           (a) => ListTile(
             title: Text(a.title),
             leading: a.icon != null ? Icon(a.icon) : null,
-            onTap: () => onDismissed(context, a.action),
+            onTap: () => onDismissed(context, a.action, onDismiss),
           ),
         )
         .toList(),
   );
 }
 
-Widget _actionSheet(BuildContext context, List<DialogAction> actions) {
+Widget _actionSheet(
+    BuildContext context, VoidCallback onDismiss, List<DialogAction> actions) {
   return Theme(
     data: Theme.of(context).copyWith(
       cupertinoOverrideTheme: CupertinoTheme.of(context).copyWith(
@@ -84,21 +93,23 @@ Widget _actionSheet(BuildContext context, List<DialogAction> actions) {
       actions: actions
           .map(
             (a) => CupertinoActionSheetAction(
-              onPressed: () => onDismissed(context, a.action),
+              onPressed: () => onDismissed(context, a.action, onDismiss),
               child: Text(a.title),
             ),
           )
           .toList(),
       cancelButton: CupertinoActionSheetAction(
-        onPressed: () => onDismissed(context, () {}),
+        onPressed: () => onDismissed(context, () {}, onDismiss),
         child: Text("Cancel"),
       ),
     ),
   );
 }
 
-Future onDismissed(BuildContext context, VoidCallback completion) async {
+Future onDismissed(BuildContext context, VoidCallback completion,
+    VoidCallback onDismiss) async {
   Navigator.of(context).pop();
   await Future.delayed(Duration(milliseconds: 300));
+  onDismiss();
   completion();
 }

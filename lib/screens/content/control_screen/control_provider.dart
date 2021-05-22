@@ -9,8 +9,9 @@ import 'package:phimote/util/utils.dart';
 import 'package:phimote/widgets/gesture_pad.dart';
 
 class ControlProvider with ChangeNotifier {
-  get _commandsRepo => GetIt.instance.get<CommandsRepository>();
-  get _infoRepo => GetIt.instance.get<InfoRepository>();
+  CommandsRepository get _commandsRepo =>
+      GetIt.instance.get<CommandsRepository>();
+  InfoRepository get _infoRepo => GetIt.instance.get<InfoRepository>();
 
   Future<void> postKey(InputKey key) async {
     await _commandsRepo.postKey(key);

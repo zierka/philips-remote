@@ -91,7 +91,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         );
         break;
       case _SettingsItem.feedback:
-        Analytics.track("feedback tap");
+        Analytics.track("feedback tap", properties: {"source": "settings"});
 
         await startSendFeedbackFlow(context);
 

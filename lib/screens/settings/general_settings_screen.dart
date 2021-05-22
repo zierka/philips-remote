@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/settings/general_settings_screen_model.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
@@ -36,6 +37,10 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
             trailing: PlatformSwitch(
               value: _model.keepScreenOn,
               onChanged: (value) {
+                Analytics.track(
+                  "keep screen on toggle",
+                  properties: {"state": value ? "on" : "off"},
+                );
                 setState(() {
                   _model.saveKeepScreenOn(value);
                 });
@@ -47,6 +52,10 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
             trailing: PlatformSwitch(
               value: _model.shakeToFeedback,
               onChanged: (value) {
+                Analytics.track(
+                  "shake to feedback toggle",
+                  properties: {"state": value ? "on" : "off"},
+                );
                 setState(() {
                   _model.saveShakeToFeedback(value);
                 });

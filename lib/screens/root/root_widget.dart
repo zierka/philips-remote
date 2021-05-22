@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:let_log/let_log.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
+import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/pigeon.dart';
 import 'package:phimote/util/extensions/dialog.dart';
 import 'package:phimote/util/flows.dart';
@@ -22,6 +23,8 @@ class RootWidget extends StatefulWidget {
 }
 
 class _RootWidgetState extends State<RootWidget> {
+  bool shakeDialogOpen = false;
+
   @override
   void initState() {
     ShakeDetector.autoStart(
@@ -69,13 +72,19 @@ class _RootWidgetState extends State<RootWidget> {
 
     if (!enabled) return;
 
+    shakeDialogOpen = true;
+
     showAppModalBottomSheet(
       context,
-      [
+      onDismiss: () => shakeDialogOpen = false,
+      actions: [
         DialogAction(
           title: "Send feedback",
           icon: Icons.mail_outline,
-          action: () => startSendFeedbackFlow(context),
+          action: () {
+            shakeDialogOpen = false;
+            startSendFeedbackFlow(context);
+          },
         ),
         DialogAction(
           title: "Show logs",
@@ -85,13 +94,24 @@ class _RootWidgetState extends State<RootWidget> {
         DialogAction(
           title: "Don't show me this again",
           icon: Icons.remove_circle_outline,
-          action: () => store.setShakeToFeedback(false),
+          action: () {
+            Analytics.track("disable shake to feedback tap");
+            store.setShakeToFeedback(false);
+          },
         ),
       ],
     );
   }
 
+  showFeedback(BuildContext context) {
+    Analytics.track("feedback tap", properties: {"source": "shake menu"});
+
+    startSendFeedbackFlow(context);
+  }
+
   showLogScreen() {
+    Analytics.track("view logs tap");
+
     Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
