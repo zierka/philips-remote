@@ -11,6 +11,7 @@ import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
 import 'package:phimote/util/extensions/dialog.dart';
 import 'package:phimote/util/flows.dart';
+import 'package:phimote/widgets/button.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -125,9 +126,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: NavigationBar(
         title: Text("Settings"),
         actions: <Widget>[
-          FlatButton(
-            textColor: Theme.of(context).errorColor,
-            child: Text("Unpair"),
+          Button(
+            child: Text(
+              "Unpair",
+              style: Theme.of(context)
+                  .textTheme
+                  .button
+                  ?.copyWith(color: Theme.of(context).errorColor),
+            ),
             onPressed: () {
               Analytics.track("unpair tap");
 
@@ -149,7 +155,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onTap: () => _action(item, context),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 );
               },

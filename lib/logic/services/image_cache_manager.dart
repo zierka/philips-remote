@@ -104,7 +104,7 @@ class _HttpGetResponse implements FileServiceResponse {
       // TODO: check if this is ok. force unwrap
       var contentType =
           ContentType.parse(_header(HttpHeaders.contentTypeHeader)!);
-      fileExtension = contentType.fileExtension ?? '';
+      // fileExtension = contentType.fileExtension ?? '';
     }
     return fileExtension;
   }

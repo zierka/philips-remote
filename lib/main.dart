@@ -46,7 +46,8 @@ class MyApp extends StatelessWidget {
       splashColor: Platform.isIOS ? Colors.transparent : null,
       appBarTheme: AppBarTheme(brightness: brightness),
       textTheme: TextTheme(
-        bodyText1: TextStyle(color: Colors.white),
+        bodyText1: TextStyle(color: AppColors.white),
+        button: TextStyle(color: accentColor),
       ),
       scaffoldBackgroundColor: AppColors.backgroundColor,
       cupertinoOverrideTheme: CupertinoThemeData(

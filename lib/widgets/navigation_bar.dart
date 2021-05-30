@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'button.dart';
+
 class NavigationBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final List<Widget>? actions;
@@ -18,17 +20,16 @@ class NavigationBar extends StatelessWidget implements PreferredSizeWidget {
       title: this.title,
       actions: this.actions,
       shadowColor: Colors.transparent,
-      leading: FlatButton(
-          child: Icon(
-            leadingIcon != null
-                ? leadingIcon
-                : ModalRoute.of(context)?.fullscreenDialog ?? false
-                    ? Icons.close
-                    : Icons.arrow_back_ios,
-          ),
-          onPressed: () {
-            Navigator.maybePop(context);
-          }),
+      leading: Button(
+        child: Icon(
+          leadingIcon != null
+              ? leadingIcon
+              : ModalRoute.of(context)?.fullscreenDialog ?? false
+                  ? Icons.close
+                  : Icons.arrow_back_ios,
+        ),
+        onPressed: () => Navigator.maybePop(context),
+      ),
     );
   }
 

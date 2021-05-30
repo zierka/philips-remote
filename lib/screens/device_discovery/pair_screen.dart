@@ -10,7 +10,6 @@ import 'package:phimote/screens/device_discovery/pair_screen_model.dart';
 import 'package:phimote/widgets/app_textfield.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
-import 'package:phimote/widgets/title_button.dart';
 import 'package:provider/provider.dart';
 
 class PairScreen extends StatefulWidget {
@@ -103,8 +102,8 @@ class PairScreenState extends State<PairScreen> {
 
   Widget buildEmpty(PairScreenModel model) {
     return Center(
-      child: TitleButton(
-        title: "re-scan",
+      child: TextButton(
+        child: Text("re-scan"),
         onPressed: () {
           Analytics.track("re-scan tap");
 

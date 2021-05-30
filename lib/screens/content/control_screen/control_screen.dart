@@ -8,6 +8,7 @@ import 'package:phimote/logic/models/input_key.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/content/control_screen/control_provider.dart';
 import 'package:phimote/screens/settings/settings_screen.dart';
+import 'package:phimote/widgets/button.dart';
 import 'package:phimote/widgets/continuous_control_button.dart';
 import 'package:phimote/widgets/control_button.dart';
 import 'package:phimote/widgets/gesture_pad.dart';
@@ -58,12 +59,13 @@ class _ControlScreenState extends State<ControlScreen> {
                 children: [
                   Align(
                     alignment: Alignment.topRight,
-                    child: ControlButton(
+                    child: Button(
                       child: Icon(Icons.settings),
                       onPressed: onSettingsTapped,
                     ),
                   ),
-                  Center(
+                  Align(
+                    alignment: Alignment.center,
                     child: ControlButton(
                       child: Icon(Icons.power_settings_new),
                       onPressed: () =>

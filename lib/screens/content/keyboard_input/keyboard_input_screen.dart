@@ -5,9 +5,11 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/constants/constants.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/content/keyboard_input/keyboard_input_help_screen.dart';
+import 'package:phimote/widgets/button.dart';
+import 'package:phimote/widgets/control_button.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 
-import 'keyboard_onput_screen_model.dart';
+import 'keyboard_input_screen_model.dart';
 
 class KeyboardInputScreen extends StatefulWidget {
   final VoidCallback onFinished;
@@ -49,7 +51,7 @@ class _KeyboardInputScreenState extends State<KeyboardInputScreen> {
           ],
         ),
         actions: [
-          FlatButton(
+          Button(
             child: Icon(Icons.help),
             onPressed: showHelpScreen,
           ),
