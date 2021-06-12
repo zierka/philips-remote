@@ -3,14 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/constants/app_colors.dart';
+import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/tv.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/device_discovery/pair_screen_model.dart';
 import 'package:phimote/widgets/app_textfield.dart';
+import 'package:phimote/widgets/control_button.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
+
+const _helpText = """
+Check the following:
+
+• TV is turned on and connected to your home WIFI network
+• phone is connected to the same home WIFI network
+""";
 
 class PairScreen extends StatefulWidget {
   final Function() onPairFinished;
@@ -57,28 +66,17 @@ class PairScreenState extends State<PairScreen> {
       create: (context) => _model,
       child: Consumer<PairScreenModel>(
         builder: (context, model, child) {
-          return Padding(
-            padding: const EdgeInsets.all(0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  child: Text("Scan for Philips TVs on your local network."),
-                ),
-                model.state.when(loading: (() {
-                  return buildLoading();
-                }), tvs: ((tvs) {
-                  if (tvs.isEmpty) {
-                    return buildEmpty(model);
-                  } else {
-                    return Expanded(
-                      child: buildList(model, tvs),
-                    );
-                  }
-                }))
-              ],
-            ),
+          return model.state.when(
+            loading: (() {
+              return buildLoading();
+            }),
+            tvs: ((tvs) {
+              if (tvs.isEmpty) {
+                return buildEmpty(model);
+              } else {
+                return buildList(model, tvs);
+              }
+            }),
           );
         },
       ),
@@ -89,8 +87,16 @@ class PairScreenState extends State<PairScreen> {
     return Center(
       child: Column(
         children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.all(Paddings.x2),
+              child: Text("Scan for Philips TVs on your local network."),
+            ),
+          ),
+          SizedBox(height: Paddings.x1),
           LoadingIndicator(),
-          SizedBox(height: 16),
+          SizedBox(height: Paddings.x2),
           Text(
             "Scanning...",
             style: Theme.of(context).textTheme.bodyText1,
@@ -101,45 +107,64 @@ class PairScreenState extends State<PairScreen> {
   }
 
   Widget buildEmpty(PairScreenModel model) {
-    return Center(
-      child: TextButton(
-        child: Text("re-scan"),
-        onPressed: () {
-          Analytics.track("re-scan tap");
+    return Padding(
+      padding: EdgeInsets.all(Paddings.x2),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("No TVs found."),
+          SizedBox(height: Paddings.x1),
+          Center(
+            child: ControlButton(
+              child: Text(
+                "re-scan",
+                style: Theme.of(context).textTheme.button,
+              ),
+              onPressed: () {
+                Analytics.track("re-scan tap");
 
-          _model.scanTapped();
-        },
+                _model.scanTapped();
+              },
+            ),
+          ),
+          SizedBox(height: Paddings.x4),
+          Text(_helpText),
+        ],
       ),
     );
   }
 
   Widget buildList(PairScreenModel model, List<TV> tvs) {
-    return ListView.builder(
-      itemCount: tvs.length,
-      itemBuilder: (context, index) {
-        final tv = tvs[index];
-        return Theme(
-          data: Theme.of(context).copyWith(
-            splashColor: Colors.transparent,
-          ),
-          child: Material(
-            child: Ink(
-              // color: Theme.of(context).accentColor,
-              child: ListTile(
-                title: Text(tv.friendlyName ?? "TV"),
-                subtitle: Text(
-                  tv.name ?? "",
-                  style: DefaultTextStyle.of(context).style,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(Paddings.x2),
+          child: Text("Found the following TVs:"),
+        ),
+        SizedBox(height: Paddings.x1),
+        Expanded(
+          child: ListView.builder(
+            itemCount: tvs.length,
+            itemBuilder: (context, index) {
+              final tv = tvs[index];
+              return Material(
+                child: Ink(
+                  child: ListTile(
+                    title: Text(tv.friendlyName ?? "TV"),
+                    subtitle: Text(
+                      tv.name ?? "",
+                      style: DefaultTextStyle.of(context).style,
+                    ),
+                    trailing: Text("${tv.ip}:${tv.port}"),
+                    onTap: () => onTvSelected(tv, model),
+                  ),
                 ),
-                trailing: Text("${tv.ip}:${tv.port}"),
-                onTap: () {
-                  onTvSelected(tv, model);
-                },
-              ),
-            ),
+              );
+            },
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 
@@ -161,7 +186,7 @@ class PairScreenState extends State<PairScreen> {
     );
 
     final dialog = PlatformAlertDialog(
-      title: Text("Enter PIN"),
+      title: Text("Enter PIN shown on TV\n"),
       content: textField,
       actions: <Widget>[
         PlatformDialogAction(

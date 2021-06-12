@@ -19,12 +19,21 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlatformTextField(
+      cursorHeight: 18,
       cupertino: (context, platform) => CupertinoTextFieldData(
         cursorColor: AppColors.accentColor,
         style: Theme.of(context).textTheme.bodyText1,
       ),
       material: (context, platform) => MaterialTextFieldData(
         cursorColor: AppColors.accentColor,
+        decoration: InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.accentColor),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.accentColor),
+          ),
+        ),
       ),
       controller: controller,
       keyboardType: keyboardType,

@@ -7,6 +7,8 @@ import 'package:phimote/data_access/persistence/cache.dart';
 import 'package:phimote/util/extensions/response.dart';
 import 'package:phimote/util/extensions/iterable.dart';
 
+import 'logging/log.dart';
+
 class InfoRepository {
   EndpointNetworkClient _client;
   InfoRepository(this._client);
@@ -67,6 +69,6 @@ class InfoRepository {
   Future<void> currentActivity() async {
     final endpoint = "activities/current";
     final response = await _client.get(endpoint);
-    print(response);
+    Log.d(response.toString());
   }
 }

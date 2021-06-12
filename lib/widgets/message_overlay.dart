@@ -103,8 +103,10 @@ class _MessageOverlayState extends State<MessageOverlay> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            message.showLoading ? LoadingIndicator() : Icon(message.icon),
-            SizedBox(width: Paddings.x1),
+            message.showLoading
+                ? LoadingIndicator(size: LoadingIndicatorSize.small)
+                : Icon(message.icon),
+            SizedBox(width: Paddings.x2),
             Flexible(
               child: Text(
                 message.message!,

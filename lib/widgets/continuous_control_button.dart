@@ -45,9 +45,10 @@ class _ContinuousControlButtonState extends State<ContinuousControlButton> {
   _onTapDown() {
     _onPressed();
 
-    firstTimer = Timer(Duration(milliseconds: 300), () {
-      _runPeriodicTimer();
-    });
+    firstTimer = Timer(
+      Duration(milliseconds: 300),
+      () => _runPeriodicTimer(),
+    );
   }
 
   _onTapCancel() {
@@ -56,9 +57,10 @@ class _ContinuousControlButtonState extends State<ContinuousControlButton> {
   }
 
   _runPeriodicTimer() {
-    periodicTimer = Timer.periodic(Duration(milliseconds: 150), (timer) {
-      _onPressed();
-    });
+    periodicTimer = Timer.periodic(
+      Duration(milliseconds: 150),
+      (timer) => _onPressed(),
+    );
   }
 
   _onPressed() {

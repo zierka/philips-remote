@@ -28,37 +28,32 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        splashColor: Colors.transparent,
-      ),
-      child: Material(
-        child: Ink(
-          color: AppColors.backgroundColor,
-          child: ListTile(
-            title: Padding(
-              padding: EdgeInsets.all(Paddings.x1),
-              child: Text(data.name),
-            ),
-            trailing: this.trailing, // ??
-            //       CachedNetworkImage(
-            //         imageUrl: data.logoUrlEndpoint,
-            //         cacheManager: imageCacheManager,
-            //         imageBuilder: (context, imageProvider) => Container(
-            //           child: ClipRRect(
-            //             borderRadius: BorderRadius.circular(16.0),
-            //             child: Padding(
-            //               padding: EdgeInsets.all(4),
-            //               child: Image(
-            //                 image: imageProvider,
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //         fit: BoxFit.fill,
-            //       ),
-            onTap: onTap,
+    return Material(
+      child: Ink(
+        color: AppColors.backgroundColor,
+        child: ListTile(
+          title: Padding(
+            padding: EdgeInsets.all(Paddings.x1),
+            child: Text(data.name),
           ),
+          trailing: this.trailing, // ??
+          //       CachedNetworkImage(
+          //         imageUrl: data.logoUrlEndpoint,
+          //         cacheManager: imageCacheManager,
+          //         imageBuilder: (context, imageProvider) => Container(
+          //           child: ClipRRect(
+          //             borderRadius: BorderRadius.circular(16.0),
+          //             child: Padding(
+          //               padding: EdgeInsets.all(4),
+          //               child: Image(
+          //                 image: imageProvider,
+          //               ),
+          //             ),
+          //           ),
+          //         ),
+          //         fit: BoxFit.fill,
+          //       ),
+          onTap: onTap,
         ),
       ),
     );

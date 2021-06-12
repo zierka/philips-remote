@@ -229,8 +229,8 @@ class _ControlScreenState extends State<ControlScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             ControlButton(
-              child: Icon(Icons.search),
-              onPressed: () => controlProvider.postKey(InputKey.Find),
+              child: Icon(Icons.settings),
+              onPressed: () => controlProvider.postKey(InputKey.Adjust),
             ),
             ControlButton(
               child: Icon(Icons.keyboard),

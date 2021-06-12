@@ -17,24 +17,24 @@ class ContentScreen extends StatefulWidget {
 
 class _ContentScreenState extends State<ContentScreen>
     with WidgetsBindingObserver {
-  int _selectedTabIndex = 1;
+  // int _selectedTabIndex = 1;
 
   late ContentScreenModel model;
 
-  final items = [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.list_alt),
-      label: "Channels",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.apps),
-      label: "Controls",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: "Settings",
-    ),
-  ];
+  // final items = [
+  //   BottomNavigationBarItem(
+  //     icon: Icon(Icons.list_alt),
+  //     label: "Channels",
+  //   ),
+  //   BottomNavigationBarItem(
+  //     icon: Icon(Icons.apps),
+  //     label: "Controls",
+  //   ),
+  //   BottomNavigationBarItem(
+  //     icon: Icon(Icons.settings),
+  //     label: "Settings",
+  //   ),
+  // ];
 
   @override
   void initState() {
@@ -131,9 +131,9 @@ class _ContentScreenState extends State<ContentScreen>
     // );
   }
 
-  onTabTapped(int index) {
-    setState(() {
-      _selectedTabIndex = index;
-    });
-  }
+  // onTabTapped(int index) {
+  //   setState(() {
+  //     _selectedTabIndex = index;
+  //   });
+  // }
 }
