@@ -3,7 +3,7 @@ description: An unofficial Philips TV remote control app.
 
 publish_to: 'none'
 
-version: 0.5.2+7
+version: 1.0.0+1
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
