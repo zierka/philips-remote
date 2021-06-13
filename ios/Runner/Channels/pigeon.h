@@ -52,6 +52,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) NSNumber * code;
 @end
 
+@protocol IOSMixpanelConfiguration
+-(void)disableGeolocation:(FlutterError *_Nullable *_Nonnull)error;
+@end
+
+extern void IOSMixpanelConfigurationSetup(id<FlutterBinaryMessenger> binaryMessenger, id<IOSMixpanelConfiguration> _Nullable api);
+
 @protocol AndroidLifecycleHelper
 -(void)sendToBackground:(FlutterError *_Nullable *_Nonnull)error;
 @end

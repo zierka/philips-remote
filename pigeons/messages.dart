@@ -56,3 +56,10 @@ abstract class NetworkChannelApiResponse {
 abstract class AndroidLifecycleHelper {
   void sendToBackground();
 }
+
+// for iOS
+
+@HostApi()
+abstract class IOSMixpanelConfiguration {
+  void disableGeolocation();
+}

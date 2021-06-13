@@ -5,6 +5,7 @@ import Flutter
 @objc class AppDelegate: FlutterAppDelegate {
     
     private var networkChannel: NetworkChannel?
+    private var mixpanelConfiguration: MixpanelConfiguration?
     
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -12,6 +13,8 @@ import Flutter
         let messenger = flutterVC.engine!.binaryMessenger
         
         networkChannel = NetworkChannel(binaryMessenger: messenger)
+        
+        mixpanelConfiguration = MixpanelConfiguration(binaryMessenger: messenger)
         
         GeneratedPluginRegistrant.register(with: self)
         

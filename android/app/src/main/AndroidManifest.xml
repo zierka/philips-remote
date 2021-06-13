@@ -16,6 +16,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="com.mixpanel.android.MPConfig.UseIpAddressForGeolocation"
+                   android:value="false" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

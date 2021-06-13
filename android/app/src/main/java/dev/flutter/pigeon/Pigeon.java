@@ -227,6 +227,34 @@ public class Pigeon {
   }
 
   /** Generated interface from Pigeon that represents a handler of messages from Flutter.*/
+  public interface IOSMixpanelConfiguration {
+    void disableGeolocation();
+
+    /** Sets up an instance of `IOSMixpanelConfiguration` to handle messages through the `binaryMessenger`. */
+    static void setup(BinaryMessenger binaryMessenger, IOSMixpanelConfiguration api) {
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.IOSMixpanelConfiguration.disableGeolocation", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              api.disableGeolocation();
+              wrapped.put("result", null);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+    }
+  }
+
+  /** Generated interface from Pigeon that represents a handler of messages from Flutter.*/
   public interface AndroidLifecycleHelper {
     void sendToBackground();
 

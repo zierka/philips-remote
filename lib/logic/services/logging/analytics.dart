@@ -1,4 +1,5 @@
 import 'package:flutuate_mixpanel/flutuate_mixpanel.dart';
+import 'package:phimote/pigeon.dart';
 
 import 'log.dart';
 
@@ -9,6 +10,8 @@ class Analytics {
 
   static Future configure() async {
     _instance = await MixpanelAPI.getInstance(_apiKey);
+
+    IOSMixpanelConfiguration().disableGeolocation();
   }
 
   static void track(String eventName, {Map<String, dynamic>? properties}) {

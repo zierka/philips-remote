@@ -187,6 +187,24 @@ static NSDictionary<NSString*, id>* wrapResult(NSDictionary *result, FlutterErro
 }
 @end
 
+void IOSMixpanelConfigurationSetup(id<FlutterBinaryMessenger> binaryMessenger, id<IOSMixpanelConfiguration> api) {
+  {
+    FlutterBasicMessageChannel *channel =
+      [FlutterBasicMessageChannel
+        messageChannelWithName:@"dev.flutter.pigeon.IOSMixpanelConfiguration.disableGeolocation"
+        binaryMessenger:binaryMessenger];
+    if (api) {
+      [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
+        FlutterError *error;
+        [api disableGeolocation:&error];
+        callback(wrapResult(nil, error));
+      }];
+    }
+    else {
+      [channel setMessageHandler:nil];
+    }
+  }
+}
 void AndroidLifecycleHelperSetup(id<FlutterBinaryMessenger> binaryMessenger, id<AndroidLifecycleHelper> api) {
   {
     FlutterBasicMessageChannel *channel =
