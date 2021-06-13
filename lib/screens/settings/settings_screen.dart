@@ -1,33 +1,32 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_mailer/flutter_mailer.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info/package_info.dart';
 import 'package:phimote/constants/constants.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/screens/settings/general_settings_screen.dart';
 import 'package:phimote/screens/settings/settings_screen_model.dart';
-import 'package:phimote/util/extensions/dialog.dart';
 import 'package:phimote/util/flows.dart';
 import 'package:phimote/widgets/button.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-// String _appStoreId = "1214299218";
-String _privacyPolicyUrl = "https://ranchero.com/netnewswire/privacypolicy";
-// String _twitterHandle = "@zierka";
-// String _twitterHandleUrl = "https://twitter.com/zierka";
+String _appStoreId = "1532394757";
+String _privacyPolicyUrl = "https://zierka.github.io/privacypolicy";
+String _twitterHandle = "@phimoteapp";
+String _twitterHandleUrl = "https://twitter.com/phimoteapp";
 
 enum _SettingsItem {
   general,
   feedback,
-  // twitter,
-  // rate,
-  // privacyPolicy,
-  // licenses,
+  twitter,
+  rate,
+  privacyPolicy,
+  licenses,
 }
 
 extension on _SettingsItem {
@@ -38,14 +37,14 @@ extension on _SettingsItem {
         return "General";
       case _SettingsItem.feedback:
         return "Send feedback";
-      // case _SettingsItem.twitter:
-      //   return "$_twitterHandle on twitter";
-      // case _SettingsItem.rate:
-      //   return "Rate app";
-      // case _SettingsItem.privacyPolicy:
-      //   return "Privacy Policy";
-      // case _SettingsItem.licenses:
-      //   return "Licenses";
+      case _SettingsItem.twitter:
+        return "$_twitterHandle on twitter";
+      case _SettingsItem.rate:
+        return "Rate app";
+      case _SettingsItem.privacyPolicy:
+        return "Privacy Policy";
+      case _SettingsItem.licenses:
+        return "Licenses";
     }
   }
 }
@@ -67,55 +66,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     super.initState();
 
     _loadVersion();
-  }
-
-  _loadVersion() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-    String version = packageInfo.version;
-    String buildNumber = packageInfo.buildNumber;
-
-    setState(() {
-      this.version = "$version+$buildNumber";
-    });
-  }
-
-  Future _action(_SettingsItem item, BuildContext context) async {
-    switch (item) {
-      case _SettingsItem.general:
-        Analytics.track("general settings tap");
-
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => GeneralSettingsScreen(),
-          ),
-        );
-        break;
-      case _SettingsItem.feedback:
-        Analytics.track("feedback tap", properties: {"source": "settings"});
-
-        await startSendFeedbackFlow(context);
-
-        break;
-      // case _SettingsItem.twitter:
-      //   if (await canLaunch(_twitterHandleUrl)) {
-      //     await launch(_twitterHandleUrl);
-      //   }
-      //   break;
-      // case _SettingsItem.rate:
-      //   final inAppReview = InAppReview.instance;
-      //   inAppReview.openStoreListing(appStoreId: _appStoreId);
-      //   break;
-      // case _SettingsItem.privacyPolicy:
-      //   if (await canLaunch(_privacyPolicyUrl)) {
-      //     await launch(_privacyPolicyUrl);
-      //   }
-
-      //   break;
-      // case _SettingsItem.licenses:
-      //   showLicensePage(context: context);
-      //   break;
-    }
   }
 
   @override
@@ -174,5 +124,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ],
       ),
     );
+  }
+
+  Future _action(_SettingsItem item, BuildContext context) async {
+    switch (item) {
+      case _SettingsItem.general:
+        Analytics.track("general settings tap");
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => GeneralSettingsScreen(),
+          ),
+        );
+        break;
+      case _SettingsItem.feedback:
+        Analytics.track("feedback tap", properties: {"source": "settings"});
+
+        await startSendFeedbackFlow(context);
+
+        break;
+      case _SettingsItem.twitter:
+        if (await canLaunch(_twitterHandleUrl)) {
+          await launch(_twitterHandleUrl);
+        }
+        break;
+      case _SettingsItem.rate:
+        final inAppReview = InAppReview.instance;
+        inAppReview.openStoreListing(appStoreId: _appStoreId);
+        break;
+      case _SettingsItem.privacyPolicy:
+        if (await canLaunch(_privacyPolicyUrl)) {
+          await launch(_privacyPolicyUrl);
+        }
+
+        break;
+      case _SettingsItem.licenses:
+        // LicenseRegistry.addLicense(() =>
+        // Stream.value(LicenseEntryWithLineBreaks(["apackage"], "text")));
+        showLicensePage(context: context);
+        break;
+    }
+  }
+
+  _loadVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    String version = packageInfo.version;
+    String buildNumber = packageInfo.buildNumber;
+
+    setState(() {
+      this.version = "$version+$buildNumber";
+    });
   }
 }
