@@ -5,7 +5,7 @@ import 'package:phimote/data_access/persistence/store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class _Keys {
-  static const _keyPrefix = "com.izerik.preference_store.key.";
+  static const _keyPrefix = "me.izerik.preference_store.key.";
 
   static final String session = "session";
   static final String keepScreenOn = _keyPrefix + "keep_screen_on";
