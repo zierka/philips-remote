@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide NavigationBar;
 import 'package:phimote/constants/ui_constants.dart';
-import 'package:phimote/widgets/navigation_bar.dart';
+import 'package:phimote/widgets/fixed_app_bar.dart';
 
 class KeyboardInputHelpScreen extends StatelessWidget {
   const KeyboardInputHelpScreen({Key? key}) : super(key: key);
@@ -8,7 +8,7 @@ class KeyboardInputHelpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavigationBar(),
+      appBar: FixedAppBar(),
       body: Container(
         padding: EdgeInsets.all(Paddings.x2),
         child: Column(

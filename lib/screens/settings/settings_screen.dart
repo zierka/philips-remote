@@ -11,7 +11,7 @@ import 'package:phimote/screens/settings/settings_screen_model.dart';
 import 'package:phimote/util/flows.dart';
 import 'package:phimote/widgets/button.dart';
 import 'package:phimote/widgets/list_item.dart';
-import 'package:phimote/widgets/navigation_bar.dart';
+import 'package:phimote/widgets/fixed_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -73,7 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _model.rootModel = Provider.of<RootModel>(context, listen: false);
 
     return Scaffold(
-      appBar: NavigationBar(
+      appBar: FixedAppBar(
         title: Text("Settings"),
         actions: <Widget>[
           Button(

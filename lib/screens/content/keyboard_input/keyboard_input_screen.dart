@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide NavigationBar;
 import 'package:flutter/services.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:phimote/constants/constants.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/content/keyboard_input/keyboard_input_help_screen.dart';
 import 'package:phimote/widgets/button.dart';
-import 'package:phimote/widgets/navigation_bar.dart';
+import 'package:phimote/widgets/fixed_app_bar.dart';
 
 import 'keyboard_input_screen_model.dart';
 
@@ -28,7 +27,7 @@ class _KeyboardInputScreenState extends State<KeyboardInputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavigationBar(
+      appBar: FixedAppBar(
         leadingIcon: Icons.close,
         title: Row(
           children: [

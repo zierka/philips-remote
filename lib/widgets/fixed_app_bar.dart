@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'button.dart';
 
-class NavigationBar extends StatelessWidget implements PreferredSizeWidget {
+class FixedAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final List<Widget>? actions;
   final IconData? leadingIcon;
 
-  const NavigationBar({
+  const FixedAppBar({
     Key? key,
     this.title,
     this.actions,

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutuate_mixpanel/flutuate_mixpanel.dart';
+// import 'package:flutuate_mixpanel/flutuate_mixpanel.dart';
 import 'package:phimote/pigeon.dart';
 
 import 'log.dart';
@@ -8,16 +8,16 @@ import 'log.dart';
 const String _apiKey = "<redacted>";
 
 class Analytics {
-  static MixpanelAPI? _instance;
+  // static MixpanelAPI? _instance;
 
   static Future configure() async {
-    _instance = await MixpanelAPI.getInstance(_apiKey);
+    // _instance = await MixpanelAPI.getInstance(_apiKey);
 
     if (Platform.isIOS) IOSMixpanelConfiguration().disableGeolocation();
   }
 
   static void track(String eventName, {Map<String, dynamic>? properties}) {
-    _instance?.track(eventName, properties ?? {});
+    // _instance?.track(eventName, properties ?? {});
 
     if (properties == null) {
       Log.d("[Analytics] $eventName");

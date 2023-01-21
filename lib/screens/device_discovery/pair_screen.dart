@@ -11,7 +11,7 @@ import 'package:phimote/screens/device_discovery/pair_screen_model.dart';
 import 'package:phimote/widgets/app_textfield.dart';
 import 'package:phimote/widgets/control_button.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
-import 'package:phimote/widgets/navigation_bar.dart';
+import 'package:phimote/widgets/fixed_app_bar.dart';
 import 'package:provider/provider.dart';
 
 const _helpText = """
@@ -53,7 +53,7 @@ class PairScreenState extends State<PairScreen> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: NavigationBar(
+        appBar: FixedAppBar(
           title: Text("Scan"),
         ),
         body: buildContent(),

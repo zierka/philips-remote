@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Mixpanel
+// import Mixpanel
 
 class MixpanelConfiguration: IOSMixpanelConfiguration {
     
@@ -16,6 +16,6 @@ class MixpanelConfiguration: IOSMixpanelConfiguration {
     }
     
     func disableGeolocation(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
-        Mixpanel.mainInstance().useIPAddressForGeoLocation = false
+        // Mixpanel.mainInstance().useIPAddressForGeoLocation = false
     }
 }

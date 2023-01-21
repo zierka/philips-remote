@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phimote/screens/content/channel_list/channel_list_screen_model.dart';
 import 'package:phimote/widgets/list_item.dart';
-import 'package:phimote/widgets/navigation_bar.dart';
+import 'package:phimote/widgets/fixed_app_bar.dart';
 import 'package:phimote/widgets/widget_state_builder/widget_state_builder.dart';
 
 class ChannelListScreen extends StatefulWidget {
@@ -15,7 +15,7 @@ class _ChannelListScreenState extends State<ChannelListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavigationBar(
+      appBar: FixedAppBar(
         title: Text("Channels"),
       ),
       body: WidgetStateBuilder(

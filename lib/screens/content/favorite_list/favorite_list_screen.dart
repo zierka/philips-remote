@@ -3,7 +3,7 @@ import 'package:phimote/logic/models/channel.dart';
 import 'package:phimote/screens/content/favorite_list/favorite_list_screen_model.dart';
 import 'package:phimote/widgets/list_item.dart';
 import 'package:phimote/widgets/loading_indicator.dart';
-import 'package:phimote/widgets/navigation_bar.dart';
+import 'package:phimote/widgets/fixed_app_bar.dart';
 
 class FavoriteChannelListScreen extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _FavoriteChannelListScreenState extends State<FavoriteChannelListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavigationBar(
+      appBar: FixedAppBar(
         title: Text("Favorite channels"),
       ),
       body: FutureBuilder<List<Channel>>(
