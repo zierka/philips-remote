@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dart_ping_ios/dart_ping_ios.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +22,9 @@ void main() {
 
   Log.configure();
   Analytics.configure();
+
+  // Register dart_ping_ios with dart_ping
+  if (Platform.isIOS) DartPingIOS.register();
 
   runApp(MyApp());
 }
@@ -61,6 +65,7 @@ class MyApp extends StatelessWidget {
         title: 'Phimote',
         theme: themeData,
         home: RootWidget(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

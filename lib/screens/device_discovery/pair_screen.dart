@@ -91,7 +91,7 @@ class PairScreenState extends State<PairScreen> {
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: EdgeInsets.all(Paddings.x2),
-              child: Text("Scan for Philips TVs on your local network."),
+              child: Text("Scanning for TVs on your local network."),
             ),
           ),
           SizedBox(height: Paddings.x1),
@@ -192,10 +192,7 @@ class PairScreenState extends State<PairScreen> {
         PlatformDialogAction(
           child: Text(
             "Cancel",
-            style: Theme.of(context)
-                .accentTextTheme
-                .button
-                ?.copyWith(color: AppColors.accentColor),
+            style: Theme.of(context).accentTextTheme.button?.copyWith(color: AppColors.accentColor),
           ),
           onPressed: () {
             Analytics.track("cancel pin dialog tap");
@@ -205,10 +202,7 @@ class PairScreenState extends State<PairScreen> {
         PlatformDialogAction(
           child: Text(
             "Connect",
-            style: Theme.of(context)
-                .accentTextTheme
-                .button
-                ?.copyWith(color: AppColors.accentColor),
+            style: Theme.of(context).accentTextTheme.button?.copyWith(color: AppColors.accentColor),
           ),
           onPressed: () {
             final pin = textField.controller.text;
