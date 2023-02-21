@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'app_state.dart';
 
@@ -10,29 +12,7 @@ part of 'app_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AppStateTearOff {
-  const _$AppStateTearOff();
-
-  Loading loading() {
-    return const Loading();
-  }
-
-  Content content(TV tv) {
-    return Content(
-      tv,
-    );
-  }
-
-  Landing landing() {
-    return const Landing();
-  }
-}
-
-/// @nodoc
-const $AppState = _$AppStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppState {
@@ -41,6 +21,13 @@ mixin _$AppState {
     required TResult Function() loading,
     required TResult Function(TV tv) content,
     required TResult Function() landing,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(TV tv)? content,
+    TResult? Function()? landing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +46,13 @@ mixin _$AppState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Content value)? content,
+    TResult? Function(Landing value)? landing,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loading value)? loading,
     TResult Function(Content value)? content,
@@ -71,32 +65,32 @@ mixin _$AppState {
 /// @nodoc
 abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
-      _$AppStateCopyWithImpl<$Res>;
+      _$AppStateCopyWithImpl<$Res, AppState>;
 }
 
 /// @nodoc
-class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
+class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
+    implements $AppStateCopyWith<$Res> {
   _$AppStateCopyWithImpl(this._value, this._then);
 
-  final AppState _value;
   // ignore: unused_field
-  final $Res Function(AppState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
-
-  @override
-  Loading get _value => super._value as Loading;
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -112,12 +106,13 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AppState.loading'));
+    properties.add(DiagnosticsProperty('type', 'AppState.loading'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Loading);
   }
 
   @override
@@ -131,6 +126,16 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
     required TResult Function() landing,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(TV tv)? content,
+    TResult? Function()? landing,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -159,6 +164,16 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Content value)? content,
+    TResult? Function(Landing value)? landing,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loading value)? loading,
     TResult Function(Content value)? content,
@@ -177,27 +192,27 @@ abstract class Loading implements AppState {
 }
 
 /// @nodoc
-abstract class $ContentCopyWith<$Res> {
-  factory $ContentCopyWith(Content value, $Res Function(Content) then) =
-      _$ContentCopyWithImpl<$Res>;
+abstract class _$$ContentCopyWith<$Res> {
+  factory _$$ContentCopyWith(_$Content value, $Res Function(_$Content) then) =
+      __$$ContentCopyWithImpl<$Res>;
+  @useResult
   $Res call({TV tv});
 }
 
 /// @nodoc
-class _$ContentCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
-    implements $ContentCopyWith<$Res> {
-  _$ContentCopyWithImpl(Content _value, $Res Function(Content) _then)
-      : super(_value, (v) => _then(v as Content));
+class __$$ContentCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$Content>
+    implements _$$ContentCopyWith<$Res> {
+  __$$ContentCopyWithImpl(_$Content _value, $Res Function(_$Content) _then)
+      : super(_value, _then);
 
-  @override
-  Content get _value => super._value as Content;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tv = freezed,
+    Object? tv = null,
   }) {
-    return _then(Content(
-      tv == freezed
+    return _then(_$Content(
+      null == tv
           ? _value.tv
           : tv // ignore: cast_nullable_to_non_nullable
               as TV,
@@ -229,19 +244,19 @@ class _$Content with DiagnosticableTreeMixin implements Content {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Content &&
-            (identical(other.tv, tv) ||
-                const DeepCollectionEquality().equals(other.tv, tv)));
+        (other.runtimeType == runtimeType &&
+            other is _$Content &&
+            (identical(other.tv, tv) || other.tv == tv));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(tv);
+  int get hashCode => Object.hash(runtimeType, tv);
 
   @JsonKey(ignore: true)
   @override
-  $ContentCopyWith<Content> get copyWith =>
-      _$ContentCopyWithImpl<Content>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ContentCopyWith<_$Content> get copyWith =>
+      __$$ContentCopyWithImpl<_$Content>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -251,6 +266,16 @@ class _$Content with DiagnosticableTreeMixin implements Content {
     required TResult Function() landing,
   }) {
     return content(tv);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(TV tv)? content,
+    TResult? Function()? landing,
+  }) {
+    return content?.call(tv);
   }
 
   @override
@@ -279,6 +304,16 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Content value)? content,
+    TResult? Function(Landing value)? landing,
+  }) {
+    return content?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loading value)? loading,
     TResult Function(Content value)? content,
@@ -293,27 +328,26 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 }
 
 abstract class Content implements AppState {
-  const factory Content(TV tv) = _$Content;
+  const factory Content(final TV tv) = _$Content;
 
-  TV get tv => throw _privateConstructorUsedError;
+  TV get tv;
   @JsonKey(ignore: true)
-  $ContentCopyWith<Content> get copyWith => throw _privateConstructorUsedError;
+  _$$ContentCopyWith<_$Content> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LandingCopyWith<$Res> {
-  factory $LandingCopyWith(Landing value, $Res Function(Landing) then) =
-      _$LandingCopyWithImpl<$Res>;
+abstract class _$$LandingCopyWith<$Res> {
+  factory _$$LandingCopyWith(_$Landing value, $Res Function(_$Landing) then) =
+      __$$LandingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LandingCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
-    implements $LandingCopyWith<$Res> {
-  _$LandingCopyWithImpl(Landing _value, $Res Function(Landing) _then)
-      : super(_value, (v) => _then(v as Landing));
-
-  @override
-  Landing get _value => super._value as Landing;
+class __$$LandingCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$Landing>
+    implements _$$LandingCopyWith<$Res> {
+  __$$LandingCopyWithImpl(_$Landing _value, $Res Function(_$Landing) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -329,12 +363,13 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AppState.landing'));
+    properties.add(DiagnosticsProperty('type', 'AppState.landing'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Landing);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Landing);
   }
 
   @override
@@ -348,6 +383,16 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
     required TResult Function() landing,
   }) {
     return landing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(TV tv)? content,
+    TResult? Function()? landing,
+  }) {
+    return landing?.call();
   }
 
   @override
@@ -372,6 +417,16 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
     required TResult Function(Landing value) landing,
   }) {
     return landing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Content value)? content,
+    TResult? Function(Landing value)? landing,
+  }) {
+    return landing?.call(this);
   }
 
   @override

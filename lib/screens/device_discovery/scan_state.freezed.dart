@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'scan_state.dart';
 
@@ -10,25 +12,7 @@ part of 'scan_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ScanStateTearOff {
-  const _$ScanStateTearOff();
-
-  Loading loading() {
-    return const Loading();
-  }
-
-  Data tvs(List<TV> tvs) {
-    return Data(
-      tvs,
-    );
-  }
-}
-
-/// @nodoc
-const $ScanState = _$ScanStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ScanState {
@@ -36,6 +20,12 @@ mixin _$ScanState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<TV> tvs) tvs,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<TV> tvs)? tvs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +42,12 @@ mixin _$ScanState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Data value)? tvs,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loading value)? loading,
     TResult Function(Data value)? tvs,
@@ -63,32 +59,32 @@ mixin _$ScanState {
 /// @nodoc
 abstract class $ScanStateCopyWith<$Res> {
   factory $ScanStateCopyWith(ScanState value, $Res Function(ScanState) then) =
-      _$ScanStateCopyWithImpl<$Res>;
+      _$ScanStateCopyWithImpl<$Res, ScanState>;
 }
 
 /// @nodoc
-class _$ScanStateCopyWithImpl<$Res> implements $ScanStateCopyWith<$Res> {
+class _$ScanStateCopyWithImpl<$Res, $Val extends ScanState>
+    implements $ScanStateCopyWith<$Res> {
   _$ScanStateCopyWithImpl(this._value, this._then);
 
-  final ScanState _value;
   // ignore: unused_field
-  final $Res Function(ScanState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
-
-  @override
-  Loading get _value => super._value as Loading;
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$ScanStateCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -104,12 +100,13 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'ScanState.loading'));
+    properties.add(DiagnosticsProperty('type', 'ScanState.loading'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Loading);
   }
 
   @override
@@ -122,6 +119,15 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
     required TResult Function(List<TV> tvs) tvs,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<TV> tvs)? tvs,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -148,6 +154,15 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Data value)? tvs,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loading value)? loading,
     TResult Function(Data value)? tvs,
@@ -165,28 +180,27 @@ abstract class Loading implements ScanState {
 }
 
 /// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res>;
+abstract class _$$DataCopyWith<$Res> {
+  factory _$$DataCopyWith(_$Data value, $Res Function(_$Data) then) =
+      __$$DataCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<TV> tvs});
 }
 
 /// @nodoc
-class _$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(Data _value, $Res Function(Data) _then)
-      : super(_value, (v) => _then(v as Data));
+class __$$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res, _$Data>
+    implements _$$DataCopyWith<$Res> {
+  __$$DataCopyWithImpl(_$Data _value, $Res Function(_$Data) _then)
+      : super(_value, _then);
 
-  @override
-  Data get _value => super._value as Data;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tvs = freezed,
+    Object? tvs = null,
   }) {
-    return _then(Data(
-      tvs == freezed
-          ? _value.tvs
+    return _then(_$Data(
+      null == tvs
+          ? _value._tvs
           : tvs // ignore: cast_nullable_to_non_nullable
               as List<TV>,
     ));
@@ -196,10 +210,14 @@ class _$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Data with DiagnosticableTreeMixin implements Data {
-  const _$Data(this.tvs);
+  const _$Data(final List<TV> tvs) : _tvs = tvs;
 
+  final List<TV> _tvs;
   @override
-  final List<TV> tvs;
+  List<TV> get tvs {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tvs);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -217,19 +235,20 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Data &&
-            (identical(other.tvs, tvs) ||
-                const DeepCollectionEquality().equals(other.tvs, tvs)));
+        (other.runtimeType == runtimeType &&
+            other is _$Data &&
+            const DeepCollectionEquality().equals(other._tvs, _tvs));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(tvs);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tvs));
 
   @JsonKey(ignore: true)
   @override
-  $DataCopyWith<Data> get copyWith =>
-      _$DataCopyWithImpl<Data>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$DataCopyWith<_$Data> get copyWith =>
+      __$$DataCopyWithImpl<_$Data>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -238,6 +257,15 @@ class _$Data with DiagnosticableTreeMixin implements Data {
     required TResult Function(List<TV> tvs) tvs,
   }) {
     return tvs(this.tvs);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<TV> tvs)? tvs,
+  }) {
+    return tvs?.call(this.tvs);
   }
 
   @override
@@ -264,6 +292,15 @@ class _$Data with DiagnosticableTreeMixin implements Data {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Data value)? tvs,
+  }) {
+    return tvs?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Loading value)? loading,
     TResult Function(Data value)? tvs,
@@ -277,9 +314,9 @@ class _$Data with DiagnosticableTreeMixin implements Data {
 }
 
 abstract class Data implements ScanState {
-  const factory Data(List<TV> tvs) = _$Data;
+  const factory Data(final List<TV> tvs) = _$Data;
 
-  List<TV> get tvs => throw _privateConstructorUsedError;
+  List<TV> get tvs;
   @JsonKey(ignore: true)
-  $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
+  _$$DataCopyWith<_$Data> get copyWith => throw _privateConstructorUsedError;
 }

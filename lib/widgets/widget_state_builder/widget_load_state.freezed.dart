@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'widget_load_state.dart';
 
@@ -10,41 +12,7 @@ part of 'widget_load_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$WidgetLoadStateTearOff {
-  const _$WidgetLoadStateTearOff();
-
-  Content content() {
-    return const Content();
-  }
-
-  ContentKeepLoading contentKeepLoading(Future<dynamic> until) {
-    return ContentKeepLoading(
-      until,
-    );
-  }
-
-  Loading loading() {
-    return const Loading();
-  }
-
-  Error error(ScreenError error) {
-    return Error(
-      error,
-    );
-  }
-
-  Empty empty(EmptyStateData? data) {
-    return Empty(
-      data,
-    );
-  }
-}
-
-/// @nodoc
-const $WidgetLoadState = _$WidgetLoadStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$WidgetLoadState {
@@ -55,6 +23,15 @@ mixin _$WidgetLoadState {
     required TResult Function() loading,
     required TResult Function(ScreenError error) error,
     required TResult Function(EmptyStateData? data) empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? content,
+    TResult? Function(Future<dynamic> until)? contentKeepLoading,
+    TResult? Function()? loading,
+    TResult? Function(ScreenError error)? error,
+    TResult? Function(EmptyStateData? data)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +54,15 @@ mixin _$WidgetLoadState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Content value)? content,
+    TResult? Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Empty value)? empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Content value)? content,
     TResult Function(ContentKeepLoading value)? contentKeepLoading,
@@ -92,33 +78,32 @@ mixin _$WidgetLoadState {
 abstract class $WidgetLoadStateCopyWith<$Res> {
   factory $WidgetLoadStateCopyWith(
           WidgetLoadState value, $Res Function(WidgetLoadState) then) =
-      _$WidgetLoadStateCopyWithImpl<$Res>;
+      _$WidgetLoadStateCopyWithImpl<$Res, WidgetLoadState>;
 }
 
 /// @nodoc
-class _$WidgetLoadStateCopyWithImpl<$Res>
+class _$WidgetLoadStateCopyWithImpl<$Res, $Val extends WidgetLoadState>
     implements $WidgetLoadStateCopyWith<$Res> {
   _$WidgetLoadStateCopyWithImpl(this._value, this._then);
 
-  final WidgetLoadState _value;
   // ignore: unused_field
-  final $Res Function(WidgetLoadState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $ContentCopyWith<$Res> {
-  factory $ContentCopyWith(Content value, $Res Function(Content) then) =
-      _$ContentCopyWithImpl<$Res>;
+abstract class _$$ContentCopyWith<$Res> {
+  factory _$$ContentCopyWith(_$Content value, $Res Function(_$Content) then) =
+      __$$ContentCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ContentCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
-    implements $ContentCopyWith<$Res> {
-  _$ContentCopyWithImpl(Content _value, $Res Function(Content) _then)
-      : super(_value, (v) => _then(v as Content));
-
-  @override
-  Content get _value => super._value as Content;
+class __$$ContentCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Content>
+    implements _$$ContentCopyWith<$Res> {
+  __$$ContentCopyWithImpl(_$Content _value, $Res Function(_$Content) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -133,7 +118,8 @@ class _$Content implements Content {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Content);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Content);
   }
 
   @override
@@ -149,6 +135,18 @@ class _$Content implements Content {
     required TResult Function(EmptyStateData? data) empty,
   }) {
     return content();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? content,
+    TResult? Function(Future<dynamic> until)? contentKeepLoading,
+    TResult? Function()? loading,
+    TResult? Function(ScreenError error)? error,
+    TResult? Function(EmptyStateData? data)? empty,
+  }) {
+    return content?.call();
   }
 
   @override
@@ -181,6 +179,18 @@ class _$Content implements Content {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Content value)? content,
+    TResult? Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Empty value)? empty,
+  }) {
+    return content?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Content value)? content,
     TResult Function(ContentKeepLoading value)? contentKeepLoading,
@@ -201,30 +211,29 @@ abstract class Content implements WidgetLoadState {
 }
 
 /// @nodoc
-abstract class $ContentKeepLoadingCopyWith<$Res> {
-  factory $ContentKeepLoadingCopyWith(
-          ContentKeepLoading value, $Res Function(ContentKeepLoading) then) =
-      _$ContentKeepLoadingCopyWithImpl<$Res>;
+abstract class _$$ContentKeepLoadingCopyWith<$Res> {
+  factory _$$ContentKeepLoadingCopyWith(_$ContentKeepLoading value,
+          $Res Function(_$ContentKeepLoading) then) =
+      __$$ContentKeepLoadingCopyWithImpl<$Res>;
+  @useResult
   $Res call({Future<dynamic> until});
 }
 
 /// @nodoc
-class _$ContentKeepLoadingCopyWithImpl<$Res>
-    extends _$WidgetLoadStateCopyWithImpl<$Res>
-    implements $ContentKeepLoadingCopyWith<$Res> {
-  _$ContentKeepLoadingCopyWithImpl(
-      ContentKeepLoading _value, $Res Function(ContentKeepLoading) _then)
-      : super(_value, (v) => _then(v as ContentKeepLoading));
+class __$$ContentKeepLoadingCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$ContentKeepLoading>
+    implements _$$ContentKeepLoadingCopyWith<$Res> {
+  __$$ContentKeepLoadingCopyWithImpl(
+      _$ContentKeepLoading _value, $Res Function(_$ContentKeepLoading) _then)
+      : super(_value, _then);
 
-  @override
-  ContentKeepLoading get _value => super._value as ContentKeepLoading;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? until = freezed,
+    Object? until = null,
   }) {
-    return _then(ContentKeepLoading(
-      until == freezed
+    return _then(_$ContentKeepLoading(
+      null == until
           ? _value.until
           : until // ignore: cast_nullable_to_non_nullable
               as Future<dynamic>,
@@ -248,19 +257,20 @@ class _$ContentKeepLoading implements ContentKeepLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ContentKeepLoading &&
-            (identical(other.until, until) ||
-                const DeepCollectionEquality().equals(other.until, until)));
+        (other.runtimeType == runtimeType &&
+            other is _$ContentKeepLoading &&
+            (identical(other.until, until) || other.until == until));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(until);
+  int get hashCode => Object.hash(runtimeType, until);
 
   @JsonKey(ignore: true)
   @override
-  $ContentKeepLoadingCopyWith<ContentKeepLoading> get copyWith =>
-      _$ContentKeepLoadingCopyWithImpl<ContentKeepLoading>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ContentKeepLoadingCopyWith<_$ContentKeepLoading> get copyWith =>
+      __$$ContentKeepLoadingCopyWithImpl<_$ContentKeepLoading>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -272,6 +282,18 @@ class _$ContentKeepLoading implements ContentKeepLoading {
     required TResult Function(EmptyStateData? data) empty,
   }) {
     return contentKeepLoading(until);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? content,
+    TResult? Function(Future<dynamic> until)? contentKeepLoading,
+    TResult? Function()? loading,
+    TResult? Function(ScreenError error)? error,
+    TResult? Function(EmptyStateData? data)? empty,
+  }) {
+    return contentKeepLoading?.call(until);
   }
 
   @override
@@ -304,6 +326,18 @@ class _$ContentKeepLoading implements ContentKeepLoading {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Content value)? content,
+    TResult? Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Empty value)? empty,
+  }) {
+    return contentKeepLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Content value)? content,
     TResult Function(ContentKeepLoading value)? contentKeepLoading,
@@ -320,29 +354,27 @@ class _$ContentKeepLoading implements ContentKeepLoading {
 }
 
 abstract class ContentKeepLoading implements WidgetLoadState {
-  const factory ContentKeepLoading(Future<dynamic> until) =
+  const factory ContentKeepLoading(final Future<dynamic> until) =
       _$ContentKeepLoading;
 
-  Future<dynamic> get until => throw _privateConstructorUsedError;
+  Future<dynamic> get until;
   @JsonKey(ignore: true)
-  $ContentKeepLoadingCopyWith<ContentKeepLoading> get copyWith =>
+  _$$ContentKeepLoadingCopyWith<_$ContentKeepLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
-
-  @override
-  Loading get _value => super._value as Loading;
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -357,7 +389,8 @@ class _$Loading implements Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Loading);
   }
 
   @override
@@ -373,6 +406,18 @@ class _$Loading implements Loading {
     required TResult Function(EmptyStateData? data) empty,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? content,
+    TResult? Function(Future<dynamic> until)? contentKeepLoading,
+    TResult? Function()? loading,
+    TResult? Function(ScreenError error)? error,
+    TResult? Function(EmptyStateData? data)? empty,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -405,6 +450,18 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Content value)? content,
+    TResult? Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Empty value)? empty,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Content value)? content,
     TResult Function(ContentKeepLoading value)? contentKeepLoading,
@@ -425,27 +482,27 @@ abstract class Loading implements WidgetLoadState {
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<$Res> {
-  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
-      _$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorCopyWith<$Res> {
+  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
+      __$$ErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({ScreenError error});
 }
 
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
-    implements $ErrorCopyWith<$Res> {
-  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
-      : super(_value, (v) => _then(v as Error));
+class __$$ErrorCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Error>
+    implements _$$ErrorCopyWith<$Res> {
+  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+      : super(_value, _then);
 
-  @override
-  Error get _value => super._value as Error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
-    return _then(Error(
-      error == freezed
+    return _then(_$Error(
+      null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as ScreenError,
@@ -469,19 +526,19 @@ class _$Error implements Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Error &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is _$Error &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
-  $ErrorCopyWith<Error> get copyWith =>
-      _$ErrorCopyWithImpl<Error>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ErrorCopyWith<_$Error> get copyWith =>
+      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -493,6 +550,18 @@ class _$Error implements Error {
     required TResult Function(EmptyStateData? data) empty,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? content,
+    TResult? Function(Future<dynamic> until)? contentKeepLoading,
+    TResult? Function()? loading,
+    TResult? Function(ScreenError error)? error,
+    TResult? Function(EmptyStateData? data)? empty,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -525,6 +594,18 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Content value)? content,
+    TResult? Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Empty value)? empty,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Content value)? content,
     TResult Function(ContentKeepLoading value)? contentKeepLoading,
@@ -541,35 +622,35 @@ class _$Error implements Error {
 }
 
 abstract class Error implements WidgetLoadState {
-  const factory Error(ScreenError error) = _$Error;
+  const factory Error(final ScreenError error) = _$Error;
 
-  ScreenError get error => throw _privateConstructorUsedError;
+  ScreenError get error;
   @JsonKey(ignore: true)
-  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EmptyCopyWith<$Res> {
-  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
-      _$EmptyCopyWithImpl<$Res>;
+abstract class _$$EmptyCopyWith<$Res> {
+  factory _$$EmptyCopyWith(_$Empty value, $Res Function(_$Empty) then) =
+      __$$EmptyCopyWithImpl<$Res>;
+  @useResult
   $Res call({EmptyStateData? data});
 }
 
 /// @nodoc
-class _$EmptyCopyWithImpl<$Res> extends _$WidgetLoadStateCopyWithImpl<$Res>
-    implements $EmptyCopyWith<$Res> {
-  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
-      : super(_value, (v) => _then(v as Empty));
+class __$$EmptyCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Empty>
+    implements _$$EmptyCopyWith<$Res> {
+  __$$EmptyCopyWithImpl(_$Empty _value, $Res Function(_$Empty) _then)
+      : super(_value, _then);
 
-  @override
-  Empty get _value => super._value as Empty;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(Empty(
-      data == freezed
+    return _then(_$Empty(
+      freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as EmptyStateData?,
@@ -593,19 +674,19 @@ class _$Empty implements Empty {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Empty &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+        (other.runtimeType == runtimeType &&
+            other is _$Empty &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
-  $EmptyCopyWith<Empty> get copyWith =>
-      _$EmptyCopyWithImpl<Empty>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$EmptyCopyWith<_$Empty> get copyWith =>
+      __$$EmptyCopyWithImpl<_$Empty>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -617,6 +698,18 @@ class _$Empty implements Empty {
     required TResult Function(EmptyStateData? data) empty,
   }) {
     return empty(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? content,
+    TResult? Function(Future<dynamic> until)? contentKeepLoading,
+    TResult? Function()? loading,
+    TResult? Function(ScreenError error)? error,
+    TResult? Function(EmptyStateData? data)? empty,
+  }) {
+    return empty?.call(data);
   }
 
   @override
@@ -649,6 +742,18 @@ class _$Empty implements Empty {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Content value)? content,
+    TResult? Function(ContentKeepLoading value)? contentKeepLoading,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Empty value)? empty,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Content value)? content,
     TResult Function(ContentKeepLoading value)? contentKeepLoading,
@@ -665,9 +770,9 @@ class _$Empty implements Empty {
 }
 
 abstract class Empty implements WidgetLoadState {
-  const factory Empty(EmptyStateData? data) = _$Empty;
+  const factory Empty(final EmptyStateData? data) = _$Empty;
 
-  EmptyStateData? get data => throw _privateConstructorUsedError;
+  EmptyStateData? get data;
   @JsonKey(ignore: true)
-  $EmptyCopyWith<Empty> get copyWith => throw _privateConstructorUsedError;
+  _$$EmptyCopyWith<_$Empty> get copyWith => throw _privateConstructorUsedError;
 }
