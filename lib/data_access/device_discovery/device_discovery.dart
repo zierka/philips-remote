@@ -9,18 +9,16 @@ class DeviceDiscovery {
   Future<List<TV>> getTVs() async {
     final upnp = DeviceDiscoveryUpnp();
 
-    final tvs = await upnp.getTVs();
+    var tvs = await upnp.getTVs();
 
-    if (tvs.isNotEmpty) {
-      Log.d(tvs.toString());
-      return tvs;
-    }
+    Log.d(tvs.toString());
 
     final directSearch = DeviceDiscoveryDirectSearch();
 
     final tvs2 = await directSearch.getTVs();
 
     Log.d(tvs2.toString());
-    return tvs2;
+
+    return [...tvs, ...tvs2];
   }
 }

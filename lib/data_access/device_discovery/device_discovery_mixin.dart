@@ -9,9 +9,10 @@ mixin DeviceDiscoveryMixin {
   Future<TV?> getDeviceDetails(TVCandidate candidate) async {
     for (int apiVersion in DiscoveryConfiguration.apiVersions) {
       final tv = TV(
-        protocol: DiscoveryConfiguration.nonAndroid.scheme,
+        // TODO: we should try non-android as well [Erik]
+        protocol: DiscoveryConfiguration.android.scheme,
         ip: candidate.ip,
-        port: DiscoveryConfiguration.nonAndroid.port,
+        port: DiscoveryConfiguration.android.port,
         apiVersion: apiVersion,
         name: candidate.name,
         friendlyName: candidate.friendlyName,
