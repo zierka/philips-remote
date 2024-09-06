@@ -22,7 +22,7 @@ class AppTextField extends StatelessWidget {
       cursorHeight: 18,
       cupertino: (context, platform) => CupertinoTextFieldData(
         cursorColor: AppColors.accentColor,
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       material: (context, platform) => MaterialTextFieldData(
         cursorColor: AppColors.accentColor,

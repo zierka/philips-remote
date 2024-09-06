@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:phimote/constants/app_colors.dart';
 
 enum LoadingIndicatorSize { small, large }
 
@@ -28,8 +29,7 @@ class LoadingIndicator extends StatelessWidget {
         height: size.dimensions,
         child: CircularProgressIndicator(
           strokeWidth: size.strokeWidth,
-          valueColor:
-              AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
+          valueColor: AlwaysStoppedAnimation<Color>(AppColors.accentColor),
         ),
       );
     }

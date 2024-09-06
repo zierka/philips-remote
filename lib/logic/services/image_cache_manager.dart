@@ -5,7 +5,6 @@ import 'package:phimote/data_access/network_client/endpoint_network_client.dart'
 import 'dart:async';
 import 'package:clock/clock.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_cache_manager/src/web/mime_converter.dart';
 
 class ImageCacheManager extends CacheManager {
   static const key = "libCachedImageData";

@@ -9,8 +9,8 @@ part of 'tv.dart';
 TV _$TVFromJson(Map<String, dynamic> json) => TV(
       protocol: json['protocol'] as String,
       ip: json['ip'] as String,
-      port: json['port'] as int,
-      apiVersion: json['apiVersion'] as int,
+      port: (json['port'] as num).toInt(),
+      apiVersion: (json['apiVersion'] as num).toInt(),
       name: json['name'] as String?,
       friendlyName: json['friendlyName'] as String?,
     );

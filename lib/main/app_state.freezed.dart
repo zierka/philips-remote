@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_state.dart';
 
@@ -80,23 +80,25 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading with DiagnosticableTreeMixin implements Loading {
-  const _$Loading();
+class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -110,9 +112,9 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -188,22 +190,24 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 }
 
 abstract class Loading implements AppState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ContentCopyWith<$Res> {
-  factory _$$ContentCopyWith(_$Content value, $Res Function(_$Content) then) =
-      __$$ContentCopyWithImpl<$Res>;
+abstract class _$$ContentImplCopyWith<$Res> {
+  factory _$$ContentImplCopyWith(
+          _$ContentImpl value, $Res Function(_$ContentImpl) then) =
+      __$$ContentImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TV tv});
 }
 
 /// @nodoc
-class __$$ContentCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$Content>
-    implements _$$ContentCopyWith<$Res> {
-  __$$ContentCopyWithImpl(_$Content _value, $Res Function(_$Content) _then)
+class __$$ContentImplCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$ContentImpl>
+    implements _$$ContentImplCopyWith<$Res> {
+  __$$ContentImplCopyWithImpl(
+      _$ContentImpl _value, $Res Function(_$ContentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -211,7 +215,7 @@ class __$$ContentCopyWithImpl<$Res>
   $Res call({
     Object? tv = null,
   }) {
-    return _then(_$Content(
+    return _then(_$ContentImpl(
       null == tv
           ? _value.tv
           : tv // ignore: cast_nullable_to_non_nullable
@@ -222,8 +226,8 @@ class __$$ContentCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Content with DiagnosticableTreeMixin implements Content {
-  const _$Content(this.tv);
+class _$ContentImpl with DiagnosticableTreeMixin implements Content {
+  const _$ContentImpl(this.tv);
 
   @override
   final TV tv;
@@ -242,10 +246,10 @@ class _$Content with DiagnosticableTreeMixin implements Content {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Content &&
+            other is _$ContentImpl &&
             (identical(other.tv, tv) || other.tv == tv));
   }
 
@@ -255,8 +259,8 @@ class _$Content with DiagnosticableTreeMixin implements Content {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ContentCopyWith<_$Content> get copyWith =>
-      __$$ContentCopyWithImpl<_$Content>(this, _$identity);
+  _$$ContentImplCopyWith<_$ContentImpl> get copyWith =>
+      __$$ContentImplCopyWithImpl<_$ContentImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -328,32 +332,34 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 }
 
 abstract class Content implements AppState {
-  const factory Content(final TV tv) = _$Content;
+  const factory Content(final TV tv) = _$ContentImpl;
 
   TV get tv;
   @JsonKey(ignore: true)
-  _$$ContentCopyWith<_$Content> get copyWith =>
+  _$$ContentImplCopyWith<_$ContentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LandingCopyWith<$Res> {
-  factory _$$LandingCopyWith(_$Landing value, $Res Function(_$Landing) then) =
-      __$$LandingCopyWithImpl<$Res>;
+abstract class _$$LandingImplCopyWith<$Res> {
+  factory _$$LandingImplCopyWith(
+          _$LandingImpl value, $Res Function(_$LandingImpl) then) =
+      __$$LandingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LandingCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$Landing>
-    implements _$$LandingCopyWith<$Res> {
-  __$$LandingCopyWithImpl(_$Landing _value, $Res Function(_$Landing) _then)
+class __$$LandingImplCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$LandingImpl>
+    implements _$$LandingImplCopyWith<$Res> {
+  __$$LandingImplCopyWithImpl(
+      _$LandingImpl _value, $Res Function(_$LandingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Landing with DiagnosticableTreeMixin implements Landing {
-  const _$Landing();
+class _$LandingImpl with DiagnosticableTreeMixin implements Landing {
+  const _$LandingImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -367,9 +373,9 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Landing);
+        (other.runtimeType == runtimeType && other is _$LandingImpl);
   }
 
   @override
@@ -445,5 +451,5 @@ class _$Landing with DiagnosticableTreeMixin implements Landing {
 }
 
 abstract class Landing implements AppState {
-  const factory Landing() = _$Landing;
+  const factory Landing() = _$LandingImpl;
 }

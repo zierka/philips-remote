@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
-import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/constants.dart';
 import 'package:phimote/logic/services/logging/log.dart';
 

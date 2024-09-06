@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/models/tv.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
@@ -99,7 +96,7 @@ class PairScreenState extends State<PairScreen> {
           SizedBox(height: Paddings.x2),
           Text(
             "Scanning...",
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
       ),
@@ -118,7 +115,7 @@ class PairScreenState extends State<PairScreen> {
             child: ControlButton(
               child: Text(
                 "re-scan",
-                style: Theme.of(context).textTheme.button,
+                style: Theme.of(context).textTheme.labelMedium,
               ),
               onPressed: () {
                 Analytics.track("re-scan tap");
@@ -192,7 +189,7 @@ class PairScreenState extends State<PairScreen> {
         PlatformDialogAction(
           child: Text(
             "Cancel",
-            style: Theme.of(context).accentTextTheme.button?.copyWith(color: AppColors.accentColor),
+            // style: Theme.of(context).accentTextTheme.button?.copyWith(color: AppColors.accentColor),
           ),
           onPressed: () {
             Analytics.track("cancel pin dialog tap");
@@ -202,7 +199,7 @@ class PairScreenState extends State<PairScreen> {
         PlatformDialogAction(
           child: Text(
             "Connect",
-            style: Theme.of(context).accentTextTheme.button?.copyWith(color: AppColors.accentColor),
+            // style: Theme.of(context).accentTextTheme.button?.copyWith(color: AppColors.accentColor),
           ),
           onPressed: () {
             final pin = textField.controller.text;

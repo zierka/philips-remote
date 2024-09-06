@@ -29,9 +29,9 @@ Map<String, dynamic> _$SystemToJson(System instance) => <String, dynamic>{
     };
 
 ApiVersion _$ApiVersionFromJson(Map<String, dynamic> json) => ApiVersion(
-      json['Major'] as int,
-      json['Minor'] as int,
-      json['Patch'] as int,
+      (json['Major'] as num).toInt(),
+      (json['Minor'] as num).toInt(),
+      (json['Patch'] as num).toInt(),
     );
 
 Map<String, dynamic> _$ApiVersionToJson(ApiVersion instance) =>

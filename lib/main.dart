@@ -1,16 +1,15 @@
 import 'dart:io';
 
 import 'package:dart_ping_ios/dart_ping_ios.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart' hide RootWidget;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/logic/services/logging/log.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide RootWidget;
 import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/screens/root/root_widget.dart';
 import 'package:provider/provider.dart';
-import 'logic/services/logging/log.dart';
 import 'screens/root/root_model.dart';
 
 void main() {
@@ -46,12 +45,12 @@ class MyApp extends StatelessWidget {
     final themeData = ThemeData(
       brightness: brightness,
       primaryColor: primaryColor,
-      accentColor: accentColor,
+      // accentColor: accentColor,
       splashColor: Platform.isIOS ? Colors.transparent : null,
-      appBarTheme: AppBarTheme(brightness: brightness),
+      // appBarTheme: AppBarTheme(brightness: brightness),
       textTheme: TextTheme(
-        bodyText1: TextStyle(color: AppColors.white),
-        button: TextStyle(color: accentColor),
+        bodyMedium: TextStyle(color: AppColors.white),
+        labelMedium: TextStyle(color: accentColor),
       ),
       scaffoldBackgroundColor: AppColors.backgroundColor,
       cupertinoOverrideTheme: CupertinoThemeData(

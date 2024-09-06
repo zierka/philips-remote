@@ -1,8 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:let_log/let_log.dart';
+// import 'package:let_log/let_log.dart';
 import 'package:phimote/data_access/persistence/preference_store.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/pigeon.dart';
@@ -112,11 +111,11 @@ class _RootWidgetState extends State<RootWidget> {
   showLogScreen() {
     Analytics.track("view logs tap");
 
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (context) => Logger(),
-      ),
-    );
+    // Navigator.of(context).push(
+    //   MaterialPageRoute(
+    //     fullscreenDialog: true,
+    //     builder: (context) => Logger(),
+    //   ),
+    // );
   }
 }

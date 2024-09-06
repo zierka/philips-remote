@@ -8,7 +8,7 @@ part of 'application.dart';
 
 ApplicationResponse _$ApplicationResponseFromJson(Map<String, dynamic> json) =>
     ApplicationResponse(
-      json['version'] as int,
+      (json['version'] as num).toInt(),
       (json['applications'] as List<dynamic>)
           .map((e) => Application.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -24,7 +24,7 @@ Map<String, dynamic> _$ApplicationResponseToJson(
 Application _$ApplicationFromJson(Map<String, dynamic> json) => Application(
       json['label'] as String,
       Intent.fromJson(json['intent'] as Map<String, dynamic>),
-      json['order'] as int,
+      (json['order'] as num).toInt(),
       json['id'] as String,
       json['type'] as String,
     );

@@ -1,6 +1,6 @@
 import 'package:phimote/logic/services/logging/log.dart';
 import 'package:phimote/logic/models/tv.dart';
-import 'package:upnp/upnp.dart' as upnp;
+import 'package:upnp2/upnp.dart' as upnp;
 import 'device_discovery_mixin.dart';
 
 /// Discovers TV's on the local network.

@@ -81,8 +81,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               "Unpair",
               style: Theme.of(context)
                   .textTheme
-                  .button
-                  ?.copyWith(color: Theme.of(context).errorColor),
+                  .labelMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.error),
             ),
             onPressed: () {
               Analytics.track("unpair tap");
@@ -115,7 +115,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             version,
             style: Theme.of(context)
                 .textTheme
-                .bodyText1
+                .bodyMedium
                 ?.copyWith(color: AppColors.greyLight),
           ),
           SizedBox(

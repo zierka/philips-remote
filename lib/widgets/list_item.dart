@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:phimote/constants/constants.dart';
-import 'package:phimote/constants/ui_constants.dart';
 import 'package:phimote/logic/services/image_cache_manager.dart';
 
 class ListItemData {

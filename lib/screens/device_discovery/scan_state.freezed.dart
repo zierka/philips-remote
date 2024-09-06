@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'scan_state.dart';
 
@@ -74,23 +74,25 @@ class _$ScanStateCopyWithImpl<$Res, $Val extends ScanState>
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$ScanStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$ScanStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading with DiagnosticableTreeMixin implements Loading {
-  const _$Loading();
+class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -104,9 +106,9 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -176,21 +178,23 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 }
 
 abstract class Loading implements ScanState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$DataCopyWith<$Res> {
-  factory _$$DataCopyWith(_$Data value, $Res Function(_$Data) then) =
-      __$$DataCopyWithImpl<$Res>;
+abstract class _$$DataImplCopyWith<$Res> {
+  factory _$$DataImplCopyWith(
+          _$DataImpl value, $Res Function(_$DataImpl) then) =
+      __$$DataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<TV> tvs});
 }
 
 /// @nodoc
-class __$$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res, _$Data>
-    implements _$$DataCopyWith<$Res> {
-  __$$DataCopyWithImpl(_$Data _value, $Res Function(_$Data) _then)
+class __$$DataImplCopyWithImpl<$Res>
+    extends _$ScanStateCopyWithImpl<$Res, _$DataImpl>
+    implements _$$DataImplCopyWith<$Res> {
+  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -198,7 +202,7 @@ class __$$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res, _$Data>
   $Res call({
     Object? tvs = null,
   }) {
-    return _then(_$Data(
+    return _then(_$DataImpl(
       null == tvs
           ? _value._tvs
           : tvs // ignore: cast_nullable_to_non_nullable
@@ -209,12 +213,13 @@ class __$$DataCopyWithImpl<$Res> extends _$ScanStateCopyWithImpl<$Res, _$Data>
 
 /// @nodoc
 
-class _$Data with DiagnosticableTreeMixin implements Data {
-  const _$Data(final List<TV> tvs) : _tvs = tvs;
+class _$DataImpl with DiagnosticableTreeMixin implements Data {
+  const _$DataImpl(final List<TV> tvs) : _tvs = tvs;
 
   final List<TV> _tvs;
   @override
   List<TV> get tvs {
+    if (_tvs is EqualUnmodifiableListView) return _tvs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tvs);
   }
@@ -233,10 +238,10 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Data &&
+            other is _$DataImpl &&
             const DeepCollectionEquality().equals(other._tvs, _tvs));
   }
 
@@ -247,8 +252,8 @@ class _$Data with DiagnosticableTreeMixin implements Data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataCopyWith<_$Data> get copyWith =>
-      __$$DataCopyWithImpl<_$Data>(this, _$identity);
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -314,9 +319,10 @@ class _$Data with DiagnosticableTreeMixin implements Data {
 }
 
 abstract class Data implements ScanState {
-  const factory Data(final List<TV> tvs) = _$Data;
+  const factory Data(final List<TV> tvs) = _$DataImpl;
 
   List<TV> get tvs;
   @JsonKey(ignore: true)
-  _$$DataCopyWith<_$Data> get copyWith => throw _privateConstructorUsedError;
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

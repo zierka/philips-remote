@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'widget_load_state.dart';
 
@@ -93,23 +93,25 @@ class _$WidgetLoadStateCopyWithImpl<$Res, $Val extends WidgetLoadState>
 }
 
 /// @nodoc
-abstract class _$$ContentCopyWith<$Res> {
-  factory _$$ContentCopyWith(_$Content value, $Res Function(_$Content) then) =
-      __$$ContentCopyWithImpl<$Res>;
+abstract class _$$ContentImplCopyWith<$Res> {
+  factory _$$ContentImplCopyWith(
+          _$ContentImpl value, $Res Function(_$ContentImpl) then) =
+      __$$ContentImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ContentCopyWithImpl<$Res>
-    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Content>
-    implements _$$ContentCopyWith<$Res> {
-  __$$ContentCopyWithImpl(_$Content _value, $Res Function(_$Content) _then)
+class __$$ContentImplCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$ContentImpl>
+    implements _$$ContentImplCopyWith<$Res> {
+  __$$ContentImplCopyWithImpl(
+      _$ContentImpl _value, $Res Function(_$ContentImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Content implements Content {
-  const _$Content();
+class _$ContentImpl implements Content {
+  const _$ContentImpl();
 
   @override
   String toString() {
@@ -117,9 +119,9 @@ class _$Content implements Content {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Content);
+        (other.runtimeType == runtimeType && other is _$ContentImpl);
   }
 
   @override
@@ -207,24 +209,24 @@ class _$Content implements Content {
 }
 
 abstract class Content implements WidgetLoadState {
-  const factory Content() = _$Content;
+  const factory Content() = _$ContentImpl;
 }
 
 /// @nodoc
-abstract class _$$ContentKeepLoadingCopyWith<$Res> {
-  factory _$$ContentKeepLoadingCopyWith(_$ContentKeepLoading value,
-          $Res Function(_$ContentKeepLoading) then) =
-      __$$ContentKeepLoadingCopyWithImpl<$Res>;
+abstract class _$$ContentKeepLoadingImplCopyWith<$Res> {
+  factory _$$ContentKeepLoadingImplCopyWith(_$ContentKeepLoadingImpl value,
+          $Res Function(_$ContentKeepLoadingImpl) then) =
+      __$$ContentKeepLoadingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Future<dynamic> until});
 }
 
 /// @nodoc
-class __$$ContentKeepLoadingCopyWithImpl<$Res>
-    extends _$WidgetLoadStateCopyWithImpl<$Res, _$ContentKeepLoading>
-    implements _$$ContentKeepLoadingCopyWith<$Res> {
-  __$$ContentKeepLoadingCopyWithImpl(
-      _$ContentKeepLoading _value, $Res Function(_$ContentKeepLoading) _then)
+class __$$ContentKeepLoadingImplCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$ContentKeepLoadingImpl>
+    implements _$$ContentKeepLoadingImplCopyWith<$Res> {
+  __$$ContentKeepLoadingImplCopyWithImpl(_$ContentKeepLoadingImpl _value,
+      $Res Function(_$ContentKeepLoadingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -232,7 +234,7 @@ class __$$ContentKeepLoadingCopyWithImpl<$Res>
   $Res call({
     Object? until = null,
   }) {
-    return _then(_$ContentKeepLoading(
+    return _then(_$ContentKeepLoadingImpl(
       null == until
           ? _value.until
           : until // ignore: cast_nullable_to_non_nullable
@@ -243,8 +245,8 @@ class __$$ContentKeepLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ContentKeepLoading implements ContentKeepLoading {
-  const _$ContentKeepLoading(this.until);
+class _$ContentKeepLoadingImpl implements ContentKeepLoading {
+  const _$ContentKeepLoadingImpl(this.until);
 
   @override
   final Future<dynamic> until;
@@ -255,10 +257,10 @@ class _$ContentKeepLoading implements ContentKeepLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ContentKeepLoading &&
+            other is _$ContentKeepLoadingImpl &&
             (identical(other.until, until) || other.until == until));
   }
 
@@ -268,8 +270,8 @@ class _$ContentKeepLoading implements ContentKeepLoading {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ContentKeepLoadingCopyWith<_$ContentKeepLoading> get copyWith =>
-      __$$ContentKeepLoadingCopyWithImpl<_$ContentKeepLoading>(
+  _$$ContentKeepLoadingImplCopyWith<_$ContentKeepLoadingImpl> get copyWith =>
+      __$$ContentKeepLoadingImplCopyWithImpl<_$ContentKeepLoadingImpl>(
           this, _$identity);
 
   @override
@@ -355,32 +357,34 @@ class _$ContentKeepLoading implements ContentKeepLoading {
 
 abstract class ContentKeepLoading implements WidgetLoadState {
   const factory ContentKeepLoading(final Future<dynamic> until) =
-      _$ContentKeepLoading;
+      _$ContentKeepLoadingImpl;
 
   Future<dynamic> get until;
   @JsonKey(ignore: true)
-  _$$ContentKeepLoadingCopyWith<_$ContentKeepLoading> get copyWith =>
+  _$$ContentKeepLoadingImplCopyWith<_$ContentKeepLoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -388,9 +392,9 @@ class _$Loading implements Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -478,22 +482,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements WidgetLoadState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ScreenError error});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -501,7 +507,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -512,8 +518,8 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error(this.error);
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl(this.error);
 
   @override
   final ScreenError error;
@@ -524,10 +530,10 @@ class _$Error implements Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -537,8 +543,8 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -622,26 +628,29 @@ class _$Error implements Error {
 }
 
 abstract class Error implements WidgetLoadState {
-  const factory Error(final ScreenError error) = _$Error;
+  const factory Error(final ScreenError error) = _$ErrorImpl;
 
   ScreenError get error;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EmptyCopyWith<$Res> {
-  factory _$$EmptyCopyWith(_$Empty value, $Res Function(_$Empty) then) =
-      __$$EmptyCopyWithImpl<$Res>;
+abstract class _$$EmptyImplCopyWith<$Res> {
+  factory _$$EmptyImplCopyWith(
+          _$EmptyImpl value, $Res Function(_$EmptyImpl) then) =
+      __$$EmptyImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EmptyStateData? data});
 }
 
 /// @nodoc
-class __$$EmptyCopyWithImpl<$Res>
-    extends _$WidgetLoadStateCopyWithImpl<$Res, _$Empty>
-    implements _$$EmptyCopyWith<$Res> {
-  __$$EmptyCopyWithImpl(_$Empty _value, $Res Function(_$Empty) _then)
+class __$$EmptyImplCopyWithImpl<$Res>
+    extends _$WidgetLoadStateCopyWithImpl<$Res, _$EmptyImpl>
+    implements _$$EmptyImplCopyWith<$Res> {
+  __$$EmptyImplCopyWithImpl(
+      _$EmptyImpl _value, $Res Function(_$EmptyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -649,7 +658,7 @@ class __$$EmptyCopyWithImpl<$Res>
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_$Empty(
+    return _then(_$EmptyImpl(
       freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -660,8 +669,8 @@ class __$$EmptyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Empty implements Empty {
-  const _$Empty(this.data);
+class _$EmptyImpl implements Empty {
+  const _$EmptyImpl(this.data);
 
   @override
   final EmptyStateData? data;
@@ -672,10 +681,10 @@ class _$Empty implements Empty {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Empty &&
+            other is _$EmptyImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -685,8 +694,8 @@ class _$Empty implements Empty {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EmptyCopyWith<_$Empty> get copyWith =>
-      __$$EmptyCopyWithImpl<_$Empty>(this, _$identity);
+  _$$EmptyImplCopyWith<_$EmptyImpl> get copyWith =>
+      __$$EmptyImplCopyWithImpl<_$EmptyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -770,9 +779,10 @@ class _$Empty implements Empty {
 }
 
 abstract class Empty implements WidgetLoadState {
-  const factory Empty(final EmptyStateData? data) = _$Empty;
+  const factory Empty(final EmptyStateData? data) = _$EmptyImpl;
 
   EmptyStateData? get data;
   @JsonKey(ignore: true)
-  _$$EmptyCopyWith<_$Empty> get copyWith => throw _privateConstructorUsedError;
+  _$$EmptyImplCopyWith<_$EmptyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

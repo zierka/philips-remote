@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:phimote/constants/app_colors.dart';
 import 'package:phimote/constants/constants.dart';
 
 class Button extends StatelessWidget {
@@ -31,8 +29,7 @@ class Button extends StatelessWidget {
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
           child: Theme(
             data: Theme.of(context).copyWith(
-              iconTheme:
-                  IconThemeData(color: color ?? Theme.of(context).accentColor),
+              iconTheme: IconThemeData(color: color ?? AppColors.accentColor),
             ),
             child: DefaultTextStyle.merge(
               textAlign: TextAlign.center,

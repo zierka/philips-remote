@@ -9,7 +9,6 @@ import 'package:phimote/screens/root/root_model.dart';
 import 'package:phimote/util/extensions/iterable.dart';
 import 'package:provider/provider.dart';
 
-import 'tv_connection_checker.dart';
 import 'wifi_connection_listener.dart';
 
 class _Messages {

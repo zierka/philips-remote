@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:phimote/logic/services/logging/analytics.dart';
 import 'package:phimote/screens/device_discovery/pair_screen.dart';
 import 'package:phimote/widgets/control_button.dart';
@@ -17,7 +16,7 @@ class LandingScreen extends StatelessWidget {
           child: ControlButton(
             child: Text(
               "scan for tv",
-              style: Theme.of(context).textTheme.button,
+              style: Theme.of(context).textTheme.labelMedium,
             ),
             onPressed: () => onScanTapped(context),
           ),
